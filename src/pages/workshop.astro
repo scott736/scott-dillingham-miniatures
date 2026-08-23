@@ -1,0 +1,151 @@
+---
+export const prerender = true;
+
+import RelatedReading from '@/components/sections/related-reading.astro';
+import WorkshopHero from '@/components/sections/workshop-hero';
+import WorkshopProcess from '@/components/sections/workshop-process';
+import WorkshopTools from '@/components/sections/workshop-tools';
+import { SITE_URL } from '@/consts';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+
+const workshopRelatedPosts = [
+  {
+    slug: 'miniature-woodworking-for-beginners',
+    title: 'Miniature Woodworking for Beginners',
+    description:
+      'Everything you need to know to start your journey in miniature woodworking, from tools to techniques.',
+  },
+  {
+    slug: 'essential-miniature-woodworking-tools',
+    title: 'Essential Miniature Woodworking Tools',
+    description:
+      'A comprehensive guide to the specialized tools every miniature furniture maker needs in their workshop.',
+  },
+  {
+    slug: 'how-to-choose-wood-for-miniature-furniture',
+    title: 'How to Choose Wood for Miniature Furniture',
+    description:
+      'Understanding grain scale, workability, and historical accuracy when selecting wood species for miniature work.',
+  },
+  {
+    slug: 'miniature-woodworking-joints',
+    title: 'Miniature Woodworking Joints',
+    description:
+      'Master the art of cutting dovetails, mortise and tenon, and other joints at 1/12 scale.',
+  },
+  {
+    slug: 'finishing-techniques-miniature-furniture',
+    title: 'Finishing Techniques for Miniature Furniture',
+    description:
+      'From French polish to oil finishes, learn how to achieve museum-quality surfaces on tiny pieces.',
+  },
+  {
+    slug: 'setting-up-miniature-woodworking-workshop',
+    title: 'Setting Up a Miniature Workshop',
+    description:
+      'How to organize and equip a dedicated workspace for miniature furniture making.',
+  },
+];
+
+// HowTo schema for featured snippets on "how to make miniature furniture"
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to Make Handcrafted 1/12 Scale Miniature Furniture',
+  description:
+    'The complete 8-step process for building museum-quality handcrafted miniature furniture from raw hardwood to finished masterpiece, by museum-exhibited craftsman Scott Dillingham.',
+  totalTime: 'P30D',
+  estimatedCost: {
+    '@type': 'MonetaryCost',
+    currency: 'USD',
+    value: '50-500',
+  },
+  tool: [
+    'Miniature hand planes',
+    'Micro chisels and gouges',
+    'Miniature dovetail saw',
+    'Precision clamps',
+    'Miniature lathe',
+    'Magnification equipment',
+  ],
+  supply: [
+    'Fine hardwoods (mahogany, cherry, walnut, maple, oak)',
+    'Hide glue',
+    'French polish or lacquer',
+    'Brass hardware',
+  ],
+  step: [
+    {
+      '@type': 'HowToStep',
+      position: 1,
+      name: 'Design & Research',
+      text: 'Study the original period furniture using historical references, museum archives, and antique photographs. Create scaled drawings that capture every proportion and detail.',
+      image: `${SITE_URL}/images/workshop/process-design.webp`,
+    },
+    {
+      '@type': 'HowToStep',
+      position: 2,
+      name: 'Wood Selection',
+      text: 'Choose the right hardwood for grain pattern, workability at miniature scale, and historical accuracy to the period being reproduced.',
+      image: `${SITE_URL}/images/workshop/process-wood.webp`,
+    },
+    {
+      '@type': 'HowToStep',
+      position: 3,
+      name: 'Milling & Shaping',
+      text: 'Cut raw stock to 1/12 scale dimensions with extreme precision. At this scale, tolerances are measured in fractions of a millimeter.',
+      image: `${SITE_URL}/images/workshop/process-milling.webp`,
+    },
+    {
+      '@type': 'HowToStep',
+      position: 4,
+      name: 'Joinery',
+      text: 'Hand-cut dovetails, mortise and tenon joints at miniature scale. These are the same joints used in full-size period furniture.',
+      image: `${SITE_URL}/images/workshop/process-joinery.webp`,
+    },
+    {
+      '@type': 'HowToStep',
+      position: 5,
+      name: 'Carving & Detail',
+      text: 'Add shell carvings, fluting, and decorative elements by hand using micro chisels and gouges.',
+      image: `${SITE_URL}/images/workshop/process-carving.webp`,
+    },
+    {
+      '@type': 'HowToStep',
+      position: 6,
+      name: 'Assembly',
+      text: 'Carefully fit all components together. Every joint must be tight and true. Miniature clamps hold pieces in place while the glue sets.',
+      image: `${SITE_URL}/images/workshop/process-assembly.webp`,
+    },
+    {
+      '@type': 'HowToStep',
+      position: 7,
+      name: 'Finishing',
+      text: 'Apply French polish or lacquer for museum-quality protection. Multiple coats are hand-rubbed to build depth and warmth.',
+      image: `${SITE_URL}/images/workshop/process-finishing.webp`,
+    },
+    {
+      '@type': 'HowToStep',
+      position: 8,
+      name: 'Photography & Delivery',
+      text: 'Document the finished piece with detailed photography, then carefully pack in custom-fitted foam for safe shipping worldwide.',
+      image: `${SITE_URL}/images/workshop/process-delivery.webp`,
+    },
+  ],
+};
+---
+
+<DefaultLayout
+  title="How Miniature Furniture Is Made | Inside Scott Dillingham's Workshop"
+  description="See how handcrafted 1/12 scale miniature furniture is built from raw hardwood to finished masterpiece inside Scott Dillingham's workshop."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
+  <WorkshopHero client:idle />
+  <WorkshopProcess client:visible />
+  <WorkshopTools client:visible />
+  <RelatedReading
+    title="Workshop Guides"
+    subtitle="Master the craft with these in-depth technique guides."
+    posts={workshopRelatedPosts}
+  />
+</DefaultLayout>

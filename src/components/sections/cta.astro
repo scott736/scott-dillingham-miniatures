@@ -1,0 +1,41 @@
+---
+import LinkButton from '@/components/elements/link-button';
+
+interface Props {
+  pathname: string;
+}
+
+const { pathname } = Astro.props as Props;
+
+const hiddenPaths = ['/privacy-policy', '/terms-of-service', '/blog'];
+const shouldShowCTA = !hiddenPaths.includes(pathname);
+---
+
+{shouldShowCTA && (
+  <section class="bg-card py-15">
+    <div class="container flex flex-col justify-between gap-8 md:flex-row md:gap-16">
+      <div class="space-y-6 sm:min-w-[440px] md:space-y-8 lg:w-[569px] lg:shrink-0">
+        <h2 class="text-5xl leading-13 font-bold md:text-6xl md:leading-18">
+          Buy Handcrafted Miniature Furniture or Commission a Custom Piece
+        </h2>
+
+        <LinkButton
+          client:visible
+          href="/contact"
+          label="Start a Commission"
+          wrapperClassName="w-fit"
+          className="gap-2.5 pe-3 [&_svg]:transition-transform hover:[&_svg]:translate-x-0.25"
+          iconStyle="circle"
+        />
+      </div>
+      <div class="max-w-xl space-y-4">
+        <p class="text-3xl font-bold">
+          Museum-exhibited craftsmanship, available to collectors worldwide.
+          Whether you're starting a new collection or adding to an
+          existing one, each piece is built to become a treasured heirloom.
+          Let's discuss your vision.
+        </p>
+      </div>
+    </div>
+  </section>
+)}

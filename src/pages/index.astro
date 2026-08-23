@@ -1,0 +1,44 @@
+---
+export const prerender = true;
+
+import { getCollection } from 'astro:content';
+
+import { SITE_TITLE, SITE_DESCRIPTION, FAQ_DATA } from '../consts';
+
+import BlogPosts from '@/components/sections/blog-posts';
+import FAQ from '@/components/sections/faq';
+import Features from '@/components/sections/features.astro';
+import Hero from '@/components/sections/hero';
+import InReality from '@/components/sections/in-reality';
+import ValueProposition from '@/components/sections/value-proposition';
+import WhyUs from '@/components/sections/why-us.astro';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+// FAQPage structured data for Google rich results
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ_DATA.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer.replace(/<[^>]*>/g, ''),
+    },
+  })),
+};
+---
+
+<DefaultLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <Hero client:load />
+  <ValueProposition client:visible />
+  <Features />
+  <WhyUs />
+  <InReality client:visible />
+  <FAQ client:visible />
+  <BlogPosts posts={posts} client:visible />
+</DefaultLayout>

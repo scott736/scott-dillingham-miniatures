@@ -1,0 +1,29 @@
+---
+export const prerender = true;
+
+import ContactPage from '@/components/sections/contact';
+import { SITE_URL } from '@/consts';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+
+const contactSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Commission Custom Miniature Furniture',
+  description:
+    'Commission custom 1/12 scale miniature furniture from museum-exhibited craftsman Scott Dillingham.',
+  url: `${SITE_URL}/contact`,
+  mainEntity: {
+    '@type': 'LocalBusiness',
+    '@id': `${SITE_URL}/#organization`,
+    name: 'Scott Dillingham Miniatures',
+  },
+};
+---
+
+<DefaultLayout
+  title="Commission Custom Miniature Furniture | Contact Scott Dillingham"
+  description="Commission custom 1/12 scale miniature furniture from museum-exhibited craftsman Scott Dillingham. Request a quote or inquire about available pieces."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(contactSchema)} />
+  <ContactPage client:load />
+</DefaultLayout>

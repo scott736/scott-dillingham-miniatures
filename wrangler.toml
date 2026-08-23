@@ -1,0 +1,33 @@
+name = "scott-dillingham-miniatures"
+compatibility_date = "2026-08-23"
+compatibility_flags = ["nodejs_compat"]
+main = "@astrojs/cloudflare/entrypoints/server"
+workers_dev = true
+
+[[kv_namespaces]]
+binding = "SESSION"
+id = "8e24a6affcb3406cb8681a29c7bd0265"
+
+[observability]
+enabled = true
+
+[observability.logs]
+enabled = true
+invocation_logs = true
+
+[assets]
+directory = "./dist/client"
+binding = "ASSETS"
+not_found_handling = "404-page"
+html_handling = "auto-trailing-slash"
+# Marketing pages are prerendered. Only the contact API is SSR.
+run_worker_first = ["/api/*"]
+
+# Custom domains attach once the zone nameservers are live at the registrar.
+[[routes]]
+pattern = "scottdillinghamminiatures.com/*"
+zone_name = "scottdillinghamminiatures.com"
+
+[[routes]]
+pattern = "www.scottdillinghamminiatures.com/*"
+zone_name = "scottdillinghamminiatures.com"

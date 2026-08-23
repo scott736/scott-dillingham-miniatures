@@ -1,0 +1,111 @@
+---
+export const prerender = true;
+
+import GalleryShowcase from '@/components/sections/gallery-showcase';
+import RelatedReading from '@/components/sections/related-reading.astro';
+import { GALLERY_ITEMS, SITE_URL } from '@/consts';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+
+const galleryRelatedPosts = [
+  {
+    slug: 'how-to-start-miniature-furniture-collection',
+    title: 'How to Start a Miniature Furniture Collection',
+    description:
+      "A collector's guide to beginning your journey into miniature furniture, from understanding quality to finding your first pieces.",
+  },
+  {
+    slug: 'museum-quality-miniatures-what-sets-them-apart',
+    title: 'Museum-Quality Miniatures: What Sets Them Apart',
+    description:
+      'Discover what separates museum-quality handcrafted miniatures from mass-produced pieces and why it matters for collectors.',
+  },
+  {
+    slug: 'handcrafted-vs-kit-built-miniatures',
+    title: 'Handcrafted vs. Kit-Built Miniatures',
+    description:
+      'Understanding the fundamental differences between handcrafted artisan miniatures and kit-built or factory-produced alternatives.',
+  },
+  {
+    slug: 'investment-value-artisan-miniature-furniture',
+    title: 'The Investment Value of Artisan Miniature Furniture',
+    description:
+      'Why handcrafted miniature furniture holds and increases in value, and what collectors should look for.',
+  },
+  {
+    slug: 'displaying-protecting-miniature-furniture-collection',
+    title: 'Displaying and Protecting Your Collection',
+    description:
+      'Best practices for displaying, lighting, and preserving your miniature furniture collection for years to come.',
+  },
+  {
+    slug: 'miniature-furniture-fine-art',
+    title: 'Miniature Furniture as Fine Art',
+    description:
+      'How miniature furniture transcends craft to become collectible fine art, with a look at galleries and exhibitions worldwide.',
+  },
+];
+
+// CollectionPage schema for Google rich results
+const stripHtml = (html: string) => html.replace(/<[^>]*>/g, '');
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Handcrafted 1/12 Scale Miniature Furniture Collection — Sam Maloof, Hepplewhite, Shaker & More',
+  description:
+    'Browse museum-exhibited handcrafted 1/12 scale miniature furniture by Scott Dillingham: Sam Maloof style rocking chair, Simon Willard tall case clock, Hepplewhite shield back chair, Thomas Moser continuous arm chair, Shaker D-ring table & more. Built entirely by hand from fine hardwoods using traditional joinery.',
+  url: `${SITE_URL}/gallery`,
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: GALLERY_ITEMS.length,
+    itemListElement: GALLERY_ITEMS.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'Product',
+        name: item.title,
+        description: stripHtml(item.description),
+        image: `${SITE_URL}${item.images[0]}`,
+        category: `Miniature Furniture > ${item.category}`,
+        material: item.wood,
+        brand: {
+          '@type': 'Brand',
+          name: 'Scott Dillingham Miniatures',
+        },
+        manufacturer: {
+          '@type': 'Person',
+          name: 'Scott Dillingham',
+          jobTitle: 'Master Miniature Furniture Craftsman',
+        },
+        additionalProperty: [
+          {
+            '@type': 'PropertyValue',
+            name: 'Scale',
+            value: item.scale,
+          },
+          {
+            '@type': 'PropertyValue',
+            name: 'Construction Method',
+            value: 'Entirely handcrafted using traditional joinery',
+          },
+        ],
+      },
+    })),
+  },
+};
+---
+
+<DefaultLayout
+  title="Gallery | Sam Maloof Rocking Chair, Hepplewhite Chair, Shaker Table & More Miniatures"
+  description="Browse museum-exhibited handcrafted 1/12 scale miniature furniture for sale: Sam Maloof style rocking chair, Simon Willard tall case clock, Hepplewhite shield back chair, Thomas Moser continuous arm chair, Shaker D-ring table & more. Built by hand from fine hardwoods."
+>
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(collectionSchema)}
+  />
+  <GalleryShowcase client:idle />
+  <RelatedReading
+    title="Collector's Library"
+    subtitle="Deepen your appreciation for miniature furniture with these guides."
+    posts={galleryRelatedPosts}
+  />
+</DefaultLayout>

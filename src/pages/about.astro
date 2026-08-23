@@ -1,0 +1,76 @@
+---
+export const prerender = true;
+
+import { AboutHero } from '@/components/sections/about-hero';
+import AboutMission from '@/components/sections/about-mission';
+import OurValues from '@/components/sections/our-values';
+import RelatedReading from '@/components/sections/related-reading.astro';
+import WhySonic from '@/components/sections/why-sonic';
+import { SITE_URL } from '@/consts';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Scott Dillingham',
+  jobTitle: 'Museum-Exhibited Master Miniature Furniture Craftsman',
+  url: `${SITE_URL}/about`,
+  image: `${SITE_URL}/images/about/scott-workshop.webp`,
+  sameAs: [
+    'https://www.instagram.com/scottdillinghamminiatures/',
+    'https://www.pinterest.com/scottdillinghamminiatures/',
+  ],
+  knowsAbout: [
+    'Miniature Furniture',
+    '1/12 Scale Miniatures',
+    'Traditional Woodworking',
+    'Period Furniture Reproductions',
+    'Dollhouse Furniture',
+    'Miniature Woodworking',
+  ],
+  worksFor: {
+    '@type': 'LocalBusiness',
+    '@id': `${SITE_URL}/#organization`,
+    name: 'Scott Dillingham Miniatures',
+  },
+};
+
+const aboutRelatedPosts = [
+  {
+    slug: 'history-miniature-furniture-royal-courts-modern',
+    title: 'The History of Miniature Furniture',
+    description:
+      'From ancient Egyptian tombs to modern collector galleries, trace the rich history of miniature furniture making.',
+  },
+  {
+    slug: 'miniature-furniture-fine-art',
+    title: 'Miniature Furniture as Fine Art',
+    description:
+      'How miniature furniture transcends craft to become collectible fine art recognized by galleries worldwide.',
+  },
+  {
+    slug: 'renaissance-handcrafted-miniatures-digital-age',
+    title: 'The Renaissance of Handcrafted Miniatures',
+    description:
+      'Why handcrafted miniature furniture is experiencing a revival in the digital age.',
+  },
+];
+---
+
+<DefaultLayout
+  title="About Scott Dillingham | Museum-Exhibited Miniature Furniture Artisan"
+  description="Meet Scott Dillingham, museum-exhibited master craftsman building handcrafted 1/12 scale miniature furniture. Available for purchase and custom commission."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+  <AboutHero />
+  <AboutMission />
+  <OurValues />
+  <div class="py-10 md:pt-14 lg:pt-20">
+    <WhySonic />
+  </div>
+  <RelatedReading
+    title="Further Reading"
+    subtitle="Explore the history and artistry behind miniature furniture making."
+    posts={aboutRelatedPosts}
+  />
+</DefaultLayout>

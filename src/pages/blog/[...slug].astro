@@ -1,0 +1,72 @@
+---
+export const prerender = true;
+
+import { getCollection, render } from 'astro:content';
+
+import { BlogPost } from '@/components/sections/blog-post';
+import { SITE_URL } from '@/consts';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post, allPosts: posts },
+  }));
+}
+
+const { post, allPosts } = Astro.props;
+const { Content } = await render(post);
+
+// Compute related posts by matching tags
+const currentTags = post.data.tags ?? [];
+const relatedPosts = allPosts
+  .filter((p: typeof post) => p.id !== post.id)
+  .map((p: typeof post) => {
+    const pTags = p.data.tags ?? [];
+    const sharedCount = pTags.filter((tag: string) =>
+      currentTags.includes(tag),
+    ).length;
+    return { post: p, sharedCount };
+  })
+  .filter((item: { sharedCount: number }) => item.sharedCount > 0)
+  .sort(
+    (a: { sharedCount: number }, b: { sharedCount: number }) =>
+      b.sharedCount - a.sharedCount,
+  )
+  .slice(0, 3)
+  .map((item: { post: typeof post }) => ({
+    id: item.post.id,
+    title: item.post.data.title,
+    description: item.post.data.description,
+    image: item.post.data.coverImage ?? item.post.data.image,
+    pubDate:
+      item.post.data.pubDate instanceof Date
+        ? item.post.data.pubDate.toISOString()
+        : String(item.post.data.pubDate),
+  }));
+---
+
+<DefaultLayout
+  title={post.data.title}
+  description={post.data.description}
+  image={post.data.coverImage || post.data.image}
+  article={{
+    authorName: post.data.authorName || 'Scott Dillingham',
+    pubDate:
+      post.data.pubDate instanceof Date
+        ? post.data.pubDate.toISOString()
+        : String(post.data.pubDate),
+    tags: post.data.tags,
+  }}
+>
+  <BlogPost
+    post={[post]}
+    relatedPosts={relatedPosts}
+    currentTags={currentTags}
+    siteUrl={SITE_URL}
+    client:idle
+  >
+    <Content />
+  </BlogPost>
+</DefaultLayout>

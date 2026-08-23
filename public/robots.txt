@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://scottdillinghamminiatures.com/sitemap-index.xml
