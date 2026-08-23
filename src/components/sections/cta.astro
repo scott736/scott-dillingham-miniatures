@@ -1,5 +1,5 @@
 ---
-import LinkButton from '@/components/elements/link-button';
+import CtaLink from '@/components/elements/cta-link.astro';
 
 interface Props {
   pathname: string;
@@ -19,12 +19,11 @@ const shouldShowCTA = !hiddenPaths.includes(pathname);
           Buy Handcrafted Miniature Furniture or Commission a Custom Piece
         </h2>
 
-        <LinkButton
-          client:visible
+        <CtaLink
           href="/contact"
           label="Start a Commission"
           wrapperClassName="w-fit"
-          className="gap-2.5 pe-3 [&_svg]:transition-transform hover:[&_svg]:translate-x-0.25"
+          className="gap-2.5 pe-3"
           iconStyle="circle"
         />
       </div>

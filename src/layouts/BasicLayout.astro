@@ -4,7 +4,7 @@ import { ClientRouter } from 'astro:transitions';
 import BaseHead from '@/components/BaseHead.astro';
 import CategoryBadge from '@/components/elements/category-badge';
 import Footer from '@/components/layout/footer.astro';
-import Navbar from '@/components/layout/navbar';
+import Navbar from '@/components/layout/navbar.astro';
 
 const { title, description, currentPage, frontmatter } = Astro.props;
 const noindex =
@@ -31,7 +31,7 @@ const pageTitle = frontmatter?.title || title;
   </head>
   <body class={`h-screen antialiased`}>
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-background focus:px-4 focus:py-2 focus:text-foreground focus:shadow-lg">Skip to content</a>
-    <Navbar currentPage={currentPage} client:load />
+    <Navbar currentPage={currentPage} />
     <main id="main-content">
       <section class="container mx-auto max-w-4xl px-4 py-16 md:py-28 lg:py-32">
         <article class="space-y-6 md:space-y-8">

@@ -1,0 +1,328 @@
+---
+import { NAV_ITEMS } from '@/consts';
+
+interface Props {
+  currentPage?: string;
+}
+
+const { currentPage = '' } = Astro.props;
+const pathname = currentPage.replace(/\/$/, '');
+---
+
+<header
+  class="text-muted-foreground relative z-50 container flex items-center justify-between gap-4 py-3 md:py-4"
+>
+  <div class="mt-1.5 flex w-64 justify-start lg:mt-2 lg:w-72 dark:invert">
+    <a href="/" class="relative block h-16 w-56 lg:h-20 lg:w-72">
+      <img
+        src="/layout/sdmlogo.webp"
+        alt="Scott Dillingham Miniatures"
+        width="288"
+        height="80"
+        class="size-full object-contain"
+      />
+    </a>
+  </div>
+
+  <nav>
+    <ul class="hidden items-center gap-6 md:flex">
+      {
+        NAV_ITEMS.map((item) => (
+          <li class="flex items-center">
+            <a
+              href={item.href}
+              class:list={[
+                'transition-all hover:opacity-80',
+                pathname === item.href && 'text-primary font-medium',
+              ]}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+
+  <div class="hidden w-47 items-center justify-end gap-4 md:flex">
+    <button
+      type="button"
+      data-theme-toggle
+      aria-label="Toggle theme"
+      class="hover:bg-accent hover:text-accent-foreground inline-flex size-9 cursor-pointer items-center justify-center rounded-md"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="hidden dark:block"
+        aria-hidden="true"
+      >
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v2"></path>
+        <path d="M12 20v2"></path>
+        <path d="m4.93 4.93 1.41 1.41"></path>
+        <path d="m17.66 17.66 1.41 1.41"></path>
+        <path d="M2 12h2"></path>
+        <path d="M20 12h2"></path>
+        <path d="m6.34 17.66-1.41 1.41"></path>
+        <path d="m19.07 4.93-1.41 1.41"></path>
+      </svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="block dark:hidden"
+        aria-hidden="true"
+      >
+        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+      </svg>
+    </button>
+    <a
+      href="/contact"
+      class="border-input bg-background hover:bg-accent hover:text-accent-foreground inline-flex h-14 items-center justify-center gap-1.5 rounded-full border px-6 shadow-xs transition-[color,box-shadow,transform] active:scale-95"
+    >
+      Commission a Piece
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="size-4 transition-transform"
+        aria-hidden="true"
+      >
+        <path d="m9 18 6-6-6-6"></path>
+      </svg>
+    </a>
+  </div>
+
+  <div class="flex items-center gap-4 md:hidden">
+    <button
+      type="button"
+      data-theme-toggle
+      aria-label="Toggle theme"
+      class="hover:bg-accent hover:text-accent-foreground inline-flex size-9 cursor-pointer items-center justify-center rounded-md"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="hidden dark:block"
+        aria-hidden="true"
+      >
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v2"></path>
+        <path d="M12 20v2"></path>
+        <path d="m4.93 4.93 1.41 1.41"></path>
+        <path d="m17.66 17.66 1.41 1.41"></path>
+        <path d="M2 12h2"></path>
+        <path d="M20 12h2"></path>
+        <path d="m6.34 17.66-1.41 1.41"></path>
+        <path d="m19.07 4.93-1.41 1.41"></path>
+      </svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="block dark:hidden"
+        aria-hidden="true"
+      >
+        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+      </svg>
+    </button>
+    <button
+      type="button"
+      class="text-base-dark group relative z-10 flex size-8"
+      data-nav-toggle
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+    >
+      <span class="sr-only">Open main menu</span>
+      <div class="absolute top-1/2 left-1/2 block w-6 -translate-x-1/2 -translate-y-1/2">
+        <span
+          aria-hidden="true"
+          class="absolute block h-0.5 w-full rounded-full bg-current transition duration-500 ease-in-out -translate-y-1.5 group-aria-expanded:translate-y-0 group-aria-expanded:rotate-45"
+        ></span>
+        <span
+          aria-hidden="true"
+          class="absolute block h-0.5 w-full rounded-full bg-current transition duration-500 ease-in-out translate-y-1.5 group-aria-expanded:translate-y-0 group-aria-expanded:-rotate-45"
+        ></span>
+      </div>
+    </button>
+  </div>
+
+  <div
+    id="mobile-nav"
+    data-nav-menu
+    data-open="false"
+    class="fixed inset-x-0 top-14 bottom-0 md:hidden data-[open=false]:invisible data-[open=true]:visible"
+  >
+    <div
+      class="bg-base-dark/85 dark:bg-base-dark/25 absolute inset-0 opacity-0 backdrop-blur transition-opacity duration-500 ease-out"
+      data-nav-backdrop
+    >
+    </div>
+    <nav
+      data-nav-panel
+      class="bg-background relative ms-auto me-0 flex h-full w-[85%] flex-col border-t p-6 transition-all duration-500 ease-out translate-x-full opacity-0"
+    >
+      {
+        NAV_ITEMS.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              'py-3 text-center transition-all hover:opacity-80',
+              pathname === link.href && 'text-primary font-medium',
+            ]}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <div class="mt-8 flex flex-col items-center justify-end gap-4">
+        <a
+          href="/contact"
+          class="bg-primary text-primary-foreground inline-flex h-14 items-center justify-center gap-1.5 rounded-full px-6 shadow-xs"
+        >
+          Commission a Piece
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="size-4"
+            aria-hidden="true"
+          >
+            <path d="m9 18 6-6-6-6"></path>
+          </svg>
+        </a>
+      </div>
+    </nav>
+    <img
+      src="/images/gallery/highboy-dresser.webp"
+      alt=""
+      width="374"
+      height="330"
+      loading="lazy"
+      decoding="async"
+      class="absolute right-0 bottom-0 translate-x-1/3 translate-y-1/4 rounded-2xl opacity-30"
+    />
+  </div>
+</header>
+
+<script>
+  function bindThemeToggles() {
+    document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]').forEach((btn) => {
+      if (btn.dataset.bound === '1') return;
+      btn.dataset.bound = '1';
+      btn.addEventListener('click', () => {
+        const rect = btn.getBoundingClientRect();
+        document.documentElement.style.setProperty(
+          '--x',
+          `${((rect.left + rect.right) / 2 / window.innerWidth) * 100}%`,
+        );
+        document.documentElement.style.setProperty(
+          '--y',
+          `${((rect.top + rect.bottom) / 2 / window.innerHeight) * 100}%`,
+        );
+
+        const apply = () => {
+          const next = document.documentElement.classList.contains('dark')
+            ? 'light'
+            : 'dark';
+          document.documentElement.classList.toggle('dark', next === 'dark');
+          localStorage.setItem('theme', next);
+        };
+
+        document.documentElement.classList.remove('page-transition');
+        document.documentElement.classList.add('theme-transition');
+
+        const finish = () => {
+          apply();
+          window.setTimeout(() => {
+            document.documentElement.classList.remove('theme-transition');
+            document.documentElement.classList.add('page-transition');
+          }, 600);
+        };
+
+        if (document.startViewTransition) {
+          document.startViewTransition(finish);
+        } else {
+          finish();
+        }
+      });
+    });
+  }
+
+  function bindMobileNav() {
+    const toggle = document.querySelector<HTMLButtonElement>('[data-nav-toggle]');
+    const menu = document.querySelector<HTMLElement>('[data-nav-menu]');
+    const panel = document.querySelector<HTMLElement>('[data-nav-panel]');
+    const backdrop = document.querySelector<HTMLElement>('[data-nav-backdrop]');
+    if (!toggle || !menu) return;
+    if (toggle.dataset.bound === '1') return;
+    toggle.dataset.bound = '1';
+
+    const setOpen = (open: boolean) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      menu.dataset.open = open ? 'true' : 'false';
+      panel?.classList.toggle('translate-x-0', open);
+      panel?.classList.toggle('opacity-100', open);
+      panel?.classList.toggle('translate-x-full', !open);
+      panel?.classList.toggle('opacity-0', !open);
+      backdrop?.classList.toggle('opacity-0', !open);
+      document.documentElement.style.overflow = open ? 'hidden' : '';
+      document.body.style.overflow = open ? 'hidden' : '';
+    };
+
+    toggle.addEventListener('click', () => {
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    menu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setOpen(false));
+    });
+  }
+
+  const init = () => {
+    bindThemeToggles();
+    bindMobileNav();
+    document.documentElement.classList.add('page-transition');
+  };
+
+  document.addEventListener('astro:page-load', init);
+</script>

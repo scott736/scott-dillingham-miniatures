@@ -18,7 +18,11 @@ export default [
       'import-x': importX,
     },
     settings: {
-      'import-x/core-modules': ['astro:content', 'astro:transitions'],
+      'import-x/core-modules': [
+        'astro:assets',
+        'astro:content',
+        'astro:transitions',
+      ],
     },
     rules: {
       'import-x/order': [

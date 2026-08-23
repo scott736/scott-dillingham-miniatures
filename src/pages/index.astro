@@ -1,23 +1,34 @@
 ---
 export const prerender = true;
 
+import { getImage } from 'astro:assets';
 import { getCollection } from 'astro:content';
 
-import { FAQ_DATA, SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
-
+import bonsai from '@/assets/images/hero/bonsai.webp';
 import SpeakableSchema from '@/components/schemas/SpeakableSchema.astro';
-import BlogPosts from '@/components/sections/blog-posts';
-import FAQ from '@/components/sections/faq';
+import BlogPreview from '@/components/sections/blog-preview.astro';
+import FAQ from '@/components/sections/faq.astro';
 import Features from '@/components/sections/features.astro';
-import Hero from '@/components/sections/hero';
-import InReality from '@/components/sections/in-reality';
-import ValueProposition from '@/components/sections/value-proposition';
+import Hero from '@/components/sections/hero.astro';
+import InReality from '@/components/sections/in-reality.astro';
+import ValueProposition from '@/components/sections/value-proposition.astro';
 import WhyUs from '@/components/sections/why-us.astro';
+import { FAQ_DATA, SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 
 const posts = (await getCollection('blog'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
+
+const heroWidths = [640, 960, 1280] as const;
+const heroAvifs = await Promise.all(
+  heroWidths.map((width) =>
+    getImage({ src: bonsai, width, format: 'avif', quality: 72 }),
+  ),
+);
+const heroLcpSrcset = heroAvifs
+  .map((img, i) => `${img.src} ${heroWidths[i]}w`)
+  .join(', ');
 
 // FAQPage structured data for Google rich results
 const faqSchema = {
@@ -35,6 +46,15 @@ const faqSchema = {
 ---
 
 <DefaultLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <link
+    slot="head"
+    rel="preload"
+    as="image"
+    type="image/avif"
+    imagesrcset={heroLcpSrcset}
+    imagesizes="(max-width: 768px) 92vw, 644px"
+    fetchpriority="high"
+  />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <SpeakableSchema
     speakableSections={[
@@ -44,11 +64,11 @@ const faqSchema = {
       { cssSelector: "[data-speakable='faq-answer']" },
     ]}
   />
-  <Hero client:load />
-  <ValueProposition client:visible />
+  <Hero />
+  <ValueProposition />
   <Features />
   <WhyUs />
-  <InReality client:visible />
-  <FAQ client:visible />
-  <BlogPosts posts={posts} client:visible />
+  <InReality />
+  <FAQ />
+  <BlogPreview posts={posts} />
 </DefaultLayout>

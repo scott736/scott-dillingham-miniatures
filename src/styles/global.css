@@ -133,6 +133,42 @@
 }
 
 @layer utilities {
+  .cta-button {
+    @apply bg-primary text-primary-foreground relative inline-flex h-14 cursor-pointer items-center justify-center gap-1.5 rounded-full px-6 font-medium shadow-xs transition-[color,box-shadow,transform] hover:bg-primary/95 active:scale-95;
+  }
+
+  .cta-button::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 9999px;
+    border: 2px solid var(--primary);
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.98);
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  .cta-button:hover::after,
+  .cta-button:focus-visible::after {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .cta-button svg {
+    @apply transition-transform;
+  }
+
+  .cta-button:hover svg {
+    transform: translateX(2px);
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
   .hero-padding {
     @apply pt-15 pb-20 md:pt-18 lg:pt-22.5;
   }

@@ -1,0 +1,71 @@
+---
+import { Picture } from 'astro:assets';
+
+import bonsai from '@/assets/images/hero/bonsai.webp';
+import CtaLink from '@/components/elements/cta-link.astro';
+---
+
+<section
+  class="hero-padding container flex flex-col items-center justify-center gap-8 overflow-hidden !pb-0 text-center"
+>
+  <div class="flex flex-col items-center gap-8">
+    <h1
+      data-speakable="title"
+      class="bg-clip-text text-5xl leading-13 font-bold md:text-6xl"
+    >
+      Miniature Furniture,<br /> Extraordinary Craft
+    </h1>
+
+    <p data-speakable="description" class="max-w-3xl text-xl leading-8">
+      Museum-exhibited 1/12 scale miniature furniture, handcrafted from fine
+      hardwoods using traditional woodworking techniques. Available for
+      purchase and custom commission. Every joint, every detail, every piece
+      — built entirely by hand.
+    </p>
+
+    <div class="flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
+      <CtaLink href="/gallery" label="Explore the Gallery" />
+
+      <a
+        href="/workshop"
+        class="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
+      >
+        See the Workshop
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="size-4"
+          aria-hidden="true"
+        >
+          <path d="M5 12h14"></path>
+          <path d="m12 5 7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+
+    <div class="relative md:mt-7">
+      <Picture
+        src={bonsai}
+        formats={['avif']}
+        fallbackFormat="webp"
+        widths={[640, 960, 1280]}
+        sizes="(max-width: 768px) 92vw, 644px"
+        alt="Scott Dillingham's miniature furniture workshop with handcrafted 1/12 scale pieces"
+        width={1280}
+        height={884}
+        quality={72}
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        class="h-auto w-full max-w-[644px] rounded-2xl drop-shadow-2xl"
+      />
+    </div>
+  </div>
+</section>

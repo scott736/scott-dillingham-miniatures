@@ -1,0 +1,58 @@
+---
+interface Props {
+  href: string;
+  label: string;
+  wrapperClassName?: string;
+  className?: string;
+  iconStyle?: 'default' | 'circle';
+}
+
+const {
+  href,
+  label,
+  wrapperClassName = '',
+  className = '',
+  iconStyle = 'default',
+} = Astro.props;
+---
+
+<div class:list={['relative w-fit', wrapperClassName]}>
+  <a href={href} class:list={['cta-button', className]}>
+    {label}
+    {
+      iconStyle === 'circle' ? (
+        <span class="bg-background text-foreground rounded-full p-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="m9 18 6-6-6-6" />
+          </svg>
+        </span>
+      ) : (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="m9 18 6-6-6-6" />
+        </svg>
+      )
+    }
+  </a>
+</div>

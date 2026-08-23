@@ -1,0 +1,47 @@
+---
+import { FAQ_DATA } from '@/consts';
+---
+
+<section class="section-padding container flex flex-col gap-8 md:flex-row md:gap-16">
+  <div class="flex max-w-md flex-col gap-6 md:gap-16">
+    <h2 class="text-3xl">Frequently Asked Questions</h2>
+    <h3 class="text-2xl leading-8 md:text-4xl md:leading-14 lg:text-5xl">
+      Everything You Need to Know About Handcrafted Miniature Furniture
+    </h3>
+  </div>
+
+  <div class="w-full space-y-8">
+    {
+      FAQ_DATA.map((item, index) => (
+        <details
+          class="faq-item border-input group border-b px-4"
+          open={index === 0 ? true : undefined}
+        >
+          <summary class="flex cursor-pointer list-none items-start justify-between gap-4 py-4 text-xl font-normal md:pb-6 md:text-3xl">
+            <span data-speakable="faq-question">{item.question}</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="mt-1 size-5 shrink-0 transition-transform group-open:rotate-180"
+              aria-hidden="true"
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </summary>
+          <div
+            data-speakable="faq-answer"
+            class="[&_a]:text-primary text-base md:pb-6 [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:opacity-80"
+            set:html={item.answer}
+          />
+        </details>
+      ))
+    }
+  </div>
+</section>
