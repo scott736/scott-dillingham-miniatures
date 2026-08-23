@@ -51,19 +51,24 @@ const organizationSchema = {
     itemListElement: [
       {
         '@type': 'Offer',
+        url: `${SITE_URL}/gallery/`,
         itemOffered: {
-          '@type': 'Product',
+          '@type': 'Service',
           name: 'Handcrafted 1/12 Scale Miniature Furniture',
-          description: 'Museum-exhibited miniature furniture built entirely by hand using fine hardwoods and traditional woodworking techniques. Available for purchase.',
-          category: 'Miniature Furniture',
+          description:
+            'Museum-exhibited miniature furniture built entirely by hand using fine hardwoods and traditional woodworking techniques. Available for purchase and commission.',
+          provider: { '@id': `${SITE_URL}/#organization` },
         },
       },
       {
         '@type': 'Offer',
+        url: `${SITE_URL}/contact/`,
         itemOffered: {
           '@type': 'Service',
           name: 'Custom Miniature Furniture Commissions',
-          description: 'Commission a custom handcrafted 1/12 scale miniature furniture piece. Period reproductions, family heirloom replicas, or custom designs.',
+          description:
+            'Commission a custom handcrafted 1/12 scale miniature furniture piece. Period reproductions, family heirloom replicas, or custom designs.',
+          provider: { '@id': `${SITE_URL}/#organization` },
         },
       },
     ],

@@ -53,7 +53,7 @@ const collectionSchema = {
   name: 'Handcrafted 1/12 Scale Miniature Furniture Collection — Sam Maloof, Hepplewhite, Shaker & More',
   description:
     'Browse museum-exhibited handcrafted 1/12 scale miniature furniture by Scott Dillingham: Sam Maloof style rocking chair, Simon Willard tall case clock, Hepplewhite shield back chair, Thomas Moser continuous arm chair, Shaker D-ring table & more. Built entirely by hand from fine hardwoods using traditional joinery.',
-  url: `${SITE_URL}/gallery`,
+  url: `${SITE_URL}/gallery/`,
   mainEntity: {
     '@type': 'ItemList',
     numberOfItems: GALLERY_ITEMS.length,
@@ -61,26 +61,31 @@ const collectionSchema = {
       '@type': 'ListItem',
       position: index + 1,
       item: {
-        '@type': 'Product',
+        // VisualArtwork — not Product. Product rich results require offers,
+        // review, or aggregateRating; these pieces have no public price/reviews.
+        '@type': 'VisualArtwork',
         name: item.title,
         description: stripHtml(item.description),
         image: `${SITE_URL}${item.images[0]}`,
-        category: `Miniature Furniture > ${item.category}`,
+        url: `${SITE_URL}/gallery/`,
+        artform: 'Miniature furniture',
+        artMedium: item.wood,
         material: item.wood,
-        brand: {
-          '@type': 'Brand',
-          name: 'Scott Dillingham Miniatures',
-        },
-        manufacturer: {
+        creator: {
           '@type': 'Person',
           name: 'Scott Dillingham',
-          jobTitle: 'Master Miniature Furniture Craftsman',
+          jobTitle: 'Museum-Exhibited Master Miniature Furniture Craftsman',
         },
         additionalProperty: [
           {
             '@type': 'PropertyValue',
             name: 'Scale',
             value: item.scale,
+          },
+          {
+            '@type': 'PropertyValue',
+            name: 'Category',
+            value: item.category,
           },
           {
             '@type': 'PropertyValue',
