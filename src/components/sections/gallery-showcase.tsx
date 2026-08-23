@@ -248,6 +248,7 @@ function GalleryCard({
 
   return (
     <motion.div
+      id={item.id}
       ref={cardRef}
       initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}

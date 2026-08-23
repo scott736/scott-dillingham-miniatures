@@ -3,7 +3,7 @@ export const prerender = true;
 
 import GalleryShowcase from '@/components/sections/gallery-showcase';
 import RelatedReading from '@/components/sections/related-reading.astro';
-import { GALLERY_ITEMS, SITE_URL } from '@/consts';
+import { galleryCollectionNode } from '@/lib/schema';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 
 const galleryRelatedPosts = [
@@ -45,58 +45,6 @@ const galleryRelatedPosts = [
   },
 ];
 
-// CollectionPage schema for Google rich results
-const stripHtml = (html: string) => html.replace(/<[^>]*>/g, '');
-const collectionSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'CollectionPage',
-  name: 'Handcrafted 1/12 Scale Miniature Furniture Collection — Sam Maloof, Hepplewhite, Shaker & More',
-  description:
-    'Browse museum-exhibited handcrafted 1/12 scale miniature furniture by Scott Dillingham: Sam Maloof style rocking chair, Simon Willard tall case clock, Hepplewhite shield back chair, Thomas Moser continuous arm chair, Shaker D-ring table & more. Built entirely by hand from fine hardwoods using traditional joinery.',
-  url: `${SITE_URL}/gallery/`,
-  mainEntity: {
-    '@type': 'ItemList',
-    numberOfItems: GALLERY_ITEMS.length,
-    itemListElement: GALLERY_ITEMS.map((item, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      item: {
-        // VisualArtwork — not Product. Product rich results require offers,
-        // review, or aggregateRating; these pieces have no public price/reviews.
-        '@type': 'VisualArtwork',
-        name: item.title,
-        description: stripHtml(item.description),
-        image: `${SITE_URL}${item.images[0]}`,
-        url: `${SITE_URL}/gallery/`,
-        artform: 'Miniature furniture',
-        artMedium: item.wood,
-        material: item.wood,
-        creator: {
-          '@type': 'Person',
-          name: 'Scott Dillingham',
-          jobTitle: 'Museum-Exhibited Master Miniature Furniture Craftsman',
-        },
-        additionalProperty: [
-          {
-            '@type': 'PropertyValue',
-            name: 'Scale',
-            value: item.scale,
-          },
-          {
-            '@type': 'PropertyValue',
-            name: 'Category',
-            value: item.category,
-          },
-          {
-            '@type': 'PropertyValue',
-            name: 'Construction Method',
-            value: 'Entirely handcrafted using traditional joinery',
-          },
-        ],
-      },
-    })),
-  },
-};
 ---
 
 <DefaultLayout
@@ -105,7 +53,7 @@ const collectionSchema = {
 >
   <script
     type="application/ld+json"
-    set:html={JSON.stringify(collectionSchema)}
+    set:html={JSON.stringify(galleryCollectionNode())}
   />
   <GalleryShowcase client:idle />
   <RelatedReading

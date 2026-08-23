@@ -2,6 +2,7 @@
 export const prerender = true;
 
 import ContactPage from '@/components/sections/contact';
+import { organizationRef } from '@/lib/schema';
 import { SITE_URL } from '@/consts';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 
@@ -11,12 +12,8 @@ const contactSchema = {
   name: 'Commission Custom Miniature Furniture',
   description:
     'Commission custom 1/12 scale miniature furniture from museum-exhibited craftsman Scott Dillingham.',
-  url: `${SITE_URL}/contact`,
-  mainEntity: {
-    '@type': 'LocalBusiness',
-    '@id': `${SITE_URL}/#organization`,
-    name: 'Scott Dillingham Miniatures',
-  },
+  url: `${SITE_URL}/contact/`,
+  mainEntity: organizationRef(),
 };
 ---
 

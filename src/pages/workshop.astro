@@ -6,6 +6,7 @@ import WorkshopHero from '@/components/sections/workshop-hero';
 import WorkshopProcess from '@/components/sections/workshop-process';
 import WorkshopTools from '@/components/sections/workshop-tools';
 import { SITE_URL } from '@/consts';
+import { personRef } from '@/lib/schema';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 
 const workshopRelatedPosts = [
@@ -54,12 +55,7 @@ const howToSchema = {
   name: 'How to Make Handcrafted 1/12 Scale Miniature Furniture',
   description:
     'The complete 8-step process for building museum-quality handcrafted miniature furniture from raw hardwood to finished masterpiece, by museum-exhibited craftsman Scott Dillingham.',
-  totalTime: 'P30D',
-  estimatedCost: {
-    '@type': 'MonetaryCost',
-    currency: 'USD',
-    value: '50-500',
-  },
+  author: personRef(),
   tool: [
     'Miniature hand planes',
     'Micro chisels and gouges',

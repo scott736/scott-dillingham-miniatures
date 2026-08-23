@@ -6,6 +6,7 @@ import { getCollection, render } from 'astro:content';
 import SpeakableSchema from '@/components/schemas/SpeakableSchema.astro';
 import { BlogPost } from '@/components/sections/blog-post';
 import { SITE_URL } from '@/consts';
+import { getBlogHowTo } from '@/lib/schema';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 
 export async function getStaticPaths() {
@@ -46,6 +47,12 @@ const relatedPosts = allPosts
         ? item.post.data.pubDate.toISOString()
         : String(item.post.data.pubDate),
   }));
+
+const howToSchema = getBlogHowTo(post.id, {
+  title: post.data.title,
+  description: post.data.description,
+  image: post.data.coverImage || post.data.image,
+});
 ---
 
 <DefaultLayout
@@ -67,6 +74,9 @@ const relatedPosts = allPosts
       { cssSelector: "[data-speakable='description']" },
     ]}
   />
+  {howToSchema && (
+    <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
+  )}
   <BlogPost
     post={[post]}
     relatedPosts={relatedPosts}

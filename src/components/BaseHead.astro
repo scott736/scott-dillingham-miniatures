@@ -2,7 +2,13 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '@/styles/global.css';
-import { CONTACT_TO_EMAIL, SITE_TITLE, SITE_METADATA, SITE_URL } from '../consts';
+import {
+  organizationNode,
+  personNode,
+  personRef,
+  websiteNode,
+} from '@/lib/schema';
+import { SITE_METADATA, SITE_TITLE, SITE_URL } from '../consts';
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
@@ -14,99 +20,36 @@ const finalDescription = description || SITE_METADATA.description;
 const finalImage = image || SITE_METADATA.openGraph.images[0].url;
 const imageURL = new URL(finalImage, Astro.url);
 
-// JSON-LD Schema for the business
 const organizationSchema = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  '@id': `${SITE_URL}/#organization`,
-  name: 'Scott Dillingham Miniatures',
-  description: SITE_METADATA.description,
-  url: SITE_URL,
-  logo: `${SITE_URL}/layout/sdmlogo.webp`,
-  image: `${SITE_URL}/og-image.jpg`,
-  email: CONTACT_TO_EMAIL,
-  founder: {
-    '@type': 'Person',
-    name: 'Scott Dillingham',
-    jobTitle: 'Museum-Exhibited Master Miniature Furniture Craftsman',
-    knowsAbout: ['Miniature Furniture', 'Traditional Woodworking', 'Period Furniture Reproductions'],
-  },
-  sameAs: [
-    'https://www.instagram.com/scottdillinghamminiatures/',
-    'https://www.pinterest.com/scottdillinghamminiatures/',
-  ],
-  knowsAbout: [
-    'Miniature Furniture',
-    '1/12 Scale Miniatures',
-    'Dollhouse Furniture',
-    'Miniature Woodworking',
-    'Handcrafted Miniatures',
-    'Period Furniture Reproductions',
-    'Museum-Quality Miniatures',
-    'Custom Miniature Furniture Commissions',
-  ],
-  hasOfferCatalog: {
-    '@type': 'OfferCatalog',
-    name: 'Handcrafted Miniature Furniture Collection',
-    itemListElement: [
-      {
-        '@type': 'Offer',
-        url: `${SITE_URL}/gallery/`,
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Handcrafted 1/12 Scale Miniature Furniture',
-          description:
-            'Museum-exhibited miniature furniture built entirely by hand using fine hardwoods and traditional woodworking techniques. Available for purchase and commission.',
-          provider: { '@id': `${SITE_URL}/#organization` },
-        },
-      },
-      {
-        '@type': 'Offer',
-        url: `${SITE_URL}/contact/`,
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Custom Miniature Furniture Commissions',
-          description:
-            'Commission a custom handcrafted 1/12 scale miniature furniture piece. Period reproductions, family heirloom replicas, or custom designs.',
-          provider: { '@id': `${SITE_URL}/#organization` },
-        },
-      },
-    ],
-  },
+  ...organizationNode(),
+};
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  ...personNode(),
 };
 
 const websiteSchema = {
   '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  '@id': `${SITE_URL}/#website`,
-  name: 'Scott Dillingham Miniatures',
-  url: SITE_URL,
-  description: SITE_METADATA.description,
-  publisher: {
-    '@id': `${SITE_URL}/#organization`,
-  },
-  inLanguage: 'en',
+  ...websiteNode(),
 };
 
-// Article schema for blog posts
-const articleSchema = article ? {
-  '@context': 'https://schema.org',
-  '@type': 'BlogPosting',
-  headline: title,
-  description: description,
-  image: imageURL.toString(),
-  author: {
-    '@type': 'Person',
-    name: article.authorName || 'Scott Dillingham',
-  },
-  publisher: {
-    '@id': `${SITE_URL}/#organization`,
-  },
-  datePublished: article.pubDate,
-  dateModified: article.updatedDate || article.pubDate,
-  mainEntityOfPage: canonicalURL.toString(),
-  keywords: article.tags ? article.tags.join(', ') : undefined,
-} : null;
+const articleSchema = article
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: title,
+      description: description,
+      image: imageURL.toString(),
+      author: personRef(),
+      publisher: { '@id': `${SITE_URL}/#organization` },
+      datePublished: article.pubDate,
+      dateModified: article.updatedDate || article.pubDate,
+      mainEntityOfPage: canonicalURL.toString(),
+      keywords: article.tags ? article.tags.join(', ') : undefined,
+    }
+  : null;
 
 // Build breadcrumbs with proper hierarchy for blog posts
 const isBlogPost = Astro.url.pathname.startsWith('/blog/') && Astro.url.pathname !== '/blog/';
@@ -123,7 +66,7 @@ if (isBlogPost) {
     '@type': 'ListItem',
     position: 2,
     name: 'Blog',
-    item: `${SITE_URL}/blog`,
+    item: `${SITE_URL}/blog/`,
   });
   breadcrumbItems.push({
     '@type': 'ListItem',
@@ -256,6 +199,7 @@ const breadcrumbSchema = {
 
 <!-- JSON-LD Structured Data -->
 <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
 <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
 <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 {articleSchema && (

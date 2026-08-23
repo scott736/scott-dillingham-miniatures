@@ -6,34 +6,8 @@ import AboutMission from '@/components/sections/about-mission';
 import OurValues from '@/components/sections/our-values';
 import RelatedReading from '@/components/sections/related-reading.astro';
 import WhySonic from '@/components/sections/why-sonic';
-import { SITE_URL } from '@/consts';
+import { aboutProfilePageNode } from '@/lib/schema';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
-
-const personSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Scott Dillingham',
-  jobTitle: 'Museum-Exhibited Master Miniature Furniture Craftsman',
-  url: `${SITE_URL}/about`,
-  image: `${SITE_URL}/images/about/scott-workshop.webp`,
-  sameAs: [
-    'https://www.instagram.com/scottdillinghamminiatures/',
-    'https://www.pinterest.com/scottdillinghamminiatures/',
-  ],
-  knowsAbout: [
-    'Miniature Furniture',
-    '1/12 Scale Miniatures',
-    'Traditional Woodworking',
-    'Period Furniture Reproductions',
-    'Dollhouse Furniture',
-    'Miniature Woodworking',
-  ],
-  worksFor: {
-    '@type': 'LocalBusiness',
-    '@id': `${SITE_URL}/#organization`,
-    name: 'Scott Dillingham Miniatures',
-  },
-};
 
 const aboutRelatedPosts = [
   {
@@ -61,7 +35,7 @@ const aboutRelatedPosts = [
   title="About Scott Dillingham | Museum-Exhibited Miniature Furniture Artisan"
   description="Meet Scott Dillingham, museum-exhibited master craftsman building handcrafted 1/12 scale miniature furniture. Available for purchase and custom commission."
 >
-  <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(aboutProfilePageNode())} />
   <AboutHero />
   <AboutMission />
   <OurValues />
