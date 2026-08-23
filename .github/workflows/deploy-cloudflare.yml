@@ -69,9 +69,18 @@ jobs:
             sleep 15
           done
           for path in /sitemap-index.xml /robots.txt /llms.txt /ai.txt /.well-known/ai.txt /sdm-indexnow-20260823-a7f4c91e.txt; do
-            code=$(curl -sS -o /tmp/mini-aeo -w "%{http_code}" "$base$path")
-            echo "AEO $path → HTTP $code"
-            if [ "$code" != "200" ]; then
+            ok=0
+            for i in 1 2 3 4 5; do
+              code=$(curl -sS -o /tmp/mini-aeo -w "%{http_code}" "$base$path" || true)
+              if [ "$code" = "200" ]; then
+                echo "AEO $path → HTTP $code"
+                ok=1
+                break
+              fi
+              echo "AEO $path attempt $i HTTP ${code:-none}; waiting 10s..."
+              sleep 10
+            done
+            if [ "$ok" != "1" ]; then
               echo "Expected 200 for $path"
               exit 1
             fi
