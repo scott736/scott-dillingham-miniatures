@@ -7,6 +7,9 @@ export const SITE_DESCRIPTION =
 
 export const SITE_URL = 'https://scottdillinghamminiatures.com';
 
+/** IndexNow verification key — served at /{INDEXNOW_KEY}.txt for Bing/Copilot. */
+export const INDEXNOW_KEY = 'sdm-indexnow-20260823-a7f4c91e';
+
 /** Contact form destination (Resend `to`). */
 export const CONTACT_TO_EMAIL = 'sedminiatures@gmail.com';
 /** Visitor-visible From. Override with RESEND_FROM_EMAIL if Resend uses another verified domain. */

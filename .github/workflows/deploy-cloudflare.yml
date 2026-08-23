@@ -52,16 +52,31 @@ jobs:
       - name: Smoke test Worker
         run: |
           set -euo pipefail
-          url="https://scott-dillingham-miniatures.scott-4d1.workers.dev/"
+          base="https://scott-dillingham-miniatures.scott-4d1.workers.dev"
+          url="$base/"
           for i in 1 2 3 4 5; do
             headers=$(curl -sS -D - -o /tmp/mini-smoke.html -w "%{http_code}" "$url" || true)
             code=$(printf '%s' "$headers" | tail -n1)
             if [ "$code" = "200" ] && printf '%s' "$headers" | grep -qi 'cf-ray'; then
               echo "Smoke OK: HTTP $code with cf-ray"
-              exit 0
+              break
+            fi
+            if [ "$i" = "5" ]; then
+              echo "Smoke test failed: expected HTTP 200 with cf-ray from $url"
+              exit 1
             fi
             echo "Smoke attempt $i failed (HTTP ${code:-none}); waiting 15s..."
             sleep 15
           done
-          echo "Smoke test failed: expected HTTP 200 with cf-ray from $url"
-          exit 1
+          for path in /sitemap-index.xml /robots.txt /llms.txt /ai.txt /.well-known/ai.txt /sdm-indexnow-20260823-a7f4c91e.txt; do
+            code=$(curl -sS -o /tmp/mini-aeo -w "%{http_code}" "$base$path")
+            echo "AEO $path → HTTP $code"
+            if [ "$code" != "200" ]; then
+              echo "Expected 200 for $path"
+              exit 1
+            fi
+          done
+
+      - name: Ping IndexNow
+        continue-on-error: true
+        run: node scripts/ping-indexnow.mjs

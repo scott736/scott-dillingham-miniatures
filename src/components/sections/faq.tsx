@@ -21,10 +21,10 @@ export default function FAQ() {
       <Accordion defaultValue="item-0" type="single" className="space-y-8">
         {FAQ_DATA.map((item, index) => (
           <AccordionItem key={index} value={`item-${index}`} className="px-4">
-            <AccordionTrigger className="cursor-pointer text-xl font-normal hover:no-underline md:pb-6 md:text-3xl">
+            <AccordionTrigger data-speakable="faq-question" className="cursor-pointer text-xl font-normal hover:no-underline md:pb-6 md:text-3xl">
               {item.question}
             </AccordionTrigger>
-            <AccordionContent className="text-base md:pb-6">
+            <AccordionContent data-speakable="faq-answer" className="text-base md:pb-6">
               <span
                 className="[&_a]:text-primary [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:opacity-80"
                 dangerouslySetInnerHTML={{ __html: item.answer }}

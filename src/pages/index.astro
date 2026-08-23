@@ -3,8 +3,9 @@ export const prerender = true;
 
 import { getCollection } from 'astro:content';
 
-import { SITE_TITLE, SITE_DESCRIPTION, FAQ_DATA } from '../consts';
+import { FAQ_DATA, SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
 
+import SpeakableSchema from '@/components/schemas/SpeakableSchema.astro';
 import BlogPosts from '@/components/sections/blog-posts';
 import FAQ from '@/components/sections/faq';
 import Features from '@/components/sections/features.astro';
@@ -13,6 +14,7 @@ import InReality from '@/components/sections/in-reality';
 import ValueProposition from '@/components/sections/value-proposition';
 import WhyUs from '@/components/sections/why-us.astro';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
+
 const posts = (await getCollection('blog'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
@@ -34,6 +36,14 @@ const faqSchema = {
 
 <DefaultLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <SpeakableSchema
+    speakableSections={[
+      { cssSelector: "[data-speakable='title']" },
+      { cssSelector: "[data-speakable='description']" },
+      { cssSelector: "[data-speakable='faq-question']" },
+      { cssSelector: "[data-speakable='faq-answer']" },
+    ]}
+  />
   <Hero client:load />
   <ValueProposition client:visible />
   <Features />

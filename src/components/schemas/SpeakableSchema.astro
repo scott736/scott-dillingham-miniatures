@@ -1,0 +1,22 @@
+---
+interface SpeakableSection {
+  cssSelector: string;
+}
+
+interface Props {
+  speakableSections: SpeakableSection[];
+}
+
+const { speakableSections } = Astro.props;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  speakable: speakableSections.map((section) => ({
+    '@type': 'SpeakableSpecification',
+    cssSelector: section.cssSelector,
+  })),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

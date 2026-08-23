@@ -156,8 +156,8 @@ const BlogPost = ({
             }
           />
         </a>
-        <h1 className="mt-3 text-2xl md:text-4xl lg:text-5xl">{title}</h1>
-        <p className="mt-2.5 text-xl leading-8">{description}</p>
+        <h1 data-speakable="title" className="mt-3 text-2xl md:text-4xl lg:text-5xl">{title}</h1>
+        <p data-speakable="description" className="mt-2.5 text-xl leading-8">{description}</p>
       </div>
       {coverImage && (
         <div className="relative h-[320px] overflow-hidden rounded-3xl md:h-[400px] lg:h-[600px]">

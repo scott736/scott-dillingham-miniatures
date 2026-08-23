@@ -88,6 +88,7 @@ const Hero = () => {
         className="flex flex-col items-center gap-8"
       >
         <motion.h1
+          data-speakable="title"
           variants={item}
           className="bg-clip-text text-5xl leading-13 font-bold md:text-6xl"
           style={
@@ -102,6 +103,7 @@ const Hero = () => {
         </motion.h1>
 
         <motion.p
+          data-speakable="description"
           variants={item}
           className="max-w-3xl text-xl leading-8"
           style={

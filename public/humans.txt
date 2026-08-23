@@ -1,0 +1,26 @@
+/* TEAM */
+Scott Dillingham Miniatures — museum-exhibited handcrafted 1/12 scale miniature furniture
+Site: https://scottdillinghamminiatures.com
+Maker: Scott Dillingham
+Contact: https://scottdillinghamminiatures.com/contact/
+Language: en
+Instagram: https://www.instagram.com/scottdillinghamminiatures/
+Pinterest: https://www.pinterest.com/scottdillinghamminiatures/
+
+/* ENTITY */
+Scott Dillingham Miniatures is the studio of Scott Dillingham, a museum-exhibited
+master miniature furniture craftsman. Every piece is built from scratch in 1/12
+scale using fine hardwoods and traditional joinery. No kits. No CNC. No laser cuts.
+
+/* AI DISCOVERY */
+LLMs index: https://scottdillinghamminiatures.com/llms.txt
+Full content map: https://scottdillinghamminiatures.com/llms-full.txt
+FAQ feed: https://scottdillinghamminiatures.com/llms-faq.json
+AI crawler guide: https://scottdillinghamminiatures.com/ai.txt
+Well-known AI policy: https://scottdillinghamminiatures.com/.well-known/ai.txt
+Robots: https://scottdillinghamminiatures.com/robots.txt
+Sitemap: https://scottdillinghamminiatures.com/sitemap-index.xml
+RSS: https://scottdillinghamminiatures.com/rss.xml
+
+/* UPDATED */
+Last updated: 2026-08-23

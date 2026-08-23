@@ -23,7 +23,7 @@ html_handling = "auto-trailing-slash"
 # Marketing pages are prerendered. Only the contact API is SSR.
 run_worker_first = ["/api/*"]
 
-# Custom domains attach once the zone nameservers are live at the registrar.
+# Custom domain is on this Worker (Cloudflare). Vercel is not used.
 [[routes]]
 pattern = "scottdillinghamminiatures.com/*"
 zone_name = "scottdillinghamminiatures.com"

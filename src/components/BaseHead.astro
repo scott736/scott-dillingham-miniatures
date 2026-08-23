@@ -2,7 +2,7 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '@/styles/global.css';
-import { SITE_TITLE, SITE_METADATA, SITE_URL } from '../consts';
+import { CONTACT_TO_EMAIL, SITE_TITLE, SITE_METADATA, SITE_URL } from '../consts';
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
@@ -24,6 +24,7 @@ const organizationSchema = {
   url: SITE_URL,
   logo: `${SITE_URL}/layout/sdmlogo.webp`,
   image: `${SITE_URL}/og-image.jpg`,
+  email: CONTACT_TO_EMAIL,
   founder: {
     '@type': 'Person',
     name: 'Scott Dillingham',
@@ -79,6 +80,7 @@ const websiteSchema = {
   publisher: {
     '@id': `${SITE_URL}/#organization`,
   },
+  inLanguage: 'en',
 };
 
 // Article schema for blog posts
@@ -186,6 +188,10 @@ const breadcrumbSchema = {
   title={SITE_TITLE}
   href={new URL('rss.xml', Astro.site)}
 />
+<link rel="alternate" type="text/plain" title="LLM source" href={`${SITE_URL}/llms.txt`} />
+<link rel="alternate" type="text/plain" title="LLM source (full)" href={`${SITE_URL}/llms-full.txt`} />
+<link rel="alternate" type="application/json" title="LLM FAQ" href={`${SITE_URL}/llms-faq.json`} />
+<link rel="alternate" type="text/plain" title="AI usage policy (ai.txt)" href={`${SITE_URL}/ai.txt`} />
 <meta name="generator" content={Astro.generator} />
 
 <!-- Canonical URL -->
@@ -200,7 +206,7 @@ const breadcrumbSchema = {
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={article ? 'article' : 'website'} />
-<meta property="og:url" content={Astro.url} />
+<meta property="og:url" content={canonicalURL} />
 <meta property="og:site_name" content={SITE_METADATA.openGraph.siteName} />
 <meta property="og:title" content={finalTitle} />
 <meta property="og:description" content={finalDescription} />
@@ -229,7 +235,7 @@ const breadcrumbSchema = {
 
 <!-- Twitter -->
 <meta property="twitter:card" content={SITE_METADATA.twitter.card} />
-<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:url" content={canonicalURL} />
 <meta property="twitter:title" content={finalTitle} />
 <meta property="twitter:description" content={finalDescription} />
 <meta property="twitter:image" content={imageURL} />

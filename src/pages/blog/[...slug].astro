@@ -3,6 +3,7 @@ export const prerender = true;
 
 import { getCollection, render } from 'astro:content';
 
+import SpeakableSchema from '@/components/schemas/SpeakableSchema.astro';
 import { BlogPost } from '@/components/sections/blog-post';
 import { SITE_URL } from '@/consts';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
@@ -60,6 +61,12 @@ const relatedPosts = allPosts
     tags: post.data.tags,
   }}
 >
+  <SpeakableSchema
+    speakableSections={[
+      { cssSelector: "[data-speakable='title']" },
+      { cssSelector: "[data-speakable='description']" },
+    ]}
+  />
   <BlogPost
     post={[post]}
     relatedPosts={relatedPosts}

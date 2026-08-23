@@ -7,6 +7,9 @@ import Footer from '@/components/layout/footer.astro';
 import Navbar from '@/components/layout/navbar';
 
 const { title, description, currentPage, frontmatter } = Astro.props;
+const noindex =
+  Astro.url.pathname.includes('privacy-policy') ||
+  Astro.url.pathname.includes('terms-of-service');
 
 // Format the date if it exists
 const formattedDate = frontmatter?.date
@@ -24,7 +27,7 @@ const pageTitle = frontmatter?.title || title;
 <html lang="en">
   <head>
     <ClientRouter />
-    <BaseHead title={title} description={description} />
+    <BaseHead title={title} description={description} noindex={noindex} />
   </head>
   <body class={`h-screen antialiased`}>
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-background focus:px-4 focus:py-2 focus:text-foreground focus:shadow-lg">Skip to content</a>
