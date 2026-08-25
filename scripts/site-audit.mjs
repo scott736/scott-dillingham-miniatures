@@ -157,7 +157,11 @@ if (distDir) {
   checkHtml('privacy', readPage('/privacy-policy'), { maxTitle: 70, maxDesc: 170, noindex: true });
   checkHtml('terms', readPage('/terms-of-service'), { maxTitle: 70, maxDesc: 170, noindex: true });
   const nf = join(root, distDir, '404.html');
-  if (existsSync(nf)) checkHtml('404', readFileSync(nf, 'utf8'), { maxTitle: 70, maxDesc: 170, noindex: true });
+  if (existsSync(nf)) {
+    const html = readFileSync(nf, 'utf8');
+    checkHtml('404', html, { maxTitle: 70, maxDesc: 170, noindex: true });
+    if (/rel="canonical"/i.test(html)) fail('404.html must not emit a canonical URL');
+  }
   checkDistExtras();
 }
 
@@ -194,6 +198,7 @@ if (baseUrl) {
   const missing = await fetchPage('/this-page-does-not-exist');
   if (missing.status !== 404) fail(`missing page HTTP ${missing.status}, expected 404`);
   checkHtml('404', missing.html, { maxTitle: 70, maxDesc: 170, noindex: true });
+  if (/rel="canonical"/i.test(missing.html)) fail('missing URL response must not emit a canonical URL');
   const sitemap = await fetch(`${baseUrl.replace(/\/$/, '')}/sitemap.xml`, {
     redirect: 'manual',
     headers: { 'user-agent': 'SDM-site-audit/1.0' },

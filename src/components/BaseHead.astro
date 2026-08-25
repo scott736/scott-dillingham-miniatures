@@ -9,6 +9,7 @@ import {
 import { formatPageTitle, SITE_METADATA, SITE_TITLE, SITE_URL } from '../consts';
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const isNotFoundPage = Astro.url.pathname.replace(/\/$/, '') === '/404';
 
 const { title, description, image, article, noindex } = Astro.props;
 const finalTitle = formatPageTitle(title);
@@ -47,7 +48,6 @@ const articleSchema = article
     }
   : null;
 
-// Build breadcrumbs with proper hierarchy for blog posts
 const isBlogPost = Astro.url.pathname.startsWith('/blog/') && Astro.url.pathname !== '/blog/';
 const breadcrumbItems: Array<Record<string, unknown>> = [
   {
@@ -134,16 +134,22 @@ const breadcrumbSchema = {
 <link rel="alternate" type="text/plain" title="AI usage policy (ai.txt)" href={`${SITE_URL}/ai.txt`} />
 <meta name="generator" content={Astro.generator} />
 
-<link rel="canonical" href={canonicalURL} />
-<link rel="alternate" hreflang="en" href={canonicalURL} />
-<link rel="alternate" hreflang="x-default" href={canonicalURL} />
+{
+  !isNotFoundPage && (
+    <>
+      <link rel="canonical" href={canonicalURL} />
+      <link rel="alternate" hreflang="en" href={canonicalURL} />
+      <link rel="alternate" hreflang="x-default" href={canonicalURL} />
+    </>
+  )
+}
 
 <title>{finalTitle}</title>
 <meta name="title" content={finalTitle} />
 <meta name="description" content={finalDescription} />
 
 <meta property="og:type" content={article ? 'article' : 'website'} />
-<meta property="og:url" content={canonicalURL} />
+{!isNotFoundPage && <meta property="og:url" content={canonicalURL} />}
 <meta property="og:site_name" content={SITE_METADATA.openGraph.siteName} />
 <meta property="og:title" content={finalTitle} />
 <meta property="og:description" content={finalDescription} />
@@ -171,7 +177,7 @@ const breadcrumbSchema = {
 )}
 
 <meta property="twitter:card" content={SITE_METADATA.twitter.card} />
-<meta property="twitter:url" content={canonicalURL} />
+{!isNotFoundPage && <meta property="twitter:url" content={canonicalURL} />}
 <meta property="twitter:title" content={finalTitle} />
 <meta property="twitter:description" content={finalDescription} />
 <meta property="twitter:image" content={imageURL} />
@@ -184,10 +190,16 @@ const breadcrumbSchema = {
 <meta name="apple-mobile-web-app-title" content="Scott Dillingham Miniatures" />
 <link rel="manifest" href="/favicon/site.webmanifest" />
 
-<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
-<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
-<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
-<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+{
+  !isNotFoundPage && (
+    <>
+      <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+      <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+      <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+      <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    </>
+  )
+}
 {articleSchema && (
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
 )}
