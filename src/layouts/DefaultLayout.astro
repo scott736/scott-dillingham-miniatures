@@ -1,6 +1,4 @@
 ---
-import { ClientRouter } from 'astro:transitions';
-
 import BaseHead from '@/components/BaseHead.astro';
 import Footer from '@/components/layout/footer.astro';
 import Navbar from '@/components/layout/navbar.astro';
@@ -12,15 +10,13 @@ const currentPath = Astro.url.pathname;
 
 <html lang="en">
   <head>
-    <ClientRouter />
     <BaseHead title={title} description={description} image={image} article={article} noindex={noindex} />
-    <meta name="view-transition" content="same-origin" />
     <slot name="head" />
   </head>
   <body class={`h-screen antialiased flex flex-col`}>
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-background focus:px-4 focus:py-2 focus:text-foreground focus:shadow-lg">Skip to content</a>
     <Navbar currentPage={currentPath} />
-    <main id="main-content" class="flex-1" style="view-transition-name: main;"><slot /></main>
+    <main id="main-content" class="flex-1"><slot /></main>
     <CTA pathname={Astro.url.pathname} />
     <Footer />
   </body>

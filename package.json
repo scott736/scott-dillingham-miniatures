@@ -12,6 +12,7 @@
     "preview": "astro preview",
     "deploy": "npm run build && wrangler deploy",
     "indexnow": "node scripts/ping-indexnow.mjs",
+    "audit:site": "node scripts/site-audit.mjs --dir dist/client",
     "astro": "astro",
     "lint": "prettier --write  \"**/*.{js,jsx,ts,tsx,md,mdx,astro}\" && eslint --fix \"src/**/*.{js,ts,jsx,tsx,astro}\""
   },

@@ -69,7 +69,12 @@ export default function ContactPage() {
         </CardHeader>
 
         <CardContent className="px-8">
-          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+          <form
+            onSubmit={handleSubmit}
+            method="post"
+            action="/api/contact"
+            className="flex flex-col gap-6"
+          >
             <div className="space-y-1.5">
               <Label htmlFor="name">Name</Label>
               <Input

@@ -7,8 +7,9 @@ interface Props {
 
 const { pathname } = Astro.props as Props;
 
-const hiddenPaths = ['/privacy-policy', '/terms-of-service', '/blog'];
-const shouldShowCTA = !hiddenPaths.includes(pathname);
+const hiddenPaths = new Set(['/privacy-policy', '/terms-of-service', '/blog']);
+const pathKey = pathname.replace(/\/$/, '') || '/';
+const shouldShowCTA = !hiddenPaths.has(pathKey);
 ---
 
 {shouldShowCTA && (
