@@ -2,7 +2,6 @@
 
 import { useState, useMemo } from 'react';
 
-import type { CollectionEntry } from 'astro:content';
 import { Paperclip, Search, X } from 'lucide-react';
 import { motion as m } from 'motion/react';
 
@@ -11,13 +10,22 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { cn } from '@/lib/utils';
 
+export type BlogListItem = {
+  id: string;
+  title: string;
+  description: string;
+  pubDate: string;
+  coverImage?: string;
+  tags?: string[];
+};
+
 const DEFAULT_HOVERED_CARD_INDEX = 1;
 
 export default function BlogPosts({
   posts,
   isBlogsPage,
 }: {
-  posts: CollectionEntry<'blog'>[];
+  posts: BlogListItem[];
   isBlogsPage?: boolean;
 }) {
   const isMobile = useIsMobile();
@@ -27,28 +35,26 @@ export default function BlogPosts({
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
-  // Extract unique tags from all posts (only computed once)
   const allTags = useMemo(() => {
     const tagSet = new Set<string>();
     posts.forEach((post) => {
-      post.data.tags?.forEach((tag) => tagSet.add(tag));
+      post.tags?.forEach((tag) => tagSet.add(tag));
     });
     return Array.from(tagSet).sort();
   }, [posts]);
 
-  // Filter posts based on search and tag
   const filteredPosts = useMemo(() => {
     let result = posts;
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase();
       result = result.filter(
         (post) =>
-          post.data.title.toLowerCase().includes(q) ||
-          post.data.description.toLowerCase().includes(q),
+          post.title.toLowerCase().includes(q) ||
+          post.description.toLowerCase().includes(q),
       );
     }
     if (selectedTag) {
-      result = result.filter((post) => post.data.tags?.includes(selectedTag));
+      result = result.filter((post) => post.tags?.includes(selectedTag));
     }
     return result;
   }, [posts, searchQuery, selectedTag]);
@@ -56,7 +62,6 @@ export default function BlogPosts({
   const displayPosts = isBlogsPage ? filteredPosts : posts;
   const isFiltering = isBlogsPage && (searchQuery.trim() || selectedTag);
 
-  // Derive whether each card should show hover effects
   const getIsCardHovered = (index: number) =>
     isMobile || hoveredCardIndex === index;
 
@@ -77,7 +82,6 @@ export default function BlogPosts({
 
       {isBlogsPage && (
         <div className="space-y-4">
-          {/* Search input */}
           <div className="relative mx-auto max-w-lg">
             <Search className="text-muted-foreground absolute left-3 top-1/2 size-4 -translate-y-1/2" />
             <input
@@ -98,7 +102,6 @@ export default function BlogPosts({
             )}
           </div>
 
-          {/* Tag filters */}
           <div className="flex flex-wrap justify-center gap-2">
             <button
               onClick={() => setSelectedTag(null)}
@@ -151,8 +154,8 @@ export default function BlogPosts({
                   <CardHeader className="p-0">
                     <div className="relative h-[320px] overflow-hidden rounded-3xl">
                       <img
-                        src={post.data.coverImage}
-                        alt={`${post.data.title} - Miniature furniture article by Scott Dillingham`}
+                        src={post.coverImage}
+                        alt={`${post.title} - Miniature furniture article by Scott Dillingham`}
                         width={400}
                         height={320}
                         loading="lazy"
@@ -168,13 +171,13 @@ export default function BlogPosts({
                       }}
                       className="space-y-2.5"
                     >
-                      <h3 className="text-2xl">{post.data.title}</h3>
+                      <h3 className="text-2xl">{post.title}</h3>
                       <time
                         className="text-muted-foreground text-sm"
-                        dateTime={new Date(post.data.pubDate).toISOString()}
+                        dateTime={post.pubDate}
                         suppressHydrationWarning
                       >
-                        {new Date(post.data.pubDate).toLocaleDateString(
+                        {new Date(post.pubDate).toLocaleDateString(
                           'en-US',
                           {
                             year: 'numeric',
