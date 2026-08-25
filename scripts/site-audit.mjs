@@ -101,6 +101,9 @@ function checkRedirects() {
   if (!text.includes('/favicon.ico')) {
     fail('_redirects must alias /favicon.ico to /favicon/favicon.ico');
   }
+  if (!text.includes('windsor-chair.webp') || !text.includes('maloof-rocking-chair.webp')) {
+    fail('_redirects must keep old gallery image URLs');
+  }
 }
 
 function checkDistExtras() {
@@ -175,6 +178,18 @@ if (baseUrl) {
       maxDesc: label === 'home' ? 160 : 170,
       forbid: label === 'home' ? ['ClientRouter'] : [],
     });
+    if (label === 'gallery') {
+      for (const id of [
+        'maloof-rocking-chair',
+        'hepplewhite-shield-back-chair',
+        'moser-continuous-arm-chair',
+        'shaker-d-ring-table',
+      ]) {
+        if (!page.html.includes(`/images/gallery/${id}.webp`)) {
+          fail(`live gallery html missing /images/gallery/${id}.webp`);
+        }
+      }
+    }
   }
   const missing = await fetchPage('/this-page-does-not-exist');
   if (missing.status !== 404) fail(`missing page HTTP ${missing.status}, expected 404`);
