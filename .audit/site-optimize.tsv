@@ -1,0 +1,11 @@
+ts	phase	decision	why	evidence	result
+2026-08-25T02:04:03Z	frame	chose figure-it-out for dad's miniatures site optimize	bugs plus SEO plus speed is one cross-cutting run, not a single bug-fix or perf playbook	poteto-mode/SKILL.md playbook match	open
+2026-08-25T02:04:03Z	frame	done predicate is production-checkable	home title under 65 chars, description under 160, gallery filenames match photos, homepage has no ClientRouter, sitemap.xml redirects or 200, audit script exits 0 against live after deploy	live curl 2026-08-25	open
+2026-08-25T02:04:03Z	frame	skip architect/arena	shape is mechanical on an existing Astro Worker site, not a one-way design fork	principle-laziness-protocol	skipped
+2026-08-25T02:04:03Z	harness	gallery titles match the photos, filenames do not	windsor-chair.webp is the Maloof rocker, dining-table.webp is the Hepplewhite chair, blanket-chest.webp is the Moser chair, corner-cupboard.webp is the D-ring table	public/images/gallery	open
+2026-08-25T02:10:37Z	harness	site-audit.mjs passes on dist/client	gates cover titles, no ClientRouter, gallery filenames, sitemap alias, 404 noindex, blog CTA	npm run audit:site PASS, home html 58282	VERIFIED
+2026-08-25T02:10:37Z	gallery	renamed misnamed gallery photos to match piece ids	titles already matched the photos, filenames were dining-table.webp for a chair and similar	public/images/gallery/*.webp	VERIFIED
+2026-08-25T02:10:37Z	speed	dropped ClientRouter and stopped always-inlining CSS	homepage HTML 144187 to 58282 bytes, zero first-paint JS, CSS is /_astro/navbar.*.css 82931 bytes cacheable	dist/client/index.html	VERIFIED
+2026-08-25T02:10:37Z	seo	shortened titles, removed keywords meta, aliased sitemap.xml	home title 98 to 62, description 303 to 149, privacy/terms now use frontmatter titles	formatPageTitle in src/consts.ts	VERIFIED
+2026-08-25T02:11:55Z	contact	Resend error is now a 500, form posts to /api/contact without JS	resend.emails.send returns error instead of throwing	src/pages/api/contact.ts	VERIFIED
+2026-08-25T02:11:55Z	motion	SSR gallery and workshop no longer hide headings	usePrefersReducedMotion starts true so motion initial skip on first paint	dist/client/gallery/index.html opacity:0 count 0	VERIFIED

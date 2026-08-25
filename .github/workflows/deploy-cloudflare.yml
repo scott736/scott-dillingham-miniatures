@@ -28,6 +28,7 @@ jobs:
           cache: npm
       - run: npm ci --prefer-offline --no-audit --no-fund --legacy-peer-deps
       - run: npm run build
+      - run: npm run audit:site
       - name: Deploy to Cloudflare Workers
         env:
           CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}

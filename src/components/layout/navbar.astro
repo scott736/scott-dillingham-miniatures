@@ -324,5 +324,6 @@ const pathname = currentPage.replace(/\/$/, '');
     document.documentElement.classList.add('page-transition');
   };
 
+  init();
   document.addEventListener('astro:page-load', init);
 </script>

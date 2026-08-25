@@ -24,11 +24,11 @@ function findKey() {
 function urlsFromSitemap() {
   const urls = new Set([
     `${SITE_URL}/`,
-    `${SITE_URL}/gallery`,
-    `${SITE_URL}/workshop`,
-    `${SITE_URL}/about`,
-    `${SITE_URL}/blog`,
-    `${SITE_URL}/contact`,
+    `${SITE_URL}/gallery/`,
+    `${SITE_URL}/workshop/`,
+    `${SITE_URL}/about/`,
+    `${SITE_URL}/blog/`,
+    `${SITE_URL}/contact/`,
     `${SITE_URL}/llms.txt`,
     `${SITE_URL}/ai.txt`,
     `${SITE_URL}/sitemap-index.xml`,

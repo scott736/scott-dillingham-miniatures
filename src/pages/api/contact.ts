@@ -25,9 +25,25 @@ function workerSecret(name: 'RESEND_API_KEY' | 'RESEND_FROM_EMAIL'): string | un
   return fromProcess || import.meta.env[name];
 }
 
+export const GET: APIRoute = () =>
+  new Response(JSON.stringify({ error: 'Method not allowed.' }), {
+    status: 405,
+    headers: { Allow: 'POST', 'Content-Type': 'application/json' },
+  });
+
+async function readBody(request: Request): Promise<Record<string, unknown>> {
+  const contentType = request.headers.get('content-type') || '';
+  if (contentType.includes('application/json')) {
+    const json = await request.json();
+    return json && typeof json === 'object' ? (json as Record<string, unknown>) : {};
+  }
+  const form = await request.formData();
+  return Object.fromEntries(form.entries());
+}
+
 export const POST: APIRoute = async ({ request }) => {
   try {
-    const body = await request.json();
+    const body = await readBody(request);
     const name = String(body?.name ?? '').trim();
     const email = String(body?.email ?? '').trim();
     const subject = String(body?.subject ?? '').trim();
@@ -70,7 +86,7 @@ export const POST: APIRoute = async ({ request }) => {
     const from = workerSecret('RESEND_FROM_EMAIL') || CONTACT_FROM_EMAIL;
     const resend = new Resend(apiKey);
 
-    await resend.emails.send({
+    const { error } = await resend.emails.send({
       from,
       to: CONTACT_TO_EMAIL,
       replyTo: email,
@@ -84,6 +100,14 @@ export const POST: APIRoute = async ({ request }) => {
         <p>${escapeHtml(message).replace(/\n/g, '<br />')}</p>
       `,
     });
+
+    if (error) {
+      console.error('Contact form Resend error:', error);
+      return new Response(
+        JSON.stringify({ error: 'Failed to send message. Please try again.' }),
+        { status: 500 },
+      );
+    }
 
     return new Response(JSON.stringify({ success: true }), { status: 200 });
   } catch (error) {

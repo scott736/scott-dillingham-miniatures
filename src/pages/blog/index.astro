@@ -39,12 +39,12 @@ const blogSchema = {
 ---
 
 <DefaultLayout
-  title="Miniature Furniture Blog | Guides, Techniques & Collector Insights"
-  description="Expert guides on miniature furniture making, 1/12 scale woodworking techniques, period styles, and collecting by museum-exhibited craftsman Scott Dillingham."
+  title="Miniature Furniture Blog"
+  description="Guides on 1/12 scale woodworking, period styles, joinery, collecting, and workshop setup by Scott Dillingham."
 >
   <script type="application/ld+json" set:html={JSON.stringify(blogSchema)} />
   <div>
     <h1 class="sr-only">Miniature Furniture Blog</h1>
-    <BlogPosts posts={posts} client:load isBlogsPage />
+    <BlogPosts posts={posts} client:idle isBlogsPage />
   </div>
 </DefaultLayout>
