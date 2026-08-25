@@ -11,6 +11,17 @@ import DefaultLayout from '@/layouts/DefaultLayout.astro';
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
+const list = posts.map((post) => ({
+  id: post.id,
+  title: post.data.title,
+  description: post.data.description,
+  pubDate:
+    post.data.pubDate instanceof Date
+      ? post.data.pubDate.toISOString()
+      : String(post.data.pubDate),
+  coverImage: post.data.coverImage,
+  tags: post.data.tags,
+}));
 
 const blogSchema = {
   '@context': 'https://schema.org',
@@ -45,6 +56,6 @@ const blogSchema = {
   <script type="application/ld+json" set:html={JSON.stringify(blogSchema)} />
   <div>
     <h1 class="sr-only">Miniature Furniture Blog</h1>
-    <BlogPosts posts={posts} client:idle isBlogsPage />
+    <BlogPosts posts={list} client:idle isBlogsPage />
   </div>
 </DefaultLayout>

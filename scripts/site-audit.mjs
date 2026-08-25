@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, statSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -123,7 +123,14 @@ function checkDistExtras() {
   const blog = join(dir, 'blog/index.html');
   if (existsSync(blog)) {
     const html = readFileSync(blog, 'utf8');
+    const size = statSync(blog).size;
+    notes.push(`blog index ${size}`);
     if (html.includes('Start a Commission')) fail('blog index still shows the commission CTA');
+    if (size > 150000) fail(`blog index ${size} bytes, expected under 150000`);
+    const props = html.match(/props="([^"]*)"/);
+    if (props && props[1].length > 80000) {
+      fail(`blog island props ${props[1].length} chars, listing is shipping full posts`);
+    }
   }
   const gallery = join(dir, 'gallery/index.html');
   if (existsSync(gallery)) {
