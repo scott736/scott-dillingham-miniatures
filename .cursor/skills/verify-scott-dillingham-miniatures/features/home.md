@@ -24,7 +24,7 @@ Preconditions:
 - Viewport ≥ 768px if using the desktop header.
 
 - **Open home.** Request the landing page. Run `curl -sS -D evidence/home/before.headers.txt -o evidence/home/before.html http://127.0.0.1:4318/`. Status `200`. Body contains `data-speakable="title"`, `Miniature Furniture,`, `Extraordinary Craft`, link text `Explore the Gallery` (`href="/gallery"`), and `See the Workshop` (`href="/workshop"`).
-- **Confirm identity.** The `<title>` is `Scott Dillingham Miniatures | Museum-Exhibited Handcrafted 1/12 Scale Miniature Furniture for Sale`. The logo `img` alt is `Scott Dillingham Miniatures`.
+- **Confirm identity.** The `<title>` is `Scott Dillingham Miniatures | Handcrafted 1/12 Scale Furniture`. The logo `img` alt is `Scott Dillingham Miniatures`.
 - **Highlights.** The same body contains `Gallery Highlights`, `Simon Willard Tall Case Clock Style`, `Queen Anne Style Highboy`, `Shaker Style Pencil Post Bed`, `Sam Maloof Style Rocking Chair`, and `View Full Gallery` (`href="/gallery"`).
 - **FAQ.** Body contains `Frequently Asked Questions` and `What scale are your miniature furniture pieces?` inside `[data-speakable="faq-question"]`. The first `<details class="faq-item">` has `open`.
 - **Follow gallery CTA.** Choose `Explore the Gallery`. In a browser: click the link with that name. With HTTP: `curl -sS -D evidence/home/after.headers.txt -o evidence/home/after.html http://127.0.0.1:4318/gallery`. Status `200`. After body contains `The Collection` and does not use the home H1 `Extraordinary Craft` as the page title.
@@ -34,5 +34,5 @@ Preconditions:
 
 - Highlight titles such as `Simon Willard Tall Case Clock Style` on home link to related **blog** slugs (`/blog/miniature-tall-case-clocks`), not `/gallery#tall-case-clock`. Opening a highlight is not gallery proof.
 - `Explore the Gallery` and `View Full Gallery` are the home-to-gallery user paths.
-- Footer `Terms of Service` (`/terms-of-service`) and `Privacy Policy` (`/privacy-policy`) have no pages in `src/pages` and return the 404 heading `Even at 1:12 Scale,`. Do not treat those links as a working legal surface.
-- `ClientRouter` is enabled. After a Playwright click, wait for the destination heading, not only a URL change.
+- Footer `Terms of Service` (`/terms-of-service`) and `Privacy Policy` (`/privacy-policy`) are real MDX pages. `GET` each returns 200 with those titles. They are not the 404 heading `Even at 1:12 Scale,`.
+- Astro may keep the URL while HTML swaps. After a click, wait for the destination heading, not only a URL change.

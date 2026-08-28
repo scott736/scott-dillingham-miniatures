@@ -27,7 +27,7 @@ Preconditions:
 
 - **Open index.** Run `curl -sS -D evidence/blog/before.headers.txt -o evidence/blog/before.html http://127.0.0.1:4318/blog`. Status `200`. Body contains `sr-only` heading `Miniature Furniture Blog`, visible `From the Workshop Journal`, `placeholder="Search articles..."`, tag chip `1/12 scale`, and a link to `/blog/complete-guide-1-12-scale-miniature-furniture`.
 - **Open article (user path).** Follow a card link. Run `curl -sS -D evidence/blog/after.headers.txt -o evidence/blog/after.html http://127.0.0.1:4318/blog/complete-guide-1-12-scale-miniature-furniture`. Status `200`. Body contains `h1` / `data-speakable="title"` text `The Complete Guide to 1/12 Scale Miniature Furniture`, `What Does 1/12 Scale Actually Mean?`, breadcrumb nav `aria-label="Breadcrumb"` with `Home`, `Blog`, and the title, and `Continue Your Journey` links to `/gallery`, `/workshop`, and `/contact`.
-- **Search (browser only).** On `/blog`, fill `input[placeholder="Search articles..."]` with `tall case`. The card `Miniature Tall Case Clocks` remains. Fill `volcano`. Text `No articles found matching "volcano"` appears. Click `Clear search` (`aria-label`) or `Clear filters`. The full grid returns.
+- **Search (browser only).** On `/blog`, fill `input[placeholder="Search articles..."]` with `tall case`. The card `Miniature Tall Case Clocks: The Ultimate Challenge` remains. Fill `volcano`. Text `No articles found matching "volcano".` appears, including the trailing period. Click `Clear search` (`aria-label`) or `Clear filters`. The full grid returns.
 - **Proof.** `before.html` is the index. `after.html` is the article with the H1 and an in-body heading. Record feature id `blog`.
 
 ## Gotchas

@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# Kill only the launch PID tree recorded for this RUN_ID. Never pkill by name.
 set -euo pipefail
 
 RUN_ID="${RUN_ID:-}"
@@ -24,7 +23,6 @@ if [[ -z "$parent" ]]; then
   exit 0
 fi
 
-# Kill the process group first (launch.sh uses set -m / background job).
 if kill -0 "$parent" 2>/dev/null; then
   kill -- "-$parent" 2>/dev/null || kill "$parent" 2>/dev/null || true
   for _ in $(seq 1 20); do

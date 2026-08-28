@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
-# Read-only health: our PID tree owns 127.0.0.1:4318 and key pages answer.
 set -euo pipefail
 
-REPO="${REPO:-/Users/scottdillingham/GitHub/scott-dillingham-miniatures}"
+REPO="${REPO:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../../../.." && pwd)}"
 RUN_ID="${RUN_ID:-}"
 if [[ -z "$RUN_ID" ]]; then
   echo "doctor.sh: set RUN_ID to the launch id" >&2

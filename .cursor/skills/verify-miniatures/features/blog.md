@@ -27,7 +27,7 @@ Preconditions:
 - **Open list.** Go to `/blog`. Run `vm browser goto /blog`. Visible text includes `From the Workshop Journal`. The document title includes `Miniature Furniture Blog`.
 - **HTTP view.** Run `vm get /blog --assert-status 200 --assert-contains "From the Workshop Journal" --out blog/http-list.html`. Status is 200. The body does not include `Start a Commission`.
 - **Search match.** Type `1/12`. Run `vm browser fill --role searchbox --name "Search articles" --value "1/12"`. A card titled `The Complete Guide to 1/12 Scale Miniature Furniture` remains. Unrelated titles can disappear.
-- **Search empty.** Replace the query with `volcano`. Run `vm browser fill --role searchbox --name "Search articles" --value "volcano"`. Text `No articles found matching "volcano"` appears.
+- **Search empty.** Replace the query with `volcano`. Run `vm browser fill --role searchbox --name "Search articles" --value "volcano"`. Text `No articles found matching "volcano".` appears, including the trailing period.
 - **Clear search.** Choose `Clear search`. Run `vm browser click --role button --name "Clear search"`. The field is empty and cards return. `Clear filters` is the empty-state control if you are still on zero results.
 - **Open post.** Choose the complete-guide card. Run `vm browser goto /blog/complete-guide-1-12-scale-miniature-furniture`. The `h1` is `The Complete Guide to 1/12 Scale Miniature Furniture`.
 - **Proof.** Screenshot the populated list and the empty search. Run `vm browser screenshot --path blog/list.png` on the unfiltered list and `vm browser screenshot --path blog/empty.png` on `volcano`. `GET /blog/complete-guide-1-12-scale-miniature-furniture` returns 200 and the same `h1` text.

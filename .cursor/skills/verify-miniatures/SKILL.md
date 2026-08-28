@@ -23,7 +23,7 @@ Start a disposable Astro instance bound to loopback. Do not drive a shared sessi
 vm launch
 ```
 
-Ready when `launch` prints `"ok": true` and `url` answers HTTP 200 with `Scott Dillingham Miniatures` in the HTML. Default URL is `http://127.0.0.1:4321`. Override with `VERIFY_PORT` and `VERIFY_STATE_DIR`. Parallel runs need both set to distinct values.
+Ready when `launch` prints `"ok": true` and `url` answers HTTP 200 with `Scott Dillingham Miniatures` in the HTML. Default URL is `http://127.0.0.1:4321`. Override with `VERIFY_PORT` and `VERIFY_STATE_DIR`. Parallel runs need both set to distinct values. Astro 7 still allows only one `astro dev` in this checkout. A second launch on another port fails with `Another astro dev server is already running`. Do not pass `--force`. Reuse the recorded instance or stop it with `vm cleanup` first.
 
 Recorded pids and the log live under `VERIFY_STATE_DIR` (default `/tmp/verify-miniatures`). Teardown is `vm cleanup`. That command kills only those pids. It does not delete evidence under `.cursor/skills/verify-miniatures/artifacts/`.
 
@@ -85,9 +85,9 @@ vm post /api/contact --json '{"name":"","email":"","message":""}' --assert-statu
 vm post /api/contact --json '{"name":"Ada","email":"not-an-email","message":"Hi"}' --assert-status 400 --assert-contains "valid email" --out contact/bad-email.json
 ```
 
-If `doctor` reports `resendKeyPresent: true`, stop before any complete POST. A 200 send emails Scott through Resend. Without the key, a complete POST returns HTTP 500 and the UI shows `Something went wrong. Please try again.` That error path is the allowed mutation proof.
+Do not POST a body where trimmed `name` and `message` are non-empty and `email` matches `^[^\s@]+@[^\s@]+\.[^\s@]+$`. That shape reaches Resend when `RESEND_API_KEY` is in process env, Worker `env`, or `import.meta.env`. `doctor.resendKeyPresent` only sees `process.env`. Never POST `/api/contact` to `scottdillinghamminiatures.com` or `*.workers.dev`.
 
-Never POST `/api/contact` to `scottdillinghamminiatures.com` or `*.workers.dev`.
+`get` / `post --assert-contains` matches raw HTML or JSON and also HTML with entities decoded (`The Maker&#x27;s Workshop` matches `The Maker's Workshop`).
 
 One-shot home proof:
 
@@ -103,13 +103,13 @@ Put files under `.cursor/skills/verify-miniatures/artifacts/<feature>/`. Cleanup
 
 Proof standards:
 
-- Exercise the visitor path. Do not call internal setters or test-only endpoints. `/api/contact` is the form's production endpoint, so it is allowed for validation and the no-key error path only.
+- Exercise the visitor path. Do not call internal setters or test-only endpoints. `/api/contact` is the form's production endpoint. Use it for 400 validation only. Never POST a complete valid `{name,email,message}` body.
 - Capture the action and the resulting state. A final screenshot without the click that produced it is incomplete.
-- For a mutation, take a second read-only view. Gallery after the home CTA needs the gallery heading plus a piece title, and a `GET /gallery` body is the second view.
+- For a mutation, take a second read-only view. Gallery after the home CTA needs `/gallery` in the URL (or `Hepplewhite Shield Back Style Chair`) plus the `h1` `The Collection`. A `GET /gallery` body is the second view.
 - Record the feature id and entry point on the artifact (`result.json` or the snapshot `url`).
 - UI proof is a snapshot JSON plus a PNG that shows the brand or page heading.
 - HTTP proof is status, url, and a saved body.
-- Mocks are not used. The contact send to Resend is skipped by refusing a complete POST when the key is present, not by stubbing.
+- Mocks are not used. Skip Resend by refusing a complete POST, not by stubbing. `doctor.resendKeyPresent` only sees `process.env`.
 
 `prove home` writes `artifacts/home/01-home.png`, `01-home.json`, `02-gallery.png`, `02-gallery.json`, `http-home.html`, `http-gallery.html`, `doctor.json`, and `result.json`.
 

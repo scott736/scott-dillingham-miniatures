@@ -1,12 +1,12 @@
 # Contact
 
-Contact is the commission form at `/contact`. A visitor writes name, email, subject, and message. A successful submit calls `POST /api/contact` (Resend). Verification proves the form and validation only.
+Contact is the commission form at `/contact`. A visitor writes name, email, and message. Subject is optional. A successful submit calls `POST /api/contact` (Resend). Verification proves the form and validation only.
 
 ## Sub-features
 
 - `contact-page` shows `Let's Create Something Extraordinary` and the `Write to Me` form.
 - `contact-fields` exposes labeled `Name`, `Email`, `Subject`, and `Message`.
-- `contact-validate` rejects a POST missing name, email, or message with HTTP 400.
+- `contact-validate` rejects a POST missing name, email, or message with HTTP 400, and rejects a malformed email with HTTP 400.
 - `contact-success` (do not run) shows `Message sent! I'll get back to you soon.` after a 200.
 - `contact-error` shows `Something went wrong. Please try again.` after a non-OK response.
 
@@ -27,7 +27,8 @@ Preconditions:
 - **Open contact.** From home, click `Commission a Piece`, or run `curl -sS -D evidence/contact/before.headers.txt -o evidence/contact/before.html http://127.0.0.1:4318/` then `curl -sS -D evidence/contact/after.headers.txt -o evidence/contact/after.html http://127.0.0.1:4318/contact`. Destination status `200`. Body contains `Let's Create Something Extraordinary`, `Write to Me`, `label` text `Name` (`for="name"`), `Email` (`for="email"`), `Subject` (`for="subject"`), `Message` (`for="message"`), subject options `General Inquiry`, `Commission Request`, `Collection Question`, `Collaboration`, and button text `Send Message`.
 - **Required fields (browser).** On `/contact`, click `Send Message` with empty fields. The native `required` constraints on `#name`, `#email`, and `#message` prevent submit. No success paragraph appears.
 - **API validation (safe).** Run `curl -sS -D evidence/contact/validate.headers.txt -o evidence/contact/validate.json -X POST http://127.0.0.1:4318/api/contact -H 'Content-Type: application/json' -d '{}'`. Status `400`. Body contains `Name, email, and message are required.`
-- **Proof.** `after.html` has the four labels and `Send Message`. `validate.json` is the 400 body. Record feature id `contact`.
+- **Malformed email (safe).** Run `curl -sS -D evidence/contact/bad-email.headers.txt -o evidence/contact/bad-email.json -X POST http://127.0.0.1:4318/api/contact -H 'Content-Type: application/json' -d '{"name":"Ada","email":"not-an-email","message":"Hello"}'`. Status `400`. Body contains `A valid email is required.`
+- **Proof.** `after.html` has the four labels and `Send Message`. `validate.json` and `bad-email.json` are the 400 bodies. Record feature id `contact`.
 
 ## Gotchas
 

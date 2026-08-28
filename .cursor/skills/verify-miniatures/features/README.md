@@ -6,7 +6,7 @@ This directory is the maintained source for verifying visitor-facing behavior of
 
 - Launch with `node .cursor/skills/verify-miniatures/helpers/verify-miniatures.mjs launch`.
 - Drive only `http://127.0.0.1:<port>` from that launch. Default port is 4321.
-- Set `VERIFY_STATE_DIR` and `VERIFY_PORT` when a second run must not share the instance.
+- Set `VERIFY_STATE_DIR` and `VERIFY_PORT` when a second run must not share the instance. Astro 7 still refuses a second `astro dev` in this checkout even on another port. Cleanup first. Do not `--force`.
 - Run `doctor` and require `"ok": true`.
 - Never drive production, `workers.dev`, or an Astro process this run did not start.
 - Chrome uses a private profile under the state directory. Do not attach to a user's existing Chrome.
@@ -45,6 +45,6 @@ Keep implementation details out of the map. Name only user paths, stable handles
 
 - [Home](./home.md) covers the landing hero, FAQ, and the gallery CTA.
 - [Gallery](./gallery.md) covers the collection grid and piece lightbox.
-- [Contact](./contact.md) covers the commission form, validation, and the no-send error path.
+- [Contact](./contact.md) covers the commission form and validation. Do not POST a complete body.
 - [Blog](./blog.md) covers the article list, search, and opening a guide.
 - [Workshop](./workshop.md) covers the maker workshop page and process heading.
