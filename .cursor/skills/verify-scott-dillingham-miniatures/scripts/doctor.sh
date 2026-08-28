@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# Read-only health: our PID tree owns 127.0.0.1:4318 and key pages answer.
 set -euo pipefail
 
 REPO="${REPO:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../../../.." && pwd)}"

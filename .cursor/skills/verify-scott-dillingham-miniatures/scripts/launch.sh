@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# Start astro dev on 127.0.0.1:4318 and write the verification PID file.
 set -euo pipefail
 
 REPO="${REPO:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../../../.." && pwd)}"
@@ -36,7 +35,6 @@ mkdir -p "$SKILL_DIR/evidence"
 : >"$VERIFY_LOG"
 
 cd "$REPO"
-# New process group so cleanup can kill only this tree (never by process name).
 set -m
 npm run dev -- --host "$HOST" --port "$PORT" >>"$VERIFY_LOG" 2>&1 &
 LAUNCH_PID=$!
