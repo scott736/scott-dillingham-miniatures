@@ -1,6 +1,6 @@
 # Scott Dillingham Miniatures verification map
 
-This directory is the maintained source for verifying visitor-facing behavior of the Astro site in `/Users/scottdillingham/GitHub/scott-dillingham-miniatures`. Read this index, then use the matching feature file.
+This directory is the maintained source for verifying visitor-facing behavior of the Astro site in this checkout. Read this index, then use the matching feature file.
 
 ## Baseline preconditions
 
@@ -9,7 +9,7 @@ This directory is the maintained source for verifying visitor-facing behavior of
 - Write `/tmp/verify-scott-dillingham-miniatures-$RUN_ID.pid` at launch.
 - Run `scripts/doctor.sh` and require 200 on `/` and `/gallery` from the PID tree you started.
 - Never drive an instance that was not started by this verification run.
-- Two instances cannot share 4318. There is no disposable data directory; pages are prerendered from this repo.
+- Two instances cannot share 4318. Astro 7 also refuses a second `astro dev` in this checkout on any port. There is no disposable data directory; pages are prerendered from this repo.
 
 ## Driving conventions
 

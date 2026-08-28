@@ -28,13 +28,13 @@ Preconditions:
 - **Piece titles.** Snapshot the page. Run `vm browser snapshot --path gallery/grid.json`. Headings or buttons include `Simon Willard Tall Case Clock Style`, `Queen Anne Style Highboy`, `Shaker Style Pencil Post Bed`, `Sam Maloof Style Rocking Chair`, `Hepplewhite Shield Back Style Chair`, `Thomas Moser Continuous Arm Style Chair`, and `Shaker Style D-Ring Table`.
 - **Open lightbox.** Choose the tall-case clock title. Run `vm browser click --role button --name "Simon Willard Tall Case Clock Style" --wait "Simon Willard Tall Case Clock Style"`. A dialog is open. `vm browser eval document.querySelector('[role="dialog"]') !== null` is true.
 - **Close lightbox.** Choose `Close`. Run `vm browser click --role button --name Close`. The dialog is gone.
-- **Related story.** On the highboy card, choose `Read Similar Story`. Run `vm browser click --role link --name "Read Similar Story" --wait "Queen Anne"`. The browser is on a `/blog/` URL. If more than one `Read Similar Story` link exists, click the one under `Queen Anne Style Highboy` with `vm browser eval document.querySelector('#highboy-dresser a[href^="/blog/"]').click()` and wait for the post heading.
+- **Related story.** Scope the click to `#highboy-dresser`. An unscoped `Read Similar Story` opens the clock post `/blog/miniature-tall-case-clocks` (`Miniature Tall Case Clocks: The Ultimate Challenge`). Run `vm browser click --selector "#highboy-dresser a[href^='/blog/']" --wait "Highboy"`. The path is `/blog/miniature-highboy-makers-guide`. The `h1` is `The Art of the Miniature Highboy: A Maker's Guide`. Do not `--wait "Queen Anne"`.
 - **Proof.** Screenshot the grid and the open lightbox. Run `vm browser screenshot --path gallery/grid.png` before open and `vm browser screenshot --path gallery/lightbox.png` while the dialog shows the piece title. `GET /gallery` still lists the seven image paths.
 
 ## Gotchas
 
 - The gallery island is `client:idle`. Wait for `The Collection` and a piece title, not a fixed sleep.
-- Most pieces have one image, so carousel `Previous image` / `Next image` are absent. Do not treat missing chevrons as a failure.
+- All seven `GALLERY_ITEMS` rows have one image, so carousel `Previous image` / `Next image` are absent. Do not treat missing chevrons as a failure.
 - Card `Read More` is a button with that name. It is not the lightbox.
 - `#tall-case-clock` is the card wrapper id. The open control is the title button, not the image.
 - `Read Similar Story` repeats per card. Name the card when you report the entry point.

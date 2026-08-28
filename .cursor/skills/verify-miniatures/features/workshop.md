@@ -32,6 +32,6 @@ Preconditions:
 ## Gotchas
 
 - The hero island is `client:idle`. Wait for `The Maker's Workshop`, not a fixed sleep.
-- The document title is `How the Miniatures Are Made | Scott Dillingham Miniatures`. The visible `h1` is `The Maker's Workshop`. Assert the `h1` for visitor proof.
+- The document title is `How the Miniatures Are Made | Scott Dillingham Miniatures`. The visible `h1` is `The Maker's Workshop`. Assert the `h1` for visitor proof. Raw HTML encodes that `h1` as `The Maker&#x27;s Workshop`. `get --assert-contains "The Maker's Workshop"` still matches because the helper decodes entities. `How Miniature Furniture Is Made` is not the title.
 - Process steps such as `Design & Research` ship in JSON-LD even if the process island has not scrolled into view. Visible proof needs a screenshot or snapshot of on-screen text, not only the script tag.
 - `See the Workshop` is a home-hero control. It is not in the header.

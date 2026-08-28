@@ -164,6 +164,21 @@ function artifactPath(rel) {
   return path;
 }
 
+function decodeHtmlEntities(s) {
+  return s
+    .replace(/&#x([0-9a-f]+);/gi, (_, hex) => String.fromCharCode(parseInt(hex, 16)))
+    .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n)))
+    .replace(/&apos;|&lsquo;|&rsquo;/g, "'")
+    .replace(/&quot;|&ldquo;|&rdquo;/g, '"')
+    .replace(/&amp;/g, '&');
+}
+
+function bodyContains(body, needle) {
+  if (!needle) return true;
+  if (body.includes(needle)) return true;
+  return decodeHtmlEntities(body).includes(needle);
+}
+
 function baseUrl(state) {
   if (!state?.url) fail('no launch state; run launch first');
   return state.url.replace(/\/$/, '');
@@ -183,7 +198,7 @@ async function httpGet(path, opts = {}) {
   if (wantStatus != null && res.status !== wantStatus) {
     fail(`expected HTTP ${wantStatus}, got ${res.status}`, { url });
   }
-  if (wantContains && !body.includes(wantContains)) {
+  if (wantContains && !bodyContains(body, wantContains)) {
     fail(`response missing ${JSON.stringify(wantContains)}`, { url, status: res.status });
   }
   if (opts.out) writeFileSync(artifactPath(opts.out), body);
@@ -208,7 +223,7 @@ async function httpPost(path, opts = {}) {
   if (wantStatus != null && res.status !== wantStatus) {
     fail(`expected HTTP ${wantStatus}, got ${res.status}`, { url, body });
   }
-  if (wantContains && !body.includes(wantContains)) {
+  if (wantContains && !bodyContains(body, wantContains)) {
     fail(`response missing ${JSON.stringify(wantContains)}`, { url, status: res.status, body });
   }
   if (opts.out) writeFileSync(artifactPath(opts.out), body);
@@ -708,7 +723,7 @@ async function proveHome() {
   await cmdBrowserClick({
     role: 'link',
     name: 'Explore the Gallery',
-    wait: 'The Collection',
+    wait: 'Hepplewhite Shield Back Style Chair',
   });
   await cmdBrowserScreenshot({ path: 'home/02-gallery.png' });
   const after = await (async () => {

@@ -26,13 +26,14 @@ Preconditions:
 - **Open home.** Go to `/`. Run `vm browser goto /`. The heading text includes `Miniature Furniture` and `Extraordinary Craft`. The document title includes `Scott Dillingham Miniatures`.
 - **HTTP view.** Fetch the document. Run `vm get / --assert-status 200 --assert-contains "Miniature Furniture" --out home/http-home.html`. Status is 200 and the saved body includes the hero heading and `Explore the Gallery`.
 - **FAQ.** The first item `What scale are your miniature furniture pieces?` is already open. Choose a later summary, for example `Are these made from kits?`. Run `vm browser click --selector "details.faq-item:nth-of-type(2) summary" --wait "Absolutely not"`. The second details item is open and the answer starts with `Absolutely not`.
-- **Gallery CTA.** Choose `Explore the Gallery`. Run `vm browser click --role link --name "Explore the Gallery" --wait "The Collection"`. The heading `The Collection` appears and a piece title `Simon Willard Tall Case Clock Style` is present.
+- **Gallery CTA.** Choose `Explore the Gallery`. Run `vm browser click --role link --name "Explore the Gallery" --wait "Hepplewhite Shield Back Style Chair"`. The URL path is `/gallery`. The `h1` is `The Collection`. Home Highlights already print the eyebrow `The Collection` and the clock title, so those strings are not proof of leaving `/`.
 - **Workshop CTA.** Return to `/`, then choose `See the Workshop`. Run `vm browser goto /` and `vm browser click --role link --name "See the Workshop" --wait "The Maker's Workshop"`. The heading is `The Maker's Workshop`.
 - **Theme.** Choose `Toggle theme`. Run `vm browser click --role button --name "Toggle theme"` then `vm browser eval document.documentElement.classList.contains('dark')`. The boolean flips from the pre-click value.
 - **Proof.** Capture home before the gallery click and the gallery after it. Run `vm browser screenshot --path home/01-home.png` on `/` and `vm browser screenshot --path home/02-gallery.png` after the CTA. Both snapshots include the brand or the page heading. `GET /gallery` still contains `The Collection`.
 
 ## Gotchas
 
+- Home Highlights use the eyebrow `The Collection` (`features.astro`). `GET /` contains that string. `vm get / --assert-contains "The Collection"` does not prove the gallery CTA. After the click, assert `/gallery` or `Hepplewhite Shield Back Style Chair`.
 - `Explore the Gallery` also exists on the 404 page. Start this recipe from `/` or the click is a different entry point.
 - `Start a Commission` lives in the page footer CTA, not the hero. Hero proof is `Explore the Gallery`.
 - FAQ items are native `details`. The first item is open on load. Assert a later item when you prove expand.

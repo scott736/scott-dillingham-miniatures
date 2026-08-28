@@ -23,7 +23,7 @@ Preconditions:
 - Doctor is green.
 
 - **Start on home.** Run `curl -sS -D evidence/workshop/before.headers.txt -o evidence/workshop/before.html http://127.0.0.1:4318/`. Status `200`. Body contains `See the Workshop` (`href="/workshop"`).
-- **Open workshop.** Follow that path. Run `curl -sS -D evidence/workshop/after.headers.txt -o evidence/workshop/after.html http://127.0.0.1:4318/workshop`. Status `200`. `<title>` contains `How Miniature Furniture Is Made`. Body contains `The Maker's Workshop`, `Where raw hardwood becomes miniature art`, `From Raw Hardwood to Finished Masterpiece`, `Step 01`, `Design & Research`, `Wood Selection`, `Milling & Shaping`, `Joinery`, `Carving & Detail`, `Assembly`, `Finishing`, `Photography & Delivery`, and `Workshop Guides`.
+- **Open workshop.** Follow that path. Run `curl -sS -D evidence/workshop/after.headers.txt -o evidence/workshop/after.html http://127.0.0.1:4318/workshop`. Status `200`. `<title>` contains `How the Miniatures Are Made`. Body contains `The Maker's Workshop` (raw HTML may use `The Maker&#x27;s Workshop`), `Where raw hardwood becomes miniature art`, `From Raw Hardwood to Finished Masterpiece`, `Step 01`, `Design & Research`, `Wood Selection`, `Milling & Shaping`, `Joinery`, `Carving & Detail`, `Assembly`, `Finishing`, `Photography & Delivery`, and `Workshop Guides`.
 - **Follow a process link (optional second hop).** `Scaling Down Plans` is `/blog/scaling-down-furniture-plans`. A GET of that URL is 200 with a speakable article title.
 - **Proof.** `before.html` is `/` with `See the Workshop`. `after.html` is `/workshop` with the eight step titles. Record feature id `workshop`.
 

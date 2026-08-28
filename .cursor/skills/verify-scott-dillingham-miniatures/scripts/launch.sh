@@ -2,7 +2,7 @@
 # Start astro dev on 127.0.0.1:4318 and write the verification PID file.
 set -euo pipefail
 
-REPO="${REPO:-/Users/scottdillingham/GitHub/scott-dillingham-miniatures}"
+REPO="${REPO:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../../../.." && pwd)}"
 RUN_ID="${RUN_ID:-}"
 if [[ -z "$RUN_ID" ]]; then
   echo "launch.sh: set RUN_ID so the PID file is unique" >&2

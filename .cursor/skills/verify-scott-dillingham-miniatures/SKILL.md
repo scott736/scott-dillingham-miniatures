@@ -13,11 +13,11 @@ Read [features/README.md](features/README.md) before a run. Drive one mapped fea
 
 Assigned bind: `127.0.0.1:4318`. The README's `http://localhost:4321` is the unassigned Astro default. Never use 4321 for this skill.
 
-Two verification instances cannot share 4318. Content is read from this checkout (no disposable data dir). Isolation is the port only. If 4318 is already listening, stop and report BLOCKED. Do not kill the occupant. Do not drive an instance you did not start.
+Two verification instances cannot share 4318. Astro 7 also refuses a second `astro dev` in this checkout on any port. Content is read from this checkout (no disposable data dir). If 4318 is already listening, or if another Astro dev is running, stop and report BLOCKED. Do not kill the occupant. Do not pass `--force`. Do not drive an instance you did not start.
 
 ```bash
 export RUN_ID="${RUN_ID:-$(date +%Y%m%d-%H%M%S)}"
-export REPO="/Users/scottdillingham/GitHub/scott-dillingham-miniatures"
+export REPO="${REPO:-$(git rev-parse --show-toplevel)}"
 export VERIFY_BASE="http://127.0.0.1:4318"
 export VERIFY_PID="/tmp/verify-scott-dillingham-miniatures-${RUN_ID}.pid"
 export VERIFY_LOG="/tmp/verify-scott-dillingham-miniatures-${RUN_ID}.log"
@@ -27,9 +27,11 @@ test -d node_modules || npm install
 "$REPO/.cursor/skills/verify-scott-dillingham-miniatures/scripts/launch.sh"
 ```
 
-`scripts/launch.sh` starts `npm run dev -- --host 127.0.0.1 --port 4318` (`astro dev`), writes `$VERIFY_PID`, and waits until `GET /` returns HTTP 200.
+`scripts/launch.sh` defaults `REPO` to the checkout that contains the script. It starts `npm run dev -- --host 127.0.0.1 --port 4318` (`astro dev`), writes `$VERIFY_PID`, and waits until `GET /` returns HTTP 200.
 
 Ready signal: log contains `Local    http://127.0.0.1:4318/` and `curl -sS -o /dev/null -w '%{http_code}' http://127.0.0.1:4318/` is `200`.
+
+Astro 7 allows one `astro dev` per checkout. If any Astro process is already running (including verify-miniatures on 4321), launch exits before bind. Do not `astro dev --force`. Do not kill a process this run did not start. Report BLOCKED.
 
 Documented start without the helper:
 
@@ -43,7 +45,7 @@ Read-only. Run this first whenever anything looks off.
 
 ```bash
 export RUN_ID="<same as launch>"
-/Users/scottdillingham/GitHub/scott-dillingham-miniatures/.cursor/skills/verify-scott-dillingham-miniatures/scripts/doctor.sh
+"$REPO/.cursor/skills/verify-scott-dillingham-miniatures/scripts/doctor.sh"
 ```
 
 Pass means:
@@ -114,7 +116,7 @@ Kill only the PID written at launch (and children of that PID). Never `pkill` / 
 
 ```bash
 export RUN_ID="<same as launch>"
-/Users/scottdillingham/GitHub/scott-dillingham-miniatures/.cursor/skills/verify-scott-dillingham-miniatures/scripts/cleanup.sh
+.cursor/skills/verify-scott-dillingham-miniatures/scripts/cleanup.sh
 ```
 
 After cleanup, confirm `evidence/<feature-id>/` still exists. Remove `/tmp/verify-scott-dillingham-miniatures-$RUN_ID.pid` and the matching `.log` only.
