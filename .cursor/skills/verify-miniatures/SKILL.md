@@ -103,13 +103,13 @@ Put files under `.cursor/skills/verify-miniatures/artifacts/<feature>/`. Cleanup
 
 Proof standards:
 
-- Exercise the visitor path. Do not call internal setters or test-only endpoints. `/api/contact` is the form's production endpoint, so it is allowed for validation and the no-key error path only.
+- Exercise the visitor path. Do not call internal setters or test-only endpoints. `/api/contact` is the form's production endpoint. Use it for 400 validation only. Never POST a complete valid `{name,email,message}` body.
 - Capture the action and the resulting state. A final screenshot without the click that produced it is incomplete.
 - For a mutation, take a second read-only view. Gallery after the home CTA needs `/gallery` in the URL (or `Hepplewhite Shield Back Style Chair`) plus the `h1` `The Collection`. A `GET /gallery` body is the second view.
 - Record the feature id and entry point on the artifact (`result.json` or the snapshot `url`).
 - UI proof is a snapshot JSON plus a PNG that shows the brand or page heading.
 - HTTP proof is status, url, and a saved body.
-- Mocks are not used. The contact send to Resend is skipped by refusing a complete POST when the key is present, not by stubbing.
+- Mocks are not used. Skip Resend by refusing a complete POST, not by stubbing. `doctor.resendKeyPresent` only sees `process.env`.
 
 `prove home` writes `artifacts/home/01-home.png`, `01-home.json`, `02-gallery.png`, `02-gallery.json`, `http-home.html`, `http-gallery.html`, `doctor.json`, and `result.json`.
 

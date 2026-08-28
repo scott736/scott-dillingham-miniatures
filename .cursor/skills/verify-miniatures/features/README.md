@@ -45,6 +45,6 @@ Keep implementation details out of the map. Name only user paths, stable handles
 
 - [Home](./home.md) covers the landing hero, FAQ, and the gallery CTA.
 - [Gallery](./gallery.md) covers the collection grid and piece lightbox.
-- [Contact](./contact.md) covers the commission form, validation, and the no-send error path.
+- [Contact](./contact.md) covers the commission form and validation. Do not POST a complete body.
 - [Blog](./blog.md) covers the article list, search, and opening a guide.
 - [Workshop](./workshop.md) covers the maker workshop page and process heading.
