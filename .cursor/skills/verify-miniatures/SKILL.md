@@ -134,10 +134,10 @@ The helper is executable Node. Invocation is `vm` as defined above.
 | `get <path>` | `GET` the running instance. `--assert-status`, `--assert-contains`, `--out`. |
 | `post <path>` | `POST` JSON. Same assert flags. |
 | `browser start` | Headless Chrome with a private profile and CDP. |
-| `browser goto <path>` | Navigate and print a snapshot. |
-| `browser click --role --name` | Click. `--wait TEXT` polls `document.body.innerText`. `--selector` if a role is missing. |
+| `browser goto <path>` | Navigate. Prints title, url, and h1 unless `--full`. |
+| `browser click --role --name` | Click. `--wait TEXT` polls `document.body.innerText`. `--selector` if a role is missing. Compact print unless `--full`. |
 | `browser fill --role textbox --name --value` | Fill a labeled field. |
-| `browser snapshot --path` | Headings, links, buttons, fields. |
+| `browser snapshot --path` | Headings, links, buttons, fields. Writes the full JSON when `--path` is set. |
 | `browser screenshot --path` | PNG under `artifacts/` when the path is relative. |
 | `prove home` | Full home recipe plus cleanup. |
 | `cleanup` | Kill recorded pids. Keep artifacts. |
