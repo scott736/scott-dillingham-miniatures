@@ -135,10 +135,7 @@ function killPid(pid) {
   try {
     process.kill(-pid, 'SIGTERM');
   } catch {
-    try {
-      process.kill(pid, 'SIGTERM');
-    } catch {
-    }
+    process.kill(pid, 'SIGTERM');
   }
 }
 
@@ -321,16 +318,10 @@ async function cmdCleanup() {
   if (state?.pid) killPid(state.pid);
   await sleep(300);
   if (state?.chromePid && pidAlive(state.chromePid)) {
-    try {
-      process.kill(state.chromePid, 'SIGKILL');
-    } catch {
-    }
+    process.kill(state.chromePid, 'SIGKILL');
   }
   if (state?.pid && pidAlive(state.pid)) {
-    try {
-      process.kill(state.pid, 'SIGKILL');
-    } catch {
-    }
+    process.kill(state.pid, 'SIGKILL');
   }
   const leftover = {
     astroAlive: state?.pid ? pidAlive(state.pid) : false,
@@ -392,10 +383,7 @@ class Cdp {
   }
 
   close() {
-    try {
-      this.ws.close();
-    } catch {
-    }
+    this.ws.close();
   }
 }
 
@@ -433,10 +421,7 @@ async function pageWsUrl(cdpPort, appOrigin) {
     if (page) return page.webSocketDebuggerUrl;
     if (!created) {
       created = true;
-      try {
-        await fetch(`http://127.0.0.1:${cdpPort}/json/new?about:blank`);
-      } catch {
-      }
+      await fetch(`http://127.0.0.1:${cdpPort}/json/new?about:blank`);
     }
     await sleep(200);
   }
