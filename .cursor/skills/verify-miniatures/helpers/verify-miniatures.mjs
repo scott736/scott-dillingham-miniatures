@@ -50,6 +50,20 @@ function print(obj) {
   process.stdout.write(`${JSON.stringify(obj, null, 2)}\n`);
 }
 
+function printSnap(snap, opts = {}) {
+  if (opts.full) {
+    print({ ok: true, ...snap });
+    return;
+  }
+  print({
+    ok: true,
+    title: snap.title,
+    url: snap.url,
+    dark: snap.dark,
+    h1: (snap.headings || []).filter((h) => h.tag === 'H1').map((h) => h.text),
+  });
+}
+
 function fail(message, extra = {}) {
   print({ ok: false, error: message, ...extra });
   process.exitCode = 1;
@@ -580,7 +594,7 @@ async function cmdBrowserGoto(path, opts = {}) {
   }
   const snap = await evaluate(cdp, SNAPSHOT_JS);
   cdp.close();
-  print({ ok: true, ...snap });
+  printSnap(snap, opts);
 }
 
 async function cmdBrowserClick(opts) {
@@ -620,7 +634,8 @@ async function cmdBrowserClick(opts) {
   }
   const snap = await evaluate(cdp, SNAPSHOT_JS);
   cdp.close();
-  print({ ok: true, clicked: { role, name, selector }, ...snap });
+  if (opts.full) print({ ok: true, clicked: { role, name, selector }, ...snap });
+  else print({ ok: true, clicked: { role, name, selector }, title: snap.title, url: snap.url, h1: (snap.headings || []).filter((h) => h.tag === 'H1').map((h) => h.text) });
 }
 
 async function cmdBrowserFill(opts) {
