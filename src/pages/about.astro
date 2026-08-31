@@ -5,7 +5,7 @@ import { AboutHero } from '@/components/sections/about-hero';
 import AboutMission from '@/components/sections/about-mission';
 import OurValues from '@/components/sections/our-values';
 import RelatedReading from '@/components/sections/related-reading.astro';
-import WhySonic from '@/components/sections/why-sonic';
+import WhyHandcrafted from '@/components/sections/why-handcrafted';
 import { aboutProfilePageNode } from '@/lib/schema';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 
@@ -34,13 +34,18 @@ const aboutRelatedPosts = [
 <DefaultLayout
   title="About Scott Dillingham"
   description="Scott Dillingham builds museum-exhibited 1/12 scale miniature furniture by hand from hardwoods. Pieces are offered for sale and custom commission."
+  image="/images/about/scott-workshop.webp"
+  imageWidth={383}
+  imageHeight={683}
+  imageAlt="Scott Dillingham miniature furniture"
+  breadcrumbName="About"
 >
   <script type="application/ld+json" set:html={JSON.stringify(aboutProfilePageNode())} />
   <AboutHero />
   <AboutMission />
   <OurValues />
   <div class="py-10 md:pt-14 lg:pt-20">
-    <WhySonic />
+    <WhyHandcrafted />
   </div>
   <RelatedReading
     title="Further Reading"

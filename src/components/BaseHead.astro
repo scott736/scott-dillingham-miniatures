@@ -13,11 +13,29 @@ import { formatPageTitle, SITE_METADATA, SITE_TITLE, SITE_URL } from '../consts'
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const isNotFoundPage = Astro.url.pathname.replace(/\/$/, '') === '/404';
 
-const { title, description, image, article, noindex } = Astro.props;
+const defaultOg = SITE_METADATA.openGraph.images[0];
+const {
+  title,
+  description,
+  image,
+  imageWidth,
+  imageHeight,
+  imageAlt,
+  breadcrumbName,
+  article,
+  noindex,
+} = Astro.props;
 const finalTitle = formatPageTitle(title);
+const crumbName = breadcrumbName || title || 'Page';
 const finalDescription = description || SITE_METADATA.description;
-const finalImage = image || SITE_METADATA.openGraph.images[0].url;
+const usingDefaultImage = !image;
+const finalImage = image || defaultOg.url;
 const imageURL = new URL(finalImage, Astro.url);
+const ogWidth = imageWidth ?? (usingDefaultImage ? defaultOg.width : undefined);
+const ogHeight = imageHeight ?? (usingDefaultImage ? defaultOg.height : undefined);
+const ogAlt =
+  imageAlt ||
+  (article ? `${title} - Miniature furniture by Scott Dillingham` : defaultOg.alt);
 
 const organizationSchema = {
   '@context': 'https://schema.org',
@@ -72,14 +90,14 @@ if (isBlogPost) {
   breadcrumbItems.push({
     '@type': 'ListItem',
     position: 3,
-    name: finalTitle,
+    name: crumbName,
     item: canonicalURL.toString(),
   });
 } else if (Astro.url.pathname !== '/') {
   breadcrumbItems.push({
     '@type': 'ListItem',
     position: 2,
-    name: finalTitle,
+    name: crumbName,
     item: canonicalURL.toString(),
   });
 }
@@ -160,15 +178,13 @@ const breadcrumbSchema = {
 <meta property="og:title" content={finalTitle} />
 <meta property="og:description" content={finalDescription} />
 <meta property="og:image" content={imageURL} />
-<meta
-  property="og:image:width"
-  content={SITE_METADATA.openGraph.images[0].width.toString()}
-/>
-<meta
-  property="og:image:height"
-  content={SITE_METADATA.openGraph.images[0].height.toString()}
-/>
-<meta property="og:image:alt" content={article ? `${title} - Miniature furniture by Scott Dillingham` : SITE_METADATA.openGraph.images[0].alt} />
+{ogWidth != null && (
+  <meta property="og:image:width" content={String(ogWidth)} />
+)}
+{ogHeight != null && (
+  <meta property="og:image:height" content={String(ogHeight)} />
+)}
+<meta property="og:image:alt" content={ogAlt} />
 <meta property="og:locale" content="en_US" />
 {article && (
   <>
@@ -188,7 +204,7 @@ const breadcrumbSchema = {
 <meta property="twitter:description" content={finalDescription} />
 <meta property="twitter:image" content={imageURL} />
 <meta property="twitter:creator" content={SITE_METADATA.twitter.creator} />
-<meta name="twitter:image:alt" content={article ? `${title} - Miniature furniture by Scott Dillingham` : SITE_METADATA.openGraph.images[0].alt} />
+<meta name="twitter:image:alt" content={ogAlt} />
 
 <meta name="format-detection" content="telephone=no" />
 <meta name="apple-mobile-web-app-capable" content="yes" />

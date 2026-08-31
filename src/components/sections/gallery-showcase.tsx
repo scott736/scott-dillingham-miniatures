@@ -1,14 +1,11 @@
 'use client';
 
-import { useState, useRef, useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import * as Dialog from '@radix-ui/react-dialog';
 import { ArrowRight, ChevronLeft, ChevronRight, X } from 'lucide-react';
-import { motion, useInView } from 'motion/react';
 
-import { Card, CardContent } from '@/components/ui/card';
 import { GALLERY_ITEMS } from '@/consts';
-import usePrefersReducedMotion from '@/hooks/usePrefersReducedMotion';
 
 type GalleryItem = (typeof GALLERY_ITEMS)[number];
 
@@ -50,10 +47,8 @@ function ExpandableDescription({
       )}
       {needsTruncation && (
         <button
-          onClick={(e) => {
-            e.stopPropagation();
-            setExpanded(!expanded);
-          }}
+          type="button"
+          onClick={() => setExpanded(!expanded)}
           className="text-primary mt-1 text-sm font-medium hover:underline"
         >
           {expanded ? 'Read Less' : 'Read More'}
@@ -107,6 +102,7 @@ function ImageCarousel({ images, title }: { images: string[]; title: string }) {
       {images.length > 1 && (
         <>
           <button
+            type="button"
             onClick={prev}
             className="absolute top-1/2 left-2 -translate-y-1/2 rounded-full bg-white/80 p-1.5 shadow-md transition-colors hover:bg-white dark:bg-black/50 dark:hover:bg-black/70"
             aria-label="Previous image"
@@ -114,6 +110,7 @@ function ImageCarousel({ images, title }: { images: string[]; title: string }) {
             <ChevronLeft className="size-5" />
           </button>
           <button
+            type="button"
             onClick={next}
             className="absolute top-1/2 right-2 -translate-y-1/2 rounded-full bg-white/80 p-1.5 shadow-md transition-colors hover:bg-white dark:bg-black/50 dark:hover:bg-black/70"
             aria-label="Next image"
@@ -173,126 +170,29 @@ function GalleryLightbox({
   );
 }
 
-export default function GalleryShowcase() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
-  const prefersReducedMotion = usePrefersReducedMotion();
-  const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
+export default function GalleryLightboxIsland() {
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      const target = (e.target as HTMLElement).closest('[data-gallery-open]');
+      if (!target) return;
+      e.preventDefault();
+      setSelectedId(target.getAttribute('data-gallery-open'));
+    };
+    document.addEventListener('click', onClick);
+    return () => document.removeEventListener('click', onClick);
+  }, []);
+
+  const item = GALLERY_ITEMS.find((g) => g.id === selectedId) ?? null;
 
   return (
-    <section ref={sectionRef} className="hero-padding container space-y-12">
-      {/* Hero area */}
-      <div className="mx-auto max-w-3xl space-y-6 text-center">
-        <motion.h1
-          className="text-5xl leading-13 font-bold md:text-6xl md:leading-18"
-          initial={
-            prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: -20 }
-          }
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        >
-          The Collection
-        </motion.h1>
-        <motion.p
-          className="text-xl leading-8 text-balance"
-          initial={
-            prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: -10 }
-          }
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-        >
-          Museum-exhibited miniature furniture available for purchase and custom
-          commission. Each piece represents hundreds of hours of meticulous
-          handcraft. Every joint is cut by hand, every detail historically
-          accurate, every surface finished to museum standards.
-        </motion.p>
-      </div>
-
-      {/* Gallery grid */}
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-        {GALLERY_ITEMS.map((item, index) => (
-          <GalleryCard
-            key={item.id}
-            item={item}
-            index={index}
-            prefersReducedMotion={prefersReducedMotion}
-            onOpenLightbox={() => setSelectedItem(item)}
-          />
-        ))}
-      </div>
-
-      <GalleryLightbox
-        item={selectedItem}
-        open={!!selectedItem}
-        onOpenChange={(open) => {
-          if (!open) setSelectedItem(null);
-        }}
-      />
-    </section>
-  );
-}
-
-function GalleryCard({
-  item,
-  index,
-  prefersReducedMotion,
-  onOpenLightbox,
-}: {
-  item: GalleryItem;
-  index: number;
-  prefersReducedMotion: boolean;
-  onOpenLightbox: () => void;
-}) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(cardRef, { once: true, amount: 0.2 });
-
-  return (
-    <motion.div
-      id={item.id}
-      ref={cardRef}
-      initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{
-        duration: 0.5,
-        delay: prefersReducedMotion ? 0 : index * 0.1,
-        ease: [0.22, 1, 0.36, 1],
+    <GalleryLightbox
+      item={item}
+      open={!!item}
+      onOpenChange={(open) => {
+        if (!open) setSelectedId(null);
       }}
-    >
-      <Card className="group overflow-hidden border-none shadow-none">
-        <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
-          <img
-            src={item.images[0]}
-            alt={`${item.title} - Handcrafted 1/12 scale miniature in ${item.wood} by Scott Dillingham`}
-            loading="lazy"
-            width={800}
-            height={600}
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
-        </div>
-        <CardContent className="space-y-3 px-2 pt-4">
-          <h3 className="text-xl font-bold">
-            <button
-              onClick={onOpenLightbox}
-              className="hover:text-primary text-left transition-colors"
-            >
-              {item.title}
-            </button>
-          </h3>
-          <ExpandableDescription text={item.description} maxLen={225} />
-          {item.relatedPost && (
-            <div className="flex items-center">
-              <a
-                href={item.relatedPost}
-                className="text-primary inline-flex items-center gap-1 text-sm font-medium hover:underline"
-              >
-                Read Similar Story <ArrowRight className="size-3.5" />
-              </a>
-            </div>
-          )}
-        </CardContent>
-      </Card>
-    </motion.div>
+    />
   );
 }

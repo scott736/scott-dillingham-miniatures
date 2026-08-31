@@ -22,7 +22,7 @@ const massProducedPoints = [
   'Disposable collectible',
 ];
 
-export default function WhySonic() {
+export default function WhyHandcrafted() {
   return (
     <section className="section-padding container space-y-10.5">
       <SectionHeader

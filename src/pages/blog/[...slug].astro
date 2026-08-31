@@ -4,7 +4,7 @@ export const prerender = true;
 import { getCollection, render } from 'astro:content';
 
 import SpeakableSchema from '@/components/schemas/SpeakableSchema.astro';
-import { BlogPost } from '@/components/sections/blog-post';
+import BlogPost from '@/components/sections/blog-post.astro';
 import { SITE_URL } from '@/consts';
 import { getBlogHowTo } from '@/lib/schema';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
@@ -20,7 +20,6 @@ export async function getStaticPaths() {
 const { post, allPosts } = Astro.props;
 const { Content } = await render(post);
 
-// Compute related posts by matching tags
 const currentTags = post.data.tags ?? [];
 const relatedPosts = allPosts
   .filter((p: typeof post) => p.id !== post.id)
@@ -78,11 +77,13 @@ const howToSchema = getBlogHowTo(post.id, {
     <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
   )}
   <BlogPost
-    post={[post]}
-    relatedPosts={relatedPosts}
-    currentTags={currentTags}
+    title={post.data.title}
+    description={post.data.description}
+    pubDate={post.data.pubDate}
+    coverImage={post.data.coverImage}
+    postId={post.id}
     siteUrl={SITE_URL}
-    client:idle
+    relatedPosts={relatedPosts}
   >
     <Content />
   </BlogPost>

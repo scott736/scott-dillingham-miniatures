@@ -1,8 +1,9 @@
 ---
 export const prerender = true;
 
-import GalleryShowcase from '@/components/sections/gallery-showcase';
+import GalleryLightboxIsland from '@/components/sections/gallery-showcase';
 import RelatedReading from '@/components/sections/related-reading.astro';
+import { GALLERY_ITEMS } from '@/consts';
 import { galleryCollectionNode } from '@/lib/schema';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 
@@ -45,17 +46,110 @@ const galleryRelatedPosts = [
   },
 ];
 
+function stripHtml(html: string): string {
+  return html.replace(/<[^>]*>/g, '');
+}
+
+function truncateText(text: string, maxLen: number): string {
+  if (text.length <= maxLen) return text;
+  const truncated = text.slice(0, maxLen);
+  const lastSpace = truncated.lastIndexOf(' ');
+  return (lastSpace > 0 ? truncated.slice(0, lastSpace) : truncated) + '...';
+}
 ---
 
 <DefaultLayout
   title="Miniature Furniture Gallery"
   description="Museum-exhibited 1/12 scale pieces: Maloof rocker, Willard tall-case clock, Hepplewhite chair, Moser chair, Shaker table, and Queen Anne highboy."
+  image="/images/gallery/highboy-dresser.webp"
+  imageWidth={487}
+  imageHeight={722}
+  imageAlt="Queen Anne highboy in 1/12 scale by Scott Dillingham"
+  breadcrumbName="Gallery"
 >
   <script
     type="application/ld+json"
     set:html={JSON.stringify(galleryCollectionNode())}
   />
-  <GalleryShowcase client:idle />
+  <section class="hero-padding container space-y-12">
+    <div class="mx-auto max-w-3xl space-y-6 text-center">
+      <h1 class="text-5xl leading-13 font-bold md:text-6xl md:leading-18">
+        The Collection
+      </h1>
+      <p class="text-xl leading-8 text-balance">
+        Museum-exhibited miniature furniture available for purchase and custom
+        commission. Each piece represents hundreds of hours of meticulous
+        handcraft. Every joint is cut by hand, every detail historically
+        accurate, every surface finished to museum standards.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+      {
+        GALLERY_ITEMS.map((item) => {
+          const plain = stripHtml(item.description);
+          const preview = truncateText(plain, 225);
+          return (
+            <article id={item.id} class="overflow-hidden">
+              <div class="group overflow-hidden border-none shadow-none">
+                <div class="relative aspect-[4/3] overflow-hidden rounded-2xl">
+                  <img
+                    src={item.images[0]}
+                    alt={`${item.title} - Handcrafted 1/12 scale miniature in ${item.wood} by Scott Dillingham`}
+                    loading="lazy"
+                    width={800}
+                    height={600}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    class="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div class="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
+                </div>
+                <div class="space-y-3 px-2 pt-4">
+                  <h2 class="text-xl font-bold">
+                    <button
+                      type="button"
+                      data-gallery-open={item.id}
+                      class="hover:text-primary text-left transition-colors"
+                    >
+                      {item.title}
+                    </button>
+                  </h2>
+                  <p class="text-muted-foreground leading-7">{preview}</p>
+                  {item.relatedPost && (
+                    <div class="flex items-center">
+                      <a
+                        href={item.relatedPost}
+                        class="text-primary inline-flex items-center gap-1 text-sm font-medium hover:underline"
+                      >
+                        Read Similar Story
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="size-3.5"
+                          aria-hidden="true"
+                        >
+                          <path d="M5 12h14" />
+                          <path d="m12 5 7 7-7 7" />
+                        </svg>
+                      </a>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </article>
+          );
+        })
+      }
+    </div>
+  </section>
+  <GalleryLightboxIsland client:idle />
   <RelatedReading
     title="Collector's Library"
     subtitle="Deepen your appreciation for miniature furniture with these guides."

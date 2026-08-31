@@ -20,7 +20,12 @@ const contactSchema = {
 <DefaultLayout
   title="Commission a Piece"
   description="Commission custom 1/12 scale miniature furniture from Scott Dillingham, or inquire about finished pieces available for purchase."
+  image="/og-image.jpg"
+  imageWidth={1800}
+  imageHeight={945}
+  imageAlt="Scott Dillingham Miniatures - Handcrafted 1/12 Scale Miniature Furniture"
+  breadcrumbName="Contact"
 >
   <script type="application/ld+json" set:html={JSON.stringify(contactSchema)} />
-  <ContactPage client:idle />
+  <ContactPage client:visible />
 </DefaultLayout>

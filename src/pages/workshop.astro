@@ -2,9 +2,9 @@
 export const prerender = true;
 
 import RelatedReading from '@/components/sections/related-reading.astro';
-import WorkshopHero from '@/components/sections/workshop-hero';
-import WorkshopProcess from '@/components/sections/workshop-process';
-import WorkshopTools from '@/components/sections/workshop-tools';
+import WorkshopHero from '@/components/sections/workshop-hero.astro';
+import WorkshopProcess from '@/components/sections/workshop-process.astro';
+import WorkshopTools from '@/components/sections/workshop-tools.astro';
 import { SITE_URL } from '@/consts';
 import { imageObject, personRef } from '@/lib/schema';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
@@ -134,11 +134,16 @@ const howToSchema = {
 <DefaultLayout
   title="How the Miniatures Are Made"
   description="Watch a 1/12 scale piece go from raw hardwood to finished furniture in Scott Dillingham's workshop. Hand tools, traditional joinery, no kits."
+  image="/images/workshop/process-joinery.webp"
+  imageWidth={1920}
+  imageHeight={1097}
+  imageAlt="Hand-cut joinery in Scott Dillingham's miniature furniture workshop"
+  breadcrumbName="Workshop"
 >
   <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
-  <WorkshopHero client:idle />
-  <WorkshopProcess client:visible />
-  <WorkshopTools client:visible />
+  <WorkshopHero />
+  <WorkshopProcess />
+  <WorkshopTools />
   <RelatedReading
     title="Workshop Guides"
     subtitle="Master the craft with these in-depth technique guides."

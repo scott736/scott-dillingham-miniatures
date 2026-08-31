@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Lightbulb } from 'lucide-react';
 
-import AnimatedBorderButton from '@/components/elements/animated-border-button';
 import CategoryBadge from '@/components/elements/category-badge';
+import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -13,10 +13,19 @@ export default function ContactPage() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>(
     'idle',
   );
+  const [errorText, setErrorText] = useState(
+    'Something went wrong. Please try again.',
+  );
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('sent') === '1') setStatus('sent');
+  }, []);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus('sending');
+    setErrorText('Something went wrong. Please try again.');
 
     const form = e.currentTarget;
     const formData = new FormData(form);
@@ -30,10 +39,20 @@ export default function ContactPage() {
           email: formData.get('email'),
           subject: formData.get('subject'),
           message: formData.get('message'),
+          website: formData.get('website'),
         }),
       });
 
-      if (!res.ok) throw new Error('Send failed');
+      const data = (await res.json().catch(() => null)) as {
+        error?: string;
+        success?: boolean;
+      } | null;
+
+      if (!res.ok) {
+        setErrorText(data?.error || 'Something went wrong. Please try again.');
+        setStatus('error');
+        return;
+      }
 
       setStatus('sent');
       form.reset();
@@ -75,6 +94,17 @@ export default function ContactPage() {
             action="/api/contact"
             className="flex flex-col gap-6"
           >
+            <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+              <label htmlFor="website">Website</label>
+              <input
+                type="text"
+                id="website"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
+
             <div className="space-y-1.5">
               <Label htmlFor="name">Name</Label>
               <Input
@@ -83,6 +113,7 @@ export default function ContactPage() {
                 name="name"
                 placeholder="Your name"
                 required
+                maxLength={200}
               />
             </div>
 
@@ -94,6 +125,7 @@ export default function ContactPage() {
                 name="email"
                 placeholder="your@email.com"
                 required
+                maxLength={254}
               />
             </div>
 
@@ -120,6 +152,7 @@ export default function ContactPage() {
                 name="message"
                 className="min-h-[120px]"
                 required
+                maxLength={5000}
               />
             </div>
 
@@ -130,17 +163,17 @@ export default function ContactPage() {
             )}
 
             {status === 'error' && (
-              <p className="text-sm font-medium text-red-600">
-                Something went wrong. Please try again.
-              </p>
+              <p className="text-sm font-medium text-red-600">{errorText}</p>
             )}
 
-            <AnimatedBorderButton
+            <Button
+              type="submit"
               className="w-full"
+              size="lg"
               disabled={status === 'sending'}
             >
               {status === 'sending' ? 'Sending...' : 'Send Message'}
-            </AnimatedBorderButton>
+            </Button>
           </form>
         </CardContent>
       </Card>

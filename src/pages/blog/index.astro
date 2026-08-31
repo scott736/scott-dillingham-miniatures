@@ -3,7 +3,6 @@ export const prerender = true;
 
 import { getCollection } from 'astro:content';
 
-import BlogPosts from '@/components/sections/blog-posts';
 import { organizationRef, personRef } from '@/lib/schema';
 import { SITE_URL } from '@/consts';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
@@ -20,8 +19,10 @@ const list = posts.map((post) => ({
       ? post.data.pubDate.toISOString()
       : String(post.data.pubDate),
   coverImage: post.data.coverImage,
-  tags: post.data.tags,
+  tags: post.data.tags ?? [],
 }));
+
+const allTags = Array.from(new Set(list.flatMap((p) => p.tags))).sort();
 
 const blogSchema = {
   '@context': 'https://schema.org',
@@ -47,15 +48,161 @@ const blogSchema = {
       : undefined,
   })),
 };
+
+function formatDate(iso: string) {
+  return new Date(iso).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+}
 ---
 
 <DefaultLayout
   title="Miniature Furniture Blog"
   description="Guides on 1/12 scale woodworking, period styles, joinery, collecting, and workshop setup by Scott Dillingham."
+  image="/images/blog/complete-guide-1-12-scale.webp"
+  imageWidth={1920}
+  imageHeight={1097}
+  imageAlt="1/12 scale miniature furniture workshop journal"
+  breadcrumbName="Blog"
 >
   <script type="application/ld+json" set:html={JSON.stringify(blogSchema)} />
-  <div>
-    <h1 class="sr-only">Miniature Furniture Blog</h1>
-    <BlogPosts posts={list} client:idle isBlogsPage />
-  </div>
+  <section class="section-padding hero-padding-margin container space-y-10.5">
+    <div class="flex flex-col items-start justify-center gap-2.5 md:flex-col md:items-center">
+      <div class="flex flex-1 flex-col gap-3 md:items-center">
+        <span class="[&>svg]:text-muted-foreground flex items-center gap-3 rounded-full border py-2 ps-2.5 pe-4 text-xl font-normal [&>svg]:size-5">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+          Blog
+        </span>
+        <h1 class="text-2xl md:text-4xl md:text-balance lg:text-5xl lg:leading-14">
+          From the Workshop Journal
+        </h1>
+        <p class="text-muted-foreground max-w-2xl text-center text-lg leading-7">
+          Tips, techniques, and stories from the world of miniature woodworking.
+        </p>
+      </div>
+    </div>
+
+    <div class="space-y-4" data-blog-filters>
+      <div class="relative mx-auto max-w-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted-foreground absolute left-3 top-1/2 size-4 -translate-y-1/2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input
+          type="search"
+          data-blog-search
+          placeholder="Search articles..."
+          class="border-input bg-background placeholder:text-muted-foreground focus-visible:ring-ring flex h-10 w-full rounded-full border py-2 pl-9 pr-9 text-sm focus-visible:ring-2 focus-visible:outline-none"
+        />
+      </div>
+      <div class="flex flex-wrap justify-center gap-2">
+        <button
+          type="button"
+          data-blog-tag=""
+          class="rounded-full border px-3 py-1 text-xs font-medium transition-colors border-primary bg-primary text-primary-foreground"
+        >
+          All
+        </button>
+        {
+          allTags.map((tag) => (
+            <button
+              type="button"
+              data-blog-tag={tag}
+              class="border-input text-muted-foreground hover:text-foreground hover:border-foreground/30 rounded-full border px-3 py-1 text-xs font-medium transition-colors"
+            >
+              {tag}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-10.5" data-blog-grid>
+      {
+        list.map((post) => (
+          <article
+            data-blog-card
+            data-title={post.title}
+            data-description={post.description}
+            data-tags={post.tags.join(',')}
+            class="group overflow-hidden"
+          >
+            <a href={`/blog/${post.id}`} class="block">
+              <div class="relative h-[320px] overflow-hidden rounded-3xl">
+                <img
+                  src={post.coverImage}
+                  alt={`${post.title} - Miniature furniture article by Scott Dillingham`}
+                  width={400}
+                  height={320}
+                  loading="lazy"
+                  class="size-full object-cover transition-all duration-300"
+                />
+              </div>
+              <div class="px-0 py-6">
+                <div class="space-y-2.5 transition-transform duration-300 group-hover:translate-x-6">
+                  <h2 class="text-2xl">{post.title}</h2>
+                  <time class="text-muted-foreground text-sm" datetime={post.pubDate}>
+                    {formatDate(post.pubDate)}
+                  </time>
+                </div>
+              </div>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+    <p data-blog-empty class="text-muted-foreground hidden py-16 text-center text-lg">
+      No articles found.
+    </p>
+  </section>
 </DefaultLayout>
+
+<script>
+  function bindBlogFilters() {
+    const search = document.querySelector<HTMLInputElement>('[data-blog-search]');
+    const grid = document.querySelector('[data-blog-grid]');
+    const empty = document.querySelector('[data-blog-empty]');
+    const tagButtons = document.querySelectorAll<HTMLButtonElement>('[data-blog-tag]');
+    if (!search || !grid) return;
+    if (search.dataset.bound === '1') return;
+    search.dataset.bound = '1';
+
+    let selectedTag = '';
+
+    const apply = () => {
+      const q = search.value.trim().toLowerCase();
+      const cards = grid.querySelectorAll<HTMLElement>('[data-blog-card]');
+      let shown = 0;
+      cards.forEach((card) => {
+        const title = (card.dataset.title ?? '').toLowerCase();
+        const description = (card.dataset.description ?? '').toLowerCase();
+        const tags = (card.dataset.tags ?? '').split(',').filter(Boolean);
+        const matchesQuery = !q || title.includes(q) || description.includes(q);
+        const matchesTag = !selectedTag || tags.includes(selectedTag);
+        const visible = matchesQuery && matchesTag;
+        card.classList.toggle('hidden', !visible);
+        if (visible) shown += 1;
+      });
+      empty?.classList.toggle('hidden', shown > 0);
+    };
+
+    search.addEventListener('input', apply);
+
+    tagButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        selectedTag = btn.dataset.blogTag ?? '';
+        tagButtons.forEach((other) => {
+          const active = other === btn;
+          other.classList.toggle('border-primary', active);
+          other.classList.toggle('bg-primary', active);
+          other.classList.toggle('text-primary-foreground', active);
+          other.classList.toggle('border-input', !active);
+          other.classList.toggle('text-muted-foreground', !active);
+        });
+        apply();
+      });
+    });
+  }
+
+  bindBlogFilters();
+  document.addEventListener('astro:page-load', bindBlogFilters);
+</script>

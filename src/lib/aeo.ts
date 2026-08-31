@@ -9,7 +9,7 @@ import {
 } from '@/consts';
 
 /** Static last-reviewed date for AI citation files (not build time). */
-export const AEO_LAST_UPDATED = '2026-08-23';
+export const AEO_LAST_UPDATED = '2026-08-31';
 
 export type LlmsPost = {
   id: string;
