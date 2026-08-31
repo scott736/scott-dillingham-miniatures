@@ -1,6 +1,8 @@
 ---
 import '@/styles/global.css';
 import {
+  IMAGE_LICENSE_URL,
+  imageObject,
   organizationNode,
   personNode,
   personRef,
@@ -38,7 +40,10 @@ const articleSchema = article
       '@type': 'BlogPosting',
       headline: title,
       description: description,
-      image: imageURL.toString(),
+      image: imageObject({
+        url: imageURL.toString(),
+        caption: `${title} — Scott Dillingham Miniatures`,
+      }),
       author: personRef(),
       publisher: { '@id': `${SITE_URL}/#organization` },
       datePublished: article.pubDate,
@@ -147,6 +152,7 @@ const breadcrumbSchema = {
 <title>{finalTitle}</title>
 <meta name="title" content={finalTitle} />
 <meta name="description" content={finalDescription} />
+<link rel="license" href={IMAGE_LICENSE_URL} />
 
 <meta property="og:type" content={article ? 'article' : 'website'} />
 {!isNotFoundPage && <meta property="og:url" content={canonicalURL} />}

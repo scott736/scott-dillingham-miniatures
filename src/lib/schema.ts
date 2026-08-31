@@ -11,6 +11,32 @@ export const PERSON_ID = `${SITE_URL}/about/#person`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
 export const KSB_MUSEUM_ID = `${SITE_URL}/#ksb-miniatures-collection`;
 
+export const IMAGE_LICENSE_URL = `${SITE_URL}/image-license/`;
+export const IMAGE_ACQUIRE_LICENSE_URL = `${SITE_URL}/contact/`;
+export const IMAGE_COPYRIGHT_NOTICE = `© ${new Date().getFullYear()} Scott Dillingham Miniatures. All rights reserved.`;
+export const IMAGE_CREDIT_TEXT = 'Scott Dillingham Miniatures';
+
+type ImageObjectOpts = {
+  url: string;
+  caption?: string;
+};
+
+/** Google Image License metadata (Search Console ImageObject fields). */
+export function imageObject({ url, caption }: ImageObjectOpts) {
+  return {
+    '@type': 'ImageObject',
+    url,
+    contentUrl: url,
+    ...(caption ? { caption } : {}),
+    creditText: IMAGE_CREDIT_TEXT,
+    creator: personRef(),
+    copyrightHolder: personRef(),
+    copyrightNotice: IMAGE_COPYRIGHT_NOTICE,
+    license: IMAGE_LICENSE_URL,
+    acquireLicensePage: IMAGE_ACQUIRE_LICENSE_URL,
+  };
+}
+
 const PERSON_KNOWS_ABOUT = [
   'Miniature Furniture',
   '1/12 Scale Miniatures',
@@ -34,7 +60,10 @@ export function personNode() {
     '@id': PERSON_ID,
     name: 'Scott Dillingham',
     url: `${SITE_URL}/about/`,
-    image: `${SITE_URL}/images/about/scott-workshop.webp`,
+    image: imageObject({
+      url: `${SITE_URL}/images/about/scott-workshop.webp`,
+      caption: 'Scott Dillingham in the miniature furniture workshop',
+    }),
     jobTitle: 'Museum-Exhibited Master Miniature Furniture Craftsman',
     knowsAbout: PERSON_KNOWS_ABOUT,
     sameAs: SOCIAL_LINKS.map((s) => s.href),
@@ -49,8 +78,8 @@ export function organizationNode() {
     name: 'Scott Dillingham Miniatures',
     description: SITE_DESCRIPTION,
     url: SITE_URL,
-    logo: `${SITE_URL}/layout/sdmlogo.webp`,
-    image: `${SITE_URL}/og-image.jpg`,
+    logo: imageObject({ url: `${SITE_URL}/layout/sdmlogo.webp` }),
+    image: imageObject({ url: `${SITE_URL}/og-image.jpg` }),
     email: CONTACT_TO_EMAIL,
     founder: personRef(),
     sameAs: SOCIAL_LINKS.map((s) => s.href),
@@ -142,15 +171,10 @@ export function visualArtworkNode(item: GalleryItem) {
     material: item.wood,
     creator: personRef(),
     copyrightHolder: personRef(),
-    image: {
-      '@type': 'ImageObject',
+    image: imageObject({
       url: imageUrl,
-      contentUrl: imageUrl,
       caption: `${item.title} — handcrafted 1/12 scale miniature by Scott Dillingham`,
-      creditText: 'Scott Dillingham Miniatures',
-      creator: personRef(),
-      copyrightHolder: personRef(),
-    },
+    }),
     additionalProperty: [
       {
         '@type': 'PropertyValue',
@@ -374,9 +398,11 @@ export function getBlogHowTo(
   if (!spec) return null;
 
   const image = opts.image
-    ? opts.image.startsWith('http')
-      ? opts.image
-      : `${SITE_URL}${opts.image}`
+    ? imageObject({
+        url: opts.image.startsWith('http')
+          ? opts.image
+          : `${SITE_URL}${opts.image}`,
+      })
     : undefined;
 
   return {

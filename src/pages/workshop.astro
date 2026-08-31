@@ -6,7 +6,7 @@ import WorkshopHero from '@/components/sections/workshop-hero';
 import WorkshopProcess from '@/components/sections/workshop-process';
 import WorkshopTools from '@/components/sections/workshop-tools';
 import { SITE_URL } from '@/consts';
-import { personRef } from '@/lib/schema';
+import { imageObject, personRef } from '@/lib/schema';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 
 const workshopRelatedPosts = [
@@ -76,56 +76,56 @@ const howToSchema = {
       position: 1,
       name: 'Design & Research',
       text: 'Study the original period furniture using historical references, museum archives, and antique photographs. Create scaled drawings that capture every proportion and detail.',
-      image: `${SITE_URL}/images/workshop/process-design.webp`,
+      image: imageObject({ url: `${SITE_URL}/images/workshop/process-design.webp` }),
     },
     {
       '@type': 'HowToStep',
       position: 2,
       name: 'Wood Selection',
       text: 'Choose the right hardwood for grain pattern, workability at miniature scale, and historical accuracy to the period being reproduced.',
-      image: `${SITE_URL}/images/workshop/process-wood.webp`,
+      image: imageObject({ url: `${SITE_URL}/images/workshop/process-wood.webp` }),
     },
     {
       '@type': 'HowToStep',
       position: 3,
       name: 'Milling & Shaping',
       text: 'Cut raw stock to 1/12 scale dimensions with extreme precision. At this scale, tolerances are measured in fractions of a millimeter.',
-      image: `${SITE_URL}/images/workshop/process-milling.webp`,
+      image: imageObject({ url: `${SITE_URL}/images/workshop/process-milling.webp` }),
     },
     {
       '@type': 'HowToStep',
       position: 4,
       name: 'Joinery',
       text: 'Hand-cut dovetails, mortise and tenon joints at miniature scale. These are the same joints used in full-size period furniture.',
-      image: `${SITE_URL}/images/workshop/process-joinery.webp`,
+      image: imageObject({ url: `${SITE_URL}/images/workshop/process-joinery.webp` }),
     },
     {
       '@type': 'HowToStep',
       position: 5,
       name: 'Carving & Detail',
       text: 'Add shell carvings, fluting, and decorative elements by hand using micro chisels and gouges.',
-      image: `${SITE_URL}/images/workshop/process-carving.webp`,
+      image: imageObject({ url: `${SITE_URL}/images/workshop/process-carving.webp` }),
     },
     {
       '@type': 'HowToStep',
       position: 6,
       name: 'Assembly',
       text: 'Carefully fit all components together. Every joint must be tight and true. Miniature clamps hold pieces in place while the glue sets.',
-      image: `${SITE_URL}/images/workshop/process-assembly.webp`,
+      image: imageObject({ url: `${SITE_URL}/images/workshop/process-assembly.webp` }),
     },
     {
       '@type': 'HowToStep',
       position: 7,
       name: 'Finishing',
       text: 'Apply French polish or lacquer for museum-quality protection. Multiple coats are hand-rubbed to build depth and warmth.',
-      image: `${SITE_URL}/images/workshop/process-finishing.webp`,
+      image: imageObject({ url: `${SITE_URL}/images/workshop/process-finishing.webp` }),
     },
     {
       '@type': 'HowToStep',
       position: 8,
       name: 'Photography & Delivery',
       text: 'Document the finished piece with detailed photography, then carefully pack in custom-fitted foam for safe shipping worldwide.',
-      image: `${SITE_URL}/images/workshop/process-delivery.webp`,
+      image: imageObject({ url: `${SITE_URL}/images/workshop/process-delivery.webp` }),
     },
   ],
 };

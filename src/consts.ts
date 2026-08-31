@@ -98,6 +98,7 @@ export const FOOTER_LINKS = [
     links: [
       { name: 'Contact', href: '/contact' },
       { name: 'Terms of Service', href: '/terms-of-service' },
+      { name: 'Image License', href: '/image-license' },
       { name: 'Privacy Policy', href: '/privacy-policy' },
     ],
   },
