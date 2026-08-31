@@ -18,7 +18,7 @@ This directory is the maintained source for verifying visitor-facing behavior of
 - Treat commands as literal.
 - HTTP (`curl`) is enough for prerendered HTML. Use Playwright when the path needs a click, search box, FAQ `<details>`, or the gallery lightbox.
 - Desktop header links are hidden below the `md` breakpoint. Use a viewport ≥ 768px, or open `Open main menu`.
-- Do not submit a complete contact form. Do not `wrangler deploy`.
+- Do not submit a complete contact form. JSON POSTs to `/api/contact` need `Origin: http://127.0.0.1:4318`. Do not `wrangler deploy`.
 
 ## Proof and skip reporting
 
@@ -44,4 +44,4 @@ Each feature file starts with an H1 title and one paragraph describing the user-
 - [Gallery](./gallery.md) covers `/gallery`, piece cards, and the piece lightbox.
 - [Blog](./blog.md) covers the journal index, client search, and a markdown article.
 - [Contact](./contact.md) covers the commission form (render and validation only).
-- [Workshop](./workshop.md) covers the maker's workshop and eight-step process.
+- [Workshop](./workshop.md) covers the maker's workshop, eight-step process, and tools.

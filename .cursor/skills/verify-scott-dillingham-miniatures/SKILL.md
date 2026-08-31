@@ -79,17 +79,17 @@ Stable handles from this checkout:
 | Home highlights | heading `Gallery Highlights`; titles such as `Simon Willard Tall Case Clock Style` link to related **blog** posts, not the gallery card |
 | Home FAQ | first `<details class="faq-item">` is open; question in `[data-speakable="faq-question"]` |
 | Gallery H1 | `The Collection` |
-| Piece card | `div#tall-case-clock` (also `#highboy-dresser`, `#four-poster-bed`, `#maloof-rocking-chair`, `#hepplewhite-shield-back-chair`, `#moser-continuous-arm-chair`, `#shaker-d-ring-table`) |
-| Piece lightbox | title button on the card; dialog heading is the piece title; close control has accessible name `Close` |
-| Blog index H1 | `sr-only` `Miniature Furniture Blog`; visible title `From the Workshop Journal` |
-| Blog search | `input[placeholder="Search articles..."]`; clear button `aria-label="Clear search"` |
+| Piece card | `article#tall-case-clock` (also `#highboy-dresser`, `#four-poster-bed`, `#maloof-rocking-chair`, `#hepplewhite-shield-back-chair`, `#moser-continuous-arm-chair`, `#shaker-d-ring-table`) |
+| Piece lightbox | title button `[data-gallery-open]` on the card; dialog heading is the piece title; close control has accessible name `Close`; `Read More` lives in the dialog, not on the card |
+| Blog index H1 | visible `From the Workshop Journal`; document title `Miniature Furniture Blog` |
+| Blog search | `input[data-blog-search][placeholder="Search articles..."]`; empty copy `No articles found.`; clear by emptying the field or choosing tag `All` |
 | Article | `/blog/<slug>` e.g. `/blog/complete-guide-1-12-scale-miniature-furniture`; `h1[data-speakable="title"]` |
-| Contact | `/contact`; `h1` `Let's Create Something Extraordinary`; labels `Name`, `Email`, `Subject`, `Message`; submit text `Send Message` |
+| Contact | `/contact`; `h1` `Let's Create Something Extraordinary` (raw HTML may be `Let&#x27;s`); labels `Name`, `Email`, `Subject`, `Message`; submit text `Send Message` |
 | Workshop | `/workshop`; `h1` `The Maker's Workshop`; process title `From Raw Hardwood to Finished Masterpiece` |
 
 Recipes: [features/home.md](features/home.md), [features/gallery.md](features/gallery.md), [features/blog.md](features/blog.md), [features/contact.md](features/contact.md), [features/workshop.md](features/workshop.md).
 
-Do not POST a complete `/api/contact` body. A filled form can send live email when `RESEND_API_KEY` is present. Validation-only POST (missing name/email/message) is the safe API check.
+Do not POST a complete `/api/contact` body. A filled form can send live email when `RESEND_API_KEY` is present. Validation-only POST (missing name/email/message) is the safe API check. Every `/api/contact` POST must send `Origin: http://127.0.0.1:4318` (or a matching `Referer`). A request with neither header returns HTTP 403 `{"error":"Forbidden."}` and is not a validation proof. Do not fill the hidden honeypot `#website`.
 
 ## Evidence
 

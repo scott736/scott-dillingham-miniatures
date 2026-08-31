@@ -34,5 +34,5 @@ Preconditions:
 
 - Highlight titles such as `Simon Willard Tall Case Clock Style` on home link to related **blog** slugs (`/blog/miniature-tall-case-clocks`), not `/gallery#tall-case-clock`. Opening a highlight is not gallery proof.
 - `Explore the Gallery` and `View Full Gallery` are the home-to-gallery user paths.
-- Footer `Terms of Service` (`/terms-of-service`) and `Privacy Policy` (`/privacy-policy`) are real MDX pages. `GET` each returns 200 with those titles. They are not the 404 heading `Even at 1:12 Scale,`.
+- Footer `Terms of Service` (`/terms-of-service`), `Privacy Policy` (`/privacy-policy`), and `Image License` (`/image-license`) are real MDX pages. `GET` each returns 200 with those titles. They are not the 404 heading `Even at 1:12 Scale,`. Header `About` (`/about`, `Meet the Maker`) is a separate page, not a home recipe.
 - Astro may keep the URL while HTML swaps. After a click, wait for the destination heading, not only a URL change.
