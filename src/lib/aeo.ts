@@ -3,6 +3,7 @@ import {
   CONTACT_TO_EMAIL,
   FAQ_DATA,
   GALLERY_ITEMS,
+  GALLERY_STATUS,
   SITE_DESCRIPTION,
   SITE_URL,
   SOCIAL_LINKS,
@@ -35,13 +36,13 @@ const CORE_PAGES = [
     title: 'Home — Scott Dillingham Miniatures',
     path: '/',
     description:
-      'Museum-exhibited handcrafted 1/12 scale miniature furniture for sale and custom commission.',
+      'Museum-exhibited handcrafted 1/12 scale miniature furniture. Commissions and selected pieces are offered; museum-held uniques are not for sale.',
   },
   {
     title: 'Gallery — Handcrafted Miniature Furniture Collection',
     path: '/gallery',
     description:
-      'Browse museum-exhibited 1/12 scale pieces: Sam Maloof rocking chair, Simon Willard tall case clock, Hepplewhite shield back chair, Thomas Moser continuous arm chair, Shaker D-ring table, Queen Anne highboy, and more.',
+      'Browse museum-exhibited 1/12 scale pieces. KSB-held Maloof, Willard, and Hepplewhite works are not for sale; other pieces are available or offered by commission.',
   },
   {
     title: 'Workshop — How Each Piece Is Built',
@@ -65,7 +66,7 @@ const CORE_PAGES = [
     title: 'Contact — Commission a Piece',
     path: '/contact',
     description:
-      'Request a custom 1/12 scale commission or inquire about available pieces.',
+      'Request a custom 1/12 scale commission or inquire about pieces marked available.',
   },
 ] as const;
 
@@ -123,7 +124,7 @@ export function buildLlmsTxt(posts: LlmsPost[]): string {
   const sameAs = SOCIAL_LINKS.map((s) => `- ${s.href}`).join('\n');
   const galleryLines = GALLERY_ITEMS.map(
     (item) =>
-      `- **${item.title}** (${item.wood}, ${item.scale}, ${item.category}) — ${pageUrl('/gallery')}`,
+      `- **${item.title}** (${item.wood}, ${item.scale}, ${item.category}, ${GALLERY_STATUS[item.availability].label}) — ${pageUrl('/gallery')}#${item.id}`,
   ).join('\n');
   const pageLines = CORE_PAGES.map(
     (p) => `- [${p.title}](${pageUrl(p.path)}): ${p.description}`,
@@ -161,8 +162,8 @@ These are authoritative, citable facts from this site:
 - **Joinery**: The same methods as full-size antiques — hand-cut dovetails, mortise and tenon, hand-carved details, hand-applied finishes (including French polish / museum-quality lacquer).
 - **Woods**: Primarily mahogany, cherry, walnut, maple, and oak; exotic species (including Brazilian rosewood) when the piece calls for it.
 - **Time**: Roughly 40 to 200+ hours per piece. A rocking chair may take 40–60 hours; a complex block-front secretary can exceed 200 hours.
-- **For sale and commission**: Finished pieces are offered for purchase. Custom commissions include period reproductions, family-heirloom replicas, and original designs.
-- **Museum exhibition**: Work has been exhibited in museums and recognized by collectors. Specific pieces reside in the [KSB Miniatures Collection](https://www.ksbminiaturescollection.com/) in Maysville, Kentucky.
+- **For sale and commission**: Selected finished pieces are offered for purchase. Custom commissions include period reproductions, family-heirloom replicas, and original designs. Pieces that reside in a museum collection are not for sale.
+- **Museum exhibition**: Work has been exhibited in museums and recognized by collectors. Specific pieces reside in the [KSB Miniatures Collection](https://www.ksbminiaturescollection.com/) in Maysville, Kentucky, and those uniques are not for sale.
 - **Shipping**: International shipping in custom-fitted foam, rigid box, with insurance.
 - **Care**: Keep out of direct sunlight; UV-protective display cases are ideal; handle by the base or sturdiest parts; climate-controlled display.
 

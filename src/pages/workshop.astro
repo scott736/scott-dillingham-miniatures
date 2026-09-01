@@ -1,13 +1,26 @@
 ---
 export const prerender = true;
 
+import { getImage } from 'astro:assets';
+
+import bonsai from '@/assets/images/hero/bonsai.webp';
 import RelatedReading from '@/components/sections/related-reading.astro';
 import WorkshopHero from '@/components/sections/workshop-hero.astro';
 import WorkshopProcess from '@/components/sections/workshop-process.astro';
 import WorkshopTools from '@/components/sections/workshop-tools.astro';
 import { SITE_URL } from '@/consts';
-import { imageObject, personRef } from '@/lib/schema';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { imageObject, personRef } from '@/lib/schema';
+
+const heroWidths = [640, 960, 1280] as const;
+const heroAvifs = await Promise.all(
+  heroWidths.map((width) =>
+    getImage({ src: bonsai, width, format: 'avif', quality: 72 }),
+  ),
+);
+const heroLcpSrcset = heroAvifs
+  .map((img, i) => `${img.src} ${heroWidths[i]}w`)
+  .join(', ');
 
 const workshopRelatedPosts = [
   {
@@ -76,56 +89,81 @@ const howToSchema = {
       position: 1,
       name: 'Design & Research',
       text: 'Study the original period furniture using historical references, museum archives, and antique photographs. Create scaled drawings that capture every proportion and detail.',
-      image: imageObject({ url: `${SITE_URL}/images/workshop/process-design.webp` }),
+      image: imageObject({
+        url: `${SITE_URL}/images/gallery/tall-case-clock.webp`,
+        caption:
+          'Finished 1/12 scale tall-case clock illustrating the design-research stage — not a photograph of the drawing board.',
+      }),
     },
     {
       '@type': 'HowToStep',
       position: 2,
       name: 'Wood Selection',
       text: 'Choose the right hardwood for grain pattern, workability at miniature scale, and historical accuracy to the period being reproduced.',
-      image: imageObject({ url: `${SITE_URL}/images/workshop/process-wood.webp` }),
+      image: imageObject({
+        url: `${SITE_URL}/images/gallery/highboy-dresser.webp`,
+        caption: 'Black walnut Queen Anne highboy — example of species chosen for grain and period accuracy.',
+      }),
     },
     {
       '@type': 'HowToStep',
       position: 3,
       name: 'Milling & Shaping',
       text: 'Cut raw stock to 1/12 scale dimensions with extreme precision. At this scale, tolerances are measured in fractions of a millimeter.',
-      image: imageObject({ url: `${SITE_URL}/images/workshop/process-milling.webp` }),
+      image: imageObject({
+        url: `${SITE_URL}/images/gallery/four-poster-bed.webp`,
+        caption: 'Shaker pencil-post bed — example of precise milling and shaping at 1/12 scale.',
+      }),
     },
     {
       '@type': 'HowToStep',
       position: 4,
       name: 'Joinery',
       text: 'Hand-cut dovetails, mortise and tenon joints at miniature scale. These are the same joints used in full-size period furniture.',
-      image: imageObject({ url: `${SITE_URL}/images/workshop/process-joinery.webp` }),
+      image: imageObject({
+        url: `${SITE_URL}/images/landing/workshop/dovetails.webp`,
+        caption: 'Hand-cut miniature dovetails, shown as an example of 1/12 scale joinery.',
+      }),
     },
     {
       '@type': 'HowToStep',
       position: 5,
       name: 'Carving & Detail',
       text: 'Add shell carvings, fluting, and decorative elements by hand using micro chisels and gouges.',
-      image: imageObject({ url: `${SITE_URL}/images/workshop/process-carving.webp` }),
+      image: imageObject({
+        url: `${SITE_URL}/images/gallery/hepplewhite-shield-back-chair.webp`,
+        caption: 'Hand-carved Hepplewhite shield back — example of decorative work at 1/12 scale.',
+      }),
     },
     {
       '@type': 'HowToStep',
       position: 6,
       name: 'Assembly',
       text: 'Carefully fit all components together. Every joint must be tight and true. Miniature clamps hold pieces in place while the glue sets.',
-      image: imageObject({ url: `${SITE_URL}/images/workshop/process-assembly.webp` }),
+      image: imageObject({
+        url: `${SITE_URL}/images/gallery/moser-continuous-arm-chair.webp`,
+        caption: 'Fully assembled continuous-arm chair — every joint fitted by hand.',
+      }),
     },
     {
       '@type': 'HowToStep',
       position: 7,
       name: 'Finishing',
       text: 'Apply French polish or lacquer for museum-quality protection. Multiple coats are hand-rubbed to build depth and warmth.',
-      image: imageObject({ url: `${SITE_URL}/images/workshop/process-finishing.webp` }),
+      image: imageObject({
+        url: `${SITE_URL}/images/gallery/maloof-rocking-chair.webp`,
+        caption: 'Oil-finished Brazilian rosewood rocker — example of a completed museum-quality surface.',
+      }),
     },
     {
       '@type': 'HowToStep',
       position: 8,
       name: 'Photography & Delivery',
       text: 'Document the finished piece with detailed photography, then carefully pack in custom-fitted foam for safe shipping worldwide.',
-      image: imageObject({ url: `${SITE_URL}/images/workshop/process-delivery.webp` }),
+      image: imageObject({
+        url: `${SITE_URL}/images/hero/bonsai.webp`,
+        caption: 'Studio photograph of a finished 1/12 scale dining set.',
+      }),
     },
   ],
 };
@@ -134,12 +172,21 @@ const howToSchema = {
 <DefaultLayout
   title="How the Miniatures Are Made"
   description="Watch a 1/12 scale piece go from raw hardwood to finished furniture in Scott Dillingham's workshop. Hand tools, traditional joinery, no kits."
-  image="/images/workshop/process-joinery.webp"
+  image="/images/hero/bonsai.webp"
   imageWidth={1920}
-  imageHeight={1097}
-  imageAlt="Hand-cut joinery in Scott Dillingham's miniature furniture workshop"
+  imageHeight={1326}
+  imageAlt="1/12 scale miniature Windsor dining set with bonsai, handcrafted by Scott Dillingham"
   breadcrumbName="Workshop"
 >
+  <link
+    slot="head"
+    rel="preload"
+    as="image"
+    type="image/avif"
+    imagesrcset={heroLcpSrcset}
+    imagesizes="(max-width: 768px) 92vw, 900px"
+    fetchpriority="high"
+  />
   <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
   <WorkshopHero />
   <WorkshopProcess />

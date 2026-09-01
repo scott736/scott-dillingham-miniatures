@@ -1,4 +1,7 @@
 ---
+import { Picture } from 'astro:assets';
+
+import bonsai from '@/assets/images/hero/bonsai.webp';
 ---
 
 <section class="hero-padding container flex flex-col items-center justify-center gap-8 text-center">
@@ -10,12 +13,19 @@
       Where raw hardwood becomes miniature art
     </p>
     <div class="relative mt-4">
-      <img
-        src="/images/hero/hero-workshop.webp"
-        alt="Scott Dillingham's miniature furniture workshop where museum-quality 1/12 scale handcrafted pieces are built"
-        width={900}
-        height={500}
+      <Picture
+        src={bonsai}
+        formats={['avif']}
+        fallbackFormat="webp"
+        widths={[640, 960, 1280]}
+        sizes="(max-width: 768px) 92vw, 900px"
+        alt="1/12 scale miniature Windsor dining set in front of a bonsai, handcrafted by Scott Dillingham"
+        width={1280}
+        height={884}
+        quality={72}
+        loading="eager"
         fetchpriority="high"
+        decoding="async"
         class="rounded-3xl object-cover drop-shadow-2xl"
       />
     </div>

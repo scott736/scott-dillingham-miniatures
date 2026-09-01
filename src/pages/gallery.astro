@@ -3,9 +3,13 @@ export const prerender = true;
 
 import GalleryLightboxIsland from '@/components/sections/gallery-showcase';
 import RelatedReading from '@/components/sections/related-reading.astro';
-import { GALLERY_ITEMS } from '@/consts';
-import { galleryCollectionNode } from '@/lib/schema';
+import {
+  galleryContactHref,
+  GALLERY_ITEMS,
+  GALLERY_STATUS,
+} from '@/consts';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { galleryCollectionNode } from '@/lib/schema';
 
 const galleryRelatedPosts = [
   {
@@ -60,7 +64,7 @@ function truncateText(text: string, maxLen: number): string {
 
 <DefaultLayout
   title="Miniature Furniture Gallery"
-  description="Museum-exhibited 1/12 scale pieces: Maloof rocker, Willard tall-case clock, Hepplewhite chair, Moser chair, Shaker table, and Queen Anne highboy."
+  description="Museum-exhibited 1/12 scale work: KSB-held Maloof, Willard, and Hepplewhite pieces are not for sale; other works are available or by commission."
   image="/images/gallery/highboy-dresser.webp"
   imageWidth={487}
   imageHeight={722}
@@ -77,10 +81,10 @@ function truncateText(text: string, maxLen: number): string {
         The Collection
       </h1>
       <p class="text-xl leading-8 text-balance">
-        Museum-exhibited miniature furniture available for purchase and custom
-        commission. Each piece represents hundreds of hours of meticulous
-        handcraft. Every joint is cut by hand, every detail historically
-        accurate, every surface finished to museum standards.
+        Museum-exhibited 1/12 scale furniture, each piece representing hundreds
+        of hours of handcraft. Works in the KSB Miniatures Collection are not
+        for sale. Other pieces are marked available or commission only —
+        inquire to collect or commission similar work.
       </p>
     </div>
 
@@ -89,6 +93,8 @@ function truncateText(text: string, maxLen: number): string {
         GALLERY_ITEMS.map((item) => {
           const plain = stripHtml(item.description);
           const preview = truncateText(plain, 225);
+          const status = GALLERY_STATUS[item.availability];
+          const inquireHref = galleryContactHref(item.availability);
           return (
             <article id={item.id} class="overflow-hidden">
               <div class="group overflow-hidden border-none shadow-none">
@@ -105,6 +111,9 @@ function truncateText(text: string, maxLen: number): string {
                   <div class="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
                 </div>
                 <div class="space-y-3 px-2 pt-4">
+                  <p class="text-muted-foreground text-xs font-medium uppercase tracking-wider">
+                    {status.label}
+                  </p>
                   <h2 class="text-xl font-bold">
                     <button
                       type="button"
@@ -115,32 +124,38 @@ function truncateText(text: string, maxLen: number): string {
                     </button>
                   </h2>
                   <p class="text-muted-foreground leading-7">{preview}</p>
-                  {item.relatedPost && (
-                    <div class="flex items-center">
+                  <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+                    <a
+                      href={inquireHref}
+                      class="text-primary inline-flex items-center gap-1 text-sm font-medium hover:underline"
+                    >
+                      {status.cta}
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="size-3.5"
+                        aria-hidden="true"
+                      >
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" />
+                      </svg>
+                    </a>
+                    {item.relatedPost && (
                       <a
                         href={item.relatedPost}
-                        class="text-primary inline-flex items-center gap-1 text-sm font-medium hover:underline"
+                        class="text-muted-foreground inline-flex items-center gap-1 text-sm font-medium hover:underline"
                       >
                         Read Similar Story
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="14"
-                          height="14"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          class="size-3.5"
-                          aria-hidden="true"
-                        >
-                          <path d="M5 12h14" />
-                          <path d="m12 5 7 7-7 7" />
-                        </svg>
                       </a>
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
               </div>
             </article>

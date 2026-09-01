@@ -1,5 +1,5 @@
 ---
-import { FOOTER_LINKS, SOCIAL_LINKS } from '@/consts';
+import { CONTACT_TO_EMAIL, FOOTER_LINKS, SOCIAL_LINKS } from '@/consts';
 ---
 
 <footer class="bg-footer-background text-background py-11 md:py-15">
@@ -18,9 +18,17 @@ import { FOOTER_LINKS, SOCIAL_LINKS } from '@/consts';
           </a>
         </div>
 
-        <p class="pt-4 text-xl md:ps-4 md:pt-0">
-          Heirloom-Quality Miniatures, Handcrafted with Passion
-        </p>
+        <div class="space-y-2 pt-4 md:ps-4 md:pt-0">
+          <p class="text-xl">Heirloom-Quality Miniatures, Handcrafted with Passion</p>
+          <p>
+            <a
+              class="text-xl underline underline-offset-2 hover:opacity-80"
+              href={`mailto:${CONTACT_TO_EMAIL}`}
+            >
+              {CONTACT_TO_EMAIL}
+            </a>
+          </p>
+        </div>
       </div>
 
       <div class="grid flex-1 justify-center gap-6 md:flex md:grid-cols-3 md:gap-20 lg:gap-24">

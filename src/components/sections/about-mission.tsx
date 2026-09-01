@@ -5,10 +5,10 @@ const AboutMission = () => {
     <section className="section-padding container flex flex-col items-center gap-8 lg:flex-row lg:gap-16">
       <div className="relative h-[340px] w-full sm:h-[600px] sm:min-w-[440px] lg:w-[569px] lg:shrink-0">
         <img
-          src="/images/about/hand-tools.webp"
-          alt="Traditional hand tools used for miniature furniture making"
-          width={569}
-          height={600}
+          src="/images/gallery/highboy-dresser.webp"
+          alt="1/12 scale Queen Anne highboy in black walnut with carved fan and cabriole legs by Scott Dillingham"
+          width={487}
+          height={722}
           loading="lazy"
           className="size-full rounded-3xl object-cover object-top"
         />

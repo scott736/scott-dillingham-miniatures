@@ -3,10 +3,10 @@ import { Picture } from 'astro:assets';
 
 import fourPoster from '@/assets/images/gallery/four-poster-bed.webp';
 import highboy from '@/assets/images/gallery/highboy-dresser.webp';
-import tallCaseClock from '@/assets/images/gallery/tall-case-clock.webp';
 import rockingChair from '@/assets/images/gallery/maloof-rocking-chair.webp';
+import tallCaseClock from '@/assets/images/gallery/tall-case-clock.webp';
 import CtaLink from '@/components/elements/cta-link.astro';
-import { GALLERY_ITEMS } from '@/consts';
+import { GALLERY_ITEMS, GALLERY_STATUS } from '@/consts';
 
 const previewImages = {
   'tall-case-clock': tallCaseClock,
@@ -30,8 +30,9 @@ const previewItems = GALLERY_ITEMS.slice(0, 4);
         </h2>
       </div>
       <p class="text-muted-foreground max-w-md text-lg">
-        Museum-exhibited handcrafted 1/12 scale pieces available for purchase
-        — each one built entirely by hand from fine hardwoods.
+        Museum-exhibited 1/12 scale work, built entirely by hand from fine
+        hardwoods. Museum-held pieces are not for sale; others are available
+        or offered by commission.
       </p>
     </div>
 
@@ -45,7 +46,7 @@ const previewItems = GALLERY_ITEMS.slice(0, 4);
               fallbackFormat="webp"
               widths={[400, 640, 800]}
               sizes="(max-width: 640px) 92vw, (max-width: 1024px) 45vw, 280px"
-              alt={`${item.title} - Handcrafted 1/12 scale miniature in ${item.wood} for sale`}
+              alt={`${item.title} — handcrafted 1/12 scale miniature in ${item.wood} by Scott Dillingham`}
               width={800}
               height={640}
               quality={70}
@@ -56,15 +57,14 @@ const previewItems = GALLERY_ITEMS.slice(0, 4);
           </div>
           <div class="space-y-1.5">
             <h3 class="text-lg font-semibold">
-              {item.relatedPost ? (
-                <a href={item.relatedPost} class="hover:text-primary transition-colors">
-                  {item.title}
-                </a>
-              ) : (
-                item.title
-              )}
+              <a href={`/gallery/#${item.id}`} class="hover:text-primary transition-colors">
+                {item.title}
+              </a>
             </h3>
             <p class="text-muted-foreground text-sm">{item.wood}</p>
+            <p class="text-muted-foreground text-xs font-medium uppercase tracking-wider">
+              {GALLERY_STATUS[item.availability].label}
+            </p>
           </div>
         </div>
       ))}

@@ -1,7 +1,7 @@
 export const BRAND_NAME = 'Scott Dillingham Miniatures';
 export const SITE_TITLE = 'Scott Dillingham Miniatures | Handcrafted 1/12 Scale Furniture';
 export const SITE_DESCRIPTION =
-  'Museum-exhibited 1/12 scale miniature furniture, built by hand from hardwoods with traditional joinery. Available for purchase and custom commission.';
+  'Museum-exhibited 1/12 scale miniature furniture, built by hand from hardwoods with traditional joinery. Commissions welcome.';
 
 export function formatPageTitle(title?: string): string {
   if (!title || title === SITE_TITLE || title === BRAND_NAME) return SITE_TITLE;
@@ -49,9 +49,9 @@ export const SITE_METADATA = {
     images: [
       {
         url: '/og-image.jpg',
-        width: 1800,
-        height: 945,
-        alt: 'Scott Dillingham Miniatures - Handcrafted 1/12 Scale Miniature Furniture',
+        width: 1600,
+        height: 840,
+        alt: '1/12 scale miniature Windsor dining set with bonsai, handcrafted by Scott Dillingham',
       },
     ],
   },
@@ -116,17 +116,41 @@ export const SOCIAL_LINKS = [
   },
 ];
 
+export type GalleryAvailability = 'available' | 'commission' | 'museum';
+
+export const GALLERY_STATUS: Record<
+  GalleryAvailability,
+  { label: string; cta: string; subject: string }
+> = {
+  available: { label: 'Available', cta: 'Inquire', subject: 'collection' },
+  commission: {
+    label: 'Commission only',
+    cta: 'Commission',
+    subject: 'commission',
+  },
+  museum: {
+    label: 'Museum collection',
+    cta: 'Inquire',
+    subject: 'collection',
+  },
+};
+
+export function galleryContactHref(availability: GalleryAvailability): string {
+  return `/contact/?subject=${GALLERY_STATUS[availability].subject}`;
+}
+
 // Gallery items
 export const GALLERY_ITEMS = [
   {
     id: 'tall-case-clock',
     title: 'Simon Willard Tall Case Clock Style',
-    description: 'This exquisite 1/12 scale miniature Simon Willard Tall Case Clock (also known as a grandfather clock) faithfully captures the timeless elegance of the original late 18th-century Federal/Roxbury style pieces crafted by the renowned American clockmaker Simon Willard. Handmade from rich Honduras mahogany, it features a warm, deep reddish-brown finish that beautifully highlights the wood\'s natural grain and luster. The tall, slender case rises gracefully from a simple squared base with subtle bracket feet, flowing into a long, narrow trunk accented by delicate cross-band inlay. The hood is crowned with a gently arched pediment, an ornate pierced fretwork crest, and three gleaming brass finials for that classic period flourish. At the heart of the design is the arched dial with crisp black Roman numerals, elegant spade hands, and a finely rendered lunar calendar dial tracking the moon\'s cycle—every detail meticulously reproduced for historical accuracy. This is a true collector\'s gem that blends masterful miniature craftsmanship with authentic period charm. This particular piece resides in the <a href="https://www.ksbminiaturescollection.com/" target="_blank" rel="noopener noreferrer">KSB Miniatures Collection</a> (a premier museum of fine miniatures in Maysville, Kentucky), where it\'s proudly displayed among other exceptional works. It\'s a standout for serious collectors who value pieces with proven exhibition quality. Handmade one at a time in my workshop, it\'s ready to elevate any discerning miniature collection.',
+    description: 'This exquisite 1/12 scale miniature Simon Willard Tall Case Clock (also known as a grandfather clock) faithfully captures the timeless elegance of the original late 18th-century Federal/Roxbury style pieces crafted by the renowned American clockmaker Simon Willard. Handmade from rich Honduras mahogany, it features a warm, deep reddish-brown finish that beautifully highlights the wood\'s natural grain and luster. The tall, slender case rises gracefully from a simple squared base with subtle bracket feet, flowing into a long, narrow trunk accented by delicate cross-band inlay. The hood is crowned with a gently arched pediment, an ornate pierced fretwork crest, and three gleaming brass finials for that classic period flourish. At the heart of the design is the arched dial with crisp black Roman numerals, elegant spade hands, and a finely rendered lunar calendar dial tracking the moon\'s cycle—every detail meticulously reproduced for historical accuracy. This is a true collector\'s gem that blends masterful miniature craftsmanship with authentic period charm. This particular piece resides in the <a href="https://www.ksbminiaturescollection.com/" target="_blank" rel="noopener noreferrer">KSB Miniatures Collection</a> (a premier museum of fine miniatures in Maysville, Kentucky), where it is proudly displayed among other exceptional works. It is not for sale. Similar tall-case clocks are offered by commission.',
     images: ['/images/gallery/tall-case-clock.webp'],
     category: 'Clocks',
     wood: 'Honduras Mahogany',
     scale: '1:12',
     relatedPost: '/blog/miniature-tall-case-clocks',
+    availability: 'museum' as const,
   },
   {
     id: 'highboy-dresser',
@@ -137,6 +161,7 @@ export const GALLERY_ITEMS = [
     wood: 'Black Walnut',
     scale: '1:12',
     relatedPost: '/blog/miniature-highboy-makers-guide',
+    availability: 'available' as const,
   },
   {
     id: 'four-poster-bed',
@@ -147,26 +172,29 @@ export const GALLERY_ITEMS = [
     wood: 'Cherry',
     scale: '1:12',
     relatedPost: '/blog/building-miniature-four-poster-bed',
+    availability: 'available' as const,
   },
   {
     id: 'maloof-rocking-chair',
     title: 'Sam Maloof Style Rocking Chair',
-    description: 'This exquisite 1/12 scale miniature rocking chair is my handcrafted tribute to the timeless style pioneered by Sam Maloof—a design renowned for its elegant, organic curves, sculptural form, and masterful blend of comfort and artistry. Inspired by the flowing, hand-shaped lines of iconic mid-century rockers from the Studio Craft movement, this piece captures that signature sense of movement and warmth: sensuous contours that invite relaxation, subtle sculpting that feels alive to the touch, and an honest simplicity that honors traditional woodworking without unnecessary ornament. I built this one-of-a-kind miniature using Brazilian Rosewood, finished with a rich oil that deepens the wood\'s warm tones and reveals its natural grain. It was constructed exactly as the full-size originals would be—using traditional joinery techniques for lasting strength and authenticity, scaled down precisely to maintain the same proportional balance and rocking dynamics in miniature form. Give it a gentle push, and it rocks smoothly for a full 27 seconds—proof of the careful engineering and proportion poured into every detail. As a unique, personal interpretation rather than a direct copy, this chair stands as a singular homage to enduring craftsmanship. A true collector\'s gem in miniature form, handmade one at a time in my workshop. This particular piece resides in the <a href="https://www.ksbminiaturescollection.com/" target="_blank" rel="noopener noreferrer">KSB Miniatures Collection</a> (a premier museum of fine miniatures in Maysville, Kentucky), where it\'s proudly displayed among other exceptional works—further testament to its quality and appeal to serious collectors.',
+    description: 'This exquisite 1/12 scale miniature rocking chair is my handcrafted tribute to the timeless style pioneered by Sam Maloof—a design renowned for its elegant, organic curves, sculptural form, and masterful blend of comfort and artistry. Inspired by the flowing, hand-shaped lines of iconic mid-century rockers from the Studio Craft movement, this piece captures that signature sense of movement and warmth: sensuous contours that invite relaxation, subtle sculpting that feels alive to the touch, and an honest simplicity that honors traditional woodworking without unnecessary ornament. I built this one-of-a-kind miniature using Brazilian Rosewood, finished with a rich oil that deepens the wood\'s warm tones and reveals its natural grain. It was constructed exactly as the full-size originals would be—using traditional joinery techniques for lasting strength and authenticity, scaled down precisely to maintain the same proportional balance and rocking dynamics in miniature form. Give it a gentle push, and it rocks smoothly for a full 27 seconds—proof of the careful engineering and proportion poured into every detail. As a unique, personal interpretation rather than a direct copy, this chair stands as a singular homage to enduring craftsmanship. A true collector\'s gem in miniature form, handmade one at a time in my workshop. This particular piece resides in the <a href="https://www.ksbminiaturescollection.com/" target="_blank" rel="noopener noreferrer">KSB Miniatures Collection</a> (a premier museum of fine miniatures in Maysville, Kentucky), where it is proudly displayed among other exceptional works. It is not for sale. Similar rocking chairs are offered by commission.',
     images: ['/images/gallery/maloof-rocking-chair.webp'],
     category: 'Chairs',
     wood: 'Brazilian Rosewood',
     scale: '1:12',
     relatedPost: '/blog/arts-and-crafts-miniature-furniture',
+    availability: 'museum' as const,
   },
   {
     id: 'hepplewhite-shield-back-chair',
     title: 'Hepplewhite Shield Back Style Chair',
-    description: 'This exquisite 1/12 scale miniature Hepplewhite shield back chair (often called a "Hap White" style in miniature circles) is a handcrafted tribute to the graceful late 18th-century Hepplewhite dining chairs that defined Federal-era elegance. Made entirely from rich mahogany, it features a warm, deep finish that accentuates the wood\'s natural luster and fine grain. The highlight is the hand-carved shield back—a classic pierced splat with flowing, interlaced ribs and delicate central motifs, meticulously sculpted by hand for intricate detail, lightness, and that signature airy sophistication. Every joint uses traditional mortise and tenon construction for superior strength and authentic period authenticity in this tiny scale. The seat is upholstered in a soft, textured fabric (a subtle grayish-blue/green tone), providing beautiful contrast and comfort against the polished mahogany frame. The legs are elegant square-tapered forms, perfectly proportioned to capture Hepplewhite\'s refined simplicity and balance. This chair is a testament to masterful miniature woodworking: precise hand carving, flawless joinery, and historical accuracy that makes it feel like a genuine antique reduced to dollhouse perfection. This particular piece resides in the <a href="https://www.ksbminiaturescollection.com/" target="_blank" rel="noopener noreferrer">KSB Miniatures Collection</a> (a premier museum of fine miniatures in Maysville, Kentucky), where it\'s proudly displayed among other exceptional works. It\'s a standout for serious collectors who value pieces with proven exhibition quality. Handmade one at a time in my workshop, it\'s ready to elevate any discerning miniature collection.',
+    description: 'This exquisite 1/12 scale miniature Hepplewhite shield back chair (often called a "Hap White" style in miniature circles) is a handcrafted tribute to the graceful late 18th-century Hepplewhite dining chairs that defined Federal-era elegance. Made entirely from rich mahogany, it features a warm, deep finish that accentuates the wood\'s natural luster and fine grain. The highlight is the hand-carved shield back—a classic pierced splat with flowing, interlaced ribs and delicate central motifs, meticulously sculpted by hand for intricate detail, lightness, and that signature airy sophistication. Every joint uses traditional mortise and tenon construction for superior strength and authentic period authenticity in this tiny scale. The seat is upholstered in a soft, textured fabric (a subtle grayish-blue/green tone), providing beautiful contrast and comfort against the polished mahogany frame. The legs are elegant square-tapered forms, perfectly proportioned to capture Hepplewhite\'s refined simplicity and balance. This chair is a testament to masterful miniature woodworking: precise hand carving, flawless joinery, and historical accuracy that makes it feel like a genuine antique reduced to dollhouse perfection. This particular piece resides in the <a href="https://www.ksbminiaturescollection.com/" target="_blank" rel="noopener noreferrer">KSB Miniatures Collection</a> (a premier museum of fine miniatures in Maysville, Kentucky), where it is proudly displayed among other exceptional works. It is not for sale. Similar shield-back chairs are offered by commission.',
     images: ['/images/gallery/hepplewhite-shield-back-chair.webp'],
     category: 'Chairs',
     wood: 'Mahogany',
     scale: '1:12',
     relatedPost: '/blog/federal-period-miniature-furniture',
+    availability: 'museum' as const,
   },
   {
     id: 'moser-continuous-arm-chair',
@@ -177,6 +205,7 @@ export const GALLERY_ITEMS = [
     wood: 'Ash & Cherry',
     scale: '1:12',
     relatedPost: '/blog/shaker-style-miniature-furniture',
+    availability: 'commission' as const,
   },
   {
     id: 'shaker-d-ring-table',
@@ -187,6 +216,7 @@ export const GALLERY_ITEMS = [
     wood: 'Cherry',
     scale: '1:12',
     relatedPost: '/blog/shaker-style-miniature-furniture',
+    availability: 'available' as const,
   },
 ];
 

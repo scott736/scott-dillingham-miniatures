@@ -5,7 +5,11 @@ import { useCallback, useEffect, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { ArrowRight, ChevronLeft, ChevronRight, X } from 'lucide-react';
 
-import { GALLERY_ITEMS } from '@/consts';
+import {
+  galleryContactHref,
+  GALLERY_ITEMS,
+  GALLERY_STATUS,
+} from '@/consts';
 
 type GalleryItem = (typeof GALLERY_ITEMS)[number];
 
@@ -147,6 +151,9 @@ function GalleryLightbox({
             <span className="sr-only">Close</span>
           </Dialog.Close>
 
+          <p className="text-muted-foreground mb-2 text-xs font-medium tracking-wider uppercase">
+            {GALLERY_STATUS[item.availability].label}
+          </p>
           <Dialog.Title className="mb-4 text-2xl font-bold">
             {item.title}
           </Dialog.Title>
@@ -155,14 +162,23 @@ function GalleryLightbox({
 
           <div className="mt-4 space-y-3">
             <ExpandableDescription text={item.description} maxLen={225} />
-            {item.relatedPost && (
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
               <a
-                href={item.relatedPost}
+                href={galleryContactHref(item.availability)}
                 className="text-primary inline-flex items-center gap-1 text-sm font-medium hover:underline"
               >
-                Read Similar Story <ArrowRight className="size-3.5" />
+                {GALLERY_STATUS[item.availability].cta}{' '}
+                <ArrowRight className="size-3.5" />
               </a>
-            )}
+              {item.relatedPost && (
+                <a
+                  href={item.relatedPost}
+                  className="text-muted-foreground inline-flex items-center gap-1 text-sm font-medium hover:underline"
+                >
+                  Read Similar Story <ArrowRight className="size-3.5" />
+                </a>
+              )}
+            </div>
           </div>
         </Dialog.Content>
       </Dialog.Portal>

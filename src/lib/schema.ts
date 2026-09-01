@@ -1,6 +1,7 @@
 import {
   CONTACT_TO_EMAIL,
   GALLERY_ITEMS,
+  GALLERY_STATUS,
   SITE_DESCRIPTION,
   SITE_URL,
   SOCIAL_LINKS,
@@ -54,16 +55,16 @@ export function organizationRef() {
   return { '@id': ORGANIZATION_ID };
 }
 
+function stripHtml(html: string): string {
+  return html.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+}
+
 export function personNode() {
   return {
     '@type': 'Person',
     '@id': PERSON_ID,
     name: 'Scott Dillingham',
     url: `${SITE_URL}/about/`,
-    image: imageObject({
-      url: `${SITE_URL}/images/about/scott-workshop.webp`,
-      caption: 'Scott Dillingham in the miniature furniture workshop',
-    }),
     jobTitle: 'Museum-Exhibited Master Miniature Furniture Craftsman',
     knowsAbout: PERSON_KNOWS_ABOUT,
     sameAs: SOCIAL_LINKS.map((s) => s.href),
@@ -95,19 +96,8 @@ export function organizationNode() {
     ],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Handcrafted Miniature Furniture Collection',
+      name: 'Miniature furniture commissions and available work',
       itemListElement: [
-        {
-          '@type': 'Offer',
-          url: `${SITE_URL}/gallery/`,
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Handcrafted 1/12 Scale Miniature Furniture',
-            description:
-              'Museum-exhibited miniature furniture built entirely by hand using fine hardwoods and traditional woodworking techniques. Available for purchase and commission.',
-            provider: organizationRef(),
-          },
-        },
         {
           '@type': 'Offer',
           url: `${SITE_URL}/contact/`,
@@ -115,10 +105,23 @@ export function organizationNode() {
             '@type': 'Service',
             name: 'Custom Miniature Furniture Commissions',
             description:
-              'Commission a custom handcrafted 1/12 scale miniature furniture piece. Period reproductions, family heirloom replicas, or custom designs.',
+              'Commission a custom handcrafted 1/12 scale miniature furniture piece. Period reproductions, family heirloom replicas, or custom designs. Museum-held uniques are not for sale.',
             provider: organizationRef(),
           },
         },
+        ...GALLERY_ITEMS.filter((item) => item.availability === 'available').map(
+          (item) => ({
+            '@type': 'Offer',
+            url: `${SITE_URL}/gallery/#${item.id}`,
+            availability: 'https://schema.org/LimitedAvailability',
+            itemOffered: {
+              '@type': 'Product',
+              name: item.title,
+              description: stripHtml(item.description),
+              image: `${SITE_URL}${item.images[0]}`,
+            },
+          }),
+        ),
       ],
     },
   };
@@ -151,14 +154,10 @@ export function ksbMuseumNode() {
   };
 }
 
-function stripHtml(html: string): string {
-  return html.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
-}
-
 type GalleryItem = (typeof GALLERY_ITEMS)[number];
 
 export function visualArtworkNode(item: GalleryItem) {
-  const inKsb = item.description.includes('ksbminiaturescollection.com');
+  const inKsb = item.availability === 'museum';
   const imageUrl = `${SITE_URL}${item.images[0]}`;
   const artwork: Record<string, unknown> = {
     '@type': 'VisualArtwork',
@@ -188,6 +187,11 @@ export function visualArtworkNode(item: GalleryItem) {
       },
       {
         '@type': 'PropertyValue',
+        name: 'Availability',
+        value: GALLERY_STATUS[item.availability].label,
+      },
+      {
+        '@type': 'PropertyValue',
         name: 'Construction Method',
         value: 'Entirely handcrafted using traditional joinery',
       },
@@ -198,13 +202,19 @@ export function visualArtworkNode(item: GalleryItem) {
     artwork.contentLocation = { '@id': KSB_MUSEUM_ID };
   }
 
+  if (item.availability === 'available') {
+    artwork.offers = {
+      '@type': 'Offer',
+      url: `${SITE_URL}/gallery/#${item.id}`,
+      availability: 'https://schema.org/LimitedAvailability',
+    };
+  }
+
   return artwork;
 }
 
 export function galleryCollectionNode() {
-  const hasKsb = GALLERY_ITEMS.some((item) =>
-    item.description.includes('ksbminiaturescollection.com'),
-  );
+  const hasKsb = GALLERY_ITEMS.some((item) => item.availability === 'museum');
 
   return {
     '@context': 'https://schema.org',
@@ -214,7 +224,7 @@ export function galleryCollectionNode() {
         '@type': 'CollectionPage',
         name: 'Handcrafted 1/12 Scale Miniature Furniture Collection — Sam Maloof, Hepplewhite, Shaker & More',
         description:
-          'Browse museum-exhibited handcrafted 1/12 scale miniature furniture by Scott Dillingham: Sam Maloof style rocking chair, Simon Willard tall case clock, Hepplewhite shield back chair, Thomas Moser continuous arm chair, Shaker D-ring table & more. Built entirely by hand from fine hardwoods using traditional joinery.',
+          'Browse museum-exhibited 1/12 scale miniature furniture by Scott Dillingham. Pieces in the KSB Miniatures Collection are not for sale; other works are available or offered by commission. Built entirely by hand from fine hardwoods using traditional joinery.',
         url: `${SITE_URL}/gallery/`,
         mainEntity: {
           '@type': 'ItemList',

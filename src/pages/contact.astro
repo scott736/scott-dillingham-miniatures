@@ -1,10 +1,10 @@
 ---
 export const prerender = true;
 
-import ContactPage from '@/components/sections/contact';
-import { organizationRef } from '@/lib/schema';
+import ContactPage from '@/components/sections/contact.astro';
 import { SITE_URL } from '@/consts';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { organizationRef } from '@/lib/schema';
 
 const contactSchema = {
   '@context': 'https://schema.org',
@@ -19,13 +19,13 @@ const contactSchema = {
 
 <DefaultLayout
   title="Commission a Piece"
-  description="Commission custom 1/12 scale miniature furniture from Scott Dillingham, or inquire about finished pieces available for purchase."
+  description="Commission custom 1/12 scale miniature furniture from Scott Dillingham, or inquire about finished pieces that are available."
   image="/og-image.jpg"
-  imageWidth={1800}
-  imageHeight={945}
-  imageAlt="Scott Dillingham Miniatures - Handcrafted 1/12 Scale Miniature Furniture"
+  imageWidth={1600}
+  imageHeight={840}
+  imageAlt="1/12 scale miniature Windsor dining set with bonsai, handcrafted by Scott Dillingham"
   breadcrumbName="Contact"
 >
   <script type="application/ld+json" set:html={JSON.stringify(contactSchema)} />
-  <ContactPage client:visible />
+  <ContactPage />
 </DefaultLayout>

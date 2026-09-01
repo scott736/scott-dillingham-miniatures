@@ -104,6 +104,9 @@ function checkRedirects() {
   if (!text.includes('windsor-chair.webp') || !text.includes('maloof-rocking-chair.webp')) {
     fail('_redirects must keep old gallery image URLs');
   }
+  if (!text.includes('hero-workshop.webp') || !text.includes('bonsai.webp')) {
+    fail('_redirects must alias retired workshop hero to bonsai.webp');
+  }
 }
 
 function checkDistExtras() {
@@ -115,6 +118,10 @@ function checkDistExtras() {
   );
   notes.push(`home html ${home.length} inline-css ${styleChars}`);
   if (home.includes('ClientRouter')) fail('homepage still ships ClientRouter');
+  if (!home.includes('og:image:width') || !home.includes('1600')) {
+    fail('homepage og:image should be 1600px wide (bonsai dining set, not Sonic template)');
+  }
+  if (home.includes('Immersive Sound')) fail('homepage still references Sonic template copy');
   const nf = join(dir, '404.html');
   if (existsSync(nf)) {
     const html = readFileSync(nf, 'utf8');
@@ -148,6 +155,29 @@ function checkDistExtras() {
         fail(`gallery html missing /images/gallery/${id}.webp`);
       }
     }
+    for (const label of ['Available', 'Commission only', 'Museum collection', 'Inquire', 'Commission']) {
+      if (!html.includes(label)) fail(`gallery html missing status/cta "${label}"`);
+    }
+  }
+  const workshop = join(dir, 'workshop/index.html');
+  if (existsSync(workshop)) {
+    const html = readFileSync(workshop, 'utf8');
+    if (html.includes('hero-workshop.webp')) fail('workshop still uses Christies hero-workshop.webp');
+    if (html.includes('Christie')) fail('workshop html still mentions Christie');
+  }
+  const about = join(dir, 'about/index.html');
+  if (existsSync(about)) {
+    const html = readFileSync(about, 'utf8');
+    if (html.includes('scott-workshop.webp')) fail('about still uses mislabeled scott-workshop.webp');
+    if (html.includes('hand-tools.webp')) fail('about still uses mislabeled hand-tools.webp');
+  }
+  const contact = join(dir, 'contact/index.html');
+  if (existsSync(contact)) {
+    const html = readFileSync(contact, 'utf8');
+    if (!html.includes('mailto:sedminiatures@gmail.com')) {
+      fail('contact page missing visible mailto:sedminiatures@gmail.com');
+    }
+    if (html.includes('astro-island')) fail('contact page still hydrates a React island');
   }
 }
 
