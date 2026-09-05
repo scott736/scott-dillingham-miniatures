@@ -78,6 +78,36 @@ function checkHtml(label, html, { maxTitle = 65, maxDesc = 160, noindex = false,
   }
 }
 
+function jsonLdTypes(html) {
+  const types = [];
+  function walk(value) {
+    if (Array.isArray(value)) {
+      value.forEach(walk);
+      return;
+    }
+    if (!value || typeof value !== 'object') return;
+    const t = value['@type'];
+    if (t) types.push(...(Array.isArray(t) ? t : [t]));
+    Object.values(value).forEach(walk);
+  }
+  for (const match of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+    try {
+      walk(JSON.parse(match[1]));
+    } catch {
+      fail('invalid JSON-LD block');
+    }
+  }
+  return types;
+}
+
+function checkNoProductSchema(label, html) {
+  const types = jsonLdTypes(html);
+  if (types.includes('Product')) {
+    fail(`${label}: JSON-LD must not emit Product (GSC Product snippets require offers/review/rating)`);
+  }
+  return types;
+}
+
 function checkGalleryConst() {
   const src = readFileSync(join(root, 'src/consts.ts'), 'utf8');
   const blocks = [...src.matchAll(/id:\s*'([^']+)'[\s\S]*?images:\s*\['([^']+)'\]/g)];
@@ -112,6 +142,8 @@ function checkRedirects() {
 function checkDistExtras() {
   const dir = join(root, distDir);
   const home = readFileSync(join(dir, 'index.html'), 'utf8');
+  const homeTypes = checkNoProductSchema('home', home);
+  if (!homeTypes.includes('Service')) fail('home JSON-LD missing Service offer catalog');
   const styleChars = [...home.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)].reduce(
     (n, m) => n + m[1].length,
     0,
@@ -134,6 +166,11 @@ function checkDistExtras() {
     notes.push(`blog index ${size}`);
     if (html.includes('Start a Commission')) fail('blog index still shows the commission CTA');
     if (size > 150000) fail(`blog index ${size} bytes, expected under 150000`);
+    checkNoProductSchema('blog index', html);
+    const blogPost = join(dir, 'blog/complete-guide-1-12-scale-miniature-furniture/index.html');
+    if (existsSync(blogPost)) {
+      checkNoProductSchema('blog post', readFileSync(blogPost, 'utf8'));
+    }
     const props = html.match(/props="([^"]*)"/);
     if (props && props[1].length > 80000) {
       fail(`blog island props ${props[1].length} chars, listing is shipping full posts`);
@@ -142,6 +179,10 @@ function checkDistExtras() {
   const gallery = join(dir, 'gallery/index.html');
   if (existsSync(gallery)) {
     const html = readFileSync(gallery, 'utf8');
+    const galleryTypes = checkNoProductSchema('gallery', html);
+    if (!galleryTypes.includes('VisualArtwork')) {
+      fail('gallery JSON-LD missing VisualArtwork');
+    }
     for (const id of [
       'tall-case-clock',
       'highboy-dresser',
