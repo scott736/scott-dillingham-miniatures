@@ -94,6 +94,7 @@ export function organizationNode() {
       'Museum-Quality Miniatures',
       'Custom Miniature Furniture Commissions',
     ],
+    // Product without offers/price fails Google Product snippets. Unique pieces are VisualArtwork on /gallery/.
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Miniature furniture commissions and available work',
@@ -109,19 +110,17 @@ export function organizationNode() {
             provider: organizationRef(),
           },
         },
-        ...GALLERY_ITEMS.filter((item) => item.availability === 'available').map(
-          (item) => ({
-            '@type': 'Offer',
-            url: `${SITE_URL}/gallery/#${item.id}`,
-            availability: 'https://schema.org/LimitedAvailability',
-            itemOffered: {
-              '@type': 'Product',
-              name: item.title,
-              description: stripHtml(item.description),
-              image: `${SITE_URL}${item.images[0]}`,
-            },
-          }),
-        ),
+        {
+          '@type': 'Offer',
+          url: `${SITE_URL}/gallery/`,
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Available 1/12 Scale Miniature Furniture',
+            description:
+              'Unique handcrafted miniature furniture currently available. Inquire for details. Museum-held uniques are not for sale.',
+            provider: organizationRef(),
+          },
+        },
       ],
     },
   };
@@ -200,14 +199,6 @@ export function visualArtworkNode(item: GalleryItem) {
 
   if (inKsb) {
     artwork.contentLocation = { '@id': KSB_MUSEUM_ID };
-  }
-
-  if (item.availability === 'available') {
-    artwork.offers = {
-      '@type': 'Offer',
-      url: `${SITE_URL}/gallery/#${item.id}`,
-      availability: 'https://schema.org/LimitedAvailability',
-    };
   }
 
   return artwork;
