@@ -198,12 +198,12 @@ const breadcrumbSchema = {
   </>
 )}
 
-<meta property="twitter:card" content={SITE_METADATA.twitter.card} />
-{!isNotFoundPage && <meta property="twitter:url" content={canonicalURL} />}
-<meta property="twitter:title" content={finalTitle} />
-<meta property="twitter:description" content={finalDescription} />
-<meta property="twitter:image" content={imageURL} />
-<meta property="twitter:creator" content={SITE_METADATA.twitter.creator} />
+<meta name="twitter:card" content={SITE_METADATA.twitter.card} />
+{!isNotFoundPage && <meta name="twitter:url" content={canonicalURL} />}
+<meta name="twitter:title" content={finalTitle} />
+<meta name="twitter:description" content={finalDescription} />
+<meta name="twitter:image" content={imageURL} />
+<meta name="twitter:creator" content={SITE_METADATA.twitter.creator} />
 <meta name="twitter:image:alt" content={ogAlt} />
 
 <meta name="format-detection" content="telephone=no" />

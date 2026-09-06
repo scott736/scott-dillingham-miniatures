@@ -43,6 +43,7 @@ const PAGE_LASTMOD = {
 // https://astro.build/config
 export default defineConfig({
   site: 'https://scottdillinghamminiatures.com',
+  trailingSlash: 'always',
   output: 'server',
   adapter: cloudflare({
     imageService: 'compile',

@@ -1,7 +1,6 @@
 ---
 export const prerender = true;
 
-import GalleryLightboxIsland from '@/components/sections/gallery-showcase';
 import RelatedReading from '@/components/sections/related-reading.astro';
 import {
   galleryContactHref,
@@ -60,6 +59,24 @@ function truncateText(text: string, maxLen: number): string {
   const lastSpace = truncated.lastIndexOf(' ');
   return (lastSpace > 0 ? truncated.slice(0, lastSpace) : truncated) + '...';
 }
+
+function relatedPostHref(href: string): string {
+  return href.endsWith('/') ? href : `${href}/`;
+}
+
+const lightboxItems = GALLERY_ITEMS.map((item) => {
+  const status = GALLERY_STATUS[item.availability];
+  return {
+    id: item.id,
+    title: item.title,
+    description: item.description,
+    images: item.images,
+    statusLabel: status.label,
+    cta: status.cta,
+    inquireHref: galleryContactHref(item.availability),
+    relatedPost: item.relatedPost ? relatedPostHref(item.relatedPost) : null,
+  };
+});
 ---
 
 <DefaultLayout
@@ -95,6 +112,9 @@ function truncateText(text: string, maxLen: number): string {
           const preview = truncateText(plain, 225);
           const status = GALLERY_STATUS[item.availability];
           const inquireHref = galleryContactHref(item.availability);
+          const relatedHref = item.relatedPost
+            ? relatedPostHref(item.relatedPost)
+            : null;
           return (
             <article id={item.id} class="overflow-hidden">
               <div class="group overflow-hidden border-none shadow-none">
@@ -115,15 +135,24 @@ function truncateText(text: string, maxLen: number): string {
                     {status.label}
                   </p>
                   <h2 class="text-xl font-bold">
-                    <button
-                      type="button"
+                    <a
+                      href={'#' + item.id}
                       data-gallery-open={item.id}
-                      class="hover:text-primary text-left transition-colors"
+                      class="hover:text-primary transition-colors"
                     >
                       {item.title}
-                    </button>
+                    </a>
                   </h2>
                   <p class="text-muted-foreground leading-7">{preview}</p>
+                  <details>
+                    <summary class="text-primary mt-1 cursor-pointer list-none text-sm font-medium hover:underline [&::-webkit-details-marker]:hidden">
+                      Read more
+                    </summary>
+                    <div
+                      class="text-muted-foreground [&_a]:text-primary mt-2 leading-7 [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:opacity-80"
+                      set:html={item.description}
+                    />
+                  </details>
                   <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
                     <a
                       href={inquireHref}
@@ -147,9 +176,9 @@ function truncateText(text: string, maxLen: number): string {
                         <path d="m12 5 7 7-7 7" />
                       </svg>
                     </a>
-                    {item.relatedPost && (
+                    {relatedHref && (
                       <a
-                        href={item.relatedPost}
+                        href={relatedHref}
                         class="text-muted-foreground inline-flex items-center gap-1 text-sm font-medium hover:underline"
                       >
                         Read Similar Story
@@ -164,10 +193,263 @@ function truncateText(text: string, maxLen: number): string {
       }
     </div>
   </section>
-  <GalleryLightboxIsland client:idle />
+
+  <script
+    type="application/json"
+    id="gallery-lightbox-data"
+    set:html={JSON.stringify(lightboxItems)}
+  />
+
+  <dialog
+    id="gallery-lightbox"
+    class="bg-background text-foreground relative m-auto max-h-[90vh] w-[95vw] max-w-5xl overflow-y-auto rounded-2xl border-0 p-6 shadow-xl backdrop:bg-black/60 backdrop:backdrop-blur-sm"
+    aria-labelledby="gallery-lightbox-title"
+  >
+    <form method="dialog" class="absolute top-4 right-4 z-10">
+      <button
+        type="submit"
+        class="hover:bg-muted rounded-full p-1.5 transition-colors"
+        aria-label="Close"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="size-5"
+          aria-hidden="true"
+        >
+          <path d="M18 6 6 18"></path>
+          <path d="m6 6 12 12"></path>
+        </svg>
+      </button>
+    </form>
+    <p
+      data-gallery-status
+      class="text-muted-foreground mb-2 text-xs font-medium tracking-wider uppercase"
+    >
+    </p>
+    <h2 id="gallery-lightbox-title" data-gallery-title class="mb-4 text-2xl font-bold">
+    </h2>
+    <div data-gallery-figure class="relative select-none">
+      <div class="overflow-hidden rounded-xl">
+        <img
+          data-gallery-image
+          alt=""
+          class="max-h-[70vh] w-full object-contain"
+        />
+      </div>
+      <button
+        type="button"
+        data-gallery-prev
+        class="absolute top-1/2 left-2 hidden -translate-y-1/2 rounded-full bg-white/80 p-1.5 shadow-md transition-colors hover:bg-white dark:bg-black/50 dark:hover:bg-black/70"
+        aria-label="Previous image"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="size-5"
+          aria-hidden="true"
+        >
+          <path d="m15 18-6-6 6-6"></path>
+        </svg>
+      </button>
+      <button
+        type="button"
+        data-gallery-next
+        class="absolute top-1/2 right-2 hidden -translate-y-1/2 rounded-full bg-white/80 p-1.5 shadow-md transition-colors hover:bg-white dark:bg-black/50 dark:hover:bg-black/70"
+        aria-label="Next image"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="size-5"
+          aria-hidden="true"
+        >
+          <path d="m9 18 6-6-6-6"></path>
+        </svg>
+      </button>
+      <div
+        data-gallery-count
+        class="absolute bottom-3 left-1/2 hidden -translate-x-1/2 rounded-full bg-black/60 px-2.5 py-1 text-xs text-white"
+      >
+      </div>
+    </div>
+    <div class="mt-4 space-y-3">
+      <div
+        data-gallery-description
+        class="text-muted-foreground [&_a]:text-primary leading-7 [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:opacity-80"
+      >
+      </div>
+      <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+        <a
+          data-gallery-inquire
+          href="/contact/"
+          class="text-primary inline-flex items-center gap-1 text-sm font-medium hover:underline"
+        >
+        </a>
+        <a
+          data-gallery-related
+          href="/"
+          class="text-muted-foreground hidden items-center gap-1 text-sm font-medium hover:underline"
+        >
+          Read Similar Story
+        </a>
+      </div>
+    </div>
+  </dialog>
+
   <RelatedReading
     title="Collector's Library"
     subtitle="Deepen your appreciation for miniature furniture with these guides."
     posts={galleryRelatedPosts}
   />
 </DefaultLayout>
+
+<script>
+  type LightboxItem = {
+    id: string;
+    title: string;
+    description: string;
+    images: string[];
+    statusLabel: string;
+    cta: string;
+    inquireHref: string;
+    relatedPost: string | null;
+  };
+
+  function bindGalleryLightbox() {
+    const dialog = document.querySelector<HTMLDialogElement>('#gallery-lightbox');
+    const dataEl = document.getElementById('gallery-lightbox-data');
+    if (!dialog || !dataEl || dialog.dataset.bound === '1') return;
+
+    let items: LightboxItem[] = [];
+    try {
+      items = JSON.parse(dataEl.textContent || '[]') as LightboxItem[];
+    } catch {
+      return;
+    }
+
+    const statusEl = dialog.querySelector<HTMLElement>('[data-gallery-status]');
+    const titleEl = dialog.querySelector<HTMLElement>('[data-gallery-title]');
+    const imageEl = dialog.querySelector<HTMLImageElement>('[data-gallery-image]');
+    const prevBtn = dialog.querySelector<HTMLButtonElement>('[data-gallery-prev]');
+    const nextBtn = dialog.querySelector<HTMLButtonElement>('[data-gallery-next]');
+    const countEl = dialog.querySelector<HTMLElement>('[data-gallery-count]');
+    const descriptionEl = dialog.querySelector<HTMLElement>(
+      '[data-gallery-description]',
+    );
+    const inquireEl = dialog.querySelector<HTMLAnchorElement>(
+      '[data-gallery-inquire]',
+    );
+    const relatedEl = dialog.querySelector<HTMLAnchorElement>(
+      '[data-gallery-related]',
+    );
+    if (
+      !statusEl ||
+      !titleEl ||
+      !imageEl ||
+      !prevBtn ||
+      !nextBtn ||
+      !countEl ||
+      !descriptionEl ||
+      !inquireEl ||
+      !relatedEl
+    ) {
+      return;
+    }
+
+    dialog.dataset.bound = '1';
+
+    let current: LightboxItem | null = null;
+    let imageIndex = 0;
+
+    const showImage = () => {
+      if (!current) return;
+      const total = current.images.length;
+      const src = current.images[imageIndex];
+      if (!src) return;
+      imageEl.src = src;
+      imageEl.alt =
+        total > 1
+          ? `${current.title} - Image ${imageIndex + 1} of ${total}`
+          : current.title;
+      const multi = total > 1;
+      prevBtn.classList.toggle('hidden', !multi);
+      nextBtn.classList.toggle('hidden', !multi);
+      countEl.classList.toggle('hidden', !multi);
+      if (multi) countEl.textContent = `${imageIndex + 1} / ${total}`;
+    };
+
+    const openItem = (id: string) => {
+      const item = items.find((entry) => entry.id === id);
+      if (!item) return;
+      current = item;
+      imageIndex = 0;
+      statusEl.textContent = item.statusLabel;
+      titleEl.textContent = item.title;
+      descriptionEl.innerHTML = item.description;
+      inquireEl.href = item.inquireHref;
+      inquireEl.textContent = item.cta;
+      if (item.relatedPost) {
+        relatedEl.href = item.relatedPost;
+        relatedEl.classList.remove('hidden');
+        relatedEl.classList.add('inline-flex');
+      } else {
+        relatedEl.classList.add('hidden');
+        relatedEl.classList.remove('inline-flex');
+      }
+      showImage();
+      if (!dialog.open) dialog.showModal();
+    };
+
+    document.addEventListener('click', (event) => {
+      const target = (event.target as HTMLElement | null)?.closest(
+        '[data-gallery-open]',
+      );
+      if (!target) return;
+      const id = target.getAttribute('data-gallery-open');
+      if (!id) return;
+      event.preventDefault();
+      openItem(id);
+    });
+
+    prevBtn.addEventListener('click', () => {
+      if (!current || current.images.length < 2) return;
+      imageIndex = (imageIndex - 1 + current.images.length) % current.images.length;
+      showImage();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (!current || current.images.length < 2) return;
+      imageIndex = (imageIndex + 1) % current.images.length;
+      showImage();
+    });
+
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+  }
+
+  bindGalleryLightbox();
+  document.addEventListener('astro:page-load', bindGalleryLightbox);
+</script>

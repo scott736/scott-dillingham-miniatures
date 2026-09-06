@@ -33,7 +33,7 @@ const blogSchema = {
   url: `${SITE_URL}/blog/`,
   author: personRef(),
   publisher: organizationRef(),
-  blogPost: posts.slice(0, 10).map((post) => ({
+  blogPost: posts.map((post) => ({
     '@type': 'BlogPosting',
     headline: post.data.title,
     description: post.data.description,
@@ -126,7 +126,7 @@ function formatDate(iso: string) {
             data-tags={post.tags.join(',')}
             class="group overflow-hidden"
           >
-            <a href={`/blog/${post.id}`} class="block">
+            <a href={`/blog/${post.id}/`} class="block">
               <div class="relative h-[320px] overflow-hidden rounded-3xl">
                 <img
                   src={post.coverImage}

@@ -74,7 +74,7 @@ export function personNode() {
 
 export function organizationNode() {
   return {
-    '@type': ['Organization', 'ProfessionalService'],
+    '@type': 'Organization',
     '@id': ORGANIZATION_ID,
     name: 'Scott Dillingham Miniatures',
     description: SITE_DESCRIPTION,

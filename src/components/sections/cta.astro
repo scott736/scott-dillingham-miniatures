@@ -7,7 +7,15 @@ interface Props {
 
 const { pathname } = Astro.props as Props;
 
-const hiddenPaths = new Set(['/privacy-policy', '/terms-of-service', '/blog']);
+const hiddenPaths = new Set([
+  '/privacy-policy',
+  '/terms-of-service',
+  '/blog',
+  '/contact',
+  '/image-license',
+  '/404',
+  '/404.html',
+]);
 const pathKey = pathname.replace(/\/$/, '') || '/';
 const shouldShowCTA = !hiddenPaths.has(pathKey);
 ---
@@ -15,13 +23,13 @@ const shouldShowCTA = !hiddenPaths.has(pathKey);
 {shouldShowCTA && (
   <section class="bg-card py-15">
     <div class="container flex flex-col justify-between gap-8 md:flex-row md:gap-16">
-      <div class="space-y-6 sm:min-w-[440px] md:space-y-8 lg:w-[569px] lg:shrink-0">
+      <div class="min-w-0 space-y-6 md:space-y-8 lg:w-[569px] lg:shrink-0">
         <h2 class="text-5xl leading-13 font-bold md:text-6xl md:leading-18">
           Buy Handcrafted Miniature Furniture or Commission a Custom Piece
         </h2>
 
         <CtaLink
-          href="/contact"
+          href="/contact/"
           label="Start a Commission"
           wrapperClassName="w-fit"
           className="gap-2.5 pe-3"
