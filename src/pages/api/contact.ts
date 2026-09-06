@@ -54,7 +54,9 @@ function originAllowed(request: Request): boolean {
     const url = new URL(candidate);
     const site = new URL(SITE_URL);
     const host = url.hostname;
-    if (host === 'localhost' || host === '127.0.0.1') return true;
+    if (host === 'localhost' || host === '127.0.0.1') {
+      return import.meta.env.DEV === true;
+    }
     return url.origin === site.origin;
   } catch {
     return false;
