@@ -13,6 +13,8 @@ const hiddenPaths = new Set([
   '/blog',
   '/contact',
   '/image-license',
+  '/404',
+  '/404.html',
 ]);
 const pathKey = pathname.replace(/\/$/, '') || '/';
 const shouldShowCTA = !hiddenPaths.has(pathKey);
@@ -27,7 +29,7 @@ const shouldShowCTA = !hiddenPaths.has(pathKey);
         </h2>
 
         <CtaLink
-          href="/contact"
+          href="/contact/"
           label="Start a Commission"
           wrapperClassName="w-fit"
           className="gap-2.5 pe-3"

@@ -45,7 +45,7 @@ const { posts } = Astro.props;
   <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-10.5">
     {
       posts.map((post) => (
-        <a href={`/blog/${post.id}`} class="group block overflow-hidden">
+        <a href={`/blog/${post.id}/`} class="group block overflow-hidden">
           <div class="relative h-[320px] overflow-hidden rounded-3xl">
             <img
               src={post.data.coverImage}

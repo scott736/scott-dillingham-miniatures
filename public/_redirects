@@ -1,3 +1,12 @@
+/about /about/ 301
+/gallery /gallery/ 301
+/workshop /workshop/ 301
+/blog /blog/ 301
+/contact /contact/ 301
+/privacy-policy /privacy-policy/ 301
+/terms-of-service /terms-of-service/ 301
+/image-license /image-license/ 301
+/blog/:slug /blog/:slug/ 301
 /sitemap.xml /sitemap-index.xml 301
 /favicon.ico /favicon/favicon.ico 301
 /images/gallery/windsor-chair.webp /images/gallery/maloof-rocking-chair.webp 301

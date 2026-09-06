@@ -69,7 +69,7 @@ export default function WhyHandcrafted() {
 
       <div className="flex justify-center pt-4">
         <Button size="lg" className="group rounded-full" asChild>
-          <a href="/gallery">
+          <a href="/gallery/">
             See the Collection
             <ChevronRight className="transition-transform group-hover:translate-x-0.5" />
           </a>

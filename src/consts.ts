@@ -66,11 +66,11 @@ export const SITE_METADATA = {
 
 // Navigation items
 export const NAV_ITEMS = [
-  { label: 'Gallery', href: '/gallery' },
-  { label: 'Workshop', href: '/workshop' },
-  { label: 'About', href: '/about' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Gallery', href: '/gallery/' },
+  { label: 'Workshop', href: '/workshop/' },
+  { label: 'About', href: '/about/' },
+  { label: 'Blog', href: '/blog/' },
+  { label: 'Contact', href: '/contact/' },
 ];
 
 // Footer links
@@ -78,28 +78,28 @@ export const FOOTER_LINKS = [
   {
     title: 'Explore',
     links: [
-      { name: 'Gallery', href: '/gallery' },
-      { name: 'Workshop', href: '/workshop' },
-      { name: 'About the Maker', href: '/about' },
-      { name: 'Blog', href: '/blog' },
+      { name: 'Gallery', href: '/gallery/' },
+      { name: 'Workshop', href: '/workshop/' },
+      { name: 'About the Maker', href: '/about/' },
+      { name: 'Blog', href: '/blog/' },
     ],
   },
   {
     title: 'Learn',
     links: [
-      { name: 'Miniature Woodworking Guide', href: '/blog/complete-guide-1-12-scale-miniature-furniture' },
-      { name: 'Choosing Wood for Miniatures', href: '/blog/how-to-choose-wood-for-miniature-furniture' },
-      { name: 'Essential Tools', href: '/blog/essential-miniature-woodworking-tools' },
-      { name: 'All Articles', href: '/blog' },
+      { name: 'Miniature Woodworking Guide', href: '/blog/complete-guide-1-12-scale-miniature-furniture/' },
+      { name: 'Choosing Wood for Miniatures', href: '/blog/how-to-choose-wood-for-miniature-furniture/' },
+      { name: 'Essential Tools', href: '/blog/essential-miniature-woodworking-tools/' },
+      { name: 'All Articles', href: '/blog/' },
     ],
   },
   {
     title: 'Company',
     links: [
-      { name: 'Contact', href: '/contact' },
-      { name: 'Terms of Service', href: '/terms-of-service' },
-      { name: 'Image License', href: '/image-license' },
-      { name: 'Privacy Policy', href: '/privacy-policy' },
+      { name: 'Contact', href: '/contact/' },
+      { name: 'Terms of Service', href: '/terms-of-service/' },
+      { name: 'Image License', href: '/image-license/' },
+      { name: 'Privacy Policy', href: '/privacy-policy/' },
     ],
   },
 ];
@@ -149,7 +149,7 @@ export const GALLERY_ITEMS = [
     category: 'Clocks',
     wood: 'Honduras Mahogany',
     scale: '1:12',
-    relatedPost: '/blog/miniature-tall-case-clocks',
+    relatedPost: '/blog/miniature-tall-case-clocks/',
     availability: 'museum' as const,
   },
   {
@@ -160,7 +160,7 @@ export const GALLERY_ITEMS = [
     category: 'Dressers & Cabinets',
     wood: 'Black Walnut',
     scale: '1:12',
-    relatedPost: '/blog/miniature-highboy-makers-guide',
+    relatedPost: '/blog/miniature-highboy-makers-guide/',
     availability: 'available' as const,
   },
   {
@@ -171,7 +171,7 @@ export const GALLERY_ITEMS = [
     category: 'Beds',
     wood: 'Cherry',
     scale: '1:12',
-    relatedPost: '/blog/building-miniature-four-poster-bed',
+    relatedPost: '/blog/building-miniature-four-poster-bed/',
     availability: 'available' as const,
   },
   {
@@ -182,7 +182,7 @@ export const GALLERY_ITEMS = [
     category: 'Chairs',
     wood: 'Brazilian Rosewood',
     scale: '1:12',
-    relatedPost: '/blog/arts-and-crafts-miniature-furniture',
+    relatedPost: '/blog/arts-and-crafts-miniature-furniture/',
     availability: 'museum' as const,
   },
   {
@@ -193,7 +193,7 @@ export const GALLERY_ITEMS = [
     category: 'Chairs',
     wood: 'Mahogany',
     scale: '1:12',
-    relatedPost: '/blog/federal-period-miniature-furniture',
+    relatedPost: '/blog/federal-period-miniature-furniture/',
     availability: 'museum' as const,
   },
   {
@@ -204,7 +204,7 @@ export const GALLERY_ITEMS = [
     category: 'Chairs',
     wood: 'Ash & Cherry',
     scale: '1:12',
-    relatedPost: '/blog/shaker-style-miniature-furniture',
+    relatedPost: '/blog/shaker-style-miniature-furniture/',
     availability: 'commission' as const,
   },
   {
@@ -215,7 +215,7 @@ export const GALLERY_ITEMS = [
     category: 'Tables',
     wood: 'Cherry',
     scale: '1:12',
-    relatedPost: '/blog/shaker-style-miniature-furniture',
+    relatedPost: '/blog/shaker-style-miniature-furniture/',
     availability: 'available' as const,
   },
 ];
@@ -225,32 +225,32 @@ export const FAQ_DATA = [
   {
     question: 'What scale are your miniature furniture pieces?',
     answer:
-      'All pieces are built in <a href="/blog/complete-guide-1-12-scale-miniature-furniture">1:12 scale</a> (also known as one-inch scale), which is the most popular scale for dollhouse collectors. This means one inch in the miniature equals one foot in real life. A six-foot tall highboy becomes a six-inch masterpiece. For a deeper dive, see our <a href="/blog/understanding-dollhouse-scales">understanding dollhouse scales guide</a>.',
+      'All pieces are built in <a href="/blog/complete-guide-1-12-scale-miniature-furniture/">1:12 scale</a> (also known as one-inch scale), which is the most popular scale for dollhouse collectors. This means one inch in the miniature equals one foot in real life. A six-foot tall highboy becomes a six-inch masterpiece. For a deeper dive, see our <a href="/blog/understanding-dollhouse-scales/">understanding dollhouse scales guide</a>.',
   },
   {
     question: 'Are these made from kits?',
     answer:
-      'Absolutely not. Every piece is built entirely from scratch using fine hardwoods like mahogany, cherry, walnut, and maple. I use the same <a href="/blog/miniature-woodworking-joints">traditional woodworking techniques</a> as full-size furniture makers: <a href="/blog/miniature-woodworking-joints">hand-cut dovetails</a>, mortise and tenon joints, and hand-carved details. No kits, no laser cuts, no shortcuts. Learn more about the difference in our article on <a href="/blog/handcrafted-vs-kit-built-miniatures">handcrafted vs kit-built miniatures</a>.',
+      'Absolutely not. Every piece is built entirely from scratch using fine hardwoods like mahogany, cherry, walnut, and maple. I use the same <a href="/blog/miniature-woodworking-joints/">traditional woodworking techniques</a> as full-size furniture makers: <a href="/blog/miniature-woodworking-joints/">hand-cut dovetails</a>, mortise and tenon joints, and hand-carved details. No kits, no laser cuts, no shortcuts. Learn more about the difference in our article on <a href="/blog/handcrafted-vs-kit-built-miniatures/">handcrafted vs kit-built miniatures</a>.',
   },
   {
     question: 'What types of wood do you use?',
     answer:
-      'I work primarily with mahogany, cherry, walnut, maple, and oak. Each wood is selected for its grain pattern, workability at small scale, and historical accuracy to the period of furniture being reproduced. I also use exotic woods when a piece calls for it. Read our complete <a href="/blog/how-to-choose-wood-for-miniature-furniture">guide to choosing wood for miniatures</a>.',
+      'I work primarily with mahogany, cherry, walnut, maple, and oak. Each wood is selected for its grain pattern, workability at small scale, and historical accuracy to the period of furniture being reproduced. I also use exotic woods when a piece calls for it. Read our complete <a href="/blog/how-to-choose-wood-for-miniature-furniture/">guide to choosing wood for miniatures</a>.',
   },
   {
     question: 'How long does it take to build a single piece?',
     answer:
-      'Depending on complexity, a single piece can take anywhere from 40 to over 200 hours. A simple <a href="/gallery">rocking chair</a> might take 40-60 hours, while a complex piece like the <a href="/blog/john-goddard-block-front-secretary-desk-miniature">John Goddard block-front secretary desk</a> can take 200+ hours due to the intricate shell carvings and dozens of tiny drawers.',
+      'Depending on complexity, a single piece can take anywhere from 40 to over 200 hours. A simple <a href="/gallery/">rocking chair</a> might take 40-60 hours, while a complex piece like the <a href="/blog/john-goddard-block-front-secretary-desk-miniature/">John Goddard block-front secretary desk</a> can take 200+ hours due to the intricate shell carvings and dozens of tiny drawers.',
   },
   {
     question: 'Do you take custom commissions?',
     answer:
-      'Yes, I welcome commission requests. Whether you want a specific period piece, a replica of a family heirloom, or a custom design, I am happy to discuss your vision. Please use the <a href="/contact">contact form</a> to describe what you have in mind and I will get back to you with details. You can also browse our <a href="/gallery">gallery</a> for inspiration.',
+      'Yes, I welcome commission requests. Whether you want a specific period piece, a replica of a family heirloom, or a custom design, I am happy to discuss your vision. Please use the <a href="/contact/">contact form</a> to describe what you have in mind and I will get back to you with details. You can also browse our <a href="/gallery/">gallery</a> for inspiration.',
   },
   {
     question: 'How should I care for and display my miniature furniture?',
     answer:
-      'Miniature furniture should be kept out of direct sunlight to prevent fading. Display cases with UV-protective glass are ideal. Handle pieces by their base or sturdiest parts, and keep them in a climate-controlled environment. Each piece is finished with museum-quality lacquer or French polish for lasting protection. For detailed display and care tips, read our <a href="/blog/displaying-protecting-miniature-furniture-collection">complete display guide</a>.',
+      'Miniature furniture should be kept out of direct sunlight to prevent fading. Display cases with UV-protective glass are ideal. Handle pieces by their base or sturdiest parts, and keep them in a climate-controlled environment. Each piece is finished with museum-quality lacquer or French polish for lasting protection. For detailed display and care tips, read our <a href="/blog/displaying-protecting-miniature-furniture-collection/">complete display guide</a>.',
   },
   {
     question: 'Do you ship internationally?',
@@ -260,6 +260,6 @@ export const FAQ_DATA = [
   {
     question: 'What makes your miniatures different from mass-produced dollhouse furniture?',
     answer:
-      'The difference is night and day. Mass-produced miniatures are typically made from resin, plastic, or laser-cut MDF. My pieces are hand-built from solid hardwoods using the same joinery techniques as full-size <a href="/blog/history-miniature-furniture-royal-courts-modern">period furniture</a>. Every drawer opens, every door swings on hand-made hinges, and every detail is historically accurate. Learn more in our <a href="/blog/handcrafted-vs-kit-built-miniatures">handcrafted vs kit-built miniatures</a> comparison. See the difference for yourself in our <a href="/gallery">gallery</a>.',
+      'The difference is night and day. Mass-produced miniatures are typically made from resin, plastic, or laser-cut MDF. My pieces are hand-built from solid hardwoods using the same joinery techniques as full-size <a href="/blog/history-miniature-furniture-royal-courts-modern/">period furniture</a>. Every drawer opens, every door swings on hand-made hinges, and every detail is historically accurate. Learn more in our <a href="/blog/handcrafted-vs-kit-built-miniatures/">handcrafted vs kit-built miniatures</a> comparison. See the difference for yourself in our <a href="/gallery/">gallery</a>.',
   },
 ];

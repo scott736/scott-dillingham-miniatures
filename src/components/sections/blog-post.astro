@@ -27,7 +27,7 @@ const {
   relatedPosts = [],
 } = Astro.props;
 
-const postUrl = `${siteUrl}/blog/${postId}`;
+const postUrl = `${siteUrl}/blog/${postId}/`;
 const encodedUrl = encodeURIComponent(postUrl);
 const encodedTitle = encodeURIComponent(title);
 const dateIso = pubDate instanceof Date ? pubDate.toISOString() : String(pubDate);
@@ -40,19 +40,19 @@ const dateLabel = new Date(dateIso).toLocaleDateString('en-US', {
 const serviceCtas = [
   {
     title: 'Explore the Gallery',
-    href: '/gallery',
+    href: '/gallery/',
     description:
       'See hundreds of hours of handcraft in our finished miniature furniture collection.',
   },
   {
     title: 'Inside the Workshop',
-    href: '/workshop',
+    href: '/workshop/',
     description:
       'Discover the eight-step process behind every handcrafted miniature piece.',
   },
   {
     title: 'Commission a Piece',
-    href: '/contact',
+    href: '/contact/',
     description: "Ready for a custom miniature? Let's discuss your vision.",
   },
 ];
@@ -68,7 +68,7 @@ const serviceCtas = [
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline size-3.5" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
       </li>
       <li>
-        <a href="/blog" class="hover:text-foreground transition-colors">Blog</a>
+        <a href="/blog/" class="hover:text-foreground transition-colors">Blog</a>
       </li>
       <li>
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline size-3.5" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
@@ -80,7 +80,7 @@ const serviceCtas = [
   </nav>
 
   <div>
-    <a href="/blog" class="group inline-block">
+    <a href="/blog/" class="group inline-block">
       <span class="[&>svg]:text-muted-foreground flex items-center gap-3 rounded-full border py-2 ps-2.5 pe-4 text-xl font-normal [&>svg]:size-5">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:-translate-x-0.5" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
         Back
@@ -188,7 +188,7 @@ const serviceCtas = [
         </div>
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {relatedPosts.map((related) => (
-            <a href={`/blog/${related.id}`} class="group">
+            <a href={`/blog/${related.id}/`} class="group">
               <div class="bg-card h-full overflow-hidden rounded-xl border p-0 transition-all hover:border-foreground/20">
                 {related.image && (
                   <div class="relative h-[200px] overflow-hidden rounded-t-3xl">
