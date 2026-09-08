@@ -5,7 +5,7 @@ import { getCollection } from 'astro:content';
 
 import { SITE_URL } from '@/consts';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
-import { imageObject, organizationRef, personRef } from '@/lib/schema';
+import { imageObject, organizationRef, personRef, WEBSITE_ID } from '@/lib/schema';
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -34,7 +34,7 @@ const blogSchema = {
     'Expert guides on miniature furniture making, 1/12 scale woodworking techniques, period styles, and collecting.',
   url: `${SITE_URL}/blog/`,
   inLanguage: 'en',
-  isPartOf: { '@id': `${SITE_URL}/#website` },
+  isPartOf: { '@id': WEBSITE_ID },
   author: personRef(),
   publisher: organizationRef(),
   blogPost: posts.map((post) => ({

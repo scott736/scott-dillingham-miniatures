@@ -78,24 +78,35 @@ function checkHtml(label, html, { maxTitle = 65, maxDesc = 160, noindex = false,
   }
 }
 
-function jsonLdTypes(html) {
-  const types = [];
-  function walk(value) {
-    if (Array.isArray(value)) {
-      value.forEach(walk);
-      return;
-    }
-    if (!value || typeof value !== 'object') return;
-    const t = value['@type'];
-    if (t) types.push(...(Array.isArray(t) ? t : [t]));
-    Object.values(value).forEach(walk);
-  }
+function jsonLdBlocks(html) {
+  const blocks = [];
   for (const match of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
     try {
-      walk(JSON.parse(match[1]));
+      blocks.push(JSON.parse(match[1]));
     } catch {
       fail('invalid JSON-LD block');
     }
+  }
+  return blocks;
+}
+
+function walkJsonLd(value, visit) {
+  if (Array.isArray(value)) {
+    value.forEach((item) => walkJsonLd(item, visit));
+    return;
+  }
+  if (!value || typeof value !== 'object') return;
+  visit(value);
+  Object.values(value).forEach((item) => walkJsonLd(item, visit));
+}
+
+function jsonLdTypes(html) {
+  const types = [];
+  for (const block of jsonLdBlocks(html)) {
+    walkJsonLd(block, (value) => {
+      const t = value['@type'];
+      if (t) types.push(...(Array.isArray(t) ? t : [t]));
+    });
   }
   return types;
 }
@@ -104,6 +115,22 @@ function checkNoProductSchema(label, html) {
   const types = jsonLdTypes(html);
   if (types.includes('Product')) {
     fail(`${label}: JSON-LD must not emit Product (GSC Product snippets require offers/review/rating)`);
+  }
+  // No dollar amount is published on shop/gallery/contact/workshop pages.
+  for (const block of jsonLdBlocks(html)) {
+    walkJsonLd(block, (value) => {
+      const t = value['@type'];
+      const typesForNode = t ? (Array.isArray(t) ? t : [t]) : [];
+      if (!typesForNode.includes('Offer')) return;
+      if (
+        value.price != null ||
+        value.priceCurrency != null ||
+        value.lowPrice != null ||
+        value.highPrice != null
+      ) {
+        fail(`${label}: Offer has a price but no price is published on the page`);
+      }
+    });
   }
   return types;
 }
@@ -143,7 +170,30 @@ function checkDistExtras() {
   const dir = join(root, distDir);
   const home = readFileSync(join(dir, 'index.html'), 'utf8');
   const homeTypes = checkNoProductSchema('home', home);
+  if (!homeTypes.includes('Organization')) fail('home JSON-LD missing Organization');
+  if (!homeTypes.includes('Person')) fail('home JSON-LD missing Person');
+  if (!homeTypes.includes('WebSite')) fail('home JSON-LD missing WebSite');
+  if (!homeTypes.includes('WebPage')) fail('home JSON-LD missing WebPage');
+  if (!homeTypes.includes('BreadcrumbList')) fail('home JSON-LD missing BreadcrumbList');
   if (!homeTypes.includes('Service')) fail('home JSON-LD missing Service offer catalog');
+  if (!homeTypes.includes('OfferCatalog')) fail('home JSON-LD missing OfferCatalog');
+  if (!homeTypes.includes('VisualArtwork')) {
+    fail('home JSON-LD missing VisualArtwork in offer catalog');
+  }
+  if (!home.includes('https://schema.org/InStock')) {
+    fail('home JSON-LD missing InStock offer for available work');
+  }
+  if (!home.includes('https://schema.org/PreOrder')) {
+    fail('home JSON-LD missing PreOrder offer for commissions');
+  }
+  for (const id of ['highboy-dresser', 'four-poster-bed', 'shaker-d-ring-table']) {
+    if (!home.includes(`/gallery/#${id}`)) {
+      fail(`home OfferCatalog missing available artwork ${id}`);
+    }
+  }
+  if (!home.includes('/gallery/#moser-continuous-arm-chair')) {
+    fail('home OfferCatalog missing commission artwork moser-continuous-arm-chair');
+  }
   const styleChars = [...home.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)].reduce(
     (n, m) => n + m[1].length,
     0,
@@ -180,8 +230,20 @@ function checkDistExtras() {
   if (existsSync(gallery)) {
     const html = readFileSync(gallery, 'utf8');
     const galleryTypes = checkNoProductSchema('gallery', html);
+    if (!galleryTypes.includes('CollectionPage')) fail('gallery JSON-LD missing CollectionPage');
+    if (!galleryTypes.includes('ItemList')) fail('gallery JSON-LD missing ItemList');
     if (!galleryTypes.includes('VisualArtwork')) {
       fail('gallery JSON-LD missing VisualArtwork');
+    }
+    if (!galleryTypes.includes('WebPage')) fail('gallery JSON-LD missing WebPage');
+    if (!html.includes('https://schema.org/InStock')) {
+      fail('gallery JSON-LD missing InStock offer for available work');
+    }
+    if (!html.includes('https://schema.org/PreOrder')) {
+      fail('gallery JSON-LD missing PreOrder offer for commission work');
+    }
+    if (!html.includes('https://schema.org/SoldOut')) {
+      fail('gallery JSON-LD missing SoldOut offer for museum-held work');
     }
     for (const id of [
       'tall-case-clock',
@@ -203,22 +265,47 @@ function checkDistExtras() {
   const workshop = join(dir, 'workshop/index.html');
   if (existsSync(workshop)) {
     const html = readFileSync(workshop, 'utf8');
+    const workshopTypes = checkNoProductSchema('workshop', html);
+    if (!workshopTypes.includes('WebPage')) fail('workshop JSON-LD missing WebPage');
+    if (!workshopTypes.includes('HowTo')) fail('workshop JSON-LD missing HowTo');
     if (html.includes('hero-workshop.webp')) fail('workshop still uses Christies hero-workshop.webp');
     if (html.includes('Christie')) fail('workshop html still mentions Christie');
   }
   const about = join(dir, 'about/index.html');
   if (existsSync(about)) {
     const html = readFileSync(about, 'utf8');
+    const aboutTypes = checkNoProductSchema('about', html);
+    if (!aboutTypes.includes('ProfilePage')) fail('about JSON-LD missing ProfilePage');
+    if (!aboutTypes.includes('WebPage')) fail('about JSON-LD missing WebPage');
     if (html.includes('scott-workshop.webp')) fail('about still uses mislabeled scott-workshop.webp');
     if (html.includes('hand-tools.webp')) fail('about still uses mislabeled hand-tools.webp');
   }
   const contact = join(dir, 'contact/index.html');
   if (existsSync(contact)) {
     const html = readFileSync(contact, 'utf8');
+    const contactTypes = checkNoProductSchema('contact', html);
+    if (!contactTypes.includes('ContactPage')) fail('contact JSON-LD missing ContactPage');
+    if (!contactTypes.includes('WebPage')) fail('contact JSON-LD missing WebPage');
+    if (!contactTypes.includes('Service')) fail('contact JSON-LD missing commission Service');
+    if (!html.includes('/contact/#commission-service')) {
+      fail('contact JSON-LD missing commission Service @id');
+    }
     if (!html.includes('mailto:sedminiatures@gmail.com')) {
       fail('contact page missing visible mailto:sedminiatures@gmail.com');
     }
     if (html.includes('astro-island')) fail('contact page still hydrates a React island');
+  }
+  for (const [label, path] of [
+    ['image-license', 'image-license/index.html'],
+    ['privacy', 'privacy-policy/index.html'],
+    ['terms', 'terms-of-service/index.html'],
+  ]) {
+    const file = join(dir, path);
+    if (!existsSync(file)) continue;
+    const html = readFileSync(file, 'utf8');
+    const types = checkNoProductSchema(label, html);
+    if (!types.includes('WebPage')) fail(`${label} JSON-LD missing WebPage`);
+    if (!types.includes('BreadcrumbList')) fail(`${label} JSON-LD missing BreadcrumbList`);
   }
 }
 

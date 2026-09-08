@@ -4,16 +4,26 @@ export const prerender = true;
 import ContactPage from '@/components/sections/contact.astro';
 import { SITE_URL } from '@/consts';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
-import { organizationRef } from '@/lib/schema';
+import {
+  breadcrumbId,
+  COMMISSION_SERVICE_ID,
+  organizationRef,
+  WEBSITE_ID,
+} from '@/lib/schema';
 
 const contactSchema = {
   '@context': 'https://schema.org',
   '@type': 'ContactPage',
+  '@id': `${SITE_URL}/contact/#contact`,
   name: 'Commission Custom Miniature Furniture',
   description:
     'Commission custom 1/12 scale miniature furniture from museum-exhibited craftsman Scott Dillingham.',
   url: `${SITE_URL}/contact/`,
+  inLanguage: 'en',
+  isPartOf: { '@id': WEBSITE_ID },
+  breadcrumb: { '@id': breadcrumbId(`${SITE_URL}/contact/`) },
   mainEntity: organizationRef(),
+  about: { '@id': COMMISSION_SERVICE_ID },
 };
 ---
 

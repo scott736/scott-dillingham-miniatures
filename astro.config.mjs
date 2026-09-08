@@ -30,14 +30,15 @@ function blogLastmods() {
 }
 
 const BLOG_LASTMOD = blogLastmods();
-/** Core marketing pages touched 2026-08-31 */
+/** Core pages: last real content change, not every deploy. */
 const PAGE_LASTMOD = {
   '/': '2026-08-31',
-  '/gallery': '2026-08-31',
-  '/workshop': '2026-08-31',
+  '/gallery': '2026-09-07',
+  '/workshop': '2026-09-07',
   '/about': '2026-08-31',
-  '/blog': '2026-08-31',
+  '/blog': '2026-09-07',
   '/contact': '2026-08-31',
+  '/image-license': '2026-08-31',
 };
 
 // https://astro.build/config
@@ -83,6 +84,9 @@ export default defineConfig({
         }
         if (url.endsWith('/contact')) {
           return { ...item, changefreq: monthly, priority: 0.7, lastmod };
+        }
+        if (url.endsWith('/image-license')) {
+          return { ...item, changefreq: monthly, priority: 0.5, lastmod };
         }
         return { ...item, changefreq: monthly, priority: 0.5, lastmod };
       },

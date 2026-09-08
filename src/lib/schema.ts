@@ -109,35 +109,9 @@ export function organizationNode() {
       'Museum-Quality Miniatures',
       'Custom Miniature Furniture Commissions',
     ],
-    // Product without offers/price fails Google Product snippets. Unique pieces are VisualArtwork on /gallery/.
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: 'Miniature furniture commissions and available work',
-      itemListElement: [
-        {
-          '@type': 'Offer',
-          url: `${SITE_URL}/contact/`,
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Custom Miniature Furniture Commissions',
-            description:
-              'Commission a custom handcrafted 1/12 scale miniature furniture piece. Period reproductions, family heirloom replicas, or custom designs. Museum-held uniques are not for sale.',
-            provider: organizationRef(),
-          },
-        },
-        {
-          '@type': 'Offer',
-          url: `${SITE_URL}/gallery/`,
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Available 1/12 Scale Miniature Furniture',
-            description:
-              'Unique handcrafted miniature furniture currently available. Inquire for details. Museum-held uniques are not for sale.',
-            provider: organizationRef(),
-          },
-        },
-      ],
-    },
+    // No published prices anywhere on the site — do not emit Product.
+    // Catalog is Service (commissions) + VisualArtwork availability Offers.
+    hasOfferCatalog: offerCatalogNode(),
   };
 }
 
@@ -235,16 +209,84 @@ const OFFER_AVAILABILITY: Record<GalleryItem['availability'], string> = {
   museum: 'https://schema.org/SoldOut',
 };
 
-/** Availability only — no price is published on gallery pages. Do not emit Product. */
+export const COMMISSION_SERVICE_ID = `${SITE_URL}/contact/#commission-service`;
+
+export function artworkId(item: Pick<GalleryItem, 'id'>): string {
+  return `${SITE_URL}/gallery/#${item.id}`;
+}
+
+/** Availability only — no price is published on the site. Do not emit Product. */
 function artworkOffer(item: GalleryItem) {
   const isMuseum = item.availability === 'museum';
   return {
     '@type': 'Offer',
     url: isMuseum
-      ? `${SITE_URL}/gallery/#${item.id}`
+      ? artworkId(item)
       : `${SITE_URL}${galleryContactHref(item.availability)}`,
     availability: OFFER_AVAILABILITY[item.availability],
     seller: organizationRef(),
+  };
+}
+
+function commissionServiceNode() {
+  return {
+    '@type': 'Service',
+    '@id': COMMISSION_SERVICE_ID,
+    name: 'Custom Miniature Furniture Commissions',
+    description:
+      'Commission a custom handcrafted 1/12 scale miniature furniture piece. Period reproductions, family heirloom replicas, or custom designs. Museum-held uniques are not for sale.',
+    provider: organizationRef(),
+    url: `${SITE_URL}/contact/`,
+  };
+}
+
+function catalogArtworkRef(item: GalleryItem) {
+  return {
+    '@type': 'VisualArtwork',
+    '@id': artworkId(item),
+    name: item.title,
+    url: artworkId(item),
+  };
+}
+
+function catalogArtworkOffer(item: GalleryItem) {
+  return {
+    ...artworkOffer(item),
+    itemOffered: catalogArtworkRef(item),
+  };
+}
+
+/** Honest catalog: commissions as Service, unique pieces as VisualArtwork. No prices. */
+function offerCatalogNode() {
+  const available = GALLERY_ITEMS.filter((item) => item.availability === 'available');
+  const commission = GALLERY_ITEMS.filter((item) => item.availability === 'commission');
+
+  return {
+    '@type': 'OfferCatalog',
+    name: 'Miniature furniture commissions and available work',
+    itemListElement: [
+      {
+        '@type': 'OfferCatalog',
+        name: 'Custom miniature furniture commissions',
+        numberOfItems: 1 + commission.length,
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            url: `${SITE_URL}/contact/`,
+            availability: OFFER_AVAILABILITY.commission,
+            seller: organizationRef(),
+            itemOffered: commissionServiceNode(),
+          },
+          ...commission.map(catalogArtworkOffer),
+        ],
+      },
+      {
+        '@type': 'OfferCatalog',
+        name: 'Available 1/12 scale miniature furniture',
+        numberOfItems: available.length,
+        itemListElement: available.map(catalogArtworkOffer),
+      },
+    ],
   };
 }
 
@@ -253,9 +295,10 @@ export function visualArtworkNode(item: GalleryItem) {
   const imageUrl = `${SITE_URL}${item.images[0]}`;
   const artwork: Record<string, unknown> = {
     '@type': 'VisualArtwork',
+    '@id': artworkId(item),
     name: item.title,
     description: stripHtml(item.description),
-    url: `${SITE_URL}/gallery/#${item.id}`,
+    url: artworkId(item),
     identifier: item.id,
     artform: 'Miniature furniture',
     artMedium: item.wood,

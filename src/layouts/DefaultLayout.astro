@@ -14,6 +14,7 @@ const {
   breadcrumbName,
   article,
   noindex,
+  speakableSections,
 } = Astro.props;
 const currentPath = Astro.url.pathname;
 ---
@@ -30,6 +31,7 @@ const currentPath = Astro.url.pathname;
       breadcrumbName={breadcrumbName}
       article={article}
       noindex={noindex}
+      speakableSections={speakableSections}
     />
     <slot name="head" />
   </head>
