@@ -7,6 +7,7 @@ authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
 tags: ["Shaker", "simple furniture", "miniature chairs", "dollhouse furniture", "woodworking"]
 coverImage: "/images/blog/shaker-style-miniature.webp"
+imageAlt: "Light-wood rocking chair with a knit cushion beside ceramic vases in a white room"
 ---
 
 There is a paradox at the heart of Shaker furniture that every miniaturist eventually discovers: simplicity is the hardest style to get right. The Shakers, a religious community that flourished in America from the late eighteenth through the nineteenth century, believed that beauty resided in utility, honesty of materials, and perfection of workmanship. Their furniture has no carved ornament, no applied decoration, no inlay, and no unnecessary complexity. Every line is functional. Every surface is clean. And at 1/12 scale, that unadorned purity means there is absolutely nothing to distract the eye from any flaw in your work.

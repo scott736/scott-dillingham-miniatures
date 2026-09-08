@@ -7,6 +7,7 @@ authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
 tags: ["Victorian", "dollhouse furniture", "Gothic Revival", "Eastlake", "period furniture"]
 coverImage: "/images/blog/victorian-dollhouse-furniture.webp"
+imageAlt: "Victorian parlor with tufted sofa, armchair, oval gilt mirrors, and heavy drapes"
 ---
 
 The Victorian era, spanning roughly from the 1830s to 1900, produced some of the most diverse and exuberant furniture in Western history. For dollhouse collectors and miniature makers, Victorian furniture holds a particular fascination. Its bold forms, rich materials, elaborate decoration, and sheer variety offer endless possibilities for building and collecting. A Victorian dollhouse room can be opulent, cozy, dramatic, or scholarly depending on which sub-style you choose to represent.

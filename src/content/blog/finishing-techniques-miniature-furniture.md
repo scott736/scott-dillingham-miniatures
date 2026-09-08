@@ -7,6 +7,7 @@ authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
 tags: ["finishing", "French polish", "staining", "miniature techniques"]
 coverImage: "/images/blog/finishing-techniques.webp"
+imageAlt: "Hands rubbing a white finishing pad across a small wooden board beside bottles of oil and shellac"
 ---
 
 A beautifully constructed piece of miniature furniture can be ruined in seconds by a careless finish. Conversely, a thoughtful finish can elevate even a simple piece into something that glows with the warmth and depth of a real antique. Finishing is where many miniaturists struggle, and it is where I spend a disproportionate amount of my time. The results justify the effort.

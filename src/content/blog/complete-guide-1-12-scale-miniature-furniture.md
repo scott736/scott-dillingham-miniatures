@@ -7,6 +7,7 @@ authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
 tags: ["miniature furniture", "1/12 scale", "dollhouse", "beginner guide"]
 coverImage: "/images/blog/complete-guide-1-12-scale.webp"
+imageAlt: "Miniature Queen Anne style side chair with carved splat and cabriole legs on a woodworking bench"
 ---
 
 If you have ever picked up a tiny chair and marveled at its perfectly proportioned legs, its delicate spindles, or the subtle curve of its backrest, you have experienced the magic of 1/12 scale miniature furniture. As someone who has spent years at the bench crafting these pieces by hand, I can tell you that this scale is far more than a convenient ratio. It is a discipline, a tradition, and for many of us, an obsession.

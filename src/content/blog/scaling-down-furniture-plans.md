@@ -7,6 +7,7 @@ authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
 tags: ["furniture plans", "1/12 scale", "design", "scaling techniques"]
 coverImage: "/images/blog/scaling-down-plans.webp"
+imageAlt: "Desk lamp lighting architectural drawings, a small chair model, and a blue case"
 ---
 
 Every piece of miniature furniture I build begins with a full-size original. Sometimes it is a specific antique I have studied in a museum. Sometimes it is a design from a woodworking book or a measured drawing in a magazine. The challenge is always the same: how do you take something designed for the real world and translate it faithfully into [1/12 scale](/blog/complete-guide-1-12-scale-miniature-furniture)?

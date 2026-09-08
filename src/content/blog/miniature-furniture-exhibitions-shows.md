@@ -7,6 +7,7 @@ authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
 tags: ["exhibitions", "shows", "community", "miniature furniture"]
 coverImage: "/images/blog/miniature-exhibitions-shows.webp"
+imageAlt: "Gallery display of miniature furniture including tables, chairs, and a glass-front cabinet"
 ---
 
 Attending miniature furniture shows and exhibitions is one of the most exciting parts of being involved in this craft, whether you are a maker, a collector, or simply someone who appreciates extraordinary craftsmanship. There is nothing quite like seeing hundreds of museum-quality miniatures gathered in one place, meeting the artisans who create them, and connecting with fellow enthusiasts who share your passion.

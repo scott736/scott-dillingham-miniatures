@@ -7,6 +7,7 @@ authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
 tags: ["wood selection", "miniature furniture", "materials", "woodworking tips"]
 coverImage: "/images/blog/choosing-wood-miniatures.webp"
+imageAlt: "Wall of hardwood sample blocks in many grain colors and sizes"
 ---
 
 Choosing the right wood for miniature furniture is one of the most important decisions you will make on every project. A species that looks magnificent on a full-size dining table can look completely wrong at 1/12 scale. The grain pattern, pore structure, and color all need to work in miniature, and not all woods pass that test.

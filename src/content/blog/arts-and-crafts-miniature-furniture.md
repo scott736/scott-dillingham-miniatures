@@ -7,6 +7,7 @@ authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
 tags: ["Arts and Crafts", "Mission style", "Craftsman", "miniature joinery", "Gustav Stickley"]
 coverImage: "/images/blog/arts-crafts-miniature.webp"
+imageAlt: "Arts and Crafts Morris-style armchair with brown leather cushions and a matching oak chest in a paneled room"
 ---
 
 At the turn of the twentieth century, a reaction against industrialization and mass production swept through the design world. The Arts and Crafts movement, which had begun in England with the writings of John Ruskin and the work of William Morris, found its most distinctive American expression in the furniture of Gustav Stickley and his contemporaries. These makers championed honest materials, visible construction, and the dignity of handcraft, producing furniture that celebrated the worker's hand rather than the machine's precision.

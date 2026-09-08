@@ -49,7 +49,7 @@ const { posts } = Astro.props;
           <div class="relative h-[320px] overflow-hidden rounded-3xl">
             <img
               src={post.data.coverImage}
-              alt={`${post.data.title} - Miniature furniture article by Scott Dillingham`}
+              alt={post.data.imageAlt || `${post.data.title} — 1/12 scale miniature furniture article by Scott Dillingham`}
               width="400"
               height="320"
               loading="lazy"

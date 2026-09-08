@@ -2,10 +2,13 @@
 import '@/styles/global.css';
 import {
   IMAGE_LICENSE_URL,
+  breadcrumbListNode,
   imageObject,
   organizationNode,
   personNode,
   personRef,
+  webPageId,
+  webPageNode,
   websiteNode,
 } from '@/lib/schema';
 import { formatPageTitle, SITE_METADATA, SITE_TITLE, SITE_URL } from '../consts';
@@ -24,6 +27,7 @@ const {
   breadcrumbName,
   article,
   noindex,
+  speakableSections,
 } = Astro.props;
 const finalTitle = formatPageTitle(title);
 const crumbName = breadcrumbName || title || 'Page';
@@ -35,7 +39,9 @@ const ogWidth = imageWidth ?? (usingDefaultImage ? defaultOg.width : undefined);
 const ogHeight = imageHeight ?? (usingDefaultImage ? defaultOg.height : undefined);
 const ogAlt =
   imageAlt ||
-  (article ? `${title} - Miniature furniture by Scott Dillingham` : defaultOg.alt);
+  (article
+    ? `${title} — 1/12 scale miniature furniture article by Scott Dillingham`
+    : defaultOg.alt);
 
 const organizationSchema = {
   '@context': 'https://schema.org',
@@ -60,13 +66,13 @@ const articleSchema = article
       description: description,
       image: imageObject({
         url: imageURL.toString(),
-        caption: `${title} — Scott Dillingham Miniatures`,
+        caption: ogAlt,
       }),
       author: personRef(),
       publisher: { '@id': `${SITE_URL}/#organization` },
       datePublished: article.pubDate,
       dateModified: article.updatedDate || article.pubDate,
-      mainEntityOfPage: canonicalURL.toString(),
+      mainEntityOfPage: { '@id': webPageId(canonicalURL.toString()) },
       keywords: article.tags ? article.tags.join(', ') : undefined,
     }
   : null;
@@ -104,8 +110,21 @@ if (isBlogPost) {
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: breadcrumbItems,
+  ...breadcrumbListNode(canonicalURL.toString(), breadcrumbItems),
+};
+
+const webPageSchema = {
+  '@context': 'https://schema.org',
+  ...webPageNode({
+    url: canonicalURL.toString(),
+    name: finalTitle,
+    description: finalDescription,
+    speakable: speakableSections,
+    primaryImage: {
+      url: imageURL.toString(),
+      caption: ogAlt,
+    },
+  }),
 };
 ---
 
@@ -218,6 +237,7 @@ const breadcrumbSchema = {
       <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
       <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
       <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+      <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
       <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
     </>
   )

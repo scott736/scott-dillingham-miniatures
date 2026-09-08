@@ -7,6 +7,7 @@ authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
 tags: ["Chippendale", "period furniture", "ball and claw feet", "miniature carving"]
 coverImage: "/images/blog/chippendale-miniature.webp"
+imageAlt: "Ornate mahogany commode with gilt mounts, inlaid drawer fronts, and cabriole legs"
 ---
 
 Thomas Chippendale published "The Gentleman and Cabinet-Maker's Director" in 1754, and the furniture world has never been the same. His designs blended English, French, Chinese, and Gothic influences into a style of extraordinary richness and complexity. For miniaturists working in 1/12 scale, Chippendale furniture represents one of the most demanding and satisfying challenges in the craft. Every piece bristles with carved detail, from ball-and-claw feet to pierced splats, shell motifs to acanthus leaves.

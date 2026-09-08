@@ -7,6 +7,7 @@ authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
 tags: ["display", "preservation", "collecting", "miniature furniture"]
 coverImage: "/images/blog/displaying-protecting-collection.webp"
+imageAlt: "Museum glass display cases holding small sculptures and models under cool lighting"
 ---
 
 You have invested time, money, and passion in building your miniature furniture collection. Now the question becomes: how do you display it beautifully while keeping it safe for generations? In my years as a maker and collector, I have seen wonderful pieces damaged by preventable causes. Sunlight, humidity swings, dust, and careless handling are the enemies of fine miniature furniture, and each one can be defeated with the right approach.

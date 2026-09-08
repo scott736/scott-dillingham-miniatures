@@ -3,9 +3,9 @@ export const prerender = true;
 
 import { getCollection } from 'astro:content';
 
-import { organizationRef, personRef } from '@/lib/schema';
 import { SITE_URL } from '@/consts';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { imageObject, organizationRef, personRef } from '@/lib/schema';
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -19,6 +19,7 @@ const list = posts.map((post) => ({
       ? post.data.pubDate.toISOString()
       : String(post.data.pubDate),
   coverImage: post.data.coverImage,
+  imageAlt: post.data.imageAlt,
   tags: post.data.tags ?? [],
 }));
 
@@ -27,10 +28,13 @@ const allTags = Array.from(new Set(list.flatMap((p) => p.tags))).sort();
 const blogSchema = {
   '@context': 'https://schema.org',
   '@type': 'Blog',
+  '@id': `${SITE_URL}/blog/#blog`,
   name: 'Miniature Furniture Blog',
   description:
     'Expert guides on miniature furniture making, 1/12 scale woodworking techniques, period styles, and collecting.',
   url: `${SITE_URL}/blog/`,
+  inLanguage: 'en',
+  isPartOf: { '@id': `${SITE_URL}/#website` },
   author: personRef(),
   publisher: organizationRef(),
   blogPost: posts.map((post) => ({
@@ -44,7 +48,12 @@ const blogSchema = {
         : String(post.data.pubDate),
     author: personRef(),
     image: post.data.coverImage
-      ? `${SITE_URL}${post.data.coverImage}`
+      ? imageObject({
+          url: `${SITE_URL}${post.data.coverImage}`,
+          caption:
+            post.data.imageAlt ||
+            `${post.data.title} — 1/12 scale miniature furniture article by Scott Dillingham`,
+        })
       : undefined,
   })),
 };
@@ -64,7 +73,7 @@ function formatDate(iso: string) {
   image="/images/blog/complete-guide-1-12-scale.webp"
   imageWidth={1920}
   imageHeight={1097}
-  imageAlt="1/12 scale miniature furniture workshop journal"
+  imageAlt="Miniature Queen Anne style side chair with carved splat and cabriole legs on a woodworking bench"
   breadcrumbName="Blog"
 >
   <script type="application/ld+json" set:html={JSON.stringify(blogSchema)} />
@@ -130,7 +139,7 @@ function formatDate(iso: string) {
               <div class="relative h-[320px] overflow-hidden rounded-3xl">
                 <img
                   src={post.coverImage}
-                  alt={`${post.title} - Miniature furniture article by Scott Dillingham`}
+                  alt={post.imageAlt || `${post.title} — 1/12 scale miniature furniture article by Scott Dillingham`}
                   width={400}
                   height={320}
                   loading="lazy"

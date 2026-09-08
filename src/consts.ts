@@ -1,15 +1,32 @@
 export const BRAND_NAME = 'Scott Dillingham Miniatures';
-export const SITE_TITLE = 'Scott Dillingham Miniatures | Handcrafted 1/12 Scale Furniture';
+export const SITE_TITLE =
+  'Scott Dillingham Miniatures | Handcrafted 1/12 Scale Furniture';
 export const SITE_DESCRIPTION =
   'Museum-exhibited 1/12 scale miniature furniture, built by hand from hardwoods with traditional joinery. Commissions welcome.';
 
 export function formatPageTitle(title?: string): string {
   if (!title || title === SITE_TITLE || title === BRAND_NAME) return SITE_TITLE;
-  if (title.endsWith(` | ${BRAND_NAME}`) || title.includes(BRAND_NAME)) return title;
+  if (title.endsWith(` | ${BRAND_NAME}`) || title.includes(BRAND_NAME))
+    return title;
   return `${title} | ${BRAND_NAME}`;
 }
 
 export const SITE_URL = 'https://scottdillinghamminiatures.com';
+/** Absolute URL on this site with no trailing slash (`trailingSlash: never`). */
+export function absoluteUrl(path = "/"): string {
+  const raw =
+    path.startsWith("http://") || path.startsWith("https://")
+      ? path
+      : new URL(path.startsWith("/") ? path : `/${path}`, `${SITE_URL}/`).href;
+  try {
+    const url = new URL(raw);
+    if (url.origin !== new URL(SITE_URL).origin) return raw;
+    const pathname = url.pathname.replace(/\/+$/, "");
+    return `${url.origin}${pathname}${url.search}${url.hash}`;
+  } catch {
+    return raw.replace(/\/+$/, "") || SITE_URL;
+  }
+}
 
 /** IndexNow key file is public/{INDEXNOW_KEY}.txt */
 export const INDEXNOW_KEY = 'sdm-indexnow-20260823-a7f4c91e';
@@ -87,9 +104,18 @@ export const FOOTER_LINKS = [
   {
     title: 'Learn',
     links: [
-      { name: 'Miniature Woodworking Guide', href: '/blog/complete-guide-1-12-scale-miniature-furniture/' },
-      { name: 'Choosing Wood for Miniatures', href: '/blog/how-to-choose-wood-for-miniature-furniture/' },
-      { name: 'Essential Tools', href: '/blog/essential-miniature-woodworking-tools/' },
+      {
+        name: 'Miniature Woodworking Guide',
+        href: '/blog/complete-guide-1-12-scale-miniature-furniture/',
+      },
+      {
+        name: 'Choosing Wood for Miniatures',
+        href: '/blog/how-to-choose-wood-for-miniature-furniture/',
+      },
+      {
+        name: 'Essential Tools',
+        href: '/blog/essential-miniature-woodworking-tools/',
+      },
       { name: 'All Articles', href: '/blog/' },
     ],
   },
@@ -144,7 +170,9 @@ export const GALLERY_ITEMS = [
   {
     id: 'tall-case-clock',
     title: 'Simon Willard Tall Case Clock Style',
-    description: 'This exquisite 1/12 scale miniature Simon Willard Tall Case Clock (also known as a grandfather clock) faithfully captures the timeless elegance of the original late 18th-century Federal/Roxbury style pieces crafted by the renowned American clockmaker Simon Willard. Handmade from rich Honduras mahogany, it features a warm, deep reddish-brown finish that beautifully highlights the wood\'s natural grain and luster. The tall, slender case rises gracefully from a simple squared base with subtle bracket feet, flowing into a long, narrow trunk accented by delicate cross-band inlay. The hood is crowned with a gently arched pediment, an ornate pierced fretwork crest, and three gleaming brass finials for that classic period flourish. At the heart of the design is the arched dial with crisp black Roman numerals, elegant spade hands, and a finely rendered lunar calendar dial tracking the moon\'s cycle—every detail meticulously reproduced for historical accuracy. This is a true collector\'s gem that blends masterful miniature craftsmanship with authentic period charm. This particular piece resides in the <a href="https://www.ksbminiaturescollection.com/" target="_blank" rel="noopener noreferrer">KSB Miniatures Collection</a> (a premier museum of fine miniatures in Maysville, Kentucky), where it is proudly displayed among other exceptional works. It is not for sale. Similar tall-case clocks are offered by commission.',
+    alt: '1/12 scale Simon Willard style tall-case clock in Honduras mahogany with arched hood, pierced fretwork, brass finials, and Roman-numeral dial by Scott Dillingham',
+    description:
+      'This exquisite 1/12 scale miniature Simon Willard Tall Case Clock (also known as a grandfather clock) faithfully captures the timeless elegance of the original late 18th-century Federal/Roxbury style pieces crafted by the renowned American clockmaker Simon Willard. Handmade from rich Honduras mahogany, it features a warm, deep reddish-brown finish that beautifully highlights the wood\'s natural grain and luster. The tall, slender case rises gracefully from a simple squared base with subtle bracket feet, flowing into a long, narrow trunk accented by delicate cross-band inlay. The hood is crowned with a gently arched pediment, an ornate pierced fretwork crest, and three gleaming brass finials for that classic period flourish. At the heart of the design is the arched dial with crisp black Roman numerals, elegant spade hands, and a finely rendered lunar calendar dial tracking the moon\'s cycle—every detail meticulously reproduced for historical accuracy. This is a true collector\'s gem that blends masterful miniature craftsmanship with authentic period charm. This particular piece resides in the <a href="https://www.ksbminiaturescollection.com/" target="_blank" rel="noopener noreferrer">KSB Miniatures Collection</a> (a premier museum of fine miniatures in Maysville, Kentucky), where it is proudly displayed among other exceptional works. It is not for sale. Similar tall-case clocks are offered by commission.',
     images: ['/images/gallery/tall-case-clock.webp'],
     category: 'Clocks',
     wood: 'Honduras Mahogany',
@@ -155,7 +183,9 @@ export const GALLERY_ITEMS = [
   {
     id: 'highboy-dresser',
     title: 'Queen Anne Style Highboy',
-    description: 'This 1/12 scale miniature Queen Anne style highboy (tall chest of drawers) is meticulously crafted from rich black walnut, showcasing warm, deep tones and beautiful grain. It features a classic bonnet top with graceful arched pediment and split scrolling crest, adding elegant height and period charm. The upper section has multiple graduated drawers with brass pulls, while the lower section includes a deep open drawer and additional drawers accented by a carved fan/shell motif on the central lower panel. Supported by graceful cabriole legs ending in detailed claw-and-ball feet, the piece exhibits precise dovetailed drawer construction for authenticity. The overall design captures the refined proportions and sophisticated curves of 18th-century American Queen Anne furniture, making it a stunning dollhouse collector\'s item.',
+    alt: '1/12 scale Queen Anne highboy in black walnut with bonnet top, carved fan, brass pulls, and cabriole legs by Scott Dillingham',
+    description:
+      "This 1/12 scale miniature Queen Anne style highboy (tall chest of drawers) is meticulously crafted from rich black walnut, showcasing warm, deep tones and beautiful grain. It features a classic bonnet top with graceful arched pediment and split scrolling crest, adding elegant height and period charm. The upper section has multiple graduated drawers with brass pulls, while the lower section includes a deep open drawer and additional drawers accented by a carved fan/shell motif on the central lower panel. Supported by graceful cabriole legs ending in detailed claw-and-ball feet, the piece exhibits precise dovetailed drawer construction for authenticity. The overall design captures the refined proportions and sophisticated curves of 18th-century American Queen Anne furniture, making it a stunning dollhouse collector's item.",
     images: ['/images/gallery/highboy-dresser.webp'],
     category: 'Dressers & Cabinets',
     wood: 'Black Walnut',
@@ -166,7 +196,9 @@ export const GALLERY_ITEMS = [
   {
     id: 'four-poster-bed',
     title: 'Shaker Style Pencil Post Bed',
-    description: 'This 1/12 scale miniature Shaker style pencil post bed is handcrafted from warm cherry wood, embodying the simple, functional elegance of classic Shaker design. It features four slender, octagonal posts that gently taper toward the bottom, rising to support a clean canopy frame with precise mortise-and-tenon joinery for authentic strength and detail. The headboard is unadorned with a graceful, gently curved shape and a signature circular cutout, while the overall open, rectangular structure highlights the wood\'s natural grain and smooth finish against a neutral backdrop. A timeless, minimalist piece perfect for a period miniature bedroom, capturing Shaker restraint and craftsmanship in exquisite small scale.',
+    alt: '1/12 scale Shaker pencil-post bed in cherry with tapered posts, canopy frame, and circular-cutout headboard by Scott Dillingham',
+    description:
+      "This 1/12 scale miniature Shaker style pencil post bed is handcrafted from warm cherry wood, embodying the simple, functional elegance of classic Shaker design. It features four slender, octagonal posts that gently taper toward the bottom, rising to support a clean canopy frame with precise mortise-and-tenon joinery for authentic strength and detail. The headboard is unadorned with a graceful, gently curved shape and a signature circular cutout, while the overall open, rectangular structure highlights the wood's natural grain and smooth finish against a neutral backdrop. A timeless, minimalist piece perfect for a period miniature bedroom, capturing Shaker restraint and craftsmanship in exquisite small scale.",
     images: ['/images/gallery/four-poster-bed.webp'],
     category: 'Beds',
     wood: 'Cherry',
@@ -177,7 +209,9 @@ export const GALLERY_ITEMS = [
   {
     id: 'maloof-rocking-chair',
     title: 'Sam Maloof Style Rocking Chair',
-    description: 'This exquisite 1/12 scale miniature rocking chair is my handcrafted tribute to the timeless style pioneered by Sam Maloof—a design renowned for its elegant, organic curves, sculptural form, and masterful blend of comfort and artistry. Inspired by the flowing, hand-shaped lines of iconic mid-century rockers from the Studio Craft movement, this piece captures that signature sense of movement and warmth: sensuous contours that invite relaxation, subtle sculpting that feels alive to the touch, and an honest simplicity that honors traditional woodworking without unnecessary ornament. I built this one-of-a-kind miniature using Brazilian Rosewood, finished with a rich oil that deepens the wood\'s warm tones and reveals its natural grain. It was constructed exactly as the full-size originals would be—using traditional joinery techniques for lasting strength and authenticity, scaled down precisely to maintain the same proportional balance and rocking dynamics in miniature form. Give it a gentle push, and it rocks smoothly for a full 27 seconds—proof of the careful engineering and proportion poured into every detail. As a unique, personal interpretation rather than a direct copy, this chair stands as a singular homage to enduring craftsmanship. A true collector\'s gem in miniature form, handmade one at a time in my workshop. This particular piece resides in the <a href="https://www.ksbminiaturescollection.com/" target="_blank" rel="noopener noreferrer">KSB Miniatures Collection</a> (a premier museum of fine miniatures in Maysville, Kentucky), where it is proudly displayed among other exceptional works. It is not for sale. Similar rocking chairs are offered by commission.',
+    alt: '1/12 scale Sam Maloof style rocking chair in Brazilian rosewood with sculpted arms, spindle back, and long rockers by Scott Dillingham',
+    description:
+      'This exquisite 1/12 scale miniature rocking chair is my handcrafted tribute to the timeless style pioneered by Sam Maloof—a design renowned for its elegant, organic curves, sculptural form, and masterful blend of comfort and artistry. Inspired by the flowing, hand-shaped lines of iconic mid-century rockers from the Studio Craft movement, this piece captures that signature sense of movement and warmth: sensuous contours that invite relaxation, subtle sculpting that feels alive to the touch, and an honest simplicity that honors traditional woodworking without unnecessary ornament. I built this one-of-a-kind miniature using Brazilian Rosewood, finished with a rich oil that deepens the wood\'s warm tones and reveals its natural grain. It was constructed exactly as the full-size originals would be—using traditional joinery techniques for lasting strength and authenticity, scaled down precisely to maintain the same proportional balance and rocking dynamics in miniature form. Give it a gentle push, and it rocks smoothly for a full 27 seconds—proof of the careful engineering and proportion poured into every detail. As a unique, personal interpretation rather than a direct copy, this chair stands as a singular homage to enduring craftsmanship. A true collector\'s gem in miniature form, handmade one at a time in my workshop. This particular piece resides in the <a href="https://www.ksbminiaturescollection.com/" target="_blank" rel="noopener noreferrer">KSB Miniatures Collection</a> (a premier museum of fine miniatures in Maysville, Kentucky), where it is proudly displayed among other exceptional works. It is not for sale. Similar rocking chairs are offered by commission.',
     images: ['/images/gallery/maloof-rocking-chair.webp'],
     category: 'Chairs',
     wood: 'Brazilian Rosewood',
@@ -188,7 +222,9 @@ export const GALLERY_ITEMS = [
   {
     id: 'hepplewhite-shield-back-chair',
     title: 'Hepplewhite Shield Back Style Chair',
-    description: 'This exquisite 1/12 scale miniature Hepplewhite shield back chair (often called a "Hap White" style in miniature circles) is a handcrafted tribute to the graceful late 18th-century Hepplewhite dining chairs that defined Federal-era elegance. Made entirely from rich mahogany, it features a warm, deep finish that accentuates the wood\'s natural luster and fine grain. The highlight is the hand-carved shield back—a classic pierced splat with flowing, interlaced ribs and delicate central motifs, meticulously sculpted by hand for intricate detail, lightness, and that signature airy sophistication. Every joint uses traditional mortise and tenon construction for superior strength and authentic period authenticity in this tiny scale. The seat is upholstered in a soft, textured fabric (a subtle grayish-blue/green tone), providing beautiful contrast and comfort against the polished mahogany frame. The legs are elegant square-tapered forms, perfectly proportioned to capture Hepplewhite\'s refined simplicity and balance. This chair is a testament to masterful miniature woodworking: precise hand carving, flawless joinery, and historical accuracy that makes it feel like a genuine antique reduced to dollhouse perfection. This particular piece resides in the <a href="https://www.ksbminiaturescollection.com/" target="_blank" rel="noopener noreferrer">KSB Miniatures Collection</a> (a premier museum of fine miniatures in Maysville, Kentucky), where it is proudly displayed among other exceptional works. It is not for sale. Similar shield-back chairs are offered by commission.',
+    alt: '1/12 scale Hepplewhite shield-back chair in mahogany with carved splat and gray-green upholstered seat by Scott Dillingham',
+    description:
+      'This exquisite 1/12 scale miniature Hepplewhite shield back chair (often called a "Hap White" style in miniature circles) is a handcrafted tribute to the graceful late 18th-century Hepplewhite dining chairs that defined Federal-era elegance. Made entirely from rich mahogany, it features a warm, deep finish that accentuates the wood\'s natural luster and fine grain. The highlight is the hand-carved shield back—a classic pierced splat with flowing, interlaced ribs and delicate central motifs, meticulously sculpted by hand for intricate detail, lightness, and that signature airy sophistication. Every joint uses traditional mortise and tenon construction for superior strength and authentic period authenticity in this tiny scale. The seat is upholstered in a soft, textured fabric (a subtle grayish-blue/green tone), providing beautiful contrast and comfort against the polished mahogany frame. The legs are elegant square-tapered forms, perfectly proportioned to capture Hepplewhite\'s refined simplicity and balance. This chair is a testament to masterful miniature woodworking: precise hand carving, flawless joinery, and historical accuracy that makes it feel like a genuine antique reduced to dollhouse perfection. This particular piece resides in the <a href="https://www.ksbminiaturescollection.com/" target="_blank" rel="noopener noreferrer">KSB Miniatures Collection</a> (a premier museum of fine miniatures in Maysville, Kentucky), where it is proudly displayed among other exceptional works. It is not for sale. Similar shield-back chairs are offered by commission.',
     images: ['/images/gallery/hepplewhite-shield-back-chair.webp'],
     category: 'Chairs',
     wood: 'Mahogany',
@@ -199,7 +235,9 @@ export const GALLERY_ITEMS = [
   {
     id: 'moser-continuous-arm-chair',
     title: 'Thomas Moser Continuous Arm Style Chair',
-    description: 'This exquisite 1/12 scale miniature Thomas Moser Continuous Arm style chair is a handcrafted homage to the iconic design by Thos. Moser—a modern evolution of the classic Windsor style, celebrated for its sweeping, fluid lines, simplicity, and exceptional comfort. Made with a beautiful combination of ash and cherry, it features an oil finish that enhances the natural warmth, grain, and subtle contrast between the woods. The signature continuous arm flows seamlessly in one graceful arc, hand-shaped for that distinctive, ergonomic sweep. Every joint is executed with traditional mortise and tenon construction, ensuring strength, precision, and authentic craftsmanship in miniature form. The spindled back and splayed legs capture the chair\'s lightweight yet sturdy character, while the contoured seat adds to its timeless appeal—distilling generations of woodworking know-how into a compact, collector-worthy piece. This is a true testament to masterful miniature artistry: clean lines, flawless joinery, and balanced proportion that echoes the original\'s enduring elegance. Handmade one at a time in my workshop.',
+    alt: '1/12 scale Thomas Moser continuous-arm chair in ash and cherry with spindle back and splayed legs by Scott Dillingham',
+    description:
+      "This exquisite 1/12 scale miniature Thomas Moser Continuous Arm style chair is a handcrafted homage to the iconic design by Thos. Moser—a modern evolution of the classic Windsor style, celebrated for its sweeping, fluid lines, simplicity, and exceptional comfort. Made with a beautiful combination of ash and cherry, it features an oil finish that enhances the natural warmth, grain, and subtle contrast between the woods. The signature continuous arm flows seamlessly in one graceful arc, hand-shaped for that distinctive, ergonomic sweep. Every joint is executed with traditional mortise and tenon construction, ensuring strength, precision, and authentic craftsmanship in miniature form. The spindled back and splayed legs capture the chair's lightweight yet sturdy character, while the contoured seat adds to its timeless appeal—distilling generations of woodworking know-how into a compact, collector-worthy piece. This is a true testament to masterful miniature artistry: clean lines, flawless joinery, and balanced proportion that echoes the original's enduring elegance. Handmade one at a time in my workshop.",
     images: ['/images/gallery/moser-continuous-arm-chair.webp'],
     category: 'Chairs',
     wood: 'Ash & Cherry',
@@ -210,7 +248,9 @@ export const GALLERY_ITEMS = [
   {
     id: 'shaker-d-ring-table',
     title: 'Shaker Style D-Ring Table',
-    description: 'This exquisite 1/12 scale miniature Shaker-style D-ring table (a classic extension dining table with rounded D-shaped ends) is a handcrafted celebration of Shaker simplicity, functionality, and timeless proportion—perfectly suited for a miniature dining room or parlor setting. Built primarily from rich cherry wood, it features a warm, deep oil finish that enhances the natural grain and brings out the subtle reddish tones characteristic of the species. The distinctive D-shaped top includes two removable extension leaves that slide in and out for flexible sizing, allowing the table to collapse neatly into a compact four-seater when the leaves are stored—transforming it effortlessly for everyday use or larger gatherings. The leaves attach and extend via precisely crafted maple sliding dovetail mechanisms, enabling smooth, secure operation in miniature scale without any visible hardware or complexity. This traditional joinery method ensures durability and authentic Shaker craftsmanship: clean lines, honest construction, and no unnecessary ornamentation. The table stands on elegant, tapered legs that maintain perfect balance in any configuration—capturing the essence of Shaker design where form follows function with graceful restraint. A true collector\'s gem that blends masterful woodworking detail, practical ingenuity, and historical accuracy in tiny form. Handmade one at a time in my workshop, it\'s ready to enhance any discerning miniature collection.',
+    alt: '1/12 scale Shaker D-ring extension dining table in cherry with rounded ends and tapered legs by Scott Dillingham',
+    description:
+      "This exquisite 1/12 scale miniature Shaker-style D-ring table (a classic extension dining table with rounded D-shaped ends) is a handcrafted celebration of Shaker simplicity, functionality, and timeless proportion—perfectly suited for a miniature dining room or parlor setting. Built primarily from rich cherry wood, it features a warm, deep oil finish that enhances the natural grain and brings out the subtle reddish tones characteristic of the species. The distinctive D-shaped top includes two removable extension leaves that slide in and out for flexible sizing, allowing the table to collapse neatly into a compact four-seater when the leaves are stored—transforming it effortlessly for everyday use or larger gatherings. The leaves attach and extend via precisely crafted maple sliding dovetail mechanisms, enabling smooth, secure operation in miniature scale without any visible hardware or complexity. This traditional joinery method ensures durability and authentic Shaker craftsmanship: clean lines, honest construction, and no unnecessary ornamentation. The table stands on elegant, tapered legs that maintain perfect balance in any configuration—capturing the essence of Shaker design where form follows function with graceful restraint. A true collector's gem that blends masterful woodworking detail, practical ingenuity, and historical accuracy in tiny form. Handmade one at a time in my workshop, it's ready to enhance any discerning miniature collection.",
     images: ['/images/gallery/shaker-d-ring-table.webp'],
     category: 'Tables',
     wood: 'Cherry',
@@ -258,7 +298,8 @@ export const FAQ_DATA = [
       'Yes. Each piece is carefully packed in custom-fitted foam and shipped in a rigid box to ensure safe arrival anywhere in the world. Full insurance is included with every shipment.',
   },
   {
-    question: 'What makes your miniatures different from mass-produced dollhouse furniture?',
+    question:
+      'What makes your miniatures different from mass-produced dollhouse furniture?',
     answer:
       'The difference is night and day. Mass-produced miniatures are typically made from resin, plastic, or laser-cut MDF. My pieces are hand-built from solid hardwoods using the same joinery techniques as full-size <a href="/blog/history-miniature-furniture-royal-courts-modern/">period furniture</a>. Every drawer opens, every door swings on hand-made hinges, and every detail is historically accurate. Learn more in our <a href="/blog/handcrafted-vs-kit-built-miniatures/">handcrafted vs kit-built miniatures</a> comparison. See the difference for yourself in our <a href="/gallery/">gallery</a>.',
   },

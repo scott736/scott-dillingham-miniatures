@@ -7,6 +7,7 @@ authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
 tags: ["Queen Anne", "period furniture", "cabriole legs", "miniature techniques"]
 coverImage: "/images/blog/queen-anne-guide.webp"
+imageAlt: "Miniature Queen Anne armchair with gold damask upholstery and cabriole legs"
 ---
 
 Few furniture styles capture the grace and sophistication of the early eighteenth century quite like Queen Anne. Defined by flowing curves, restrained ornamentation, and an unmistakable sense of lightness, Queen Anne furniture represents a turning point in design history. For those of us who work in 1/12 scale, reproducing this style is both deeply rewarding and genuinely demanding. Every cabriole leg, every pad foot, every delicate shell carving must be executed with precision that leaves no room for error.

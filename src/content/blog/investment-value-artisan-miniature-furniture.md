@@ -7,6 +7,7 @@ authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
 tags: ["investing", "collecting", "miniature furniture", "value"]
 coverImage: "/images/blog/investment-value-miniatures.webp"
+imageAlt: "Gilded glass cabinet displaying gold and silver miniature objects on glass shelves"
 ---
 
 I have always believed that the primary reason to collect miniature furniture should be the love of the craft. But it would be naive to ignore the fact that fine artisan miniatures represent a legitimate investment category, one that has quietly rewarded knowledgeable collectors for decades. In this post, I want to share what I have observed about the investment side of miniature furniture collecting, drawing on years of experience as both a maker and a participant in the collector community.

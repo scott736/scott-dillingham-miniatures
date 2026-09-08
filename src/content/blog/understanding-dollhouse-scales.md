@@ -7,6 +7,7 @@ authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
 tags: ["dollhouse scales", "1/12 scale", "1/24 scale", "miniatures guide"]
 coverImage: "/images/blog/understanding-dollhouse-scales.webp"
+imageAlt: "Two tiny wooden chairs of different sizes, one with a wood seat and one with a rush seat"
 ---
 
 One of the first questions every new miniature enthusiast asks is about scale. Walk into a miniatures show and you will see pieces in several different sizes, each labeled with a ratio that might seem cryptic at first glance. Understanding these dollhouse scales is fundamental to collecting, building, and displaying miniatures, and getting them mixed up can lead to expensive mistakes.

@@ -7,6 +7,7 @@ authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
 tags: ["four-poster bed", "miniature lathe", "dollhouse bed", "miniature building"]
 coverImage: "/images/blog/miniature-four-poster-bed.webp"
+imageAlt: "Carved dark-wood four-poster bed with gold bedding in a wood-paneled bedroom"
 ---
 
 A four-poster bed is one of the most recognizable and dramatic pieces of furniture in any period room. At full scale, these beds commanded attention through sheer size and the richness of their carved posts, draped canopies, and layered textiles. At 1/12 scale, a well-made four-poster bed achieves the same presence in a dollhouse bedroom. It becomes the centerpiece around which every other element revolves.

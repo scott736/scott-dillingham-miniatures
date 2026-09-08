@@ -23,6 +23,7 @@ const blog = defineCollection({
     authorName: z.string().optional(),
     tags: z.array(z.string()).optional(),
     coverImage: z.string().optional(),
+    imageAlt: z.string().optional(),
   }),
 });
 

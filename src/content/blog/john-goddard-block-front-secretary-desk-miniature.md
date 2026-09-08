@@ -7,6 +7,7 @@ authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
 tags: ["John Goddard", "secretary desk", "block front", "miniature carving", "Newport furniture"]
 coverImage: "/images/blog/goddard-secretary-desk.webp"
+imageAlt: "Mahogany secretary bookcase in a paneled library under a stained-glass ceiling light"
 ---
 
 In the world of American furniture, few pieces command more reverence than the block-front secretary desks made by John Goddard and the Townsend-Goddard workshop of Newport, Rhode Island. These desks, built in the mid-to-late eighteenth century, represent the pinnacle of American cabinetmaking. The combination of architectural block-front facades, exquisitely carved shells, and complex interiors filled with drawers and pigeonholes makes them objects of extraordinary beauty and craftsmanship.

@@ -7,6 +7,7 @@ authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
 tags: ["workshop", "setup", "workspace", "miniature woodworking"]
 coverImage: "/images/blog/miniature-workshop-setup.webp"
+imageAlt: "Well-lit woodworking shop with a central bench, hanging lamps, and wall-to-wall tool shelves"
 ---
 
 Your workshop is where the magic happens. It is also where frustration breeds if the space is not set up thoughtfully. I have worked in everything from a corner of a kitchen table to a dedicated workshop room, and I can tell you that the physical environment has a direct impact on the quality of your miniature furniture and the enjoyment you get from making it.

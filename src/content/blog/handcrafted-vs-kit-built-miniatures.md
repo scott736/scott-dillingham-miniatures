@@ -7,6 +7,7 @@ authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
 tags: ["craftsmanship", "miniature furniture", "kits", "collecting"]
 coverImage: "/images/blog/handcrafted-vs-kit-built.webp"
+imageAlt: "Two carved wooden side chairs side by side, one with a wood seat and one with a padded seat"
 ---
 
 One of the most common questions I receive from new collectors is about the difference between handcrafted miniature furniture and kit-built pieces. It is an honest question, and it deserves an honest answer. Both approaches have their place in the miniature world, but understanding the differences will help you make informed decisions about what you buy and collect.

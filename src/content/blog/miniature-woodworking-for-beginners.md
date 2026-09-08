@@ -7,6 +7,7 @@ authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
 tags: ["beginner", "miniature woodworking", "getting started", "tutorials"]
 coverImage: "/images/blog/miniature-woodworking-beginners.webp"
+imageAlt: "Hands using a chisel and a small metal plane on a workbench scattered with shavings"
 ---
 
 Every miniature furniture maker I have ever met remembers the moment they decided to try this craft. For some it was seeing an exquisite dollhouse at a museum. For others it was picking up a tiny handmade chair and realizing a real person had built it with real joinery. Whatever your moment was, welcome. You are about to discover one of the most absorbing and rewarding forms of woodworking that exists.

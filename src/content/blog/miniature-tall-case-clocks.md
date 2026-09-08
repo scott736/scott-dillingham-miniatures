@@ -7,6 +7,7 @@ authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
 tags: ["tall case clock", "grandfather clock", "miniature woodworking", "advanced techniques"]
 coverImage: "/images/blog/miniature-tall-case-clock.webp"
+imageAlt: "Close-up of a mahogany tall-case clock hood with Roman-numeral dial and gilt spandrels"
 ---
 
 Among miniature furniture makers, the tall case clock holds a special status. It is widely regarded as the most demanding project you can undertake in 1/12 scale. The combination of thin case construction, working doors with tiny hinges, a detailed dial face, delicate finial turning, precise proportions, and the integration of multiple furniture styles into a single vertical piece makes it a comprehensive test of everything you know.

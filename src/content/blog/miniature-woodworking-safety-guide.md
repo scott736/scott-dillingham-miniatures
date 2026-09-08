@@ -7,6 +7,7 @@ authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
 tags: ["safety", "workshop safety", "health", "miniature woodworking"]
 coverImage: "/images/blog/miniature-safety-guide.webp"
+imageAlt: "Safety goggles on a sunlit workbench among woodworking tools and offcuts"
 ---
 
 Safety in miniature woodworking is a topic that does not get nearly enough attention. Because the tools are smaller and the pieces are tiny, there is a widespread assumption that miniature work is inherently safer than full-size woodworking. This assumption is wrong, and I have the scars to prove it.

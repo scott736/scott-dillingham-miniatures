@@ -7,6 +7,7 @@ authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
 tags: ["history", "miniature furniture", "dollhouse history", "craftsmanship"]
 coverImage: "/images/blog/history-miniature-furniture.webp"
+imageAlt: "Candlelit period dining room with a set table, high-back chairs, and tall cabinets"
 ---
 
 Every time I sit down at my workbench to build a miniature piece, I am participating in a tradition that stretches back over four centuries. The history of miniature furniture is far richer and more surprising than most people realize. It is a story that winds through royal courts and merchant homes, through war and peace, through industrial revolution and artistic revival. Understanding this history deepens the appreciation of every collector and maker, and it reveals why this craft continues to captivate us today.

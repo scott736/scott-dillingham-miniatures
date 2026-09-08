@@ -7,6 +7,7 @@ authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
 tags: ["fine art", "collecting", "craftsmanship", "miniature furniture"]
 coverImage: "/images/blog/miniature-furniture-fine-art.webp"
+imageAlt: "White gallery room with a pedestal table, lamp, and two side tables beneath an arched window"
 ---
 
 Is a tiny handcrafted chair a piece of furniture, or is it a work of art? This question has followed miniature furniture for centuries, and I believe the answer is increasingly clear: the finest miniature furniture is both. It is functional in the sense that every drawer opens and every door swings, but it is art in every sense that matters. It demands extraordinary skill, conveys beauty, expresses the maker's vision, and rewards sustained contemplation. In this post, I want to make the case for miniature furniture as fine art and explore what that means for collectors.

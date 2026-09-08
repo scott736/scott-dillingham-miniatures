@@ -7,6 +7,7 @@ authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
 tags: ["digital age", "social media", "craftsmanship", "miniature furniture"]
 coverImage: "/images/blog/renaissance-miniatures-digital.webp"
+imageAlt: "Sunlit woodworking shop with a large bench covered in hand tools and wood parts"
 ---
 
 There is a beautiful paradox at the heart of our digital age. In an era defined by screens, algorithms, and mass production, interest in handcrafted objects has not just survived: it has surged. Miniature furniture making, a craft that relies on nothing more sophisticated than skilled hands, sharp tools, and fine wood, is experiencing a genuine renaissance. As someone who has been building miniatures for years and watching this transformation unfold, I find it both fascinating and deeply encouraging.

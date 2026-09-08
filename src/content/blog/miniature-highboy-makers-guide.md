@@ -7,6 +7,7 @@ authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
 tags: ["highboy", "miniature building", "drawer construction", "period furniture"]
 coverImage: "/images/blog/miniature-highboy-guide.webp"
+imageAlt: "Bow-front mahogany chest of drawers with brass pulls, gilt mounts, and clocks on top"
 ---
 
 The highboy stands as one of the most ambitious and visually commanding forms in American furniture. A tall chest of drawers raised on a graceful base with cabriole legs, the highboy combines case construction, leg shaping, drawer building, and decorative carving into a single demanding project. Building one at 1/12 scale is a rite of passage for serious miniature furniture makers. It tests virtually every skill in your repertoire.

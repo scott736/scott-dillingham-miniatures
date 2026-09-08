@@ -3,7 +3,6 @@ export const prerender = true;
 
 import { getCollection, render } from 'astro:content';
 
-import SpeakableSchema from '@/components/schemas/SpeakableSchema.astro';
 import BlogPost from '@/components/sections/blog-post.astro';
 import { SITE_URL } from '@/consts';
 import { getBlogHowTo } from '@/lib/schema';
@@ -41,6 +40,7 @@ const relatedPosts = allPosts
     title: item.post.data.title,
     description: item.post.data.description,
     image: item.post.data.coverImage ?? item.post.data.image,
+    imageAlt: item.post.data.imageAlt,
     pubDate:
       item.post.data.pubDate instanceof Date
         ? item.post.data.pubDate.toISOString()
@@ -51,6 +51,7 @@ const howToSchema = getBlogHowTo(post.id, {
   title: post.data.title,
   description: post.data.description,
   image: post.data.coverImage || post.data.image,
+  imageAlt: post.data.imageAlt,
 });
 ---
 
@@ -58,6 +59,7 @@ const howToSchema = getBlogHowTo(post.id, {
   title={post.data.title}
   description={post.data.description}
   image={post.data.coverImage || post.data.image}
+  imageAlt={post.data.imageAlt}
   article={{
     authorName: post.data.authorName || 'Scott Dillingham',
     pubDate:
@@ -66,21 +68,25 @@ const howToSchema = getBlogHowTo(post.id, {
         : String(post.data.pubDate),
     tags: post.data.tags,
   }}
+  speakableSections={[
+    { cssSelector: "[data-speakable='title']" },
+    { cssSelector: "[data-speakable='description']" },
+  ]}
 >
-  <SpeakableSchema
-    speakableSections={[
-      { cssSelector: "[data-speakable='title']" },
-      { cssSelector: "[data-speakable='description']" },
-    ]}
-  />
-  {howToSchema && (
-    <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
-  )}
+  {
+    howToSchema && (
+      <script
+        type="application/ld+json"
+        set:html={JSON.stringify(howToSchema)}
+      />
+    )
+  }
   <BlogPost
     title={post.data.title}
     description={post.data.description}
     pubDate={post.data.pubDate}
     coverImage={post.data.coverImage}
+    imageAlt={post.data.imageAlt}
     postId={post.id}
     siteUrl={SITE_URL}
     relatedPosts={relatedPosts}

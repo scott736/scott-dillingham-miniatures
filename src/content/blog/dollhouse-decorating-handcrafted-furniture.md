@@ -7,6 +7,7 @@ authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
 tags: ["dollhouse", "decorating", "interior design", "miniature furniture"]
 coverImage: "/images/blog/dollhouse-decorating.webp"
+imageAlt: "Furnished dollhouse dining room with a table, yellow-seat chairs, hutch, and floral wallpaper"
 ---
 
 Decorating a dollhouse with handcrafted furniture is one of the most creatively satisfying projects a collector can undertake. It combines the art of interior design with the appreciation of fine craftsmanship, and the result is a miniature world that tells a story through every carefully chosen detail. Over the years, I have built pieces for countless room settings, and I have learned a great deal about what makes a miniature interior come alive. In this guide, I want to share those lessons with you.

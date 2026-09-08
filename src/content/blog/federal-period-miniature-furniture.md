@@ -7,6 +7,7 @@ authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
 tags: ["Federal period", "Hepplewhite", "Sheraton", "miniature inlay", "period furniture"]
 coverImage: "/images/blog/federal-period-miniature.webp"
+imageAlt: "Federal-style mahogany sideboard with inlay and brass pulls against a blue paneled wall"
 ---
 
 After the robust curves of [Queen Anne](/blog/queen-anne-miniature-furniture-guide) and the carved exuberance of [Chippendale](/blog/chippendale-miniature-furniture), American furniture took a dramatic turn toward lightness, refinement, and geometric precision. The Federal period, roughly 1780 to 1820, brought the neoclassical designs of George Hepplewhite and Thomas Sheraton to American shores, where makers like Samuel McIntire of Salem and the Seymour workshop of Boston elevated them to extraordinary heights.

@@ -7,6 +7,7 @@ authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
 tags: ["collecting", "beginners", "miniature furniture", "dollhouse"]
 coverImage: "/images/blog/start-miniature-collection.webp"
+imageAlt: "Row of lit wooden display cabinets filled with small collected objects beside a leather chair"
 ---
 
 Starting a miniature furniture collection is one of the most rewarding hobbies I know. I have spent decades building pieces in my [workshop](/workshop), and I have watched countless collectors go from their first tentative purchase to curating extraordinary collections that bring them deep satisfaction. Whether you are drawn to the craftsmanship, the history, or simply the beauty of tiny furniture, this guide will help you begin your journey with confidence.

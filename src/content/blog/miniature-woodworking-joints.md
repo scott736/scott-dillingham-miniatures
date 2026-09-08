@@ -7,6 +7,7 @@ authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
 tags: ["joinery", "dovetails", "mortise and tenon", "techniques"]
 coverImage: "/images/blog/miniature-woodworking-joints.webp"
+imageAlt: "Close-up of light hardwood pieces cut for a finger or box joint before assembly"
 ---
 
 There is a moment in every miniature woodworking journey when you look at a butt-jointed piece and think: I want real joinery. Not glued surfaces meeting at right angles, but actual mechanical connections, the kind that would hold even without adhesive. That ambition is what separates miniature furniture from miniature models, and it is one of the most rewarding skills you can develop at the bench.

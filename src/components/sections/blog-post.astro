@@ -4,6 +4,7 @@ interface RelatedPost {
   title: string;
   description: string;
   image?: string;
+  imageAlt?: string;
   pubDate: string;
 }
 
@@ -12,6 +13,7 @@ interface Props {
   description: string;
   pubDate: Date | string;
   coverImage?: string;
+  imageAlt?: string;
   postId: string;
   siteUrl: string;
   relatedPosts?: RelatedPost[];
@@ -22,6 +24,7 @@ const {
   description,
   pubDate,
   coverImage,
+  imageAlt,
   postId,
   siteUrl,
   relatedPosts = [],
@@ -95,7 +98,7 @@ const serviceCtas = [
       <div class="relative h-[320px] overflow-hidden rounded-3xl md:h-[400px] lg:h-[600px]">
         <img
           src={coverImage}
-          alt={`${title} - Miniature furniture guide by Scott Dillingham`}
+          alt={imageAlt || `${title} — 1/12 scale miniature furniture article by Scott Dillingham`}
           width={980}
           height={560}
           fetchpriority="high"
@@ -194,7 +197,7 @@ const serviceCtas = [
                   <div class="relative h-[200px] overflow-hidden rounded-t-3xl">
                     <img
                       src={related.image}
-                      alt={`${related.title} - 1/12 scale miniature furniture article`}
+                      alt={related.imageAlt || `${related.title} — 1/12 scale miniature furniture article by Scott Dillingham`}
                       width={400}
                       height={200}
                       loading="lazy"

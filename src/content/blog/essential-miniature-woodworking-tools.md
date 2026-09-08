@@ -7,6 +7,7 @@ authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
 tags: ["tools", "miniature woodworking", "equipment", "workshop"]
 coverImage: "/images/blog/essential-tools.webp"
+imageAlt: "Overhead layout of miniature woodworking tools including rulers, files, punches, and a plane on a wooden bench"
 ---
 
 The right tools make miniature woodworking possible. The wrong tools make it frustrating. Over years at the bench I have refined my toolkit to the essentials, discarding gimmicks and keeping the instruments that genuinely earn their place. Whether you are just starting out or looking to upgrade your setup, this guide covers every category of tool you will need for serious 1/12 scale miniature furniture making.

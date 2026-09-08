@@ -2,6 +2,7 @@ import {
   CONTACT_TO_EMAIL,
   GALLERY_ITEMS,
   GALLERY_STATUS,
+  galleryContactHref,
   SITE_DESCRIPTION,
   SITE_URL,
   SOCIAL_LINKS,
@@ -20,15 +21,18 @@ export const IMAGE_CREDIT_TEXT = 'Scott Dillingham Miniatures';
 type ImageObjectOpts = {
   url: string;
   caption?: string;
+  description?: string;
 };
 
 /** Google Image License metadata (Search Console ImageObject fields). */
-export function imageObject({ url, caption }: ImageObjectOpts) {
+export function imageObject({ url, caption, description }: ImageObjectOpts) {
+  const desc = description || caption;
   return {
     '@type': 'ImageObject',
     url,
     contentUrl: url,
-    ...(caption ? { caption } : {}),
+    ...(caption ? { caption, name: caption } : {}),
+    ...(desc ? { description: desc } : {}),
     creditText: IMAGE_CREDIT_TEXT,
     creator: personRef(),
     copyrightHolder: personRef(),
@@ -56,7 +60,10 @@ export function organizationRef() {
 }
 
 function stripHtml(html: string): string {
-  return html.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+  return html
+    .replace(/<[^>]*>/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 export function personNode() {
@@ -79,8 +86,16 @@ export function organizationNode() {
     name: 'Scott Dillingham Miniatures',
     description: SITE_DESCRIPTION,
     url: SITE_URL,
-    logo: imageObject({ url: `${SITE_URL}/layout/sdmlogo.webp` }),
-    image: imageObject({ url: `${SITE_URL}/og-image.jpg` }),
+    logo: imageObject({
+      url: `${SITE_URL}/layout/sdmlogo.webp`,
+      caption: 'Scott Dillingham Miniatures wordmark',
+      description: 'Scott Dillingham Miniatures wordmark on a dark background',
+    }),
+    image: imageObject({
+      url: `${SITE_URL}/og-image.jpg`,
+      caption:
+        '1/12 scale miniature Windsor dining set with bonsai, handcrafted by Scott Dillingham',
+    }),
     email: CONTACT_TO_EMAIL,
     founder: personRef(),
     sameAs: SOCIAL_LINKS.map((s) => s.href),
@@ -138,6 +153,65 @@ export function websiteNode() {
   };
 }
 
+export function normalizePageUrl(url: string): string {
+  if (url === SITE_URL || url === `${SITE_URL}/`) return `${SITE_URL}/`;
+  return url.endsWith('/') ? url : `${url}/`;
+}
+
+export function webPageId(url: string): string {
+  return `${normalizePageUrl(url)}#webpage`;
+}
+
+export function breadcrumbId(url: string): string {
+  return `${normalizePageUrl(url)}#breadcrumb`;
+}
+
+type SpeakableSection = { cssSelector: string };
+
+export function webPageNode(opts: {
+  url: string;
+  name: string;
+  description: string;
+  speakable?: SpeakableSection[];
+  primaryImage?: ImageObjectOpts;
+}) {
+  const url = normalizePageUrl(opts.url);
+  return {
+    '@type': 'WebPage',
+    '@id': webPageId(url),
+    url,
+    name: opts.name,
+    description: opts.description,
+    inLanguage: 'en',
+    isPartOf: { '@id': WEBSITE_ID },
+    about: organizationRef(),
+    publisher: organizationRef(),
+    breadcrumb: { '@id': breadcrumbId(url) },
+    ...(opts.primaryImage
+      ? { primaryImageOfPage: imageObject(opts.primaryImage) }
+      : {}),
+    ...(opts.speakable?.length
+      ? {
+          speakable: opts.speakable.map((section) => ({
+            '@type': 'SpeakableSpecification',
+            cssSelector: section.cssSelector,
+          })),
+        }
+      : {}),
+  };
+}
+
+export function breadcrumbListNode(
+  url: string,
+  itemListElement: Array<Record<string, unknown>>,
+) {
+  return {
+    '@type': 'BreadcrumbList',
+    '@id': breadcrumbId(url),
+    itemListElement,
+  };
+}
+
 export function ksbMuseumNode() {
   return {
     '@type': 'Museum',
@@ -155,6 +229,25 @@ export function ksbMuseumNode() {
 
 type GalleryItem = (typeof GALLERY_ITEMS)[number];
 
+const OFFER_AVAILABILITY: Record<GalleryItem['availability'], string> = {
+  available: 'https://schema.org/InStock',
+  commission: 'https://schema.org/PreOrder',
+  museum: 'https://schema.org/SoldOut',
+};
+
+/** Availability only — no price is published on gallery pages. Do not emit Product. */
+function artworkOffer(item: GalleryItem) {
+  const isMuseum = item.availability === 'museum';
+  return {
+    '@type': 'Offer',
+    url: isMuseum
+      ? `${SITE_URL}/gallery/#${item.id}`
+      : `${SITE_URL}${galleryContactHref(item.availability)}`,
+    availability: OFFER_AVAILABILITY[item.availability],
+    seller: organizationRef(),
+  };
+}
+
 export function visualArtworkNode(item: GalleryItem) {
   const inKsb = item.availability === 'museum';
   const imageUrl = `${SITE_URL}${item.images[0]}`;
@@ -171,8 +264,11 @@ export function visualArtworkNode(item: GalleryItem) {
     copyrightHolder: personRef(),
     image: imageObject({
       url: imageUrl,
-      caption: `${item.title} — handcrafted 1/12 scale miniature by Scott Dillingham`,
+      caption:
+        item.alt ??
+        `${item.title} — handcrafted 1/12 scale miniature in ${item.wood} by Scott Dillingham`,
     }),
+    offers: artworkOffer(item),
     additionalProperty: [
       {
         '@type': 'PropertyValue',
@@ -213,10 +309,16 @@ export function galleryCollectionNode() {
       ...(hasKsb ? [ksbMuseumNode()] : []),
       {
         '@type': 'CollectionPage',
+        '@id': `${SITE_URL}/gallery/#collection`,
         name: 'Handcrafted 1/12 Scale Miniature Furniture Collection — Sam Maloof, Hepplewhite, Shaker & More',
         description:
           'Browse museum-exhibited 1/12 scale miniature furniture by Scott Dillingham. Pieces in the KSB Miniatures Collection are not for sale; other works are available or offered by commission. Built entirely by hand from fine hardwoods using traditional joinery.',
         url: `${SITE_URL}/gallery/`,
+        inLanguage: 'en',
+        isPartOf: { '@id': WEBSITE_ID },
+        about: organizationRef(),
+        publisher: organizationRef(),
+        breadcrumb: { '@id': breadcrumbId(`${SITE_URL}/gallery/`) },
         mainEntity: {
           '@type': 'ItemList',
           numberOfItems: GALLERY_ITEMS.length,
@@ -238,6 +340,10 @@ export function aboutProfilePageNode() {
     '@id': `${SITE_URL}/about/#profile`,
     url: `${SITE_URL}/about/`,
     name: 'About Scott Dillingham',
+    inLanguage: 'en',
+    isPartOf: { '@id': WEBSITE_ID },
+    publisher: organizationRef(),
+    breadcrumb: { '@id': breadcrumbId(`${SITE_URL}/about/`) },
     mainEntity: personRef(),
   };
 }
@@ -393,7 +499,12 @@ const BLOG_HOWTO: Record<string, HowToSpec> = {
 
 export function getBlogHowTo(
   slug: string,
-  opts: { title: string; description: string; image?: string },
+  opts: {
+    title: string;
+    description: string;
+    image?: string;
+    imageAlt?: string;
+  },
 ): Record<string, unknown> | null {
   const spec = BLOG_HOWTO[slug];
   if (!spec) return null;
@@ -403,6 +514,7 @@ export function getBlogHowTo(
         url: opts.image.startsWith('http')
           ? opts.image
           : `${SITE_URL}${opts.image}`,
+        caption: opts.imageAlt || opts.title,
       })
     : undefined;
 

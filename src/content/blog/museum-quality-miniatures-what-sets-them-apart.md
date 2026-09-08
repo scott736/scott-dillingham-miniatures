@@ -7,6 +7,7 @@ authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
 tags: ["quality", "craftsmanship", "collecting", "miniature furniture"]
 coverImage: "/images/blog/museum-quality-miniatures.webp"
+imageAlt: "Close-up of a polished walnut drawer corner with a round brass knob"
 ---
 
 The phrase "museum quality" gets used loosely in many fields, but in the world of miniature furniture, it has a very specific meaning. As someone who has spent years striving to meet that standard in my own [workshop](/workshop), I can tell you that the gap between hobby-grade miniatures and true museum-quality work is enormous. Understanding that gap is essential whether you are a collector evaluating pieces or simply an admirer of fine craftsmanship.
