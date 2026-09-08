@@ -19,9 +19,9 @@ const AboutMission = () => {
           <p className="text-xl leading-8 md:leading-10">The Philosophy</p>
         </div>
         <div className="space-y-4">
-          <h3 className="text-2xl font-medium md:text-3xl lg:text-4xl">
+          <h2 className="text-2xl font-medium md:text-3xl lg:text-4xl">
             No Kits. No Shortcuts. No Compromise.
-          </h3>
+          </h2>
           <p className="text-xl leading-8">
             Every piece begins as a rough block of fine hardwood and is
             transformed entirely by hand. There are no CNC machines, no laser
@@ -29,9 +29,9 @@ const AboutMission = () => {
           </p>
         </div>
         <div className="space-y-4">
-          <h3 className="text-2xl font-medium md:text-3xl lg:text-4xl">
+          <h2 className="text-2xl font-medium md:text-3xl lg:text-4xl">
             Built the Way They Were Meant to Be
-          </h3>
+          </h2>
           <p className="text-xl leading-8">
             Each miniature uses the same traditional construction methods as the
             original full-size antiques — hand-cut dovetails, mortise and tenon
