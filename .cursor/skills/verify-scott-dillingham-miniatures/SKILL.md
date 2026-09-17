@@ -51,17 +51,19 @@ export RUN_ID="<same as launch>"
 Pass means:
 
 - `$VERIFY_PID` exists and that PID (or a child of it) still owns TCP `127.0.0.1:4318`
-- `GET /` is 200 and the HTML contains `Miniature Furniture,<br /> Extraordinary Craft` (or the escaped `Miniature Furniture,` plus `Extraordinary Craft`) and `data-speakable="title"`
-- `GET /gallery` is 200 and the HTML contains `The Collection` and `Simon Willard Tall Case Clock Style`
+- `GET /` is 200 and the HTML contains `Extraordinary Craft`, `data-speakable="title"`, and `Explore the Gallery`
+- `GET /gallery/` is 200 and the HTML contains `The Collection`, `Simon Willard Tall Case Clock Style`, and `id="tall-case-clock"`
 - Listener command is `node` / `astro` from this checkout, not another project
+
+This site uses `trailingSlash: 'always'`. Bare `/gallery` is 404; doctor requests `/gallery/`.
 
 Fail and stop if the port owner is not the PID tree you started.
 
 ## Drive
 
-Harness: HTTP for prerendered HTML, Playwright when a click or client island is required. Prefer link text, `aria-label`, `data-*`, element `id`, and route paths.
+Harness: HTTP for prerendered HTML, Playwright when a click, search box, or gallery lightbox is required. Prefer link text, `aria-label`, `data-*`, element `id`, and route paths.
 
-Base URL is always `http://127.0.0.1:4318`. Desktop nav is `md:flex` (hidden below that). Use a viewport at least 768px wide so the `Gallery`, `Workshop`, `About`, `Blog`, and `Contact` links are in the header. Below `md`, open the menu with the button that has `data-nav-toggle` and accessible name `Open main menu`.
+Base URL is always `http://127.0.0.1:4318`. Request marketing routes with a trailing slash (`/gallery/`). Bare `/gallery` is 404. Desktop nav is `md:flex` (hidden below that). Use a viewport at least 768px wide so the `Gallery`, `Workshop`, `About`, `Blog`, and `Contact` links are in the header. Below `md`, open the menu with the button that has `data-nav-toggle` and accessible name `Open main menu`.
 
 Stable handles from this checkout:
 
@@ -69,27 +71,27 @@ Stable handles from this checkout:
 |---|---|
 | Skip link | link `Skip to content` → `#main-content` |
 | Logo home | `img[alt="Scott Dillingham Miniatures"]` inside `a[href="/"]` |
-| Desktop nav | `a[href="/gallery"]` text `Gallery`, `/workshop` `Workshop`, `/about` `About`, `/blog` `Blog`, `/contact` `Contact` |
-| Header CTA | link text `Commission a Piece` → `/contact` |
+| Desktop nav | `a[href="/gallery/"]` text `Gallery`, `/workshop/` `Workshop`, `/about/` `About`, `/blog/` `Blog`, `/contact/` `Contact` |
+| Header CTA | link text `Commission a Piece` → `/contact/` |
 | Theme | `button[data-theme-toggle][aria-label="Toggle theme"]` |
 | Mobile menu | `button[data-nav-toggle][aria-controls="mobile-nav"]` |
 | Home H1 | `[data-speakable="title"]` text `Miniature Furniture, Extraordinary Craft` |
-| Home primary CTA | link `Explore the Gallery` → `/gallery` |
-| Home secondary CTA | link `See the Workshop` → `/workshop` |
-| Home highlights | heading `Gallery Highlights`; titles such as `Simon Willard Tall Case Clock Style` link to related **blog** posts, not the gallery card |
+| Home primary CTA | link `Explore the Gallery` → `/gallery/` |
+| Home secondary CTA | link `See the Workshop` → `/workshop/` |
+| Home highlights | heading `Gallery Highlights`; titles such as `Simon Willard Tall Case Clock Style` link to `/gallery/#tall-case-clock` |
 | Home FAQ | first `<details class="faq-item">` is open; question in `[data-speakable="faq-question"]` |
 | Gallery H1 | `The Collection` |
-| Piece card | `div#tall-case-clock` (also `#highboy-dresser`, `#four-poster-bed`, `#maloof-rocking-chair`, `#hepplewhite-shield-back-chair`, `#moser-continuous-arm-chair`, `#shaker-d-ring-table`) |
-| Piece lightbox | title button on the card; dialog heading is the piece title; close control has accessible name `Close` |
-| Blog index H1 | `sr-only` `Miniature Furniture Blog`; visible title `From the Workshop Journal` |
-| Blog search | `input[placeholder="Search articles..."]`; clear button `aria-label="Clear search"` |
-| Article | `/blog/<slug>` e.g. `/blog/complete-guide-1-12-scale-miniature-furniture`; `h1[data-speakable="title"]` |
-| Contact | `/contact`; `h1` `Let's Create Something Extraordinary`; labels `Name`, `Email`, `Subject`, `Message`; submit text `Send Message` |
-| Workshop | `/workshop`; `h1` `The Maker's Workshop`; process title `From Raw Hardwood to Finished Masterpiece` |
+| Piece card | `article#tall-case-clock` (also `#highboy-dresser`, `#four-poster-bed`, `#maloof-rocking-chair`, `#hepplewhite-shield-back-chair`, `#moser-continuous-arm-chair`, `#shaker-d-ring-table`) |
+| Piece lightbox | title link `a[data-gallery-open]` on the card; dialog `#gallery-lightbox`; title is `#gallery-lightbox-title` (`<p>`); close control has accessible name `Close` |
+| Blog index H1 | visible `h1` `From the Workshop Journal` |
+| Blog search | `input[placeholder="Search articles..."]` (`[data-blog-search]`); empty copy `No articles found.` |
+| Article | `/blog/<slug>/` e.g. `/blog/complete-guide-1-12-scale-miniature-furniture/`; `h1[data-speakable="title"]` |
+| Contact | `/contact/`; `h1` `Let's Create Something Extraordinary`; labels `Name`, `Email`, `Subject`, `Message`; submit text `Send Message` |
+| Workshop | `/workshop/`; `h1` `The Maker's Workshop`; process title `From Raw Hardwood to Finished Masterpiece` |
 
 Recipes: [features/home.md](features/home.md), [features/gallery.md](features/gallery.md), [features/blog.md](features/blog.md), [features/contact.md](features/contact.md), [features/workshop.md](features/workshop.md).
 
-Do not POST a complete `/api/contact` body. A filled form can send live email when `RESEND_API_KEY` is present. Validation-only POST (missing name/email/message) is the safe API check.
+Do not POST a complete `/api/contact/` body. A filled form can send live email when `RESEND_API_KEY` is present. Validation-only POST (missing name/email/message) is the safe API check. Include `-H 'Origin: http://127.0.0.1:4318'` and post to `/api/contact/` (trailing slash). Without Origin the API returns 403, not 400.
 
 ## Evidence
 
@@ -129,7 +131,7 @@ All scripts are executable. They read `RUN_ID` (and optional `REPO`, `VERIFY_BAS
 # Start astro on 127.0.0.1:4318 and write the PID file
 .cursor/skills/verify-scott-dillingham-miniatures/scripts/launch.sh
 
-# Read-only health: PID tree, port, GET / and GET /gallery
+# Read-only health: PID tree, port, GET / and GET /gallery/
 .cursor/skills/verify-scott-dillingham-miniatures/scripts/doctor.sh
 
 # Kill the launch PID tree only

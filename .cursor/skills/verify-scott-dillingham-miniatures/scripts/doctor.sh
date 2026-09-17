@@ -55,10 +55,10 @@ grep -q 'Extraordinary Craft' "$home_body" || fail "GET / missing hero copy 'Ext
 grep -q 'data-speakable="title"' "$home_body" || fail "GET / missing data-speakable=title"
 grep -q 'Explore the Gallery' "$home_body" || fail "GET / missing Explore the Gallery"
 
-gallery_code="$(curl -sS -o "$gallery_body" -w '%{http_code}' --max-time 10 "${VERIFY_BASE}/gallery")"
-[[ "$gallery_code" == "200" ]] || fail "GET /gallery returned $gallery_code"
-grep -q 'The Collection' "$gallery_body" || fail "GET /gallery missing 'The Collection'"
-grep -q 'Simon Willard Tall Case Clock Style' "$gallery_body" || fail "GET /gallery missing tall-case-clock title"
-grep -q 'id="tall-case-clock"' "$gallery_body" || fail "GET /gallery missing id=tall-case-clock"
+gallery_code="$(curl -sS -o "$gallery_body" -w '%{http_code}' --max-time 10 "${VERIFY_BASE}/gallery/")"
+[[ "$gallery_code" == "200" ]] || fail "GET /gallery/ returned $gallery_code"
+grep -q 'The Collection' "$gallery_body" || fail "GET /gallery/ missing 'The Collection'"
+grep -q 'Simon Willard Tall Case Clock Style' "$gallery_body" || fail "GET /gallery/ missing tall-case-clock title"
+grep -q 'id="tall-case-clock"' "$gallery_body" || fail "GET /gallery/ missing id=tall-case-clock"
 
 echo "doctor.sh: PASS base=$VERIFY_BASE launch_pid=$parent listen_pid=$listener home=200 gallery=200"
