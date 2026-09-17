@@ -209,6 +209,14 @@ function checkDistExtras() {
     const html = readFileSync(nf, 'utf8');
     if (html.includes('astro-island')) fail('404.html hydrates an astro-island');
   }
+  const sitemap0 = join(dir, 'sitemap-0.xml');
+  if (existsSync(sitemap0)) {
+    const xml = readFileSync(sitemap0, 'utf8');
+    if (!xml.includes('/privacy-policy/')) fail('sitemap missing /privacy-policy/');
+    if (!xml.includes('/terms-of-service/')) fail('sitemap missing /terms-of-service/');
+    if (xml.includes('/404')) fail('sitemap must not include 404');
+    if (xml.includes('/api/')) fail('sitemap must not include /api/');
+  }
   const blog = join(dir, 'blog/index.html');
   if (existsSync(blog)) {
     const html = readFileSync(blog, 'utf8');
@@ -319,8 +327,8 @@ if (distDir) {
   checkHtml('workshop', readPage('/workshop'), { maxTitle: 70, maxDesc: 170 });
   checkHtml('blog', readPage('/blog'), { maxTitle: 70, maxDesc: 170 });
   checkHtml('contact', readPage('/contact'), { maxTitle: 70, maxDesc: 170 });
-  checkHtml('privacy', readPage('/privacy-policy'), { maxTitle: 70, maxDesc: 170, noindex: true });
-  checkHtml('terms', readPage('/terms-of-service'), { maxTitle: 70, maxDesc: 170, noindex: true });
+  checkHtml('privacy', readPage('/privacy-policy'), { maxTitle: 70, maxDesc: 170 });
+  checkHtml('terms', readPage('/terms-of-service'), { maxTitle: 70, maxDesc: 170 });
   const nf = join(root, distDir, '404.html');
   if (existsSync(nf)) {
     const html = readFileSync(nf, 'utf8');

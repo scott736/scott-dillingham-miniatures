@@ -4,9 +4,6 @@ import Footer from '@/components/layout/footer.astro';
 import Navbar from '@/components/layout/navbar.astro';
 
 const { title, description, currentPage, frontmatter } = Astro.props;
-const noindex =
-  Astro.url.pathname.includes('privacy-policy') ||
-  Astro.url.pathname.includes('terms-of-service');
 
 const formattedDate = frontmatter?.date
   ? new Date(frontmatter.date).toLocaleDateString('en-US', {
@@ -22,7 +19,7 @@ const pageDescription = frontmatter?.description || description;
 
 <html lang="en">
   <head>
-    <BaseHead title={pageTitle} description={pageDescription} noindex={noindex} />
+    <BaseHead title={pageTitle} description={pageDescription} />
   </head>
   <body class={`h-screen antialiased`}>
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-background focus:px-4 focus:py-2 focus:text-foreground focus:shadow-lg">Skip to content</a>

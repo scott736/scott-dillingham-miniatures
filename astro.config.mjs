@@ -39,6 +39,8 @@ const PAGE_LASTMOD = {
   '/blog': '2026-09-07',
   '/contact': '2026-08-31',
   '/image-license': '2026-08-31',
+  '/privacy-policy': '2025-01-14',
+  '/terms-of-service': '2025-01-14',
 };
 
 // https://astro.build/config
@@ -54,8 +56,6 @@ export default defineConfig({
     mdx(),
     sitemap({
       filter: (page) =>
-        !page.includes('privacy-policy') &&
-        !page.includes('terms-of-service') &&
         !page.includes('/404') &&
         !page.includes('/api/') &&
         !page.includes('/rss.xml'),
@@ -85,7 +85,11 @@ export default defineConfig({
         if (url.endsWith('/contact')) {
           return { ...item, changefreq: monthly, priority: 0.7, lastmod };
         }
-        if (url.endsWith('/image-license')) {
+        if (
+          url.endsWith('/image-license') ||
+          url.endsWith('/privacy-policy') ||
+          url.endsWith('/terms-of-service')
+        ) {
           return { ...item, changefreq: monthly, priority: 0.5, lastmod };
         }
         return { ...item, changefreq: monthly, priority: 0.5, lastmod };
