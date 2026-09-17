@@ -4,10 +4,10 @@ This directory is the maintained source for verifying visitor-facing behavior of
 
 ## Baseline preconditions
 
-- Launch this checkout with `npm run dev -- --host 127.0.0.1 --port 4318` (`astro dev`).
+- Launch this checkout with `npm run dev -- --host 127.0.0.1 --port 4318` (`astro dev`). Node `>=22.12.0`.
 - Base URL is `http://127.0.0.1:4318`. Do not use port 4321.
 - Write `/tmp/verify-scott-dillingham-miniatures-$RUN_ID.pid` at launch.
-- Run `scripts/doctor.sh` and require 200 on `/` and `/gallery` from the PID tree you started.
+- Run `scripts/doctor.sh` and require 200 on `/` and `/gallery/` from the PID tree you started.
 - Never drive an instance that was not started by this verification run.
 - Two instances cannot share 4318. Astro 7 also refuses a second `astro dev` in this checkout on any port. There is no disposable data directory; pages are prerendered from this repo.
 
@@ -18,6 +18,7 @@ This directory is the maintained source for verifying visitor-facing behavior of
 - Treat commands as literal.
 - HTTP (`curl`) is enough for prerendered HTML. Use Playwright when the path needs a click, search box, FAQ `<details>`, or the gallery lightbox.
 - Desktop header links are hidden below the `md` breakpoint. Use a viewport ≥ 768px, or open `Open main menu`.
+- This site uses `trailingSlash: 'always'`. Request `/gallery/`, `/blog/`, `/contact/`, `/workshop/`, and `/api/contact/`. Bare paths without the trailing slash return 404.
 - Do not submit a complete contact form. Do not `wrangler deploy`.
 
 ## Proof and skip reporting
@@ -41,7 +42,9 @@ Each feature file starts with an H1 title and one paragraph describing the user-
 ## Features
 
 - [Home](./home.md) covers the landing hero, gallery highlights, FAQ, and blog preview.
-- [Gallery](./gallery.md) covers `/gallery`, piece cards, and the piece lightbox.
+- [Gallery](./gallery.md) covers `/gallery/`, piece cards, and the piece lightbox.
 - [Blog](./blog.md) covers the journal index, client search, and a markdown article.
 - [Contact](./contact.md) covers the commission form (render and validation only).
 - [Workshop](./workshop.md) covers the maker's workshop and eight-step process.
+
+Header `About` (`/about/`, `Meet the Maker`) is chrome, not a mapped feature. Do not treat it as workshop or home proof.
