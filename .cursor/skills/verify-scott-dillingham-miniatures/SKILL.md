@@ -13,6 +13,8 @@ Read [features/README.md](features/README.md) before a run. Drive one mapped fea
 
 Assigned bind: `127.0.0.1:4318`. The README's `http://localhost:4321` is the unassigned Astro default. Never use 4321 for this skill.
 
+`scripts/launch.sh` requires Node `>=22.12.0` (Astro 7). It uses PATH `node` when that version is new enough, otherwise `$HOME/.local/node22/bin/node` (then `$HOME/.local/node-v22.20.0/bin/node`). Override with `VERIFY_NODE`. Child `npm run dev` inherits that Node, not a Node 20 on PATH.
+
 Two verification instances cannot share 4318. Astro 7 also refuses a second `astro dev` in this checkout on any port. Content is read from this checkout (no disposable data dir). If 4318 is already listening, or if another Astro dev is running, stop and report BLOCKED. Do not kill the occupant. Do not pass `--force`. Do not drive an instance you did not start.
 
 ```bash
@@ -82,16 +84,18 @@ Stable handles from this checkout:
 | Home FAQ | first `<details class="faq-item">` is open; question in `[data-speakable="faq-question"]` |
 | Gallery H1 | `The Collection` |
 | Piece card | `article#tall-case-clock` (also `#highboy-dresser`, `#four-poster-bed`, `#maloof-rocking-chair`, `#hepplewhite-shield-back-chair`, `#moser-continuous-arm-chair`, `#shaker-d-ring-table`) |
-| Piece lightbox | title link `a[data-gallery-open]` on the card; dialog `#gallery-lightbox`; title is `#gallery-lightbox-title` (`<p>`); close control has accessible name `Close` |
+| Piece status | `Available` / `Commission only` / `Museum collection`. Available cards (`#highboy-dresser`, `#four-poster-bed`, `#shaker-d-ring-table`) also show `Price on request. Ask about deposit and lead time.` |
+| Piece lightbox | title link `a[data-gallery-open]` on the card; dialog `#gallery-lightbox`; title is `#gallery-lightbox-title` (`<p>`); close control has accessible name `Close`; `[data-gallery-price]` is unhidden only for available pieces |
 | Blog index H1 | visible `h1` `From the Workshop Journal` |
-| Blog search | `input[placeholder="Search articles..."]` (`[data-blog-search]`); empty copy `No articles found.` |
+| Blog search | `input[placeholder="Search articles..."]` (`[data-blog-search]`); empty copy `No articles found.`; restore by clearing the input, not the `All` chip |
 | Article | `/blog/<slug>/` e.g. `/blog/complete-guide-1-12-scale-miniature-furniture/`; `h1[data-speakable="title"]` |
-| Contact | `/contact/`; `h1` `Let's Create Something Extraordinary`; labels `Name`, `Email`, `Subject`, `Message`; submit text `Send Message` |
+| Contact | `/contact/`; `h1` `Let's Create Something Extraordinary`; `Price on request. Ask about deposit and lead time.`; labels `Name`, `Email`, `Subject`, `Message`; submit text `Send Message` |
+| Contact success | `/message-sent/`; `h1` `Message sent`; copy `Message sent! I'll get back to you soon.`; link `Back to contact` → `/contact/` |
 | Workshop | `/workshop/`; `h1` `The Maker's Workshop`; process title `From Raw Hardwood to Finished Masterpiece` |
 
 Recipes: [features/home.md](features/home.md), [features/gallery.md](features/gallery.md), [features/blog.md](features/blog.md), [features/contact.md](features/contact.md), [features/workshop.md](features/workshop.md).
 
-Do not POST a complete `/api/contact/` body. A filled form can send live email when `RESEND_API_KEY` is present. Validation-only POST (missing name/email/message) is the safe API check. Include `-H 'Origin: http://127.0.0.1:4318'` and post to `/api/contact/` (trailing slash). Without Origin the API returns 403, not 400.
+Do not POST a complete `/api/contact/` body. A filled form can send live email when `RESEND_API_KEY` is present. Validation-only POST (missing name/email/message) is the safe API check. Include `-H 'Origin: http://127.0.0.1:4318'` and post to `/api/contact/` (trailing slash). Without Origin the API returns 403, not 400. Native success is 303 to `/message-sent/`. `?sent=1` on `/contact/` is leftover client state, not the form success path. GET `/message-sent/` is the safe success-copy check.
 
 ## Evidence
 
@@ -125,7 +129,7 @@ After cleanup, confirm `evidence/<feature-id>/` still exists. Remove `/tmp/verif
 
 ## Helpers
 
-All scripts are executable. They read `RUN_ID` (and optional `REPO`, `VERIFY_BASE`).
+All scripts are executable. They read `RUN_ID` (and optional `REPO`, `VERIFY_BASE`, `VERIFY_NODE`).
 
 ```bash
 # Start astro on 127.0.0.1:4318 and write the PID file

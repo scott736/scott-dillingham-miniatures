@@ -4,7 +4,7 @@ This directory is the maintained source for verifying visitor-facing behavior of
 
 ## Baseline preconditions
 
-- Launch this checkout with `npm run dev -- --host 127.0.0.1 --port 4318` (`astro dev`). Node `>=22.12.0`.
+- Launch this checkout with `npm run dev -- --host 127.0.0.1 --port 4318` (`astro dev`). Node `>=22.12.0`. `scripts/launch.sh` picks PATH node when it is new enough, otherwise `$HOME/.local/node22/bin/node`.
 - Base URL is `http://127.0.0.1:4318`. Do not use port 4321.
 - Write `/tmp/verify-scott-dillingham-miniatures-$RUN_ID.pid` at launch.
 - Run `scripts/doctor.sh` and require 200 on `/` and `/gallery/` from the PID tree you started.
@@ -44,7 +44,7 @@ Each feature file starts with an H1 title and one paragraph describing the user-
 - [Home](./home.md) covers the landing hero, gallery highlights, FAQ, and blog preview.
 - [Gallery](./gallery.md) covers `/gallery/`, piece cards, and the piece lightbox.
 - [Blog](./blog.md) covers the journal index, client search, and a markdown article.
-- [Contact](./contact.md) covers the commission form (render and validation only).
+- [Contact](./contact.md) covers the commission form (render and validation only) and the static `/message-sent/` thank-you page.
 - [Workshop](./workshop.md) covers the maker's workshop and eight-step process.
 
 Header `About` (`/about/`, `Meet the Maker`) is chrome, not a mapped feature. Do not treat it as workshop or home proof.

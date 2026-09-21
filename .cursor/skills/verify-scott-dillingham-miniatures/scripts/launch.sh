@@ -15,6 +15,43 @@ VERIFY_LOG="${VERIFY_LOG:-/tmp/verify-scott-dillingham-miniatures-${RUN_ID}.log}
 VERIFY_BASE="${VERIFY_BASE:-http://${HOST}:${PORT}}"
 SKILL_DIR="$REPO/.cursor/skills/verify-scott-dillingham-miniatures"
 
+node_ok() {
+  local ver="$1" major rest minor
+  major="${ver%%.*}"
+  rest="${ver#*.}"
+  minor="${rest%%.*}"
+  [ -n "${major:-}" ] && [ "$major" -gt 22 ] 2>/dev/null && return 0
+  [ -n "${major:-}" ] && [ "$major" -eq 22 ] && [ -n "${minor:-}" ] && [ "$minor" -ge 12 ] 2>/dev/null
+}
+
+pick_node() {
+  if [[ -n "${VERIFY_NODE:-}" ]]; then
+    if [[ -x "$VERIFY_NODE" ]]; then
+      echo "$VERIFY_NODE"
+      return 0
+    fi
+    echo "launch.sh: VERIFY_NODE is not executable: $VERIFY_NODE" >&2
+    exit 2
+  fi
+  local candidate ver
+  for candidate in "$(command -v node || true)" "${HOME}/.local/node22/bin/node" "${HOME}/.local/node-v22.20.0/bin/node"; do
+    [[ -n "$candidate" && -x "$candidate" ]] || continue
+    ver="$("$candidate" -p "process.versions.node" 2>/dev/null || true)"
+    if node_ok "$ver"; then
+      echo "$candidate"
+      return 0
+    fi
+  done
+  echo "launch.sh: Node.js >= 22.12.0 is required (Astro 7). PATH node is too old or missing." >&2
+  echo "launch.sh: found $(command -v node || echo none) $(node -v 2>/dev/null || true)" >&2
+  echo "launch.sh: set VERIFY_NODE to a Node 22.12+ binary, or put one on PATH." >&2
+  exit 2
+}
+
+NODE="$(pick_node)"
+export PATH="$(cd "$(dirname "$NODE")" && pwd):$PATH"
+hash -r 2>/dev/null || true
+
 if [[ ! -d "$REPO" ]]; then
   echo "launch.sh: repo missing: $REPO" >&2
   exit 2
@@ -66,4 +103,4 @@ if [[ "$ready" != "1" ]]; then
   exit 1
 fi
 
-echo "launch.sh: ready ${VERIFY_BASE}/ pid=$(cat "$VERIFY_PID") log=$VERIFY_LOG"
+echo "launch.sh: ready ${VERIFY_BASE}/ pid=$(cat "$VERIFY_PID") node=$NODE log=$VERIFY_LOG"
