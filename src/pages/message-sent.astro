@@ -1,0 +1,22 @@
+---
+export const prerender = true;
+
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+
+const description = "Your note reached the studio. Scott will reply from here.";
+---
+
+<DefaultLayout
+  title="Message sent"
+  description={description}
+  breadcrumbName="Message sent"
+  noindex={true}
+>
+  <section class="hero-padding-margin container max-w-2xl space-y-6">
+    <h1 class="text-3xl font-bold md:text-5xl">Message sent</h1>
+    <p class="text-xl leading-8">Message sent! I'll get back to you soon.</p>
+    <p>
+      <a class="text-primary font-medium underline underline-offset-2" href="/contact/">Back to contact</a>
+    </p>
+  </section>
+</DefaultLayout>

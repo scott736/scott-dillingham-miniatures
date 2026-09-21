@@ -58,7 +58,8 @@ export default defineConfig({
       filter: (page) =>
         !page.includes('/404') &&
         !page.includes('/api/') &&
-        !page.includes('/rss.xml'),
+        !page.includes('/rss.xml') &&
+        !page.includes('/message-sent'),
       serialize: (item) => {
         const url = item.url.replace(/\/$/, '') || 'https://scottdillinghamminiatures.com';
         const weekly = /** @type {import('sitemap').EnumChangefreq} */ ('weekly');
