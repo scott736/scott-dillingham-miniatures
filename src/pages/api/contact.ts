@@ -90,7 +90,7 @@ function respondSuccess(request: Request) {
   if (isNativeFormPost(request)) {
     return new Response(null, {
       status: 303,
-      headers: { Location: '/contact/?sent=1' },
+      headers: { Location: '/message-sent/' },
     });
   }
   return jsonResponse({ success: true }, 200);
