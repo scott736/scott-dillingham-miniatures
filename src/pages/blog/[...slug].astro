@@ -5,6 +5,7 @@ import { getCollection, render } from 'astro:content';
 
 import BlogPost from '@/components/sections/blog-post.astro';
 import { SITE_URL } from '@/consts';
+import { blogCoverAlt } from '@/lib/blog-cover';
 import { getBlogHowTo } from '@/lib/schema';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 
@@ -40,7 +41,7 @@ const relatedPosts = allPosts
     title: item.post.data.title,
     description: item.post.data.description,
     image: item.post.data.coverImage ?? item.post.data.image,
-    imageAlt: item.post.data.imageAlt,
+    imageAlt: blogCoverAlt(item.post.data.imageAlt, item.post.data.title),
     pubDate:
       item.post.data.pubDate instanceof Date
         ? item.post.data.pubDate.toISOString()
@@ -51,7 +52,7 @@ const howToSchema = getBlogHowTo(post.id, {
   title: post.data.title,
   description: post.data.description,
   image: post.data.coverImage || post.data.image,
-  imageAlt: post.data.imageAlt,
+  imageAlt: blogCoverAlt(post.data.imageAlt, post.data.title),
 });
 ---
 
@@ -59,7 +60,7 @@ const howToSchema = getBlogHowTo(post.id, {
   title={post.data.title}
   description={post.data.description}
   image={post.data.coverImage || post.data.image}
-  imageAlt={post.data.imageAlt}
+  imageAlt={blogCoverAlt(post.data.imageAlt, post.data.title)}
   article={{
     authorName: post.data.authorName || 'Scott Dillingham',
     pubDate:
@@ -86,7 +87,7 @@ const howToSchema = getBlogHowTo(post.id, {
     description={post.data.description}
     pubDate={post.data.pubDate}
     coverImage={post.data.coverImage}
-    imageAlt={post.data.imageAlt}
+    imageAlt={blogCoverAlt(post.data.imageAlt, post.data.title)}
     postId={post.id}
     siteUrl={SITE_URL}
     relatedPosts={relatedPosts}

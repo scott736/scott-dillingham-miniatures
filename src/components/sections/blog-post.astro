@@ -1,4 +1,6 @@
 ---
+import { BLOG_COVER_CAPTION, blogCoverAlt } from '@/lib/blog-cover';
+
 interface RelatedPost {
   id: string;
   title: string;
@@ -29,6 +31,7 @@ const {
   siteUrl,
   relatedPosts = [],
 } = Astro.props;
+const coverAlt = blogCoverAlt(imageAlt, title);
 
 const postUrl = `${siteUrl}/blog/${postId}/`;
 const encodedUrl = encodeURIComponent(postUrl);
@@ -95,17 +98,20 @@ const serviceCtas = [
 
   {
     coverImage && (
-      <div class="relative h-[320px] overflow-hidden rounded-3xl md:h-[400px] lg:h-[600px]">
-        <img
-          src={coverImage}
-          alt={imageAlt || `${title} — 1/12 scale miniature furniture article by Scott Dillingham`}
-          width={980}
-          height={560}
-          fetchpriority="high"
-          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 768px, 980px"
-          class="size-full object-cover"
-        />
-      </div>
+      <>
+        <div class="relative h-[320px] overflow-hidden rounded-3xl md:h-[400px] lg:h-[600px]">
+          <img
+            src={coverImage}
+            alt={coverAlt}
+            width={980}
+            height={560}
+            fetchpriority="high"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 768px, 980px"
+            class="size-full object-cover"
+          />
+        </div>
+        <p class="text-muted-foreground mt-2 text-xs leading-5">{BLOG_COVER_CAPTION}</p>
+      </>
     )
   }
 
@@ -194,16 +200,21 @@ const serviceCtas = [
             <a href={`/blog/${related.id}/`} class="group">
               <div class="bg-card h-full overflow-hidden rounded-xl border p-0 transition-all hover:border-foreground/20">
                 {related.image && (
-                  <div class="relative h-[200px] overflow-hidden rounded-t-3xl">
-                    <img
-                      src={related.image}
-                      alt={related.imageAlt || `${related.title} — 1/12 scale miniature furniture article by Scott Dillingham`}
-                      width={400}
-                      height={200}
-                      loading="lazy"
-                      class="size-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                    />
-                  </div>
+                  <>
+                    <div class="relative h-[200px] overflow-hidden rounded-t-3xl">
+                      <img
+                        src={related.image}
+                        alt={blogCoverAlt(related.imageAlt, related.title)}
+                        width={400}
+                        height={200}
+                        loading="lazy"
+                        class="size-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                      />
+                    </div>
+                    <p class="text-muted-foreground px-5 pt-3 text-xs leading-5">
+                      {BLOG_COVER_CAPTION}
+                    </p>
+                  </>
                 )}
                 <div class="px-5 py-5">
                   <h3 class="line-clamp-2 text-lg leading-snug font-medium">{related.title}</h3>

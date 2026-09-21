@@ -76,6 +76,7 @@ const lightboxItems = GALLERY_ITEMS.map((item) => {
     inquireHref: galleryContactHref(item.availability),
     relatedPost: item.relatedPost ? relatedPostHref(item.relatedPost) : null,
     alt: item.alt,
+    priceOnRequest: item.availability === 'available',
   };
 });
 ---
@@ -135,6 +136,11 @@ const lightboxItems = GALLERY_ITEMS.map((item) => {
                   <p class="text-muted-foreground text-xs font-medium uppercase tracking-wider">
                     {status.label}
                   </p>
+                  {item.availability === 'available' && (
+                    <p class="text-sm leading-6">
+                      Price on request. Ask about deposit and lead time.
+                    </p>
+                  )}
                   <h2 class="text-xl font-bold">
                     <a
                       href={'#' + item.id}
@@ -235,6 +241,7 @@ const lightboxItems = GALLERY_ITEMS.map((item) => {
       class="text-muted-foreground mb-2 text-xs font-medium tracking-wider uppercase"
     >
     </p>
+    <p data-gallery-price class="mb-2 hidden text-sm leading-6"></p>
     <p id="gallery-lightbox-title" data-gallery-title class="mb-4 text-2xl font-bold">
     </p>
     <div data-gallery-figure class="relative select-none">
@@ -337,6 +344,7 @@ const lightboxItems = GALLERY_ITEMS.map((item) => {
     inquireHref: string;
     relatedPost: string | null;
     alt: string;
+    priceOnRequest: boolean;
   };
 
   function bindGalleryLightbox() {
@@ -366,6 +374,7 @@ const lightboxItems = GALLERY_ITEMS.map((item) => {
     const relatedEl = dialog.querySelector<HTMLAnchorElement>(
       '[data-gallery-related]',
     );
+    const priceEl = dialog.querySelector<HTMLElement>('[data-gallery-price]');
     if (
       !statusEl ||
       !titleEl ||
@@ -375,7 +384,8 @@ const lightboxItems = GALLERY_ITEMS.map((item) => {
       !countEl ||
       !descriptionEl ||
       !inquireEl ||
-      !relatedEl
+      !relatedEl ||
+      !priceEl
     ) {
       return;
     }
@@ -408,6 +418,13 @@ const lightboxItems = GALLERY_ITEMS.map((item) => {
       current = item;
       imageIndex = 0;
       statusEl.textContent = item.statusLabel;
+      if (item.priceOnRequest) {
+        priceEl.textContent = 'Price on request. Ask about deposit and lead time.';
+        priceEl.classList.remove('hidden');
+      } else {
+        priceEl.textContent = '';
+        priceEl.classList.add('hidden');
+      }
       titleEl.textContent = item.title;
       descriptionEl.innerHTML = item.description;
       inquireEl.href = item.inquireHref;

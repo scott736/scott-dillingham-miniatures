@@ -5,6 +5,7 @@ import { getCollection } from 'astro:content';
 
 import { SITE_URL } from '@/consts';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { BLOG_COVER_CAPTION, blogCoverAlt } from '@/lib/blog-cover';
 import { imageObject, organizationRef, personRef, WEBSITE_ID } from '@/lib/schema';
 
 const posts = (await getCollection('blog')).sort(
@@ -19,7 +20,7 @@ const list = posts.map((post) => ({
       ? post.data.pubDate.toISOString()
       : String(post.data.pubDate),
   coverImage: post.data.coverImage,
-  imageAlt: post.data.imageAlt,
+  imageAlt: blogCoverAlt(post.data.imageAlt, post.data.title),
   tags: post.data.tags ?? [],
 }));
 
@@ -50,9 +51,7 @@ const blogSchema = {
     image: post.data.coverImage
       ? imageObject({
           url: `${SITE_URL}${post.data.coverImage}`,
-          caption:
-            post.data.imageAlt ||
-            `${post.data.title} — 1/12 scale miniature furniture article by Scott Dillingham`,
+          caption: blogCoverAlt(post.data.imageAlt, post.data.title),
         })
       : undefined,
   })),
@@ -73,7 +72,7 @@ function formatDate(iso: string) {
   image="/images/blog/complete-guide-1-12-scale.webp"
   imageWidth={1920}
   imageHeight={1097}
-  imageAlt="Miniature Queen Anne style side chair with carved splat and cabriole legs on a woodworking bench"
+  imageAlt="Illustration — not a photograph of this workshop. Miniature Queen Anne style side chair with carved splat and cabriole legs on a woodworking bench"
   breadcrumbName="Blog"
 >
   <script type="application/ld+json" set:html={JSON.stringify(blogSchema)} />
@@ -139,13 +138,16 @@ function formatDate(iso: string) {
               <div class="relative h-[320px] overflow-hidden rounded-3xl">
                 <img
                   src={post.coverImage}
-                  alt={post.imageAlt || `${post.title} — 1/12 scale miniature furniture article by Scott Dillingham`}
+                  alt={post.imageAlt}
                   width={400}
                   height={320}
                   loading="lazy"
                   class="size-full object-cover transition-all duration-300"
                 />
               </div>
+              <p class="text-muted-foreground px-1 pt-3 text-xs leading-5">
+                {BLOG_COVER_CAPTION}
+              </p>
               <div class="px-0 py-6">
                 <div class="space-y-2.5 transition-transform duration-300 group-hover:translate-x-6">
                   <h2 class="text-2xl">{post.title}</h2>
