@@ -24,7 +24,7 @@ function escapeHtml(value: string): string {
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function workerSecret(name: 'RESEND_API_KEY' | 'RESEND_FROM_EMAIL'): string | undefined {
-  const fromWorker = (env as Record<string, string | undefined>)[name];
+  const fromWorker = (env as unknown as Record<string, string | undefined>)[name];
   if (fromWorker) return fromWorker;
   const fromProcess =
     typeof process !== 'undefined' ? process.env[name] : undefined;

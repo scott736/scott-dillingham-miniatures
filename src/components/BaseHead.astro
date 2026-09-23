@@ -1,5 +1,7 @@
 ---
 import '@/styles/global.css';
+import { formatPageTitle, SITE_METADATA, SITE_TITLE, SITE_URL } from '../consts';
+
 import {
   IMAGE_LICENSE_URL,
   breadcrumbListNode,
@@ -11,7 +13,6 @@ import {
   webPageNode,
   websiteNode,
 } from '@/lib/schema';
-import { formatPageTitle, SITE_METADATA, SITE_TITLE, SITE_URL } from '../consts';
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const isNotFoundPage = Astro.url.pathname.replace(/\/$/, '') === '/404';

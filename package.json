@@ -14,7 +14,11 @@
     "indexnow": "node scripts/ping-indexnow.mjs",
     "audit:site": "node scripts/site-audit.mjs --dir dist/client",
     "astro": "astro",
-    "lint": "prettier --write  \"**/*.{js,jsx,ts,tsx,md,mdx,astro}\" && eslint --fix \"src/**/*.{js,ts,jsx,tsx,astro}\""
+    "cf-typegen": "wrangler types",
+    "typecheck": "npm run cf-typegen && astro check && tsc --noEmit",
+    "lint": "eslint \"src/**/*.{js,ts,jsx,tsx,astro}\"",
+    "lint:fix": "eslint --fix \"src/**/*.{js,ts,jsx,tsx,astro}\"",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md,mdx,astro}\""
   },
   "dependencies": {
     "@astrojs/cloudflare": "^14.3.3",
@@ -37,6 +41,8 @@
     "tailwind-merge": "^3.7.0"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@emnapi/runtime": "^1.11.3",
     "@eslint/eslintrc": "^3.3.7",
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.3",
@@ -55,7 +61,7 @@
     "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4.3.3",
     "tailwindcss-animate": "^1.0.7",
-    "typescript": "^7.0.2",
+    "typescript": "^6.0.3",
     "wrangler": "^4.136.3"
   },
   "overrides": {

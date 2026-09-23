@@ -5,9 +5,9 @@ import { getCollection, render } from 'astro:content';
 
 import BlogPost from '@/components/sections/blog-post.astro';
 import { SITE_URL } from '@/consts';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import { blogCoverAlt } from '@/lib/blog-cover';
 import { getBlogHowTo } from '@/lib/schema';
-import DefaultLayout from '@/layouts/DefaultLayout.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');

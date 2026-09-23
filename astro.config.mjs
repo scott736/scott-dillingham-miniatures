@@ -30,7 +30,8 @@ function blogLastmods() {
 }
 
 const BLOG_LASTMOD = blogLastmods();
-/** Core pages: last real content change, not every deploy. */
+/** Core pages: last real content change, not every deploy.
+ * @type {Record<string, string>} */
 const PAGE_LASTMOD = {
   '/': '2026-08-31',
   '/gallery': '2026-09-07',
