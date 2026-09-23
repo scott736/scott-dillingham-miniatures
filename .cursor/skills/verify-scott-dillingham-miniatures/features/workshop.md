@@ -33,5 +33,5 @@ Preconditions:
 - `WorkshopHero` and `WorkshopProcess` are static `.astro` includes, not React `client:` islands. Prerender includes the headings in HTML.
 - About (`/about/`, `Meet the Maker`) is a different page. Header `About` does not prove workshop.
 - HowTo JSON-LD on `/workshop/` is not a substitute for the visible step headings.
-- Process photographs are `astro:assets` `Picture` elements (often `/_astro/…`), not `/images/workshop/`. Tool photos are under `/images/workshop/tools-*.webp`. A 200 HTML page with broken images is still a valid heading proof; note image 404s if you check them.
+- Process and tool photographs are `astro:assets` `Picture` elements. Local `astro dev` serves them as `/_image/?href=…/src/assets/images/workshop/…` (hashed `/_astro/…` after a production build). Do not assert `/images/workshop/tools-*.webp` in the page HTML; those public files may still 200 if requested directly. A 200 HTML page with broken images is still a valid heading proof; note image 404s if you check them.
 - Bare `/workshop` (no trailing slash) is 404.
