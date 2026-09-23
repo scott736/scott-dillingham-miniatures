@@ -25,7 +25,7 @@ export function AboutHero() {
         width={383}
         height={683}
         fetchPriority="high"
-        className="aspect-[6.44/5.28] max-h-[528px] rounded-3xl object-cover object-top"
+        className="aspect-[383/683] max-h-[528px] rounded-3xl object-cover object-top"
       />
     </section>
   );
