@@ -57,4 +57,5 @@ await dialog.locator('#gallery-lightbox-title').waitFor();
 - Lightbox JS is an inline script on `gallery.astro` (`data-gallery-open`). HTML still contains titles after prerender; the open dialog needs JS. Do not wait for a heading inside the dialog — the title is a `<p>`.
 - `Previous image` / `Next image` are always in the dialog markup with class `hidden`. JS unhides them only when `images.length > 1` (none of the current `GALLERY_ITEMS` do).
 - `Read more` is always rendered as a `<details>` summary (copy is lowercase `more`). There is no `Read Less` control.
+- Status labels use Tailwind `uppercase`. The HTML text node is `Museum collection` / `Available` / `Commission only`; Playwright `innerText` is `MUSEUM COLLECTION` / `AVAILABLE` / `COMMISSION ONLY`. Assert `textContent` or match case-insensitively.
 - Trailing slashes are required on this site (`trailingSlash: 'always'`). Assert `/gallery/` rather than a slashless path.
