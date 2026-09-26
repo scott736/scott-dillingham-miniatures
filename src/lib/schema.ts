@@ -72,6 +72,8 @@ export function personNode() {
     '@id': PERSON_ID,
     name: 'Scott Dillingham',
     url: `${SITE_URL}/about/`,
+    description:
+      'Scott Dillingham is a museum-exhibited craftsman who builds museum-quality 1/12 scale hardwood miniature furniture by hand, using traditional joinery. Three of his pieces are part of the KSB Miniatures Collection in Maysville, Kentucky.',
     jobTitle: 'Museum-Exhibited Master Miniature Furniture Craftsman',
     knowsAbout: PERSON_KNOWS_ABOUT,
     sameAs: SOCIAL_LINKS.map((s) => s.href),

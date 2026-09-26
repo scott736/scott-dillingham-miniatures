@@ -1,6 +1,6 @@
 ---
-title: "Understanding Dollhouse Scales: 1:12, 1:24, and 1:48"
-description: "A comprehensive guide to dollhouse scales including 1:12, 1:24, and 1:48. Learn the differences, pros and cons, and which scale is right for your project."
+title: "1:12 vs 1:24 Dollhouse Scale: Which Is Best?"
+description: "1:12 scale (1 inch = 1 foot) suits fine joinery and detail; 1:24 (½ inch = 1 foot) suits compact, multi-room houses. Compare both to pick the right one."
 pubDate: "2025-02-20"
 image: "/images/blog/understanding-dollhouse-scales.webp"
 authorName: "Scott Dillingham"
@@ -9,6 +9,8 @@ tags: ["dollhouse scales", "1/12 scale", "1/24 scale", "miniatures guide"]
 coverImage: "/images/blog/understanding-dollhouse-scales.webp"
 imageAlt: "Two tiny wooden chairs of different sizes, one with a wood seat and one with a rush seat"
 ---
+
+**Quick answer:** 1:12 scale (1 inch = 1 foot) is the better choice for fine joinery, intricate detail, and the widest selection of accessories — it's the long-standing standard for serious builders. 1:24 scale (½ inch = 1 foot) is the better choice when display space is limited, since a full multi-room dollhouse at 1:24 fits in roughly the footprint of a single 1:12 room. Most builders start at 1:12 and only move to 1:24 when space forces the decision.
 
 One of the first questions every new miniature enthusiast asks is about scale. Walk into a miniatures show and you will see pieces in several different sizes, each labeled with a ratio that might seem cryptic at first glance. Understanding these dollhouse scales is fundamental to collecting, building, and displaying miniatures, and getting them mixed up can lead to expensive mistakes.
 
