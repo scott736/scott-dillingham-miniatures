@@ -1,0 +1,118 @@
+---
+export const prerender = true;
+
+import {
+  GALLERY_ITEMS,
+  SOCIAL_LINKS,
+  UPCOMING_SHOWS,
+  piecePath,
+} from '@/consts';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { ksbMuseumNode } from '@/lib/schema';
+
+const museumPieces = GALLERY_ITEMS.filter((item) => item.availability === 'museum');
+const instagram = SOCIAL_LINKS.find((link) => link.name === 'Instagram');
+
+const pageSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [ksbMuseumNode()],
+};
+---
+
+<DefaultLayout
+  title="See the Work in Person"
+  description="Three pieces are in the KSB Miniatures Collection, Maysville, Kentucky. Show dates are listed here when a booking is confirmed."
+  breadcrumbName="See the Work"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
+  <section class="hero-padding container space-y-12">
+    <div class="mx-auto max-w-3xl space-y-4 text-center">
+      <h1 class="text-4xl font-bold md:text-6xl md:leading-18">See the work in person</h1>
+      <p class="text-xl leading-8">
+        Three finished pieces are on view at the KSB Miniatures Collection in
+        Maysville, Kentucky. They are not for sale. Similar work is offered by
+        commission.
+      </p>
+    </div>
+
+    <div class="mx-auto max-w-3xl space-y-4">
+      <h2 class="text-2xl font-bold">KSB Miniatures Collection</h2>
+      <p class="text-muted-foreground leading-8">
+        The KSB Miniatures Collection is a museum of fine miniatures in Maysville,
+        Kentucky.
+        <a
+          class="text-primary font-medium underline underline-offset-2"
+          href="https://www.ksbminiaturescollection.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          ksbminiaturescollection.com
+        </a>
+      </p>
+      <ul class="grid grid-cols-1 gap-6 sm:grid-cols-3">
+        {
+          museumPieces.map((item) => (
+            <li>
+              <a href={piecePath(item.id)} class="group block space-y-3">
+                <img
+                  src={item.images[0]}
+                  alt={item.alt}
+                  width="800"
+                  height="600"
+                  loading="lazy"
+                  class="aspect-[4/3] w-full rounded-2xl object-cover"
+                />
+                <span class="group-hover:text-primary block font-semibold">{item.title}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="mx-auto max-w-3xl space-y-4">
+      <h2 class="text-2xl font-bold">Shows</h2>
+      {
+        UPCOMING_SHOWS.length > 0 ? (
+          <ul class="space-y-3">
+            {UPCOMING_SHOWS.map((show) => (
+              <li class="leading-7">
+                {show.href ? (
+                  <a class="text-primary font-medium underline underline-offset-2" href={show.href}>
+                    {show.name}
+                  </a>
+                ) : (
+                  <span class="font-medium">{show.name}</span>
+                )}
+                <span class="text-muted-foreground">
+                  {' '}
+                  — {show.when}, {show.where}
+                </span>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p class="text-muted-foreground leading-8">
+            No show dates are posted yet. When a show is booked, it will be listed
+            here.
+            {instagram && (
+              <>
+                {' '}
+                Between shows, the bench is on{' '}
+                <a
+                  class="text-primary font-medium underline underline-offset-2"
+                  href={instagram.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Instagram
+                </a>
+                .
+              </>
+            )}
+          </p>
+        )
+      }
+    </div>
+  </section>
+</DefaultLayout>

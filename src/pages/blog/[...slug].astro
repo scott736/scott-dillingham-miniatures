@@ -67,6 +67,10 @@ const howToSchema = getBlogHowTo(post.id, {
       post.data.pubDate instanceof Date
         ? post.data.pubDate.toISOString()
         : String(post.data.pubDate),
+    updatedDate:
+      post.data.updatedDate instanceof Date
+        ? post.data.updatedDate.toISOString()
+        : undefined,
     tags: post.data.tags,
   }}
   speakableSections={[

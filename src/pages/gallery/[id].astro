@@ -1,0 +1,161 @@
+---
+export const prerender = true;
+
+import ListSignup from '@/components/sections/list-signup.astro';
+import {
+  GALLERY_ITEMS,
+  GALLERY_STATUS,
+  galleryContactHref,
+  type GalleryItem,
+} from '@/consts';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { ksbMuseumNode, visualArtworkNode } from '@/lib/schema';
+
+interface Props {
+  item: GalleryItem;
+}
+
+export function getStaticPaths() {
+  return GALLERY_ITEMS.map((item) => ({
+    params: { id: item.id },
+    props: { item },
+  }));
+}
+
+const { item } = Astro.props;
+const status = GALLERY_STATUS[item.availability];
+const inquireHref = galleryContactHref(item.availability, item.id);
+const relatedHref = item.relatedPost
+  ? item.relatedPost.endsWith('/')
+    ? item.relatedPost
+    : `${item.relatedPost}/`
+  : null;
+
+function plainText(html: string): string {
+  return html.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+}
+
+const lead = `${item.title} in ${item.wood}, ${item.scale} scale. ${status.label}.`;
+const rest = plainText(item.description);
+const metaCombined = `${lead} ${rest}`;
+const metaDescription =
+  metaCombined.length <= 160
+    ? metaCombined
+    : (metaCombined.slice(0, 160).replace(/\s+\S*$/, '') || metaCombined.slice(0, 160));
+
+const specs = [
+  ['Wood', item.wood],
+  ['Scale', item.scale],
+  ['Category', item.category],
+  ...(item.dimensions ? [['Dimensions', item.dimensions]] : []),
+  ...(item.hours ? [['Hours', item.hours]] : []),
+];
+
+const artworkSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    ...(item.availability === 'museum' ? [ksbMuseumNode()] : []),
+    visualArtworkNode(item),
+  ],
+};
+
+const priceLine =
+  item.priceLabel ||
+  (item.availability === 'available'
+    ? 'Price on request. Ask about deposit and lead time.'
+    : '');
+---
+
+<DefaultLayout
+  title={item.title}
+  description={metaDescription}
+  image={item.images[0]}
+  imageAlt={item.alt}
+  breadcrumbName={item.title}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(artworkSchema)} />
+  <article class="hero-padding container mx-auto max-w-3xl space-y-8">
+    <header class="space-y-3">
+      <p class="text-muted-foreground text-xs font-medium tracking-wider uppercase">
+        <a href="/gallery/" class="hover:text-foreground">Gallery</a>
+        <span aria-hidden="true"> / </span>
+        {status.label}
+      </p>
+      <h1 class="text-4xl font-bold md:text-5xl">{item.title}</h1>
+      {priceLine && <p class="text-lg leading-8">{priceLine}</p>}
+      {
+        item.availability === 'museum' && (
+          <p class="text-lg leading-8">
+            This piece is in the KSB Miniatures Collection in Maysville, Kentucky,
+            and is not for sale. Similar work is offered by commission.
+          </p>
+        )
+      }
+      {
+        item.availability === 'commission' && (
+          <p class="text-lg leading-8">This design is offered by commission.</p>
+        )
+      }
+    </header>
+
+    <div class="space-y-4">
+      {
+        item.images.map((src, index) => (
+          <img
+            src={src}
+            alt={index === 0 ? item.alt : `${item.alt} (${index + 1})`}
+            width="800"
+            height="600"
+            loading={index === 0 ? 'eager' : 'lazy'}
+            class="w-full rounded-2xl object-cover"
+          />
+        ))
+      }
+    </div>
+
+    <dl class="grid grid-cols-2 gap-4 sm:grid-cols-3">
+      {
+        specs.map(([label, value]) => (
+          <div>
+            <dt class="text-muted-foreground text-xs font-medium tracking-wider uppercase">
+              {label}
+            </dt>
+            <dd class="mt-1 font-medium">{value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+
+    <div
+      class="text-muted-foreground [&_a]:text-primary leading-8 [&_a]:underline [&_a]:underline-offset-2"
+      set:html={item.description}
+    />
+
+    <div class="flex flex-wrap items-center gap-4">
+      <a
+        href={inquireHref}
+        class="bg-primary text-primary-foreground inline-flex h-12 items-center justify-center rounded-full px-6 text-sm font-medium"
+      >
+        {status.cta}
+      </a>
+      {
+        relatedHref && (
+          <a href={relatedHref} class="text-muted-foreground text-sm font-medium underline underline-offset-2">
+            Read the related guide
+          </a>
+        )
+      }
+    </div>
+  </article>
+  <ListSignup
+    source={`piece-${item.id}`}
+    piece={item.id}
+    heading={
+      item.availability === 'available'
+        ? 'Ask to hear about the next one'
+        : 'Hear when a similar piece is finished'
+    }
+    body="New pieces go to the list first. I write when something is finished or a commission slot opens."
+    buttonLabel="Notify me"
+  />
+</DefaultLayout>

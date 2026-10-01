@@ -96,6 +96,8 @@ export const FOOTER_LINKS = [
     title: 'Explore',
     links: [
       { name: 'Gallery', href: '/gallery/' },
+      { name: 'Commissions', href: '/commissions/' },
+      { name: 'See the Work', href: '/visit/' },
       { name: 'Workshop', href: '/workshop/' },
       { name: 'About the Maker', href: '/about/' },
       { name: 'Blog', href: '/blog/' },
@@ -161,12 +163,50 @@ export const GALLERY_STATUS: Record<
   },
 };
 
-export function galleryContactHref(availability: GalleryAvailability): string {
-  return `/contact/?subject=${GALLERY_STATUS[availability].subject}`;
+export type GalleryItem = {
+  id: string;
+  title: string;
+  alt: string;
+  description: string;
+  images: string[];
+  category: string;
+  wood: string;
+  scale: string;
+  relatedPost?: string;
+  availability: GalleryAvailability;
+  /** Maker-confirmed band only, for example "from $2,400". Leave unset until then. */
+  priceLabel?: string;
+  dimensions?: string;
+  hours?: string;
+};
+
+export function piecePath(id: string): string {
+  return `/gallery/${id}/`;
 }
 
-// Gallery items
-export const GALLERY_ITEMS = [
+export function galleryContactHref(
+  availability: GalleryAvailability,
+  pieceId?: string,
+): string {
+  const params = new URLSearchParams();
+  if (pieceId) params.set('piece', pieceId);
+  if (availability === 'commission') {
+    return `/commissions/${params.toString() ? `?${params.toString()}` : ''}`;
+  }
+  params.set('subject', GALLERY_STATUS[availability].subject);
+  return `/contact/?${params.toString()}`;
+}
+
+/** Booked shows only. Leave empty until a date is confirmed. */
+export const UPCOMING_SHOWS: {
+  name: string;
+  when: string;
+  where: string;
+  href?: string;
+}[] = [];
+
+// Gallery items. priceLabel, dimensions, and hours stay off until the maker supplies them.
+export const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: 'tall-case-clock',
     title: 'Simon Willard Tall Case Clock Style',
@@ -285,7 +325,7 @@ export const FAQ_DATA = [
   {
     question: 'Do you take custom commissions?',
     answer:
-      'Yes, I welcome commission requests. Whether you want a specific period piece, a replica of a family heirloom, or a custom design, I am happy to discuss your vision. Please use the <a href="/contact/">contact form</a> to describe what you have in mind and I will get back to you with details. You can also browse our <a href="/gallery/">gallery</a> for inspiration.',
+      'Yes, I welcome commission requests. Whether you want a specific period piece, a replica of a family heirloom, or a custom design, I am happy to discuss your vision. Use the <a href="/commissions/">commissions page</a> to describe the piece, your timing, and your budget, and I will reply from the studio. You can also browse the <a href="/gallery/">gallery</a> for pieces already finished.',
   },
   {
     question: 'How should I care for and display my miniature furniture?',

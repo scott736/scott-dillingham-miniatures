@@ -33,12 +33,14 @@ const BLOG_LASTMOD = blogLastmods();
 /** Core pages: last real content change, not every deploy.
  * @type {Record<string, string>} */
 const PAGE_LASTMOD = {
-  '/': '2026-08-31',
-  '/gallery': '2026-09-07',
+  '/': '2026-09-21',
+  '/gallery': '2026-09-21',
   '/workshop': '2026-09-07',
   '/about': '2026-08-31',
   '/blog': '2026-09-07',
-  '/contact': '2026-08-31',
+  '/contact': '2026-09-21',
+  '/commissions': '2026-09-21',
+  '/visit': '2026-09-21',
   '/image-license': '2026-08-31',
   '/privacy-policy': '2025-01-14',
   '/terms-of-service': '2025-01-14',
@@ -74,6 +76,17 @@ export default defineConfig({
         }
         if (url.endsWith('/gallery')) {
           return { ...item, changefreq: weekly, priority: 0.9, lastmod };
+        }
+        if (/\/gallery\/[^/]+$/.test(pathname)) {
+          return {
+            ...item,
+            changefreq: monthly,
+            priority: 0.8,
+            lastmod: '2026-09-21',
+          };
+        }
+        if (pathname === '/commissions' || pathname === '/visit') {
+          return { ...item, changefreq: monthly, priority: 0.8, lastmod };
         }
         if (url.endsWith('/workshop') || url.endsWith('/about')) {
           return { ...item, changefreq: monthly, priority: 0.8, lastmod };

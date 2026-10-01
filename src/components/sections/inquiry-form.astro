@@ -1,0 +1,158 @@
+---
+import { GALLERY_ITEMS } from '@/consts';
+
+interface Props {
+  lockedSubject?: 'general' | 'commission' | 'collection' | 'collaboration';
+  showPieceType?: boolean;
+}
+
+const { lockedSubject, showPieceType = false } = Astro.props;
+
+const inputClass =
+  'border-input placeholder:text-input selection:bg-primary selection:text-primary-foreground dark:bg-input/30 focus-visible:border-ring focus-visible:ring-ring/50 flex h-11 w-full min-w-0 rounded-lg border bg-transparent px-3 py-1 text-base outline-none transition-[color,box-shadow] focus-visible:ring-[3px] md:text-sm';
+const labelClass = 'flex items-center gap-2 leading-none select-none';
+const selectClass =
+  'border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring flex h-10 w-full rounded-md border px-3 py-2 text-sm focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50';
+
+const pieceTitles = Object.fromEntries(
+  GALLERY_ITEMS.map((item) => [item.id, item.title]),
+);
+---
+
+<form method="post" action="/api/contact/" class="flex flex-col gap-6">
+  <div class="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+    <label for="website">Website</label>
+    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+  </div>
+
+  <div class="space-y-1.5">
+    <label class={labelClass} for="name">Name</label>
+    <input
+      class={inputClass}
+      type="text"
+      id="name"
+      name="name"
+      placeholder="Your name"
+      required
+      maxlength="200"
+    />
+  </div>
+
+  <div class="space-y-1.5">
+    <label class={labelClass} for="email">Email</label>
+    <input
+      class={inputClass}
+      type="email"
+      id="email"
+      name="email"
+      placeholder="your@email.com"
+      required
+      maxlength="254"
+    />
+  </div>
+
+  {
+    lockedSubject ? (
+      <input type="hidden" name="subject" value={lockedSubject} />
+    ) : (
+      <div class="space-y-1.5">
+        <label class={labelClass} for="subject">Subject</label>
+        <select id="subject" name="subject" class={selectClass}>
+          <option value="">Select a subject...</option>
+          <option value="general">General Inquiry</option>
+          <option value="commission">Commission Request</option>
+          <option value="collection">Collection Question</option>
+          <option value="collaboration">Collaboration</option>
+        </select>
+      </div>
+    )
+  }
+
+  <div class="space-y-1.5">
+    <label class={labelClass} for="piece">Piece</label>
+    <input
+      class={inputClass}
+      type="text"
+      id="piece"
+      name="piece"
+      placeholder="Piece name, if you have one"
+      maxlength="200"
+    />
+  </div>
+
+  {
+    showPieceType && (
+      <div class="space-y-1.5">
+        <label class={labelClass} for="pieceType">
+          Kind of piece
+        </label>
+        <input
+          class={inputClass}
+          type="text"
+          id="pieceType"
+          name="pieceType"
+          placeholder="Period, room, or a piece you have in mind"
+          maxlength="200"
+        />
+      </div>
+    )
+  }
+
+  <div class="space-y-1.5">
+    <label class={labelClass} for="budget">Your budget</label>
+    <select id="budget" name="budget" class={selectClass}>
+      <option value="">Optional</option>
+      <option value="discuss">Prefer to discuss</option>
+      <option value="smaller">A smaller piece</option>
+      <option value="chair-table-bed">A chair, table, or bed</option>
+      <option value="case-piece">A case piece or clock</option>
+    </select>
+  </div>
+
+  <div class="space-y-1.5">
+    <label class={labelClass} for="timeline">Timing</label>
+    <select id="timeline" name="timeline" class={selectClass}>
+      <option value="">Optional</option>
+      <option value="flexible">No fixed date</option>
+      <option value="six-months">Hoping within six months</option>
+      <option value="this-year">Hoping this year</option>
+      <option value="ready">Whenever it is ready</option>
+    </select>
+  </div>
+
+  <div class="space-y-1.5">
+    <label class={labelClass} for="message">Message</label>
+    <textarea
+      class:list={[inputClass, 'min-h-[120px] py-2']}
+      placeholder="Tell me about the piece or the question..."
+      id="message"
+      name="message"
+      required
+      maxlength="5000"
+    ></textarea>
+  </div>
+
+  <button
+    type="submit"
+    class="bg-primary text-primary-foreground inline-flex h-14 w-full cursor-pointer items-center justify-center rounded-md px-6 text-sm font-medium shadow-xs hover:bg-primary/95"
+  >
+    Send Message
+  </button>
+</form>
+
+<script is:inline define:vars={{ pieceTitles }}>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var subject = params.get('subject');
+    var select = document.getElementById('subject');
+    if (subject && select) {
+      var allowed = ['general', 'commission', 'collection', 'collaboration'];
+      if (allowed.indexOf(subject) !== -1) select.value = subject;
+    }
+    var piece = params.get('piece');
+    var pieceInput = document.getElementById('piece');
+    if (piece && pieceInput) {
+      pieceInput.value = (pieceTitles && pieceTitles[piece]) || piece;
+    }
+  })();
+</script>

@@ -1,6 +1,7 @@
 ---
-title: "Chippendale Miniature Furniture: 1/12 Scale Guide"
-description: "Master Chippendale miniature furniture with expert techniques for ball and claw feet, ribbon-back chairs, and ornate carvings at dollhouse scale."
+title: "Chippendale at 1:12: Ball-and-Claw"
+description: "Ball-and-claw feet, ribbon-back chairs, and pierced splats carved at 1:12, from a maker with work in the KSB Miniatures Collection."
+updatedDate: "2026-09-21"
 pubDate: "2025-08-05"
 image: "/images/blog/chippendale-miniature.webp"
 authorName: "Scott Dillingham"

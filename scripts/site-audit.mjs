@@ -187,11 +187,11 @@ function checkDistExtras() {
     fail('home JSON-LD missing PreOrder offer for commissions');
   }
   for (const id of ['highboy-dresser', 'four-poster-bed', 'shaker-d-ring-table']) {
-    if (!home.includes(`/gallery/#${id}`)) {
+    if (!home.includes(`/gallery/${id}/`)) {
       fail(`home OfferCatalog missing available artwork ${id}`);
     }
   }
-  if (!home.includes('/gallery/#moser-continuous-arm-chair')) {
+  if (!home.includes('/gallery/moser-continuous-arm-chair/')) {
     fail('home OfferCatalog missing commission artwork moser-continuous-arm-chair');
   }
   const styleChars = [...home.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)].reduce(
@@ -213,6 +213,9 @@ function checkDistExtras() {
   if (existsSync(sitemap0)) {
     const xml = readFileSync(sitemap0, 'utf8');
     if (!xml.includes('/privacy-policy/')) fail('sitemap missing /privacy-policy/');
+    if (!xml.includes('/gallery/highboy-dresser/')) fail('sitemap missing a piece page');
+    if (!xml.includes('/commissions/')) fail('sitemap missing /commissions/');
+    if (!xml.includes('/visit/')) fail('sitemap missing /visit/');
     if (!xml.includes('/terms-of-service/')) fail('sitemap missing /terms-of-service/');
     if (xml.includes('/404')) fail('sitemap must not include 404');
     if (xml.includes('/api/')) fail('sitemap must not include /api/');
@@ -269,6 +272,43 @@ function checkDistExtras() {
     for (const label of ['Available', 'Commission only', 'Museum collection', 'Inquire', 'Commission']) {
       if (!html.includes(label)) fail(`gallery html missing status/cta "${label}"`);
     }
+    const pieceIds = [
+      'tall-case-clock',
+      'highboy-dresser',
+      'four-poster-bed',
+      'maloof-rocking-chair',
+      'hepplewhite-shield-back-chair',
+      'moser-continuous-arm-chair',
+      'shaker-d-ring-table',
+    ];
+    for (const id of pieceIds) {
+      if (!html.includes(`/gallery/${id}/`)) fail(`gallery index missing piece link ${id}`);
+      const pieceFile = join(dir, 'gallery', id, 'index.html');
+      if (!existsSync(pieceFile)) {
+        fail(`missing piece page ${id}`);
+        continue;
+      }
+      const pieceHtml = readFileSync(pieceFile, 'utf8');
+      const pieceTypes = checkNoProductSchema(id, pieceHtml);
+      if (!pieceTypes.includes('VisualArtwork')) fail(`${id} JSON-LD missing VisualArtwork`);
+      if (!pieceHtml.includes(`/images/gallery/${id}.webp`)) {
+        fail(`${id} html missing its photograph`);
+      }
+      checkHtml(id, pieceHtml, { maxTitle: 70, maxDesc: 170 });
+    }
+  }
+  for (const [label, rel] of [
+    ['commissions', 'commissions/index.html'],
+    ['visit', 'visit/index.html'],
+  ]) {
+    const file = join(dir, rel);
+    if (!existsSync(file)) {
+      fail(`missing ${label} page`);
+      continue;
+    }
+    const html = readFileSync(file, 'utf8');
+    checkNoProductSchema(label, html);
+    checkHtml(label, html, { maxTitle: 70, maxDesc: 170 });
   }
   const workshop = join(dir, 'workshop/index.html');
   if (existsSync(workshop)) {

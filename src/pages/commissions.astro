@@ -1,0 +1,103 @@
+---
+export const prerender = true;
+
+import InquiryForm from '@/components/sections/inquiry-form.astro';
+import { GALLERY_ITEMS, GALLERY_STATUS, SITE_URL, piecePath } from '@/consts';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { COMMISSION_SERVICE_ID, organizationRef, WEBSITE_ID } from '@/lib/schema';
+
+const steps = [
+  {
+    title: 'Consult',
+    text: 'Tell me the piece, the period, and how you hope to use it.',
+  },
+  {
+    title: 'Reference and design',
+    text: 'I confirm the style, the wood, and what is feasible at 1:12.',
+  },
+  {
+    title: 'Deposit and scope',
+    text: 'Deposit, lead time, and shipping are agreed in writing before I start. Each piece is quoted. There is no standing price list.',
+  },
+  {
+    title: 'Build updates',
+    text: 'I write as the piece moves through the bench.',
+  },
+  {
+    title: 'Delivery',
+    text: 'The finished piece is packed in custom-fitted foam, insured, and shipped.',
+  },
+];
+
+const examples = GALLERY_ITEMS.map((item) => ({
+  href: piecePath(item.id),
+  title: item.title,
+  note: `${item.wood} · ${GALLERY_STATUS[item.availability].label}`,
+}));
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': COMMISSION_SERVICE_ID,
+  name: 'Custom Miniature Furniture Commissions',
+  url: `${SITE_URL}/commissions/`,
+  provider: organizationRef(),
+  isPartOf: { '@id': WEBSITE_ID },
+};
+---
+
+<DefaultLayout
+  title="How a Commission Works"
+  description="How a 1/12 scale commission proceeds, from the first note through insured delivery. Tell me the piece, your timing, and your budget."
+  breadcrumbName="Commissions"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <section class="hero-padding-margin container grid grid-cols-1 justify-between gap-10 md:grid-cols-2 lg:gap-10.5">
+    <div class="space-y-8">
+      <div class="space-y-4">
+        <h1 class="text-4xl font-bold md:text-5xl md:leading-14">Commission a piece</h1>
+        <p class="text-xl leading-8">
+          A piece takes from 40 hours to more than 200, depending on the carving
+          and the number of drawers. Museum-held works are not for sale. Similar
+          pieces, and new designs, are built to commission.
+        </p>
+      </div>
+      <ol class="space-y-5">
+        {
+          steps.map((step, index) => (
+            <li class="space-y-1">
+              <h2 class="text-lg font-semibold">
+                {index + 1}. {step.title}
+              </h2>
+              <p class="text-muted-foreground leading-7">{step.text}</p>
+            </li>
+          ))
+        }
+      </ol>
+      <div class="space-y-3">
+        <h2 class="text-lg font-semibold">Past work</h2>
+        <ul class="space-y-2">
+          {
+            examples.map((item) => (
+              <li>
+                <a class="text-primary font-medium underline underline-offset-2" href={item.href}>
+                  {item.title}
+                </a>
+                <span class="text-muted-foreground"> — {item.note}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+    <div class="bg-card text-card-foreground rounded-3xl border py-8">
+      <div class="space-y-3 px-8">
+        <h2 class="text-3xl font-bold">Tell me about the piece</h2>
+        <p class="text-xl">I read every note and reply from the studio.</p>
+      </div>
+      <div class="px-8 pt-6">
+        <InquiryForm lockedSubject="commission" showPieceType={true} />
+      </div>
+    </div>
+  </section>
+</DefaultLayout>

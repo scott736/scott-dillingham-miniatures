@@ -1,9 +1,12 @@
 ---
 export const prerender = true;
 
+import ListSignup from '@/components/sections/list-signup.astro';
+import { SOCIAL_LINKS } from '@/consts';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 
-const description = "Your note reached the studio. Scott will reply from here.";
+const description = 'Your note reached the studio. Scott will reply from here.';
+const instagram = SOCIAL_LINKS.find((link) => link.name === 'Instagram');
 ---
 
 <DefaultLayout
@@ -14,9 +17,53 @@ const description = "Your note reached the studio. Scott will reply from here.";
 >
   <section class="hero-padding-margin container max-w-2xl space-y-6">
     <h1 class="text-3xl font-bold md:text-5xl">Message sent</h1>
-    <p class="text-xl leading-8">Message sent! I'll get back to you soon.</p>
-    <p>
-      <a class="text-primary font-medium underline underline-offset-2" href="/contact/">Back to contact</a>
-    </p>
+    <div data-sent="inquiry" class="space-y-4">
+      <p class="text-xl leading-8">
+        Your note reached the studio. I read every message and will reply from
+        this address.
+      </p>
+      <p class="leading-8">While you wait, you can look at what is finished or follow the bench.</p>
+      <p class="flex flex-wrap gap-4">
+        <a class="text-primary font-medium underline underline-offset-2" href="/gallery/">See the gallery</a>
+        <a class="text-primary font-medium underline underline-offset-2" href="/commissions/">Commission a piece</a>
+        {
+          instagram && (
+            <a
+              class="text-primary font-medium underline underline-offset-2"
+              href={instagram.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Instagram
+            </a>
+          )
+        }
+      </p>
+    </div>
+    <div data-sent="list" class="space-y-4" hidden>
+      <p class="text-xl leading-8">
+        You're on the list. I write when a piece is finished or a commission slot
+        opens.
+      </p>
+      <p>
+        <a class="text-primary font-medium underline underline-offset-2" href="/gallery/">See the gallery</a>
+      </p>
+    </div>
   </section>
+  <div data-sent="signup">
+    <ListSignup source="thank-you" />
+  </div>
 </DefaultLayout>
+
+<script is:inline>
+  (function () {
+    var list = new URLSearchParams(window.location.search).get('list') === '1';
+    if (!list) return;
+    var inquiry = document.querySelector('[data-sent="inquiry"]');
+    var joined = document.querySelector('[data-sent="list"]');
+    var signup = document.querySelector('[data-sent="signup"]');
+    if (inquiry) inquiry.hidden = true;
+    if (joined) joined.hidden = false;
+    if (signup) signup.hidden = true;
+  })();
+</script>

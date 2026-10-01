@@ -6,6 +6,7 @@ import {
   galleryContactHref,
   GALLERY_ITEMS,
   GALLERY_STATUS,
+  piecePath,
 } from '@/consts';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import { galleryCollectionNode } from '@/lib/schema';
@@ -73,7 +74,9 @@ const lightboxItems = GALLERY_ITEMS.map((item) => {
     images: item.images,
     statusLabel: status.label,
     cta: status.cta,
-    inquireHref: galleryContactHref(item.availability),
+    inquireHref: galleryContactHref(item.availability, item.id),
+    pieceHref: piecePath(item.id),
+    priceLabel: item.priceLabel || '',
     relatedPost: item.relatedPost ? relatedPostHref(item.relatedPost) : null,
     alt: item.alt,
     priceOnRequest: item.availability === 'available',
@@ -113,7 +116,8 @@ const lightboxItems = GALLERY_ITEMS.map((item) => {
           const plain = stripHtml(item.description);
           const preview = truncateText(plain, 225);
           const status = GALLERY_STATUS[item.availability];
-          const inquireHref = galleryContactHref(item.availability);
+          const inquireHref = galleryContactHref(item.availability, item.id);
+          const pageHref = piecePath(item.id);
           const relatedHref = item.relatedPost
             ? relatedPostHref(item.relatedPost)
             : null;
@@ -121,32 +125,30 @@ const lightboxItems = GALLERY_ITEMS.map((item) => {
             <article id={item.id} class="overflow-hidden">
               <div class="group overflow-hidden border-none shadow-none">
                 <div class="relative aspect-[4/3] overflow-hidden rounded-2xl">
-                  <img
-                    src={item.images[0]}
-                    alt={item.alt}
-                    loading="lazy"
-                    width={800}
-                    height={600}
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    class="size-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+                  <a href={pageHref}>
+                    <img
+                      src={item.images[0]}
+                      alt={item.alt}
+                      loading="lazy"
+                      width={800}
+                      height={600}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      class="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </a>
                   <div class="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
                 </div>
                 <div class="space-y-3 px-2 pt-4">
                   <p class="text-muted-foreground text-xs font-medium uppercase tracking-wider">
                     {status.label}
                   </p>
-                  {item.availability === 'available' && (
+                  {(item.priceLabel || item.availability === 'available') && (
                     <p class="text-sm leading-6">
-                      Price on request. Ask about deposit and lead time.
+                      {item.priceLabel || 'Price on request. Ask about deposit and lead time.'}
                     </p>
                   )}
                   <h2 class="text-xl font-bold">
-                    <a
-                      href={'#' + item.id}
-                      data-gallery-open={item.id}
-                      class="hover:text-primary transition-colors"
-                    >
+                    <a href={pageHref} class="hover:text-primary transition-colors">
                       {item.title}
                     </a>
                   </h2>
@@ -161,6 +163,13 @@ const lightboxItems = GALLERY_ITEMS.map((item) => {
                     />
                   </details>
                   <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+                    <button
+                      type="button"
+                      data-gallery-open={item.id}
+                      class="text-muted-foreground cursor-pointer text-sm font-medium hover:underline"
+                    >
+                      Quick view
+                    </button>
                     <a
                       href={inquireHref}
                       class="text-primary inline-flex items-center gap-1 text-sm font-medium hover:underline"
@@ -316,6 +325,13 @@ const lightboxItems = GALLERY_ITEMS.map((item) => {
         >
         </a>
         <a
+          data-gallery-piece
+          href="/gallery/"
+          class="text-muted-foreground inline-flex items-center gap-1 text-sm font-medium hover:underline"
+        >
+          View piece
+        </a>
+        <a
           data-gallery-related
           href="/"
           class="text-muted-foreground hidden items-center gap-1 text-sm font-medium hover:underline"
@@ -342,6 +358,8 @@ const lightboxItems = GALLERY_ITEMS.map((item) => {
     statusLabel: string;
     cta: string;
     inquireHref: string;
+    pieceHref: string;
+    priceLabel: string;
     relatedPost: string | null;
     alt: string;
     priceOnRequest: boolean;
@@ -371,6 +389,7 @@ const lightboxItems = GALLERY_ITEMS.map((item) => {
     const inquireEl = dialog.querySelector<HTMLAnchorElement>(
       '[data-gallery-inquire]',
     );
+    const pieceEl = dialog.querySelector<HTMLAnchorElement>('[data-gallery-piece]');
     const relatedEl = dialog.querySelector<HTMLAnchorElement>(
       '[data-gallery-related]',
     );
@@ -384,6 +403,7 @@ const lightboxItems = GALLERY_ITEMS.map((item) => {
       !countEl ||
       !descriptionEl ||
       !inquireEl ||
+      !pieceEl ||
       !relatedEl ||
       !priceEl
     ) {
@@ -418,13 +438,17 @@ const lightboxItems = GALLERY_ITEMS.map((item) => {
       current = item;
       imageIndex = 0;
       statusEl.textContent = item.statusLabel;
-      if (item.priceOnRequest) {
+      if (item.priceLabel) {
+        priceEl.textContent = item.priceLabel;
+        priceEl.classList.remove('hidden');
+      } else if (item.priceOnRequest) {
         priceEl.textContent = 'Price on request. Ask about deposit and lead time.';
         priceEl.classList.remove('hidden');
       } else {
         priceEl.textContent = '';
         priceEl.classList.add('hidden');
       }
+      pieceEl.href = item.pieceHref;
       titleEl.textContent = item.title;
       descriptionEl.innerHTML = item.description;
       inquireEl.href = item.inquireHref;

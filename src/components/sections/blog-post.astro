@@ -1,5 +1,9 @@
 ---
+import ListSignup from '@/components/sections/list-signup.astro';
+import { GALLERY_ITEMS, GALLERY_STATUS, piecePath } from '@/consts';
 import { BLOG_COVER_CAPTION, blogCoverAlt } from '@/lib/blog-cover';
+
+const availablePieces = GALLERY_ITEMS.filter((item) => item.availability === 'available');
 
 interface RelatedPost {
   id: string;
@@ -58,8 +62,8 @@ const serviceCtas = [
   },
   {
     title: 'Commission a Piece',
-    href: '/contact/',
-    description: "Ready for a custom miniature? Let's discuss your vision.",
+    href: '/commissions/',
+    description: 'Tell me the piece, your timing, and your budget.',
   },
 ];
 ---
@@ -165,6 +169,32 @@ const serviceCtas = [
   <div class="prose-headings:font-normal prose-headings:text-3xl dark:prose-invert prose prose-xl max-w-none leading-8">
     <slot />
   </div>
+
+  <section class="pt-8 md:pt-12">
+    <h2 class="mb-6 text-2xl md:text-3xl">See what's available</h2>
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+      {
+        availablePieces.map((item) => (
+          <a href={piecePath(item.id)} class="group block space-y-3">
+            <img
+              src={item.images[0]}
+              alt={item.alt}
+              width="800"
+              height="600"
+              loading="lazy"
+              class="aspect-[4/3] w-full rounded-2xl object-cover"
+            />
+            <span class="block font-medium group-hover:underline">{item.title}</span>
+            <span class="text-muted-foreground text-sm">
+              {item.wood} · {GALLERY_STATUS[item.availability].label}
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <ListSignup source={`blog-${postId}`} />
 
   <section class="pt-8 md:pt-12">
     <h2 class="mb-6 text-2xl md:text-3xl">Continue Your Journey</h2>

@@ -213,8 +213,12 @@ const OFFER_AVAILABILITY: Record<GalleryItem['availability'], string> = {
 
 export const COMMISSION_SERVICE_ID = `${SITE_URL}/contact/#commission-service`;
 
+export function artworkPageUrl(item: Pick<GalleryItem, 'id'>): string {
+  return `${SITE_URL}/gallery/${item.id}/`;
+}
+
 export function artworkId(item: Pick<GalleryItem, 'id'>): string {
-  return `${SITE_URL}/gallery/#${item.id}`;
+  return `${artworkPageUrl(item)}#artwork`;
 }
 
 /** Availability only — no price is published on the site. Do not emit Product. */
@@ -223,8 +227,8 @@ function artworkOffer(item: GalleryItem) {
   return {
     '@type': 'Offer',
     url: isMuseum
-      ? artworkId(item)
-      : `${SITE_URL}${galleryContactHref(item.availability)}`,
+      ? artworkPageUrl(item)
+      : `${SITE_URL}${galleryContactHref(item.availability, item.id)}`,
     availability: OFFER_AVAILABILITY[item.availability],
     seller: organizationRef(),
   };
@@ -238,7 +242,7 @@ function commissionServiceNode() {
     description:
       'Commission a custom handcrafted 1/12 scale miniature furniture piece. Period reproductions, family heirloom replicas, or custom designs. Museum-held uniques are not for sale.',
     provider: organizationRef(),
-    url: `${SITE_URL}/contact/`,
+    url: `${SITE_URL}/commissions/`,
   };
 }
 
@@ -247,7 +251,7 @@ function catalogArtworkRef(item: GalleryItem) {
     '@type': 'VisualArtwork',
     '@id': artworkId(item),
     name: item.title,
-    url: artworkId(item),
+    url: artworkPageUrl(item),
   };
 }
 
@@ -274,7 +278,7 @@ function offerCatalogNode() {
         itemListElement: [
           {
             '@type': 'Offer',
-            url: `${SITE_URL}/contact/`,
+            url: `${SITE_URL}/commissions/`,
             availability: OFFER_AVAILABILITY.commission,
             seller: organizationRef(),
             itemOffered: commissionServiceNode(),
@@ -294,48 +298,64 @@ function offerCatalogNode() {
 
 export function visualArtworkNode(item: GalleryItem) {
   const inKsb = item.availability === 'museum';
-  const imageUrl = `${SITE_URL}${item.images[0]}`;
+  const imageCaption =
+    item.alt ??
+    `${item.title} — handcrafted 1/12 scale miniature in ${item.wood} by Scott Dillingham`;
+  const additionalProperty: Record<string, unknown>[] = [
+    { '@type': 'PropertyValue', name: 'Scale', value: item.scale },
+    { '@type': 'PropertyValue', name: 'Category', value: item.category },
+    {
+      '@type': 'PropertyValue',
+      name: 'Availability',
+      value: GALLERY_STATUS[item.availability].label,
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Construction Method',
+      value: 'Entirely handcrafted using traditional joinery',
+    },
+  ];
+  if (item.dimensions) {
+    additionalProperty.push({
+      '@type': 'PropertyValue',
+      name: 'Dimensions',
+      value: item.dimensions,
+    });
+  }
+  if (item.hours) {
+    additionalProperty.push({
+      '@type': 'PropertyValue',
+      name: 'Hours',
+      value: item.hours,
+    });
+  }
+  if (item.priceLabel) {
+    additionalProperty.push({
+      '@type': 'PropertyValue',
+      name: 'Price',
+      value: item.priceLabel,
+    });
+  }
   const artwork: Record<string, unknown> = {
     '@type': 'VisualArtwork',
     '@id': artworkId(item),
     name: item.title,
     description: stripHtml(item.description),
-    url: artworkId(item),
+    url: artworkPageUrl(item),
     identifier: item.id,
     artform: 'Miniature furniture',
     artMedium: item.wood,
     material: item.wood,
     creator: personRef(),
     copyrightHolder: personRef(),
-    image: imageObject({
-      url: imageUrl,
-      caption:
-        item.alt ??
-        `${item.title} — handcrafted 1/12 scale miniature in ${item.wood} by Scott Dillingham`,
-    }),
+    image: item.images.map((src) =>
+      imageObject({
+        url: `${SITE_URL}${src}`,
+        caption: imageCaption,
+      }),
+    ),
     offers: artworkOffer(item),
-    additionalProperty: [
-      {
-        '@type': 'PropertyValue',
-        name: 'Scale',
-        value: item.scale,
-      },
-      {
-        '@type': 'PropertyValue',
-        name: 'Category',
-        value: item.category,
-      },
-      {
-        '@type': 'PropertyValue',
-        name: 'Availability',
-        value: GALLERY_STATUS[item.availability].label,
-      },
-      {
-        '@type': 'PropertyValue',
-        name: 'Construction Method',
-        value: 'Entirely handcrafted using traditional joinery',
-      },
-    ],
+    additionalProperty,
   };
 
   if (inKsb) {

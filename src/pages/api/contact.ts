@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 import { env } from 'cloudflare:workers';
 import { Resend } from 'resend';
 
-import { CONTACT_FROM_EMAIL, CONTACT_TO_EMAIL, SITE_URL } from '@/consts';
+import { CONTACT_FROM_EMAIL, CONTACT_TO_EMAIL, GALLERY_ITEMS, SITE_URL } from '@/consts';
 
 export const prerender = false;
 
@@ -10,7 +10,22 @@ const MAX_NAME = 200;
 const MAX_EMAIL = 254;
 const MAX_SUBJECT = 200;
 const MAX_MESSAGE = 5000;
+const MAX_SHORT = 200;
 const MAX_BODY_BYTES = 16_384;
+
+const BUDGET_LABELS: Record<string, string> = {
+  discuss: 'Prefer to discuss',
+  smaller: 'A smaller piece',
+  'chair-table-bed': 'A chair, table, or bed',
+  'case-piece': 'A case piece or clock',
+};
+
+const TIMELINE_LABELS: Record<string, string> = {
+  flexible: 'No fixed date',
+  'six-months': 'Hoping within six months',
+  'this-year': 'Hoping this year',
+  ready: 'Whenever it is ready',
+};
 
 function escapeHtml(value: string): string {
   return String(value)
@@ -139,12 +154,22 @@ export const POST: APIRoute = async ({ request }) => {
   const email = String(body?.email ?? '').trim();
   const subject = String(body?.subject ?? '').trim();
   const message = String(body?.message ?? '').trim();
+  const pieceRaw = String(body?.piece ?? '').trim();
+  const pieceType = String(body?.pieceType ?? '').trim();
+  const budgetKey = String(body?.budget ?? '').trim();
+  const timelineKey = String(body?.timeline ?? '').trim();
+  const knownPiece = GALLERY_ITEMS.find((item) => item.id === pieceRaw);
+  const piece = knownPiece?.title || pieceRaw;
+  const budget = BUDGET_LABELS[budgetKey] || '';
+  const timeline = TIMELINE_LABELS[timelineKey] || '';
 
   if (
     name.length > MAX_NAME ||
     email.length > MAX_EMAIL ||
     subject.length > MAX_SUBJECT ||
-    message.length > MAX_MESSAGE
+    message.length > MAX_MESSAGE ||
+    piece.length > MAX_SHORT ||
+    pieceType.length > MAX_SHORT
   ) {
     return respondError(request, 'One or more fields are too long.', 400);
   }
@@ -179,6 +204,13 @@ export const POST: APIRoute = async ({ request }) => {
     const from = workerSecret('RESEND_FROM_EMAIL') || CONTACT_FROM_EMAIL;
     const resend = new Resend(apiKey);
 
+    const detail = [
+      piece ? `<p><strong>Piece:</strong> ${escapeHtml(piece)}</p>` : '',
+      pieceType ? `<p><strong>Kind of piece:</strong> ${escapeHtml(pieceType)}</p>` : '',
+      budget ? `<p><strong>Budget:</strong> ${escapeHtml(budget)}</p>` : '',
+      timeline ? `<p><strong>Timing:</strong> ${escapeHtml(timeline)}</p>` : '',
+    ].join('');
+
     const { error } = await resend.emails.send({
       from,
       to: CONTACT_TO_EMAIL,
@@ -189,6 +221,7 @@ export const POST: APIRoute = async ({ request }) => {
         <p><strong>Name:</strong> ${escapeHtml(name)}</p>
         <p><strong>Email:</strong> ${escapeHtml(email)}</p>
         <p><strong>Subject:</strong> ${escapeHtml(subjectLabel)}</p>
+        ${detail}
         <hr />
         <p>${escapeHtml(message).replace(/\n/g, '<br />')}</p>
       `,
@@ -198,6 +231,20 @@ export const POST: APIRoute = async ({ request }) => {
       const err = error as { name?: string; message?: string; statusCode?: number };
       console.error('Contact form Resend error:', err.statusCode ?? err.name, err.message ?? error);
       return respondError(request, 'Failed to send message. Please try again.', 500);
+    }
+
+    const { error: replyError } = await resend.emails.send({
+      from,
+      to: email,
+      replyTo: CONTACT_TO_EMAIL,
+      subject: 'Your note reached the studio',
+      html: `
+        <p>Your note reached the studio. I read every message and will reply from this address.</p>
+        <p>Scott Dillingham Miniatures</p>
+      `,
+    });
+    if (replyError) {
+      console.error('Contact auto-reply failed:', replyError);
     }
 
     return respondSuccess(request);

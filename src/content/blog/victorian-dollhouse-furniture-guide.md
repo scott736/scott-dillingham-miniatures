@@ -1,6 +1,7 @@
 ---
-title: "Victorian Dollhouse Furniture: Styles and Techniques"
-description: "Complete guide to Victorian dollhouse furniture styles including Gothic Revival, Eastlake, and Renaissance Revival. Learn materials and building techniques."
+title: "Victorian Dollhouse Furniture Styles"
+description: "Gothic Revival, Eastlake, and Renaissance Revival at dollhouse scale: which woods to use, what to carve, and how it differs from Chippendale."
+updatedDate: "2026-09-21"
 pubDate: "2025-10-05"
 image: "/images/blog/victorian-dollhouse-furniture.webp"
 authorName: "Scott Dillingham"

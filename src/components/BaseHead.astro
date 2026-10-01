@@ -79,6 +79,10 @@ const articleSchema = article
   : null;
 
 const isBlogPost = Astro.url.pathname.startsWith('/blog/') && Astro.url.pathname !== '/blog/';
+const isPiecePage =
+  Astro.url.pathname.startsWith('/gallery/') &&
+  Astro.url.pathname.replace(/\/$/, '') !== '/gallery';
+const beaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN?.trim();
 const breadcrumbItems: Array<Record<string, unknown>> = [
   {
     '@type': 'ListItem',
@@ -93,6 +97,19 @@ if (isBlogPost) {
     position: 2,
     name: 'Blog',
     item: `${SITE_URL}/blog/`,
+  });
+  breadcrumbItems.push({
+    '@type': 'ListItem',
+    position: 3,
+    name: crumbName,
+    item: canonicalURL.toString(),
+  });
+} else if (isPiecePage) {
+  breadcrumbItems.push({
+    '@type': 'ListItem',
+    position: 2,
+    name: 'Gallery',
+    item: `${SITE_URL}/gallery/`,
   });
   breadcrumbItems.push({
     '@type': 'ListItem',
@@ -248,3 +265,13 @@ const webPageSchema = {
 )}
 
 <link rel="preload" href="/fonts/Sora-latin-var.woff2" as="font" type="font/woff2" crossorigin />
+{
+  beaconToken && (
+    <script
+      is:inline
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon={JSON.stringify({ token: beaconToken })}
+    />
+  )
+}

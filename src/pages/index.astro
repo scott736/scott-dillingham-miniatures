@@ -7,6 +7,7 @@ import { getCollection } from 'astro:content';
 import bonsai from '@/assets/images/hero/bonsai.webp';
 import BlogPreview from '@/components/sections/blog-preview.astro';
 import FAQ from '@/components/sections/faq.astro';
+import ListSignup from '@/components/sections/list-signup.astro';
 import Features from '@/components/sections/features.astro';
 import Hero from '@/components/sections/hero.astro';
 import InReality from '@/components/sections/in-reality.astro';
@@ -74,5 +75,6 @@ const faqSchema = {
   <WhyUs />
   <InReality />
   <FAQ />
+  <ListSignup source="home" />
   <BlogPreview posts={posts} />
 </DefaultLayout>

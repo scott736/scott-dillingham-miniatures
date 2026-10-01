@@ -10,7 +10,7 @@ import {
 } from '@/consts';
 
 /** Static last-reviewed date for AI citation files (not build time). */
-export const AEO_LAST_UPDATED = '2026-08-31';
+export const AEO_LAST_UPDATED = '2026-09-21';
 
 export type LlmsPost = {
   id: string;
@@ -61,6 +61,18 @@ const CORE_PAGES = [
     path: '/blog/',
     description:
       'Guides on 1/12 scale, period styles, joinery, wood selection, collecting, and workshop setup.',
+  },
+  {
+    title: 'Commissions — Custom 1/12 Scale Furniture',
+    path: '/commissions/',
+    description:
+      'How a commission proceeds, from the first note through delivery. Piece type, timing, and budget are collected on the form.',
+  },
+  {
+    title: 'See the Work in Person',
+    path: '/visit/',
+    description:
+      'Three pieces are in the KSB Miniatures Collection, Maysville, Kentucky. Show dates are listed when a booking is confirmed.',
   },
   {
     title: 'Contact — Commission a Piece',
@@ -124,7 +136,7 @@ export function buildLlmsTxt(posts: LlmsPost[]): string {
   const sameAs = SOCIAL_LINKS.map((s) => `- ${s.href}`).join('\n');
   const galleryLines = GALLERY_ITEMS.map(
     (item) =>
-      `- **${item.title}** (${item.wood}, ${item.scale}, ${item.category}, ${GALLERY_STATUS[item.availability].label}) — ${pageUrl('/gallery/')}#${item.id}`,
+      `- **${item.title}** (${item.wood}, ${item.scale}, ${item.category}, ${GALLERY_STATUS[item.availability].label}) — ${pageUrl(`/gallery/${item.id}/`)}`,
   ).join('\n');
   const pageLines = CORE_PAGES.map(
     (p) => `- [${p.title}](${pageUrl(p.path)}): ${p.description}`,
