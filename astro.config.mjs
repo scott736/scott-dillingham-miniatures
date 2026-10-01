@@ -9,6 +9,8 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 
+import { GALLERY_ITEMS } from './src/consts.ts';
+
 /** @returns {Record<string, string>} slug path → YYYY-MM-DD */
 function blogLastmods() {
   const dir = path.join(process.cwd(), 'src/content/blog');
@@ -30,6 +32,22 @@ function blogLastmods() {
 }
 
 const BLOG_LASTMOD = blogLastmods();
+const SITE = 'https://scottdillinghamminiatures.com';
+
+/** image:image entries: real photo files under public/ only.
+ * @param {string[]} srcs
+ * @returns {import('sitemap').Img[]} */
+function sitemapImages(srcs) {
+  return srcs
+    .filter((src) => src.startsWith('/') && fs.existsSync(path.join(process.cwd(), 'public', src)))
+    .map((src) => ({ url: `${SITE}${src}` }));
+}
+
+const GALLERY_IMAGES = sitemapImages(GALLERY_ITEMS.flatMap((item) => item.images));
+/** @type {Record<string, import('sitemap').Img[]>} */
+const PIECE_IMAGES = Object.fromEntries(
+  GALLERY_ITEMS.map((item) => [`/gallery/${item.id}`, sitemapImages(item.images)]),
+);
 /** Core pages: last real content change, not every deploy.
  * @type {Record<string, string>} */
 const PAGE_LASTMOD = {
@@ -75,7 +93,7 @@ export default defineConfig({
           return { ...item, changefreq: weekly, priority: 1.0, lastmod };
         }
         if (url.endsWith('/gallery')) {
-          return { ...item, changefreq: weekly, priority: 0.9, lastmod };
+          return { ...item, changefreq: weekly, priority: 0.9, lastmod, img: GALLERY_IMAGES };
         }
         if (/\/gallery\/[^/]+$/.test(pathname)) {
           return {
@@ -83,6 +101,7 @@ export default defineConfig({
             changefreq: monthly,
             priority: 0.8,
             lastmod: PAGE_LASTMOD['/gallery'],
+            img: PIECE_IMAGES[pathname] || [],
           };
         }
         if (pathname === '/commissions' || pathname === '/visit') {

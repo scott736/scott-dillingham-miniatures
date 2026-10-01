@@ -214,6 +214,10 @@ function checkDistExtras() {
     const xml = readFileSync(sitemap0, 'utf8');
     if (!xml.includes('/privacy-policy/')) fail('sitemap missing /privacy-policy/');
     if (!xml.includes('/gallery/highboy-dresser/')) fail('sitemap missing a piece page');
+    if (!xml.includes('xmlns:image=')) fail('sitemap missing image namespace');
+    if (!xml.includes('<image:loc>https://scottdillinghamminiatures.com/images/gallery/highboy-dresser.webp</image:loc>')) {
+      fail('sitemap missing image:image for gallery photos');
+    }
     if (!xml.includes('/commissions/')) fail('sitemap missing /commissions/');
     if (!xml.includes('/visit/')) fail('sitemap missing /visit/');
     if (!xml.includes('/terms-of-service/')) fail('sitemap missing /terms-of-service/');
