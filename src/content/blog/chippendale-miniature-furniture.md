@@ -1,5 +1,5 @@
 ---
-title: "Chippendale at 1:12: Ball-and-Claw"
+title: "Chippendale Miniature Furniture at 1:12: Ball-and-Claw"
 description: "Ball-and-claw feet, ribbon-back chairs, and pierced splats carved at 1:12, from a maker with work in the KSB Miniatures Collection."
 pubDate: "2025-08-05"
 image: "/images/blog/chippendale-miniature.webp"

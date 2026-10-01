@@ -9,6 +9,12 @@ import {
   SOCIAL_LINKS,
 } from '@/consts';
 
+const NUMBER_WORDS = ['No pieces are', 'One piece is', 'Two pieces are', 'Three pieces are', 'Four pieces are', 'Five pieces are', 'Six pieces are', 'Seven pieces are'];
+function museumCountWord(): string {
+  const n = GALLERY_ITEMS.filter((item) => item.availability === 'museum').length;
+  return NUMBER_WORDS[n] ?? `${n} pieces are`;
+}
+
 /** Static last-reviewed date for AI citation files (not build time). */
 export const AEO_LAST_UPDATED = '2026-10-01';
 
@@ -72,7 +78,7 @@ const CORE_PAGES = [
     title: 'See the Work in Person',
     path: '/visit/',
     description:
-      'Three pieces are in the KSB Miniatures Collection, Maysville, Kentucky. Show dates are listed when a booking is confirmed.',
+      `${museumCountWord()} in the KSB Miniatures Collection, Maysville, Kentucky. Show dates are listed when a booking is confirmed.`,
   },
   {
     title: 'Contact — Commission a Piece',
