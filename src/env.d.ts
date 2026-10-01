@@ -7,6 +7,7 @@ interface ImportMetaEnv {
   readonly RESEND_SEGMENT_ID?: string;
   readonly RESEND_AUDIENCE_ID?: string;
   readonly PUBLIC_CF_BEACON_TOKEN?: string;
+  readonly PUBLIC_LIST_SIGNUP?: string;
 }
 
 interface ImportMeta {

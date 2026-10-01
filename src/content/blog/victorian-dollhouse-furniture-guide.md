@@ -1,7 +1,6 @@
 ---
 title: "Victorian Dollhouse Furniture Styles"
-description: "Gothic Revival, Eastlake, and Renaissance Revival at dollhouse scale: which woods to use, what to carve, and how it differs from Chippendale."
-updatedDate: "2026-09-21"
+description: "Gothic Revival, Eastlake, and Renaissance Revival at dollhouse scale: the woods, the carving, and how I reproduce each style at 1/12."
 pubDate: "2025-10-05"
 image: "/images/blog/victorian-dollhouse-furniture.webp"
 authorName: "Scott Dillingham"

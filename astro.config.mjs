@@ -33,14 +33,14 @@ const BLOG_LASTMOD = blogLastmods();
 /** Core pages: last real content change, not every deploy.
  * @type {Record<string, string>} */
 const PAGE_LASTMOD = {
-  '/': '2026-09-21',
-  '/gallery': '2026-09-21',
+  '/': '2026-10-01',
+  '/gallery': '2026-10-01',
   '/workshop': '2026-09-07',
   '/about': '2026-08-31',
   '/blog': '2026-09-07',
-  '/contact': '2026-09-21',
-  '/commissions': '2026-09-21',
-  '/visit': '2026-09-21',
+  '/contact': '2026-10-01',
+  '/commissions': '2026-10-01',
+  '/visit': '2026-10-01',
   '/image-license': '2026-08-31',
   '/privacy-policy': '2025-01-14',
   '/terms-of-service': '2025-01-14',
@@ -82,7 +82,7 @@ export default defineConfig({
             ...item,
             changefreq: monthly,
             priority: 0.8,
-            lastmod: '2026-09-21',
+            lastmod: PAGE_LASTMOD['/gallery'],
           };
         }
         if (pathname === '/commissions' || pathname === '/visit') {

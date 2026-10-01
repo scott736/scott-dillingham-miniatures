@@ -180,6 +180,17 @@ export type GalleryItem = {
   hours?: string;
 };
 
+/** Pixel size of each photo in public/images/gallery/. Update when a photo is replaced. */
+export const GALLERY_IMAGE_SIZES: Record<string, { width: number; height: number }> = {
+  '/images/gallery/tall-case-clock.webp': { width: 351, height: 730 },
+  '/images/gallery/highboy-dresser.webp': { width: 487, height: 722 },
+  '/images/gallery/four-poster-bed.webp': { width: 907, height: 907 },
+  '/images/gallery/maloof-rocking-chair.webp': { width: 906, height: 1347 },
+  '/images/gallery/hepplewhite-shield-back-chair.webp': { width: 906, height: 1347 },
+  '/images/gallery/moser-continuous-arm-chair.webp': { width: 906, height: 1358 },
+  '/images/gallery/shaker-d-ring-table.webp': { width: 907, height: 538 },
+};
+
 export function piecePath(id: string): string {
   return `/gallery/${id}/`;
 }

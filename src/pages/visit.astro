@@ -12,6 +12,9 @@ import { ksbMuseumNode } from '@/lib/schema';
 
 const museumPieces = GALLERY_ITEMS.filter((item) => item.availability === 'museum');
 const instagram = SOCIAL_LINKS.find((link) => link.name === 'Instagram');
+const NUMBER_WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
+const museumCount = NUMBER_WORDS[museumPieces.length] ?? String(museumPieces.length);
+const pieceWord = museumPieces.length === 1 ? 'piece is' : 'pieces are';
 
 const pageSchema = {
   '@context': 'https://schema.org',
@@ -21,7 +24,7 @@ const pageSchema = {
 
 <DefaultLayout
   title="See the Work in Person"
-  description="Three pieces are in the KSB Miniatures Collection, Maysville, Kentucky. Show dates are listed here when a booking is confirmed."
+  description={`${museumCount} ${pieceWord} in the KSB Miniatures Collection, Maysville, Kentucky. Show dates are listed here when a booking is confirmed.`}
   breadcrumbName="See the Work"
 >
   <script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
@@ -29,9 +32,9 @@ const pageSchema = {
     <div class="mx-auto max-w-3xl space-y-4 text-center">
       <h1 class="text-4xl font-bold md:text-6xl md:leading-18">See the work in person</h1>
       <p class="text-xl leading-8">
-        Three finished pieces are on view at the KSB Miniatures Collection in
-        Maysville, Kentucky. They are not for sale. Similar work is offered by
-        commission.
+        {museumCount} finished {pieceWord} on view at the KSB Miniatures Collection
+        in Maysville, Kentucky. Museum-held pieces are not for sale. Similar work
+        is offered by commission.
       </p>
     </div>
 

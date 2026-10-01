@@ -10,7 +10,7 @@ import {
 } from '@/consts';
 
 /** Static last-reviewed date for AI citation files (not build time). */
-export const AEO_LAST_UPDATED = '2026-09-21';
+export const AEO_LAST_UPDATED = '2026-10-01';
 
 export type LlmsPost = {
   id: string;
@@ -230,12 +230,12 @@ export function buildLlmsFullTxt(posts: LlmsPost[]): string {
   ).join('\n\n');
 
   const galleryBlock = GALLERY_ITEMS.map((item) => {
+    const related = item.relatedPost ? `\nRelated: ${pageUrl(item.relatedPost)}` : '';
     return `### ${item.title}
-URL: ${pageUrl('/gallery/')}
+URL: ${pageUrl(`/gallery/${item.id}/`)}
 Scale: ${item.scale}
 Wood: ${item.wood}
-Category: ${item.category}
-Related: ${pageUrl(item.relatedPost)}
+Category: ${item.category}${related}
 ${stripHtml(item.description)}`;
   }).join('\n\n');
 

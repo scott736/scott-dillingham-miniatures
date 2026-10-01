@@ -233,19 +233,9 @@ export const POST: APIRoute = async ({ request }) => {
       return respondError(request, 'Failed to send message. Please try again.', 500);
     }
 
-    const { error: replyError } = await resend.emails.send({
-      from,
-      to: email,
-      replyTo: CONTACT_TO_EMAIL,
-      subject: 'Your note reached the studio',
-      html: `
-        <p>Your note reached the studio. I read every message and will reply from this address.</p>
-        <p>Scott Dillingham Miniatures</p>
-      `,
-    });
-    if (replyError) {
-      console.error('Contact auto-reply failed:', replyError);
-    }
+    // No auto-reply to the submitted address: the only guards here are the
+    // honeypot and an Origin check, so sending to user input would make this
+    // an open relay from the studio domain. /message-sent/ confirms instead.
 
     return respondSuccess(request);
   } catch (error) {

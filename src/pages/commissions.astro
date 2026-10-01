@@ -6,26 +6,23 @@ import { GALLERY_ITEMS, GALLERY_STATUS, SITE_URL, piecePath } from '@/consts';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import { COMMISSION_SERVICE_ID, organizationRef, WEBSITE_ID } from '@/lib/schema';
 
+// Every step restates terms-of-service §3 and §6 or the FAQ. Add no promises here.
 const steps = [
   {
     title: 'Consult',
-    text: 'Tell me the piece, the period, and how you hope to use it.',
+    text: 'Tell me the piece, the period, and how you hope to use it. Commissions are subject to availability and acceptance.',
   },
   {
-    title: 'Reference and design',
-    text: 'I confirm the style, the wood, and what is feasible at 1:12.',
+    title: 'Design and wood',
+    text: 'Each piece begins with research into the original period furniture and scaled drawings. The hardwood is chosen for its grain, its workability at 1/12 scale, and its accuracy to the period.',
   },
   {
-    title: 'Deposit and scope',
-    text: 'Deposit, lead time, and shipping are agreed in writing before I start. Each piece is quoted. There is no standing price list.',
-  },
-  {
-    title: 'Build updates',
-    text: 'I write as the piece moves through the bench.',
+    title: 'Price, timing, and deposit',
+    text: 'Pricing, timeline, and specifications are discussed and agreed before work begins. A deposit may be required. Each piece is priced on request.',
   },
   {
     title: 'Delivery',
-    text: 'The finished piece is packed in custom-fitted foam, insured, and shipped.',
+    text: 'The finished piece is packed in custom-fitted foam in a rigid box and shipped with full insurance. International shipping is available.',
   },
 ];
 

@@ -21,7 +21,7 @@ function escapeHtml(value: string): string {
 }
 
 function workerSecret(name: string): string | undefined {
-  const fromWorker = (env as Record<string, string | undefined>)[name];
+  const fromWorker = (env as unknown as Record<string, string | undefined>)[name];
   if (fromWorker) return fromWorker;
   const fromProcess = typeof process !== 'undefined' ? process.env[name] : undefined;
   const fromMeta = (import.meta.env as Record<string, string | undefined>)[name];
@@ -77,12 +77,25 @@ function respondSuccess(request: Request) {
   });
 }
 
-function alreadyOnList(error: { message?: string; statusCode?: number }): boolean {
+function alreadyOnList(error: { message?: string; statusCode?: number | null }): boolean {
   const message = String(error.message || '').toLowerCase();
   return error.statusCode === 409 || message.includes('already');
 }
 
+/** Build-time switch shared with list-signup.astro. Off until the privacy
+ * policy covers the mailing list. */
+const LIST_SIGNUP_ENABLED = import.meta.env.PUBLIC_LIST_SIGNUP === 'true';
+
+export const GET: APIRoute = () =>
+  new Response(JSON.stringify({ error: 'Method not allowed.' }), {
+    status: 405,
+    headers: { Allow: 'POST', 'Content-Type': 'application/json' },
+  });
+
 export const POST: APIRoute = async ({ request }) => {
+  if (!LIST_SIGNUP_ENABLED) {
+    return respondError(request, 'Not found.', 404);
+  }
   const contentLength = Number(request.headers.get('content-length') || '0');
   if (contentLength > MAX_BODY_BYTES) {
     return respondError(request, 'Request too large.', 413);
@@ -175,18 +188,9 @@ export const POST: APIRoute = async ({ request }) => {
       }
     }
 
-    const { error: confirmError } = await resend.emails.send({
-      from,
-      to: email,
-      replyTo: CONTACT_TO_EMAIL,
-      subject: "You're on the list",
-      html: `
-        <p>You're on the list. I write when a piece is finished or a commission slot opens.</p>
-        ${piece ? `<p>You asked to hear about work like ${escapeHtml(piece)}.</p>` : ''}
-        <p>Scott Dillingham Miniatures</p>
-      `,
-    });
-    if (confirmError) console.error('List confirmation failed:', confirmError);
+    // No confirmation email to the submitted address: with only a honeypot and
+    // an Origin check, that would let anyone send mail from the studio domain
+    // to any inbox. /message-sent/?list=1 confirms on screen instead.
 
     return respondSuccess(request);
   } catch (error) {

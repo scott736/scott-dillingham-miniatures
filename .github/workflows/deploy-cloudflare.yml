@@ -31,6 +31,8 @@ jobs:
       - run: npm run build
         env:
           PUBLIC_CF_BEACON_TOKEN: ${{ secrets.PUBLIC_CF_BEACON_TOKEN }}
+          # Repo variable; leave unset to keep the list signup off.
+          PUBLIC_LIST_SIGNUP: ${{ vars.PUBLIC_LIST_SIGNUP }}
       - run: npm run audit:site
       - name: Deploy to Cloudflare Workers
         env:

@@ -3,6 +3,7 @@ export const prerender = true;
 
 import ListSignup from '@/components/sections/list-signup.astro';
 import {
+  GALLERY_IMAGE_SIZES,
   GALLERY_ITEMS,
   GALLERY_STATUS,
   galleryContactHref,
@@ -74,7 +75,7 @@ const priceLine =
   breadcrumbName={item.title}
 >
   <script type="application/ld+json" set:html={JSON.stringify(artworkSchema)} />
-  <article class="hero-padding container mx-auto max-w-3xl space-y-8">
+  <article id="artwork" class="hero-padding container mx-auto max-w-3xl space-y-8">
     <header class="space-y-3">
       <p class="text-muted-foreground text-xs font-medium tracking-wider uppercase">
         <a href="/gallery/" class="hover:text-foreground">Gallery</a>
@@ -100,16 +101,22 @@ const priceLine =
 
     <div class="space-y-4">
       {
-        item.images.map((src, index) => (
-          <img
-            src={src}
-            alt={index === 0 ? item.alt : `${item.alt} (${index + 1})`}
-            width="800"
-            height="600"
-            loading={index === 0 ? 'eager' : 'lazy'}
-            class="w-full rounded-2xl object-cover"
-          />
-        ))
+        item.images.map((src, index) => {
+          // Real pixel size so portrait photos keep their shape and are not upscaled.
+          const size = GALLERY_IMAGE_SIZES[src] ?? { width: 800, height: 600 };
+          return (
+            <img
+              src={src}
+              alt={index === 0 ? item.alt : `${item.alt} (${index + 1})`}
+              width={size.width}
+              height={size.height}
+              loading={index === 0 ? 'eager' : 'lazy'}
+              fetchpriority={index === 0 ? 'high' : undefined}
+              decoding="async"
+              class="mx-auto h-auto max-h-[80vh] w-auto max-w-full rounded-2xl"
+            />
+          );
+        })
       }
     </div>
 
