@@ -1,6 +1,6 @@
 ---
 name: verify-scott-dillingham-miniatures
-description: Drive the Scott Dillingham Miniatures Astro site (scottdillinghamminiatures.com) the way a visitor does — home, gallery pieces, blog, workshop, and contact. Use when proving local pages, navigation, or a gallery lightbox without deploying.
+description: Drive the Scott Dillingham Miniatures Astro site (scottdillinghamminiatures.com) the way a visitor does — home, gallery pieces, blog, workshop, contact, commissions, and visit. Use when proving local pages, navigation, or a gallery lightbox without deploying.
 ---
 
 # Verify Scott Dillingham Miniatures
@@ -15,7 +15,9 @@ Assigned bind: `127.0.0.1:4318`. The README's `http://localhost:4321` is the una
 
 `scripts/launch.sh` requires Node `>=22.12.0` (Astro 7). It uses PATH `node` when that version is new enough, otherwise `$HOME/.local/node22/bin/node` (then `$HOME/.local/node-v22.20.0/bin/node`). Override with `VERIFY_NODE`. Child `npm run dev` inherits that Node, not a Node 20 on PATH.
 
-Two verification instances cannot share 4318. Astro 7 also refuses a second `astro dev` in this checkout on any port. Content is read from this checkout (no disposable data dir). If 4318 is already listening, or if another Astro dev is running, stop and report BLOCKED. Do not kill the occupant. Do not pass `--force`. Do not drive an instance you did not start.
+Two verification instances cannot share 4318. Astro 7 also refuses a second `astro dev` in this checkout on any port. Content is read from this checkout (no disposable data dir). If 4318 is already listening, or if another Astro dev is already running in this checkout, stop and report BLOCKED. Do not kill the occupant. Do not pass `--force`. Do not drive an instance you did not start.
+
+Launch detects a busy 4318 with `lsof`, or `ss` when `lsof` is missing. Doctor uses the same fallback to resolve the listener PID.
 
 ```bash
 export RUN_ID="${RUN_ID:-$(date +%Y%m%d-%H%M%S)}"
@@ -33,7 +35,7 @@ test -d node_modules || npm install
 
 Ready signal: log contains `Local    http://127.0.0.1:4318/` and `curl -sS -o /dev/null -w '%{http_code}' http://127.0.0.1:4318/` is `200`.
 
-Astro 7 allows one `astro dev` per checkout. If any Astro process is already running (including verify-miniatures on 4321), launch exits before bind. Do not `astro dev --force`. Do not kill a process this run did not start. Report BLOCKED.
+Astro 7 allows one `astro dev` per checkout. If any Astro process is already running in this checkout (including verify-miniatures on 4321), launch cannot bind a second one. Do not `astro dev --force`. Do not kill a process this run did not start. Report BLOCKED.
 
 Documented start without the helper:
 
@@ -52,12 +54,12 @@ export RUN_ID="<same as launch>"
 
 Pass means:
 
-- `$VERIFY_PID` exists and that PID (or a child of it) still owns TCP `127.0.0.1:4318`
-- `GET /` is 200 and the HTML contains `Extraordinary Craft`, `data-speakable="title"`, and `Explore the Gallery`
+- `$VERIFY_PID` exists and that PID (or a child of it) still owns TCP `127.0.0.1:4318` (listener PID via `lsof`, else `ss`)
+- `GET /` is 200 and the HTML contains `Extraordinary Craft`, `data-speakable="title"`, and `See what's available` (raw HTML may encode the apostrophe as `&#39;`)
 - `GET /gallery/` is 200 and the HTML contains `The Collection`, `Simon Willard Tall Case Clock Style`, and `id="tall-case-clock"`
 - Listener command is `node` / `astro` from this checkout, not another project
 
-This site uses `trailingSlash: 'always'`. Bare `/gallery` is 404; doctor requests `/gallery/`.
+This site uses `trailingSlash: 'always'`. Bare `/gallery` is 404 on local `astro dev`; doctor requests `/gallery/`.
 
 Fail and stop if the port owner is not the PID tree you started.
 
@@ -65,7 +67,7 @@ Fail and stop if the port owner is not the PID tree you started.
 
 Harness: HTTP for prerendered HTML, Playwright when a click, search box, or gallery lightbox is required. Prefer link text, `aria-label`, `data-*`, element `id`, and route paths.
 
-Base URL is always `http://127.0.0.1:4318`. Request marketing routes with a trailing slash (`/gallery/`). Bare `/gallery` is 404. Desktop nav is `md:flex` (hidden below that). Use a viewport at least 768px wide so the `Gallery`, `Workshop`, `About`, `Blog`, and `Contact` links are in the header. Below `md`, open the menu with the button that has `data-nav-toggle` and accessible name `Open main menu`.
+Base URL is always `http://127.0.0.1:4318`. Request marketing routes with a trailing slash (`/gallery/`). Bare `/gallery` is 404 on local `astro dev`. Desktop nav is `md:flex` (hidden below that). Use a viewport at least 768px wide so the `Gallery`, `Workshop`, `About`, `Blog`, and `Contact` links are in the header. Below `md`, open the menu with the button that has `data-nav-toggle` and accessible name `Open main menu`.
 
 Stable handles from this checkout:
 
@@ -74,28 +76,33 @@ Stable handles from this checkout:
 | Skip link | link `Skip to content` → `#main-content` |
 | Logo home | `img[alt="Scott Dillingham Miniatures"]` inside `a[href="/"]` |
 | Desktop nav | `a[href="/gallery/"]` text `Gallery`, `/workshop/` `Workshop`, `/about/` `About`, `/blog/` `Blog`, `/contact/` `Contact` |
-| Header CTA | link text `Commission a Piece` → `/contact/` |
+| Header CTA | link text `Commission a Piece` → `/commissions/` |
 | Theme | `button[data-theme-toggle][aria-label="Toggle theme"]` |
 | Mobile menu | `button[data-nav-toggle][aria-controls="mobile-nav"]` |
 | Home H1 | `[data-speakable="title"]` text `Miniature Furniture, Extraordinary Craft` |
-| Home primary CTA | link `Explore the Gallery` → `/gallery/` |
-| Home secondary CTA | link `See the Workshop` → `/workshop/` |
-| Home highlights | heading `Gallery Highlights`; titles such as `Simon Willard Tall Case Clock Style` link to `/gallery/#tall-case-clock` |
+| Home primary CTA | link `See what's available` → `/gallery/` |
+| Home secondary CTA | link `Commission a piece` → `/commissions/` |
+| Home visit link | speakable description link `KSB Miniatures Collection, Maysville, Kentucky` → `/visit/` |
+| Home highlights | heading `Gallery Highlights`; titles such as `Simon Willard Tall Case Clock Style` link to `/gallery/tall-case-clock/` |
+| Home workshop CTA | link `Explore the Workshop` → `/workshop/` |
 | Home FAQ | first `<details class="faq-item">` is open; question in `[data-speakable="faq-question"]` |
 | Gallery H1 | `The Collection` |
 | Piece card | `article#tall-case-clock` (also `#highboy-dresser`, `#four-poster-bed`, `#maloof-rocking-chair`, `#hepplewhite-shield-back-chair`, `#moser-continuous-arm-chair`, `#shaker-d-ring-table`) |
+| Piece page | `/gallery/<id>/` e.g. `/gallery/tall-case-clock/`; H1 is the piece title |
 | Piece status | `Available` / `Commission only` / `Museum collection`. Available cards (`#highboy-dresser`, `#four-poster-bed`, `#shaker-d-ring-table`) also show `Price on request. Ask about deposit and lead time.` |
-| Piece lightbox | title link `a[data-gallery-open]` on the card; dialog `#gallery-lightbox`; title is `#gallery-lightbox-title` (`<p>`); close control has accessible name `Close`; `[data-gallery-price]` is unhidden only for available pieces |
+| Piece lightbox | `button[data-gallery-open]` labeled `Quick view`; dialog `#gallery-lightbox`; title is `#gallery-lightbox-title` (`<p>`); close control has accessible name `Close`; `[data-gallery-price]` is unhidden only for available pieces |
 | Blog index H1 | visible `h1` `From the Workshop Journal` |
 | Blog search | `input[placeholder="Search articles..."]` (`[data-blog-search]`); empty copy `No articles found.`; restore by clearing the input, not the `All` chip |
 | Article | `/blog/<slug>/` e.g. `/blog/complete-guide-1-12-scale-miniature-furniture/`; `h1[data-speakable="title"]` |
-| Contact | `/contact/`; `h1` `Let's Create Something Extraordinary`; `Price on request. Ask about deposit and lead time.`; labels `Name`, `Email`, `Subject`, `Message`; submit text `Send Message` |
-| Contact success | `/message-sent/`; `h1` `Message sent`; copy `Message sent! I'll get back to you soon.`; link `Back to contact` → `/contact/` |
+| Contact | `/contact/`; `h1` `Let's Create Something Extraordinary`; `Price on request. Ask about deposit and lead time.`; labels `Name`, `Email`, `Subject`, `Piece`, `Kind of piece`, `Your budget`, `Timing`, `Message`; submit text `Send Message` |
+| Contact success | `/message-sent/`; `h1` `Message sent`; copy `Your note reached the studio.`; links `See the gallery` → `/gallery/` and `Commission a piece` → `/commissions/` |
+| Commissions | `/commissions/`; `h1` `Commission a piece`; form heading `Tell me about the piece`; hidden `subject=commission`; no Subject select |
+| Visit | `/visit/`; `h1` `See the work in person`; `KSB Miniatures Collection`; `Shows` |
 | Workshop | `/workshop/`; `h1` `The Maker's Workshop`; process title `From Raw Hardwood to Finished Masterpiece` |
 
-Recipes: [features/home.md](features/home.md), [features/gallery.md](features/gallery.md), [features/blog.md](features/blog.md), [features/contact.md](features/contact.md), [features/workshop.md](features/workshop.md).
+Recipes: [features/home.md](features/home.md), [features/gallery.md](features/gallery.md), [features/blog.md](features/blog.md), [features/contact.md](features/contact.md), [features/commissions.md](features/commissions.md), [features/visit.md](features/visit.md), [features/workshop.md](features/workshop.md).
 
-Do not POST a complete `/api/contact/` body. A filled form can send live email when `RESEND_API_KEY` is present. Validation-only POST (missing name/email/message) is the safe API check. Include `-H 'Origin: http://127.0.0.1:4318'` and post to `/api/contact/` (trailing slash). Without Origin the API returns 403, not 400. Native success is 303 to `/message-sent/`. `?sent=1` on `/contact/` is leftover client state, not the form success path. GET `/message-sent/` is the safe success-copy check.
+Do not POST a complete `/api/contact/` body. A filled form can send live email when `RESEND_API_KEY` is present. Validation-only POST (missing name/email/message) is the safe API check. Include `-H 'Origin: http://127.0.0.1:4318'` and post to `/api/contact/` (trailing slash). Without Origin the API returns 403, not 400. Native success is 303 to `/message-sent/`. There is no `?sent=1` success path. GET `/message-sent/` is the safe success-copy check. A JSON body over 16,384 bytes returns 413 `Request too large.` Production may 429; local `astro dev` has no rate-limit binding and allows the request.
 
 ## Evidence
 
