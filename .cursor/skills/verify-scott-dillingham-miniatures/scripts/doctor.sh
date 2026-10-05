@@ -20,7 +20,18 @@ parent="$(tr -d '[:space:]' <"$VERIFY_PID")"
 [[ -n "$parent" ]] || fail "PID file empty: $VERIFY_PID"
 kill -0 "$parent" 2>/dev/null || fail "launch PID $parent is not running"
 
-listener="$(lsof -nP -iTCP:${PORT} -sTCP:LISTEN -F p 2>/dev/null | awk '/^p/{print substr($0,2); exit}')"
+find_listener() {
+  local pid=""
+  if command -v lsof >/dev/null 2>&1; then
+    pid="$(lsof -nP -iTCP:${PORT} -sTCP:LISTEN -F p 2>/dev/null | awk '/^p/{print substr($0,2); exit}')" || true
+  fi
+  if [[ -z "${pid:-}" ]] && command -v ss >/dev/null 2>&1; then
+    pid="$(ss -lntp "sport = :${PORT}" 2>/dev/null | sed -n 's/.*pid=\([0-9][0-9]*\).*/\1/p' | head -1)" || true
+  fi
+  printf '%s' "${pid:-}"
+}
+
+listener="$(find_listener)"
 [[ -n "$listener" ]] || fail "nothing listening on ${HOST}:${PORT}"
 
 collect_tree() {
@@ -53,7 +64,7 @@ home_code="$(curl -sS -o "$home_body" -w '%{http_code}' --max-time 10 "${VERIFY_
 [[ "$home_code" == "200" ]] || fail "GET / returned $home_code"
 grep -q 'Extraordinary Craft' "$home_body" || fail "GET / missing hero copy 'Extraordinary Craft'"
 grep -q 'data-speakable="title"' "$home_body" || fail "GET / missing data-speakable=title"
-grep -q 'Explore the Gallery' "$home_body" || fail "GET / missing Explore the Gallery"
+grep -qE "See what('s|&#39;s|&apos;s) available" "$home_body" || fail "GET / missing See what's available"
 
 gallery_code="$(curl -sS -o "$gallery_body" -w '%{http_code}' --max-time 10 "${VERIFY_BASE}/gallery/")"
 [[ "$gallery_code" == "200" ]] || fail "GET /gallery/ returned $gallery_code"

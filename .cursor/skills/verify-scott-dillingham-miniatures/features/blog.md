@@ -25,8 +25,8 @@ Preconditions:
 - Doctor is green.
 - A known post exists: slug `complete-guide-1-12-scale-miniature-furniture`, title `The Complete Guide to 1/12 Scale Miniature Furniture`.
 
-- **Open index.** Run `curl -sS -D evidence/blog/before.headers.txt -o evidence/blog/before.html http://127.0.0.1:4318/blog/`. Status `200`. Body contains a visible `h1` `From the Workshop Journal`, `placeholder="Search articles..."`, tag chip `1/12 scale`, and a link to `/blog/complete-guide-1-12-scale-miniature-furniture/`.
-- **Open article (user path).** Follow a card link. Run `curl -sS -D evidence/blog/after.headers.txt -o evidence/blog/after.html http://127.0.0.1:4318/blog/complete-guide-1-12-scale-miniature-furniture/`. Status `200`. Body contains `h1` / `data-speakable="title"` text `The Complete Guide to 1/12 Scale Miniature Furniture`, `What Does 1/12 Scale Actually Mean?`, breadcrumb nav `aria-label="Breadcrumb"` with `Home`, `Blog`, and the title, and `Continue Your Journey` links to `/gallery/`, `/workshop/`, and `/contact/`.
+- **Open index.** Run `curl -sS -D evidence/blog/before.headers.txt -o evidence/blog/before.html http://127.0.0.1:4318/blog/`. Status `200`. Body contains a visible `h1` `From the Workshop Journal`, `placeholder="Search articles..."`, tag chip `1/12 scale`, and a link to `/blog/complete-guide-1-12-scale-miniature-furniture/`. The index must not contain `Start a Commission`.
+- **Open article (user path).** Follow a card link. Run `curl -sS -D evidence/blog/after.headers.txt -o evidence/blog/after.html http://127.0.0.1:4318/blog/complete-guide-1-12-scale-miniature-furniture/`. Status `200`. Body contains `h1` / `data-speakable="title"` text `The Complete Guide to 1/12 Scale Miniature Furniture`, `What Does 1/12 Scale Actually Mean?`, breadcrumb nav `aria-label="Breadcrumb"` with `Home`, `Blog`, and the title, and `Continue Your Journey` links to `/gallery/`, `/workshop/`, and `/commissions/` (`Commission a Piece`).
 - **Search (browser only).** On `/blog/`, fill `input[placeholder="Search articles..."]` (also `[data-blog-search]`) with `tall case`. The card `Miniature Tall Case Clocks: The Ultimate Challenge` remains. Fill `volcano`. Text `No articles found.` appears (no query interpolation). Clear the input. The full grid returns. The `All` chip (`button[data-blog-tag=""]`) only clears a tag filter; it does not clear the search box.
 - **Proof.** `before.html` is the index. `after.html` is the article with the H1 and an in-body heading. Record feature id `blog`.
 
@@ -37,5 +37,6 @@ Preconditions:
 - The index `h1` is visible `From the Workshop Journal`. `Miniature Furniture Blog` is the document title / JSON-LD name, not an `h1`.
 - Footer `Miniature Woodworking Guide` is the complete-guide article, not `/blog/` itself.
 - Article dates use `toLocaleDateString('en-US')`. Do not assert a single date string from curl vs hydrated DOM.
-- `/blog/` hides the bottom `Start a Commission` CTA (`cta.astro` `hiddenPaths`). That CTA still exists on article pages.
-- Bare `/blog` (no trailing slash) is 404.
+- `/blog/` hides the bottom `Start a Commission` CTA (`cta.astro` `hiddenPaths`). That CTA still exists on article pages and points at `/commissions/`.
+- `Continue Your Journey` third card is `/commissions/`, not `/contact/`.
+- Bare `/blog` (no trailing slash) is 404 on local `astro dev`.

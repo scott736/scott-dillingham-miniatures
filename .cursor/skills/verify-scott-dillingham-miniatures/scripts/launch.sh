@@ -57,9 +57,25 @@ if [[ ! -d "$REPO" ]]; then
   exit 2
 fi
 
-if lsof -nP -iTCP:"$PORT" -sTCP:LISTEN >/dev/null 2>&1; then
+port_busy() {
+  if command -v lsof >/dev/null 2>&1; then
+    lsof -nP -iTCP:"$PORT" -sTCP:LISTEN >/dev/null 2>&1
+    return $?
+  fi
+  if command -v ss >/dev/null 2>&1; then
+    ss -lntp "sport = :${PORT}" 2>/dev/null | grep -q ":${PORT}"
+    return $?
+  fi
+  curl -sS -o /dev/null --max-time 1 "$VERIFY_BASE/" >/dev/null 2>&1
+}
+
+if port_busy; then
   echo "launch.sh: BLOCKED — ${HOST}:${PORT} is already listening. Do not kill the occupant." >&2
-  lsof -nP -iTCP:"$PORT" -sTCP:LISTEN >&2 || true
+  if command -v lsof >/dev/null 2>&1; then
+    lsof -nP -iTCP:"$PORT" -sTCP:LISTEN >&2 || true
+  elif command -v ss >/dev/null 2>&1; then
+    ss -lntp "sport = :${PORT}" >&2 || true
+  fi
   exit 3
 fi
 

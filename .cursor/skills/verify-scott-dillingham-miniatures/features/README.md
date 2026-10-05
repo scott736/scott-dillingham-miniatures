@@ -4,7 +4,7 @@ This directory is the maintained source for verifying visitor-facing behavior of
 
 ## Baseline preconditions
 
-- Launch this checkout with `npm run dev -- --host 127.0.0.1 --port 4318` (`astro dev`). Node `>=22.12.0`. `scripts/launch.sh` picks PATH node when it is new enough, otherwise `$HOME/.local/node22/bin/node`.
+- Launch this checkout with `npm run dev -- --host 127.0.0.1 --port 4318` (`astro dev`). Node `>=22.12.0`. `scripts/launch.sh` picks PATH node when it is new enough, otherwise `$HOME/.local/node22/bin/node`. Occupancy of 4318 is detected with `lsof` or, if `lsof` is missing, `ss`.
 - Base URL is `http://127.0.0.1:4318`. Do not use port 4321.
 - Write `/tmp/verify-scott-dillingham-miniatures-$RUN_ID.pid` at launch.
 - Run `scripts/doctor.sh` and require 200 on `/` and `/gallery/` from the PID tree you started.
@@ -18,7 +18,7 @@ This directory is the maintained source for verifying visitor-facing behavior of
 - Treat commands as literal.
 - HTTP (`curl`) is enough for prerendered HTML. Use Playwright when the path needs a click, search box, FAQ `<details>`, or the gallery lightbox.
 - Desktop header links are hidden below the `md` breakpoint. Use a viewport ≥ 768px, or open `Open main menu`.
-- This site uses `trailingSlash: 'always'`. Request `/gallery/`, `/blog/`, `/contact/`, `/workshop/`, and `/api/contact/`. Bare paths without the trailing slash return 404.
+- This site uses `trailingSlash: 'always'`. Request `/gallery/`, `/blog/`, `/contact/`, `/workshop/`, `/commissions/`, `/visit/`, `/gallery/<id>/`, and `/api/contact/`. Bare paths without the trailing slash return 404 on local `astro dev`. Production `public/_redirects` may 301 those same paths; this skill only drives localhost.
 - Do not submit a complete contact form. Do not `wrangler deploy`.
 
 ## Proof and skip reporting
@@ -42,9 +42,11 @@ Each feature file starts with an H1 title and one paragraph describing the user-
 ## Features
 
 - [Home](./home.md) covers the landing hero, gallery highlights, FAQ, and blog preview.
-- [Gallery](./gallery.md) covers `/gallery/`, piece cards, and the piece lightbox.
+- [Gallery](./gallery.md) covers `/gallery/`, piece cards, the piece lightbox, and `/gallery/<id>/`.
 - [Blog](./blog.md) covers the journal index, client search, and a markdown article.
-- [Contact](./contact.md) covers the commission form (render and validation only) and the static `/message-sent/` thank-you page.
+- [Contact](./contact.md) covers the general inquiry form (render and validation only) and the static `/message-sent/` thank-you page.
+- [Commissions](./commissions.md) covers `/commissions/` (how a commission works plus the locked-subject form).
+- [Visit](./visit.md) covers `/visit/` (KSB museum pieces and shows).
 - [Workshop](./workshop.md) covers the maker's workshop and eight-step process.
 
-Header `About` (`/about/`, `Meet the Maker`) is chrome, not a mapped feature. Do not treat it as workshop or home proof.
+Header `About` (`/about/`, `Meet the Maker`) is chrome, not a mapped feature. Do not treat it as workshop, visit, or home proof. The mailing-list form is off unless `PUBLIC_LIST_SIGNUP=true`; do not treat it as a mapped feature while it is hidden.

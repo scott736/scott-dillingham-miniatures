@@ -13,7 +13,7 @@ Workshop is `/workshop/`. A visitor reads The Maker's Workshop hero and the eigh
 ## How to get to it (user POV)
 
 - Choose header `Workshop`.
-- Choose home `See the Workshop`.
+- Choose home `Explore the Workshop`.
 - Choose footer Explore `Workshop`.
 - Choose article `Continue Your Journey` card `Inside the Workshop`.
 
@@ -23,15 +23,16 @@ Preconditions:
 
 - Doctor is green.
 
-- **Start on home.** Run `curl -sS -D evidence/workshop/before.headers.txt -o evidence/workshop/before.html http://127.0.0.1:4318/`. Status `200`. Body contains `See the Workshop` (`href="/workshop/"`).
+- **Start on home.** Run `curl -sS -D evidence/workshop/before.headers.txt -o evidence/workshop/before.html http://127.0.0.1:4318/`. Status `200`. Body contains `Explore the Workshop` (`href="/workshop/"`).
 - **Open workshop.** Follow that path. Run `curl -sS -D evidence/workshop/after.headers.txt -o evidence/workshop/after.html http://127.0.0.1:4318/workshop/`. Status `200`. `<title>` contains `How the Miniatures Are Made`. Body contains `The Maker's Workshop` (raw HTML may use `The Maker&#x27;s Workshop` or `The Maker&#39;s Workshop`), `Where raw hardwood becomes miniature art`, `From Raw Hardwood to Finished Masterpiece`, `Step 01`, `Design & Research`, `Wood Selection`, `Milling & Shaping`, `Joinery`, `Carving & Detail`, `Assembly`, `Finishing`, `Photography & Delivery`, `Tools of the Trade`, and `Workshop Guides`.
 - **Follow a process link (optional second hop).** `Scaling Down Plans` is `/blog/scaling-down-furniture-plans/`. A GET of that URL is 200 with a speakable article title.
-- **Proof.** `before.html` is `/` with `See the Workshop`. `after.html` is `/workshop/` with the eight step titles. Record feature id `workshop`.
+- **Proof.** `before.html` is `/` with `Explore the Workshop`. `after.html` is `/workshop/` with the eight step titles. Record feature id `workshop`.
 
 ## Gotchas
 
+- `See the Workshop` does not exist. The home CTA is `Explore the Workshop`.
 - `WorkshopHero` and `WorkshopProcess` are static `.astro` includes, not React `client:` islands. Prerender includes the headings in HTML.
-- About (`/about/`, `Meet the Maker`) is a different page. Header `About` does not prove workshop.
+- About (`/about/`, `Meet the Maker`) is a different page. Header `About` does not prove workshop. Visit (`/visit/`) is also a different page.
 - HowTo JSON-LD on `/workshop/` is not a substitute for the visible step headings.
 - Process and tool photographs are `astro:assets` `Picture` elements. Local `astro dev` serves them as `/_image/?href=…/src/assets/images/workshop/…` (hashed `/_astro/…` after a production build). Do not assert `/images/workshop/tools-*.webp` in the page HTML; those public files may still 200 if requested directly. A 200 HTML page with broken images is still a valid heading proof; note image 404s if you check them.
-- Bare `/workshop` (no trailing slash) is 404.
+- Bare `/workshop` (no trailing slash) is 404 on local `astro dev`.
