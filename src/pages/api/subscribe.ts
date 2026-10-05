@@ -3,6 +3,7 @@ import { env } from 'cloudflare:workers';
 import { Resend } from 'resend';
 
 import { CONTACT_FROM_EMAIL, CONTACT_TO_EMAIL, GALLERY_ITEMS, SITE_URL } from '@/consts';
+import { withinRateLimit } from '@/lib/rate-limit';
 
 export const prerender = false;
 
@@ -104,17 +105,27 @@ export const POST: APIRoute = async ({ request }) => {
     return respondError(request, 'Forbidden.', 403);
   }
 
+  if (!(await withinRateLimit(request, 'SUBSCRIBE_LIMITER'))) {
+    return respondError(request, 'Too many requests. Please wait a minute and try again.', 429);
+  }
+
   let body: Record<string, unknown>;
   try {
+    // Read as text and cap the real size; Content-Length may be absent.
+    const text = await request.text();
+    if (new TextEncoder().encode(text).length > MAX_BODY_BYTES) {
+      return respondError(request, 'Request too large.', 413);
+    }
     const contentType = (request.headers.get('content-type') || '').toLowerCase();
     if (contentType.includes('application/json')) {
-      const json = await request.json();
+      const json: unknown = JSON.parse(text);
       body =
         json && typeof json === 'object' && !Array.isArray(json)
           ? (json as Record<string, unknown>)
           : {};
     } else {
-      body = Object.fromEntries((await request.formData()).entries());
+      const form = await new Response(text, { headers: { 'content-type': contentType } }).formData();
+      body = Object.fromEntries(form.entries());
     }
   } catch {
     return respondError(request, 'Invalid request body.', 400);

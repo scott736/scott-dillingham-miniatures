@@ -3,6 +3,7 @@ import { env } from 'cloudflare:workers';
 import { Resend } from 'resend';
 
 import { CONTACT_FROM_EMAIL, CONTACT_TO_EMAIL, GALLERY_ITEMS, SITE_URL } from '@/consts';
+import { withinRateLimit } from '@/lib/rate-limit';
 
 export const prerender = false;
 
@@ -117,14 +118,24 @@ export const GET: APIRoute = () =>
     headers: { Allow: 'POST', 'Content-Type': 'application/json' },
   });
 
+class BodyTooLargeError extends Error {}
+
+/** Reads the body as text and enforces the cap on the actual bytes, so a
+ * missing or false Content-Length cannot bypass it. */
 async function readBody(request: Request): Promise<Record<string, unknown>> {
+  const text = await request.text();
+  if (new TextEncoder().encode(text).length > MAX_BODY_BYTES) {
+    throw new BodyTooLargeError();
+  }
   if (isJsonPost(request)) {
-    const json = await request.json();
+    const json: unknown = JSON.parse(text);
     return json && typeof json === 'object' && !Array.isArray(json)
       ? (json as Record<string, unknown>)
       : {};
   }
-  const form = await request.formData();
+  const form = await new Response(text, {
+    headers: { 'content-type': request.headers.get('content-type') || '' },
+  }).formData();
   return Object.fromEntries(form.entries());
 }
 
@@ -138,10 +149,17 @@ export const POST: APIRoute = async ({ request }) => {
     return respondError(request, 'Forbidden.', 403);
   }
 
+  if (!(await withinRateLimit(request, 'CONTACT_LIMITER'))) {
+    return respondError(request, 'Too many requests. Please wait a minute and try again.', 429);
+  }
+
   let body: Record<string, unknown>;
   try {
     body = await readBody(request);
-  } catch {
+  } catch (error) {
+    if (error instanceof BodyTooLargeError) {
+      return respondError(request, 'Request too large.', 413);
+    }
     return respondError(request, 'Invalid request body.', 400);
   }
 

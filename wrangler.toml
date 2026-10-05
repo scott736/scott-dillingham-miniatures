@@ -8,6 +8,19 @@ workers_dev = true
 binding = "SESSION"
 id = "8e24a6affcb3406cb8681a29c7bd0265"
 
+# Per-IP rate limits for the form APIs (Workers Rate Limiting), keyed on
+# cf-connecting-ip in src/lib/rate-limit.ts. namespace_id values are
+# account-unique integers; do not reuse them in other Workers.
+[[ratelimits]]
+name = "CONTACT_LIMITER"
+namespace_id = "74311"
+simple = { limit = 5, period = 60 }
+
+[[ratelimits]]
+name = "SUBSCRIBE_LIMITER"
+namespace_id = "74312"
+simple = { limit = 5, period = 60 }
+
 [observability]
 enabled = true
 
