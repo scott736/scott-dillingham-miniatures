@@ -34,6 +34,13 @@ printf '%s' "$RESEND_API_KEY" | npx wrangler secret put RESEND_API_KEY
 
 Optional: `RESEND_FROM_EMAIL` (defaults to `hello@scottdillinghamminiatures.com` in `src/consts.ts`).
 
+Other env names (see `.env.example`; names and purpose only, never values):
+
+- `RESEND_SEGMENT_ID`: Worker secret read by `src/pages/api/subscribe.ts`; the Resend segment that new-pieces list signups join.
+- `RESEND_AUDIENCE_ID`: optional Worker secret read by `src/pages/api/subscribe.ts`; legacy Resend audience ID for the same list, used only when `RESEND_SEGMENT_ID` is unset.
+- `PUBLIC_CF_BEACON_TOKEN`: build-time public token for the Cloudflare Web Analytics beacon in `src/components/BaseHead.astro`.
+- `PUBLIC_LIST_SIGNUP`: build-time switch (`true`) that shows the signup block in `src/components/sections/list-signup.astro` and enables `/api/subscribe/`.
+
 ## DNS
 
 Cloudflare zone `scottdillinghamminiatures.com` is **active**. Nameservers:
