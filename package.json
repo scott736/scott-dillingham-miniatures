@@ -65,6 +65,10 @@
     "wrangler": "^4.136.3"
   },
   "overrides": {
+    "miniflare": {
+      "undici": "7.29.1"
+    },
+    "undici": "8.10.2",
     "eslint-plugin-jsx-a11y": {
       "eslint": "$eslint"
     }
