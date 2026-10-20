@@ -28,8 +28,6 @@ export function absoluteUrl(path = "/"): string {
   }
 }
 
-/** IndexNow key file is public/{INDEXNOW_KEY}.txt */
-export const INDEXNOW_KEY = 'sdm-indexnow-20260823-a7f4c91e';
 
 /** Contact form destination (Resend `to`). */
 export const CONTACT_TO_EMAIL = 'sedminiatures@gmail.com';
