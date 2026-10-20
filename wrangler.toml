@@ -2,7 +2,7 @@ name = "scott-dillingham-miniatures"
 compatibility_date = "2026-08-23"
 compatibility_flags = ["nodejs_compat"]
 main = "@astrojs/cloudflare/entrypoints/server"
-workers_dev = true
+workers_dev = false
 
 [[kv_namespaces]]
 binding = "SESSION"

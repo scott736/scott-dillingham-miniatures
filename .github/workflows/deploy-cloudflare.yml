@@ -95,8 +95,9 @@ jobs:
       - name: Smoke test Worker
         run: |
           set -euo pipefail
-          base="https://scott-dillingham-miniatures.scott-4d1.workers.dev"
-          url="$base/"
+          base="https://scottdillinghamminiatures.com"
+          cb="cb=$(date +%s)"
+          url="$base/?$cb"
           for i in 1 2 3 4 5; do
             headers=$(curl -sS -D - -o /tmp/mini-smoke.html -w "%{http_code}" "$url" || true)
             code=$(printf '%s' "$headers" | tail -n1)
@@ -114,7 +115,7 @@ jobs:
           for path in /sitemap-index.xml /robots.txt /llms.txt /ai.txt /.well-known/ai.txt /sdm-indexnow-20260823-a7f4c91e.txt; do
             ok=0
             for i in 1 2 3 4 5; do
-              code=$(curl -sS -o /tmp/mini-aeo -w "%{http_code}" "$base$path" || true)
+              code=$(curl -sS -o /tmp/mini-aeo -w "%{http_code}" "$base$path?$cb" || true)
               if [ "$code" = "200" ]; then
                 echo "AEO $path → HTTP $code"
                 ok=1
@@ -135,7 +136,7 @@ jobs:
         run: |
           # No local build on push; the ping script reads dist/client sitemaps.
           mkdir -p dist/client
-          curl -fsS "https://scott-dillingham-miniatures.scott-4d1.workers.dev/sitemap-0.xml" -o dist/client/sitemap-0.xml
+          curl -fsS "https://scottdillinghamminiatures.com/sitemap-0.xml?cb=$(date +%s)" -o dist/client/sitemap-0.xml
 
       - name: Ping IndexNow
         continue-on-error: true
