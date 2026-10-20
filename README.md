@@ -48,7 +48,7 @@ Cloudflare zone `scottdillinghamminiatures.com` is **active**. Nameservers:
 - `jason.ns.cloudflare.com`
 - `laylah.ns.cloudflare.com`
 
-Apex and `www` CNAME to this Worker (proxied). The Worker is also at `https://scott-dillingham-miniatures.scott-4d1.workers.dev`.
+Apex and `www` CNAME to this Worker (proxied). The `workers.dev` host is disabled (`workers_dev = false`); the custom domain is the only public host.
 
 ## SEO / AEO
 
