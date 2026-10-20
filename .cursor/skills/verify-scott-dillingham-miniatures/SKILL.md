@@ -83,6 +83,7 @@ Stable handles from this checkout:
 | Home primary CTA | link `See what's available` → `/gallery/` |
 | Home secondary CTA | link `Commission a piece` → `/commissions/` |
 | Home visit link | speakable description link `KSB Miniatures Collection, Maysville, Kentucky` → `/visit/` |
+| Home commissions line | speakable description link `Commissions are open` → `/commissions/` |
 | Home highlights | heading `Gallery Highlights`; titles such as `Simon Willard Tall Case Clock Style` link to `/gallery/tall-case-clock/` |
 | Home workshop CTA | link `Explore the Workshop` → `/workshop/` |
 | Home FAQ | first `<details class="faq-item">` is open; question in `[data-speakable="faq-question"]` |
@@ -94,7 +95,7 @@ Stable handles from this checkout:
 | Blog index H1 | visible `h1` `From the Workshop Journal` |
 | Blog search | `input[placeholder="Search articles..."]` (`[data-blog-search]`); empty copy `No articles found.`; restore by clearing the input, not the `All` chip |
 | Article | `/blog/<slug>/` e.g. `/blog/complete-guide-1-12-scale-miniature-furniture/`; `h1[data-speakable="title"]` |
-| Contact | `/contact/`; `h1` `Let's Create Something Extraordinary`; `Price on request. Ask about deposit and lead time.`; labels `Name`, `Email`, `Subject`, `Piece`, `Kind of piece`, `Your budget`, `Timing`, `Message`; submit text `Send Message` |
+| Contact | `/contact/`; `h1` `Let's Create Something Extraordinary` (document title is `Commission a Piece`; that is not commissions proof); `Price on request. Ask about deposit and lead time.`; labels `Name`, `Email`, `Subject`, `Piece`, `Kind of piece`, `Your budget`, `Timing`, `Message`; submit text `Send Message` |
 | Contact success | `/message-sent/`; `h1` `Message sent`; copy `Your note reached the studio.`; links `See the gallery` → `/gallery/` and `Commission a piece` → `/commissions/` |
 | Commissions | `/commissions/`; `h1` `Commission a piece`; form heading `Tell me about the piece`; hidden `subject=commission`; no Subject select |
 | Visit | `/visit/`; `h1` `See the work in person`; `KSB Miniatures Collection`; `Shows` |
