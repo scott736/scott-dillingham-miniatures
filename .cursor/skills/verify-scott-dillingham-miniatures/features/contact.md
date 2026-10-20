@@ -48,3 +48,4 @@ Preconditions:
 - Production per-IP rate limit is 429 `Too many requests. Please wait a minute and try again.` (5 / 60s). Local `astro dev` does not bind `CONTACT_LIMITER` and allows the request. Do not treat a local 200/400 as proof that 429 is broken.
 - The mailing-list form is omitted unless `PUBLIC_LIST_SIGNUP=true`. Default `POST /api/subscribe/` returns 404 `Not found.` before origin checks. Do not enable the env to "prove" subscribe; that can send mail.
 - Header `Commission a Piece` is `/commissions/`, not a `/contact/` entry. Header `Contact` is the contact entry; record which one you used.
+- `/contact/` document `<title>` is `Commission a Piece` (same words as the header CTA). The visible `h1` is `Let's Create Something Extraordinary`. Commissions `<title>` is `How a Commission Works`. Do not use the contact document title to prove you left `/contact/`.

@@ -37,6 +37,6 @@ Preconditions:
 - `See what's available` and `View Full Gallery` are the home-to-gallery user paths. `Explore the Gallery` is the 404 / article-journey label, not a home CTA. Bare `/gallery` (no trailing slash) is 404 on local `astro dev`.
 - `See the Workshop` does not exist. The in-page workshop CTA is `Explore the Workshop`.
 - Header `Commission a Piece` and home `Start a Commission` both go to `/commissions/`, not `/contact/`.
-- The speakable description links `KSB Miniatures Collection, Maysville, Kentucky` to `/visit/` and `{n} pieces available` to `/gallery/`. Do not hardcode the available count.
-- Footer `Terms of Service` (`/terms-of-service/`) and `Privacy Policy` (`/privacy-policy/`) are real MDX pages. `GET` each with the trailing slash returns 200 with those titles. They are not the 404 heading `Even at 1:12 Scale,`.
+- The speakable description has three links: `KSB Miniatures Collection, Maysville, Kentucky` → `/visit/`, `{n} pieces available` → `/gallery/`, and `Commissions are open` → `/commissions/`. Do not hardcode the available count. `Commissions are open` is extra to the secondary CTA `Commission a piece`; both go to `/commissions/`.
+- Footer `Terms of Service` (`/terms-of-service/`), `Privacy Policy` (`/privacy-policy/`), and `Image License` (`/image-license/`) are real MDX pages. `GET` each with the trailing slash returns 200 with those titles. They are not the 404 heading `Even at 1:12 Scale,`.
 - Astro may keep the URL while HTML swaps. After a click, wait for the destination heading, not only a URL change.

@@ -11,7 +11,7 @@ Commissions is `/commissions/`. A visitor reads how a commission proceeds, then 
 ## How to get to it (user POV)
 
 - Choose header `Commission a Piece`.
-- Choose home `Commission a piece` or `Start a Commission`.
+- Choose home `Commission a piece`, `Start a Commission`, or the speakable-description link `Commissions are open`.
 - Choose footer Explore `Commissions`.
 - Choose article `Continue Your Journey` card `Commission a Piece`.
 - Choose `Commission` on a commission-only gallery card (`/commissions/?piece=…`).
@@ -23,7 +23,7 @@ Preconditions:
 - Doctor is green.
 - Do **not** POST a complete `{name,email,message}` body.
 
-- **Start on home.** Run `curl -sS -D evidence/commissions/before.headers.txt -o evidence/commissions/before.html http://127.0.0.1:4318/`. Status `200`. Body contains `Commission a piece` (`href="/commissions/"`) and header `Commission a Piece` (`href="/commissions/"`).
+- **Start on home.** Run `curl -sS -D evidence/commissions/before.headers.txt -o evidence/commissions/before.html http://127.0.0.1:4318/`. Status `200`. Body contains `Commission a piece` (`href="/commissions/"`), header `Commission a Piece` (`href="/commissions/"`), and speakable `Commissions are open` (`href="/commissions/"`).
 - **Open commissions.** Run `curl -sS -D evidence/commissions/after.headers.txt -o evidence/commissions/after.html http://127.0.0.1:4318/commissions/`. Status `200`. `<title>` contains `How a Commission Works`. Body contains `h1` `Commission a piece`, `Tell me about the piece`, `Consult`, `Design and wood`, `Price, timing, and deposit`, `Delivery`, `Past work`, `for="name"`, `for="pieceType"`, `Kind of piece`, `Send Message`, and `name="subject"` `value="commission"`. Body does not contain `for="subject"`.
 - **Open commissions (browser).** From home, click header `Commission a Piece`. URL is `/commissions/`. `#subject` select count is 0. `#pieceType` is present. Hidden `input[name="subject"]` value is `commission`.
 - **Proof.** `before.html` is `/` with the header CTA. `after.html` is `/commissions/` with the H1 and locked subject. Record feature id `commissions`.
