@@ -55,7 +55,7 @@ export RUN_ID="<same as launch>"
 Pass means:
 
 - `$VERIFY_PID` exists and that PID (or a child of it) still owns TCP `127.0.0.1:4318` (listener PID via `lsof`, else `ss`)
-- `GET /` is 200 and the HTML contains `Extraordinary Craft`, `data-speakable="title"`, and `See what's available` (raw HTML may encode the apostrophe as `&#39;`)
+- `GET /` is 200 and the HTML contains `Scott Dillingham Miniatures`, `data-speakable="title"`, and `See what's available` (raw HTML may encode the apostrophe as `&#39;`)
 - `GET /gallery/` is 200 and the HTML contains `The Collection`, `Simon Willard Tall Case Clock Style`, and `id="tall-case-clock"`
 - Listener command is `node` / `astro` from this checkout, not another project
 
