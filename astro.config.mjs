@@ -51,17 +51,17 @@ const PIECE_IMAGES = Object.fromEntries(
 /** Core pages: last real content change, not every deploy.
  * @type {Record<string, string>} */
 const PAGE_LASTMOD = {
-  '/': '2026-10-01',
+  '/': '2026-11-03',
   '/gallery': '2026-10-01',
   '/workshop': '2026-09-07',
-  '/about': '2026-08-31',
+  '/about': '2026-11-03',
   '/blog': '2026-09-07',
   '/contact': '2026-10-01',
   '/commissions': '2026-10-01',
   '/visit': '2026-10-01',
   '/image-license': '2026-08-31',
   '/privacy-policy': '2025-01-14',
-  '/terms-of-service': '2025-01-14',
+  '/terms-of-service': '2026-11-03',
 };
 
 // https://astro.build/config

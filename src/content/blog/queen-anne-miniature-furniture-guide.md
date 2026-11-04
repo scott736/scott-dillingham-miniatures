@@ -1,7 +1,8 @@
 ---
-title: "Queen Anne Miniature Furniture: History and Techniques"
-description: "Explore Queen Anne miniature furniture history and techniques. Learn to craft cabriole legs, pad feet, and shell carvings at 1/12 scale from a master craftsman."
+title: "Queen Anne Miniature Furniture Guide"
+description: "Queen Anne miniature furniture at 1/12: cabriole legs, pad feet, and shell carvings — history and bench techniques from a museum-exhibited maker."
 pubDate: "2025-07-20"
+updatedDate: "2026-11-03"
 image: "/images/blog/queen-anne-guide.webp"
 authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"

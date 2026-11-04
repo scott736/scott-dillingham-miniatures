@@ -1,7 +1,8 @@
 ---
-title: "Arts and Crafts Movement in Miniature Furniture"
-description: "Build Arts and Crafts miniature furniture with Mission style techniques. Learn quartersawn oak, through-tenons, and hammered copper hardware at 1/12 scale."
+title: "Arts and Crafts Miniature Furniture"
+description: "Arts and Crafts (Mission) miniature furniture at 1/12: quartersawn oak, through-tenons, and hammered copper — how to build Stickley-style pieces by hand."
 pubDate: "2025-11-20"
+updatedDate: "2026-11-03"
 image: "/images/blog/arts-crafts-miniature.webp"
 authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"

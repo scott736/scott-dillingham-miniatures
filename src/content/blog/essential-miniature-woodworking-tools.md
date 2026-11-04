@@ -1,16 +1,17 @@
 ---
-title: "Essential Miniature Woodworking Tools Every Craftsman Needs"
-description: "A complete guide to miniature woodworking tools, from micro chisels and jeweler's saws to magnification and finishing supplies for 1/12 scale furniture."
+title: "Miniature Woodworking Tools Guide"
+description: "Best tools for miniature woodworking and precision crafting: jeweler's saw, micro chisels, files, magnification, and finishing gear for 1/12 scale furniture."
 pubDate: "2025-03-12"
+updatedDate: "2026-11-03"
 image: "/images/blog/essential-tools.webp"
 authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
-tags: ["tools", "miniature woodworking", "equipment", "workshop"]
+tags: ["tools", "miniature woodworking", "equipment", "workshop", "precision crafting"]
 coverImage: "/images/blog/essential-tools.webp"
 imageAlt: "Overhead layout of miniature woodworking tools including rulers, files, punches, and a plane on a wooden bench"
 ---
 
-The right tools make miniature woodworking possible. The wrong tools make it frustrating. Over years at the bench I have refined my toolkit to the essentials, discarding gimmicks and keeping the instruments that genuinely earn their place. Whether you are just starting out or looking to upgrade your setup, this guide covers every category of tool you will need for serious 1/12 scale miniature furniture making.
+The right **miniature woodworking tools** make precision crafting possible; the wrong ones make it frustrating. Over years at the bench I have refined my toolkit to the essentials — jeweler's saw, micro chisels, files, magnification, and finishing gear — and discarded the gimmicks. This guide covers every category you need for serious 1/12 scale miniature furniture.
 
 I should note upfront that good tools are an investment, not an expense. A quality micro chisel will serve you for decades. A cheap one will dull quickly, chip at the edge, and produce inferior work from the first cut. Buy the best you can afford and add to your collection gradually as your skills demand new capabilities.
 

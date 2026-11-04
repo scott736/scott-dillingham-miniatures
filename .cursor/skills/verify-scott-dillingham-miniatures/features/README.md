@@ -49,4 +49,4 @@ Each feature file starts with an H1 title and one paragraph describing the user-
 - [Visit](./visit.md) covers `/visit/` (KSB museum pieces and shows).
 - [Workshop](./workshop.md) covers the maker's workshop and eight-step process.
 
-Header `About` (`/about/`, `Meet the Maker`) is chrome, not a mapped feature. Do not treat it as workshop, visit, or home proof. The mailing-list form is off unless `PUBLIC_LIST_SIGNUP=true`; do not treat it as a mapped feature while it is hidden.
+Header `About` (`/about/`, `Scott Dillingham`) is chrome, not a mapped feature. Do not treat it as workshop, visit, or home proof. The mailing-list form is off unless `PUBLIC_LIST_SIGNUP=true`; do not treat it as a mapped feature while it is hidden.

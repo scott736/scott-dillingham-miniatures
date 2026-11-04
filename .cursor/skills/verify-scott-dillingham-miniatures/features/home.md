@@ -24,7 +24,7 @@ Preconditions:
 - Viewport ≥ 768px if using the desktop header.
 
 - **Open home.** Request the landing page. Run `curl -sS -D evidence/home/before.headers.txt -o evidence/home/before.html http://127.0.0.1:4318/`. Status `200`. Body contains `data-speakable="title"`, `Miniature Furniture,`, `Extraordinary Craft`, link text `See what's available` (`href="/gallery/"`; raw HTML may be `See what&#39;s available`), and `Commission a piece` (`href="/commissions/"`).
-- **Confirm identity.** The `<title>` is `Scott Dillingham Miniatures | Handcrafted 1/12 Scale Furniture`. The logo `img` alt is `Scott Dillingham Miniatures`.
+- **Confirm identity.** The `<title>` is `Scott Dillingham | Handcrafted 1/12 Scale Miniatures`. The logo `img` alt is `Scott Dillingham Miniatures`.
 - **Highlights.** The same body contains `Gallery Highlights`, `Simon Willard Tall Case Clock Style`, `Queen Anne Style Highboy`, `Shaker Style Pencil Post Bed`, `Sam Maloof Style Rocking Chair`, and `View Full Gallery` (`href="/gallery/"`). Highlight titles link to `/gallery/<id>/` (for example `/gallery/tall-case-clock/`).
 - **FAQ.** Body contains `Frequently Asked Questions` and `What scale are your miniature furniture pieces?` inside `[data-speakable="faq-question"]`. The first `<details class="faq-item">` has `open`.
 - **Workshop CTA.** Body contains `Explore the Workshop` (`href="/workshop/"`).

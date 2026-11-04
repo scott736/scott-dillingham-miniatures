@@ -1,7 +1,8 @@
 ---
-title: "Displaying and Protecting Miniature Furniture Collections"
-description: "Expert guide to displaying and protecting miniature furniture collections. Covers UV protection, humidity control, display cases, lighting, and insurance tips."
+title: "Display & Protect Miniature Furniture"
+description: "How to display and protect miniature furniture: UV glass, humidity control, lighting, cases, and insurance so a 1/12 collection stays museum-ready."
 pubDate: "2026-01-20"
+updatedDate: "2026-11-03"
 image: "/images/blog/displaying-protecting-collection.webp"
 authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
@@ -10,7 +11,7 @@ coverImage: "/images/blog/displaying-protecting-collection.webp"
 imageAlt: "Museum glass display cases holding small sculptures and models under cool lighting"
 ---
 
-You have invested time, money, and passion in building your miniature furniture collection. Now the question becomes: how do you display it beautifully while keeping it safe for generations? In my years as a maker and collector, I have seen wonderful pieces damaged by preventable causes. Sunlight, humidity swings, dust, and careless handling are the enemies of fine miniature furniture, and each one can be defeated with the right approach.
+How do you **display and protect miniature furniture** without fading the finish or inviting dust? After years making and collecting, I have seen fine pieces ruined by sunlight, humidity swings, and careless handling — all preventable with the right cases, lighting, and climate habits.
 
 ## Understanding the Threats
 

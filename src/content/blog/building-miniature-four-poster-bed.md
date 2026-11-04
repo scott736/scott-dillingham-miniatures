@@ -1,7 +1,8 @@
 ---
-title: "Building a Miniature Four-Poster Bed: Step by Step"
-description: "Learn how to build a miniature four-poster bed at 1/12 scale. Expert guide covers post turning, headboard carving, joinery, and period-accurate fabric draping."
+title: "Build a Miniature Four-Poster Bed"
+description: "Step-by-step: build a miniature four-poster bed at 1/12 — lathe-turned posts, headboard, rail joinery, canopy frame, and period fabric draping."
 pubDate: "2025-08-30"
+updatedDate: "2026-11-03"
 image: "/images/blog/miniature-four-poster-bed.webp"
 authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
@@ -10,9 +11,9 @@ coverImage: "/images/blog/miniature-four-poster-bed.webp"
 imageAlt: "Carved dark-wood four-poster bed with gold bedding in a wood-paneled bedroom"
 ---
 
-A four-poster bed is one of the most recognizable and dramatic pieces of furniture in any period room. At full scale, these beds commanded attention through sheer size and the richness of their carved posts, draped canopies, and layered textiles. At 1/12 scale, a well-made four-poster bed achieves the same presence in a dollhouse bedroom. It becomes the centerpiece around which every other element revolves.
+A **miniature four-poster bed** is one of the most dramatic pieces you can put in a dollhouse bedroom. At full scale these beds command a room with carved posts, canopies, and layered textiles; at 1/12 the same presence becomes the centerpiece of the whole scene.
 
-Building a miniature four-poster bed draws on a satisfying range of skills: lathe turning, carving, precise joinery, and even textile work. In this article, I will walk through the major steps and share the techniques I rely on to produce beds that capture the spirit of their full-scale originals.
+Building one draws on lathe turning, carving, precise joinery, and textile work. Below are the major steps and techniques I use so the bed reads like its full-scale original.
 
 ## Choosing a Style and Period
 
