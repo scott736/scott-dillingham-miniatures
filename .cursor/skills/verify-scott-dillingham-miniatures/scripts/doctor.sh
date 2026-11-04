@@ -62,7 +62,7 @@ trap 'rm -f "$home_body" "$gallery_body"' EXIT
 
 home_code="$(curl -sS -o "$home_body" -w '%{http_code}' --max-time 10 "${VERIFY_BASE}/")"
 [[ "$home_code" == "200" ]] || fail "GET / returned $home_code"
-grep -q 'Extraordinary Craft' "$home_body" || fail "GET / missing hero copy 'Extraordinary Craft'"
+grep -q 'Scott Dillingham Miniatures' "$home_body" || fail "GET / missing hero copy 'Scott Dillingham Miniatures'"
 grep -q 'data-speakable="title"' "$home_body" || fail "GET / missing data-speakable=title"
 grep -qE "See what('s|&#39;s|&apos;s) available" "$home_body" || fail "GET / missing See what's available"
 

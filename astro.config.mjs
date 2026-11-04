@@ -61,7 +61,6 @@ const PAGE_LASTMOD = {
   '/visit': '2026-10-01',
   '/image-license': '2026-08-31',
   '/privacy-policy': '2025-01-14',
-  '/terms-of-service': '2026-11-03',
 };
 
 // https://astro.build/config
@@ -80,7 +79,8 @@ export default defineConfig({
         !page.includes('/404') &&
         !page.includes('/api/') &&
         !page.includes('/rss.xml') &&
-        !page.includes('/message-sent'),
+        !page.includes('/message-sent') &&
+        !page.includes('/terms-of-service'),
       serialize: (item) => {
         const url = item.url.replace(/\/$/, '') || 'https://scottdillinghamminiatures.com';
         const weekly = /** @type {import('sitemap').EnumChangefreq} */ ('weekly');
@@ -119,11 +119,7 @@ export default defineConfig({
         if (url.endsWith('/contact')) {
           return { ...item, changefreq: monthly, priority: 0.7, lastmod };
         }
-        if (
-          url.endsWith('/image-license') ||
-          url.endsWith('/privacy-policy') ||
-          url.endsWith('/terms-of-service')
-        ) {
+        if (url.endsWith('/image-license') || url.endsWith('/privacy-policy')) {
           return { ...item, changefreq: monthly, priority: 0.5, lastmod };
         }
         return { ...item, changefreq: monthly, priority: 0.5, lastmod };

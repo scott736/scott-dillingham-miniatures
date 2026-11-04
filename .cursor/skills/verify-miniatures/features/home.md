@@ -23,7 +23,7 @@ Preconditions:
 - Doctor reports the expected loopback URL.
 - Viewport is 1280x800 unless a step says otherwise.
 
-- **Open home.** Go to `/`. Run `vm browser goto /`. The heading text includes `Miniature Furniture` and `Extraordinary Craft`. The document title includes `Scott Dillingham Miniatures`.
+- **Open home.** Go to `/`. Run `vm browser goto /`. The heading text includes `Scott Dillingham Miniatures`. The document title includes `Scott Dillingham`.
 - **HTTP view.** Fetch the document. Run `vm get / --assert-status 200 --assert-contains "Miniature Furniture" --out home/http-home.html`. Status is 200 and the saved body includes the hero heading and `Explore the Gallery`.
 - **FAQ.** The first item `What scale are your miniature furniture pieces?` is already open. Choose a later summary, for example `Are these made from kits?`. Run `vm browser click --selector "details.faq-item:nth-of-type(2) summary" --wait "Absolutely not"`. The second details item is open and the answer starts with `Absolutely not`.
 - **Gallery CTA.** Choose `Explore the Gallery`. Run `vm browser click --role link --name "Explore the Gallery" --wait "Hepplewhite Shield Back Style Chair"`. The URL path is `/gallery`. The `h1` is `The Collection`. Home Highlights already print the eyebrow `The Collection` and the clock title, so those strings are not proof of leaving `/`.

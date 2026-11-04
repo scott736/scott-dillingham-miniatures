@@ -220,7 +220,9 @@ function checkDistExtras() {
     }
     if (!xml.includes('/commissions/')) fail('sitemap missing /commissions/');
     if (!xml.includes('/visit/')) fail('sitemap missing /visit/');
-    if (!xml.includes('/terms-of-service/')) fail('sitemap missing /terms-of-service/');
+    if (xml.includes('/terms-of-service')) {
+      fail('sitemap must not include noindex /terms-of-service');
+    }
     if (xml.includes('/404')) fail('sitemap must not include 404');
     if (xml.includes('/api/')) fail('sitemap must not include /api/');
   }
