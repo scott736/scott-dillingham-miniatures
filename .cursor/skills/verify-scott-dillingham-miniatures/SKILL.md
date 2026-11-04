@@ -79,7 +79,7 @@ Stable handles from this checkout:
 | Header CTA | link text `Commission a Piece` → `/commissions/` |
 | Theme | `button[data-theme-toggle][aria-label="Toggle theme"]` |
 | Mobile menu | `button[data-nav-toggle][aria-controls="mobile-nav"]` |
-| Home H1 | `[data-speakable="title"]` text `Miniature Furniture, Extraordinary Craft` |
+| Home H1 | `[data-speakable="title"]` text `Scott Dillingham Miniatures` |
 | Home primary CTA | link `See what's available` → `/gallery/` |
 | Home secondary CTA | link `Commission a piece` → `/commissions/` |
 | Home visit link | speakable description link `KSB Miniatures Collection, Maysville, Kentucky` → `/visit/` |

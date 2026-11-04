@@ -1,8 +1,8 @@
 export const BRAND_NAME = 'Scott Dillingham Miniatures';
 export const SITE_TITLE =
-  'Scott Dillingham Miniatures | Handcrafted 1/12 Scale Furniture';
+  'Scott Dillingham | Handcrafted 1/12 Scale Miniatures';
 export const SITE_DESCRIPTION =
-  'Museum-exhibited 1/12 scale miniature furniture, built by hand from hardwoods with traditional joinery. Commissions welcome.';
+  'Scott Dillingham builds museum-exhibited 1/12 scale miniature furniture by hand from hardwoods with traditional joinery. Commissions welcome.';
 
 export function formatPageTitle(title?: string): string {
   if (!title || title === SITE_TITLE || title === BRAND_NAME) return SITE_TITLE;
@@ -12,7 +12,7 @@ export function formatPageTitle(title?: string): string {
 }
 
 export const SITE_URL = 'https://scottdillinghamminiatures.com';
-/** Absolute URL on this site with no trailing slash (`trailingSlash: never`). */
+/** Absolute URL on this site with trailing slash stripped (`trailingSlash: always` on pages). */
 export function absoluteUrl(path = "/"): string {
   const raw =
     path.startsWith("http://") || path.startsWith("https://")

@@ -1,11 +1,12 @@
 ---
-title: "Chippendale Miniature Furniture at 1:12: Ball-and-Claw"
-description: "Ball-and-claw feet, ribbon-back chairs, and pierced splats carved at 1:12, from a maker with work in the KSB Miniatures Collection."
+title: "Chippendale Miniatures: Ball-and-Claw"
+description: "Carve Chippendale miniature furniture at 1:12 — ball-and-claw feet, pierced splats, and ribbon-back chairs, from a KSB Miniatures Collection maker."
 pubDate: "2025-08-05"
+updatedDate: "2026-11-03"
 image: "/images/blog/chippendale-miniature.webp"
 authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
-tags: ["Chippendale", "period furniture", "ball and claw feet", "miniature carving"]
+tags: ["Chippendale", "period furniture", "ball and claw feet", "miniature carving", "miniature furniture"]
 coverImage: "/images/blog/chippendale-miniature.webp"
 imageAlt: "Ornate mahogany commode with gilt mounts, inlaid drawer fronts, and cabriole legs"
 ---

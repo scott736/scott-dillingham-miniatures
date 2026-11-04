@@ -59,7 +59,7 @@ Stable handles from this repo:
 
 | Control | Handle |
 | --- | --- |
-| Home hero | `h1` text `Miniature Furniture, Extraordinary Craft` |
+| Home hero | `h1` text `Scott Dillingham Miniatures` |
 | Gallery CTA | link `Explore the Gallery` → `/gallery` |
 | Workshop CTA | link `See the Workshop` → `/workshop` |
 | Nav | links `Gallery`, `Workshop`, `About`, `Blog`, `Contact` |

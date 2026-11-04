@@ -51,3 +51,9 @@
 
 /rss.xml
   X-Robots-Tag: noindex, follow
+
+/terms-of-service
+  X-Robots-Tag: noindex, follow
+
+/terms-of-service/
+  X-Robots-Tag: noindex, follow

@@ -1,18 +1,19 @@
 ---
-title: "Victorian Dollhouse Furniture Styles"
-description: "Gothic Revival, Eastlake, and Renaissance Revival at dollhouse scale: the woods, the carving, and how I reproduce each style at 1/12."
+title: "Victorian Dolls House Furniture Guide"
+description: "Victorian dolls house / dollhouse furniture at 1/12: Gothic Revival, Eastlake, Renaissance and Rococo Revival — woods, carving, and how to build each style."
 pubDate: "2025-10-05"
+updatedDate: "2026-11-03"
 image: "/images/blog/victorian-dollhouse-furniture.webp"
 authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
-tags: ["Victorian", "dollhouse furniture", "Gothic Revival", "Eastlake", "period furniture"]
+tags: ["Victorian", "dollhouse furniture", "dolls house furniture", "Gothic Revival", "Eastlake", "period furniture"]
 coverImage: "/images/blog/victorian-dollhouse-furniture.webp"
 imageAlt: "Victorian parlor with tufted sofa, armchair, oval gilt mirrors, and heavy drapes"
 ---
 
-The Victorian era, spanning roughly from the 1830s to 1900, produced some of the most diverse and exuberant furniture in Western history. For dollhouse collectors and miniature makers, Victorian furniture holds a particular fascination. Its bold forms, rich materials, elaborate decoration, and sheer variety offer endless possibilities for building and collecting. A Victorian dollhouse room can be opulent, cozy, dramatic, or scholarly depending on which sub-style you choose to represent.
+**Victorian dolls house furniture** (also searched as Victorian dollhouse furniture) is some of the most varied period work you can collect or build. From the 1830s to about 1900, styles ran from Gothic Revival and Eastlake to Renaissance and Rococo Revival — bold forms, rich woods, and elaborate carving that still define a Victorian dolls house parlor today.
 
-In this guide, I want to walk through the major Victorian furniture styles, discuss the materials and techniques that define them, and share my approach to reproducing these pieces at 1/12 scale.
+This guide covers the major sub-styles, the materials behind them, and how I reproduce each at 1/12 scale so a room stays historically coherent whether you say *dolls house* or *dollhouse*.
 
 ## Understanding Victorian Sub-Styles
 

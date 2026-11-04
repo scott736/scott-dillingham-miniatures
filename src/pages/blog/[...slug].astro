@@ -7,7 +7,7 @@ import BlogPost from '@/components/sections/blog-post.astro';
 import { SITE_URL } from '@/consts';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
 import { blogCoverAlt } from '@/lib/blog-cover';
-import { getBlogHowTo } from '@/lib/schema';
+import { getBlogFaq, getBlogHowTo } from '@/lib/schema';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -54,6 +54,7 @@ const howToSchema = getBlogHowTo(post.id, {
   image: post.data.coverImage || post.data.image,
   imageAlt: blogCoverAlt(post.data.imageAlt, post.data.title),
 });
+const faqSchema = getBlogFaq(post.id);
 ---
 
 <DefaultLayout
@@ -83,6 +84,14 @@ const howToSchema = getBlogHowTo(post.id, {
       <script
         type="application/ld+json"
         set:html={JSON.stringify(howToSchema)}
+      />
+    )
+  }
+  {
+    faqSchema && (
+      <script
+        type="application/ld+json"
+        set:html={JSON.stringify(faqSchema)}
       />
     )
   }

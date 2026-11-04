@@ -26,7 +26,7 @@ Preconditions:
 
 ## Gotchas
 
-- Header `About` (`Meet the Maker`) is not this page.
+- Header `About` (`Scott Dillingham`) is not this page.
 - Museum piece thumbnails go to `/gallery/<id>/`, not `/gallery/#<id>`.
 - Do not hardcode the museum count word (`Three pieces are…`); it is derived from `GALLERY_ITEMS` with `availability === 'museum'`.
 - Bare `/visit` is 404 on local `astro dev`.

@@ -372,7 +372,11 @@ if (distDir) {
   checkHtml('blog', readPage('/blog'), { maxTitle: 70, maxDesc: 170 });
   checkHtml('contact', readPage('/contact'), { maxTitle: 70, maxDesc: 170 });
   checkHtml('privacy', readPage('/privacy-policy'), { maxTitle: 70, maxDesc: 170 });
-  checkHtml('terms', readPage('/terms-of-service'), { maxTitle: 70, maxDesc: 170 });
+  checkHtml('terms', readPage('/terms-of-service'), {
+    maxTitle: 70,
+    maxDesc: 170,
+    noindex: true,
+  });
   const nf = join(root, distDir, '404.html');
   if (existsSync(nf)) {
     const html = readFileSync(nf, 'utf8');

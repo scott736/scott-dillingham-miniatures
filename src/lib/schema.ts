@@ -600,3 +600,62 @@ export function getBlogHowTo(
     })),
   };
 }
+
+type FaqSpec = { question: string; answer: string };
+
+/** FAQ blocks for high-impression posts — kept for answer engines. */
+const BLOG_FAQ: Record<string, FaqSpec[]> = {
+  'understanding-dollhouse-scales': [
+    {
+      question: 'What is the best scale for dollhouse building, 1:12 or 1:24?',
+      answer:
+        '1:12 (1 inch = 1 foot) is best for fine joinery, detail, and accessories. 1:24 (½ inch = 1 foot) is best when you need a full multi-room house in less space. Most builders should start at 1:12.',
+    },
+    {
+      question: 'How big is 1:12 scale in inches?',
+      answer:
+        'One inch in the miniature equals one foot in real life. A typical interior door is about 6.75 inches tall; a dining chair is about 3 inches high.',
+    },
+    {
+      question: 'What is the most common dollhouse scale?',
+      answer:
+        '1:12 (one-inch scale) is the worldwide collector and maker standard, including most shows and commercial lines.',
+    },
+    {
+      question: 'Can I mix 1:12 and 1:24 furniture in one dolls house?',
+      answer:
+        'No. Proportions clash immediately. Keep each scale in its own house or room box.',
+    },
+  ],
+  'essential-miniature-woodworking-tools': [
+    {
+      question: 'What tools do I need for miniature woodworking?',
+      answer:
+        'Start with a jeweler’s saw, micro chisels, fine files, accurate measuring tools, magnification, and a clean finishing setup. Add a miniature lathe and specialized carving tools as projects demand them.',
+    },
+    {
+      question: 'What are the best tools for miniature crafting precision?',
+      answer:
+        'Precision comes from sharp micro chisels, fine saw blades (often 2/0), good magnification, and bright task lighting — not from gadget kits. Buy fewer tools of higher quality.',
+    },
+  ],
+};
+
+export function getBlogFaq(
+  slug: string,
+): Record<string, unknown> | null {
+  const faqs = BLOG_FAQ[slug];
+  if (!faqs?.length) return null;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  };
+}
