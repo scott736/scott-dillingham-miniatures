@@ -4,6 +4,7 @@ export const prerender = true;
 import RelatedReading from '@/components/sections/related-reading.astro';
 import {
   galleryContactHref,
+  GALLERY_IMAGE_SIZES,
   GALLERY_ITEMS,
   GALLERY_STATUS,
   piecePath,
@@ -121,6 +122,7 @@ const lightboxItems = GALLERY_ITEMS.map((item) => {
           const relatedHref = item.relatedPost
             ? relatedPostHref(item.relatedPost)
             : null;
+          const imageSize = GALLERY_IMAGE_SIZES[item.images[0]] ?? { width: 800, height: 600 };
           return (
             <article id={item.id} class="overflow-hidden">
               <div class="group overflow-hidden border-none shadow-none">
@@ -130,8 +132,8 @@ const lightboxItems = GALLERY_ITEMS.map((item) => {
                       src={item.images[0]}
                       alt={item.alt}
                       loading="lazy"
-                      width={800}
-                      height={600}
+                      width={imageSize.width}
+                      height={imageSize.height}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       class="size-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />

@@ -65,14 +65,23 @@ const priceLine =
   (item.availability === 'available'
     ? 'Price on request. Ask about deposit and lead time.'
     : '');
+
+const primaryImage = item.images[0];
+const primaryImageSize = GALLERY_IMAGE_SIZES[primaryImage];
 ---
 
 <DefaultLayout
   title={item.title}
   description={metaDescription}
-  image={item.images[0]}
+  image={primaryImage}
+  imageWidth={primaryImageSize?.width}
+  imageHeight={primaryImageSize?.height}
   imageAlt={item.alt}
   breadcrumbName={item.title}
+  speakableSections={[
+    { cssSelector: "[data-speakable='title']" },
+    { cssSelector: "[data-speakable='description']" },
+  ]}
 >
   <script type="application/ld+json" set:html={JSON.stringify(artworkSchema)} />
   <article id="artwork" class="hero-padding container mx-auto max-w-3xl space-y-8">
@@ -82,7 +91,7 @@ const priceLine =
         <span aria-hidden="true"> / </span>
         {status.label}
       </p>
-      <h1 class="text-4xl font-bold md:text-5xl">{item.title}</h1>
+      <h1 data-speakable="title" class="text-4xl font-bold md:text-5xl">{item.title}</h1>
       {priceLine && <p class="text-lg leading-8">{priceLine}</p>}
       {
         item.availability === 'museum' && (
@@ -134,6 +143,7 @@ const priceLine =
     </dl>
 
     <div
+      data-speakable="description"
       class="text-muted-foreground [&_a]:text-primary leading-8 [&_a]:underline [&_a]:underline-offset-2"
       set:html={item.description}
     />

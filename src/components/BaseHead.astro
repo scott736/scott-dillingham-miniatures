@@ -59,12 +59,20 @@ const websiteSchema = {
   ...websiteNode(),
 };
 
+const isIndexable = !noindex && SITE_METADATA.robots.index;
+const followDirective = SITE_METADATA.robots.follow ? 'follow' : 'nofollow';
+const robotsContent = isIndexable
+  ? `index, ${followDirective}, max-snippet:-1, max-image-preview:large, max-video-preview:-1`
+  : `noindex, ${followDirective}`;
+
 const articleSchema = article
   ? {
       '@context': 'https://schema.org',
       '@type': 'BlogPosting',
       headline: title,
       description: description,
+      inLanguage: 'en',
+      articleSection: 'Miniature Furniture',
       image: imageObject({
         url: imageURL.toString(),
         caption: ogAlt,
@@ -149,10 +157,7 @@ const webPageSchema = {
 <meta charset="utf-8" />
 
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta
-  name="robots"
-  content={`${noindex ? 'noindex' : (SITE_METADATA.robots.index ? 'index' : 'noindex')}, ${SITE_METADATA.robots.follow ? 'follow' : 'nofollow'}`}
-/>
+<meta name="robots" content={robotsContent} />
 <meta name="author" content={SITE_METADATA.authors[0].name} />
 <meta name="creator" content={SITE_METADATA.creator} />
 <meta name="publisher" content={SITE_METADATA.publisher} />
@@ -189,6 +194,7 @@ const webPageSchema = {
   href={new URL('rss.xml', Astro.site)}
 />
 <link rel="alternate" type="text/plain" title="LLM source" href={`${SITE_URL}/llms.txt`} />
+<link rel="alternate" type="text/plain" title="LLM source (.well-known)" href={`${SITE_URL}/.well-known/llms.txt`} />
 <link rel="alternate" type="text/plain" title="LLM source (full)" href={`${SITE_URL}/llms-full.txt`} />
 <link rel="alternate" type="application/json" title="LLM FAQ" href={`${SITE_URL}/llms-faq.json`} />
 <link rel="alternate" type="text/plain" title="AI usage policy (ai.txt)" href={`${SITE_URL}/ai.txt`} />

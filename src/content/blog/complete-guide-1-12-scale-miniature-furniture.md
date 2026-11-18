@@ -2,6 +2,7 @@
 title: "The Complete Guide to 1/12 Scale Miniature Furniture"
 description: "Learn everything about 1/12 scale miniature furniture, from how measurements work to why this scale became the global standard for dollhouse collectors."
 pubDate: "2025-01-10"
+updatedDate: "2026-11-18"
 image: "/images/blog/complete-guide-1-12-scale.webp"
 authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"

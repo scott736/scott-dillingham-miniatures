@@ -32,6 +32,9 @@ function blogLastmods() {
 }
 
 const BLOG_LASTMOD = blogLastmods();
+const LATEST_BLOG_LASTMOD =
+  Object.values(BLOG_LASTMOD).reduce((max, d) => (d > max ? d : max), '') ||
+  '2026-11-18';
 const SITE = 'https://scottdillinghamminiatures.com';
 
 /** image:image entries: real photo files under public/ only.
@@ -55,9 +58,9 @@ const PAGE_LASTMOD = {
   '/gallery': '2026-10-01',
   '/workshop': '2026-09-07',
   '/about': '2026-11-03',
-  '/blog': '2026-09-07',
+  '/blog': LATEST_BLOG_LASTMOD,
   '/contact': '2026-10-01',
-  '/commissions': '2026-10-01',
+  '/commissions': '2026-11-18',
   '/visit': '2026-10-01',
   '/image-license': '2026-08-31',
   '/privacy-policy': '2025-01-14',
@@ -80,7 +83,8 @@ export default defineConfig({
         !page.includes('/api/') &&
         !page.includes('/rss.xml') &&
         !page.includes('/message-sent') &&
-        !page.includes('/terms-of-service'),
+        !page.includes('/terms-of-service') &&
+        !page.includes('/.well-known/'),
       serialize: (item) => {
         const url = item.url.replace(/\/$/, '') || 'https://scottdillinghamminiatures.com';
         const weekly = /** @type {import('sitemap').EnumChangefreq} */ ('weekly');

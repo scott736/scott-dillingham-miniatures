@@ -77,6 +77,12 @@ const faqSchema = getBlogFaq(post.id);
   speakableSections={[
     { cssSelector: "[data-speakable='title']" },
     { cssSelector: "[data-speakable='description']" },
+    ...(faqSchema
+      ? [
+          { cssSelector: "[data-speakable='faq-question']" },
+          { cssSelector: "[data-speakable='faq-answer']" },
+        ]
+      : []),
   ]}
 >
   {
@@ -99,6 +105,8 @@ const faqSchema = getBlogFaq(post.id);
     title={post.data.title}
     description={post.data.description}
     pubDate={post.data.pubDate}
+    updatedDate={post.data.updatedDate}
+    authorName={post.data.authorName || 'Scott Dillingham'}
     coverImage={post.data.coverImage}
     imageAlt={blogCoverAlt(post.data.imageAlt, post.data.title)}
     postId={post.id}

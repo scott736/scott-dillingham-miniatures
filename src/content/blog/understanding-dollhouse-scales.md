@@ -1,8 +1,8 @@
 ---
-title: "Best Dollhouse Scale: 1:12 vs 1:24"
-description: "Best scale for dollhouse building? 1:12 (1 inch = 1 foot) for fine joinery; 1:24 for compact multi-room houses. Compare sizes, doors, and chairs."
+title: "Best Dollhouse Scale: 1:12 vs 1:24 Chart"
+description: "Compare 1:12 vs 1:24 vs 1:48 dollhouse building scales with an inches-to-mm conversion chart, room dimensions, door & chair sizes, and joinery limits."
 pubDate: "2025-02-20"
-updatedDate: "2026-11-03"
+updatedDate: "2026-11-18"
 image: "/images/blog/understanding-dollhouse-scales.webp"
 authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
@@ -13,11 +13,73 @@ imageAlt: "Two tiny wooden chairs of different sizes, one with a wood seat and o
 
 **Best scale for dollhouse building — short answer:** Choose **1:12** (1 inch = 1 foot) when you want fine joinery, intricate detail, and the widest selection of furniture and accessories. Choose **1:24** (½ inch = 1 foot) when you need a full multi-room dollhouse in a small footprint. Most serious builders start at 1:12; switch to 1:24 only when space forces it.
 
-| Scale | Equals | Interior door | Dining chair | Best for |
-| --- | --- | --- | --- | --- |
-| **1:12** | 1 inch = 1 foot | about 6.75 inches | about 3 inches | Real joinery, collector furniture, the scale this workshop builds |
-| **1:24** | 1/2 inch = 1 foot | about 3.375 inches | about 1.5 inches | Compact houses; most joints glued rather than cut |
-| **1:48** | 1/4 inch = 1 foot | about 1.7 inches | under 1 inch | Dioramas and architecture, not fine furniture |
+<div class="not-prose my-8 overflow-x-auto rounded-2xl border bg-card">
+  <table class="w-full border-collapse text-left text-sm md:text-base">
+    <caption class="border-b px-4 py-3 text-left text-sm font-semibold md:px-5">
+      1:12 vs 1:24 vs 1:48 Scale Dimensional Conversion Chart (Inches &amp; Millimeters)
+    </caption>
+    <thead>
+      <tr class="border-b bg-muted/50">
+        <th scope="col" class="px-4 py-3 font-semibold md:px-5">Dimension</th>
+        <th scope="col" class="px-4 py-3 font-semibold md:px-5">Real-World</th>
+        <th scope="col" class="px-4 py-3 font-semibold md:px-5">1:12 (1&Prime; = 1&prime;)</th>
+        <th scope="col" class="px-4 py-3 font-semibold md:px-5">1:24 (&frac12;&Prime; = 1&prime;)</th>
+        <th scope="col" class="px-4 py-3 font-semibold md:px-5">1:48 (&frac14;&Prime; = 1&prime;)</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y">
+      <tr>
+        <th scope="row" class="px-4 py-3 font-medium md:px-5">Interior door height</th>
+        <td class="px-4 py-3 md:px-5">81 in (2,057 mm)</td>
+        <td class="px-4 py-3 font-medium md:px-5">6.75 in (171.5 mm)</td>
+        <td class="px-4 py-3 md:px-5">3.375 in (85.7 mm)</td>
+        <td class="px-4 py-3 md:px-5">1.69 in (42.9 mm)</td>
+      </tr>
+      <tr>
+        <th scope="row" class="px-4 py-3 font-medium md:px-5">Ceiling height (8 ft)</th>
+        <td class="px-4 py-3 md:px-5">96 in (2,438 mm)</td>
+        <td class="px-4 py-3 font-medium md:px-5">8.0 in (203.2 mm)</td>
+        <td class="px-4 py-3 md:px-5">4.0 in (101.6 mm)</td>
+        <td class="px-4 py-3 md:px-5">2.0 in (50.8 mm)</td>
+      </tr>
+      <tr>
+        <th scope="row" class="px-4 py-3 font-medium md:px-5">Room dimensions (12 &times; 16 ft)</th>
+        <td class="px-4 py-3 md:px-5">144 &times; 192 in</td>
+        <td class="px-4 py-3 font-medium md:px-5">12 &times; 16 in (305 &times; 406 mm)</td>
+        <td class="px-4 py-3 md:px-5">6 &times; 8 in (152 &times; 203 mm)</td>
+        <td class="px-4 py-3 md:px-5">3 &times; 4 in (76 &times; 102 mm)</td>
+      </tr>
+      <tr>
+        <th scope="row" class="px-4 py-3 font-medium md:px-5">Dining table height</th>
+        <td class="px-4 py-3 md:px-5">30 in (762 mm)</td>
+        <td class="px-4 py-3 font-medium md:px-5">2.5 in (63.5 mm)</td>
+        <td class="px-4 py-3 md:px-5">1.25 in (31.8 mm)</td>
+        <td class="px-4 py-3 md:px-5">0.625 in (15.9 mm)</td>
+      </tr>
+      <tr>
+        <th scope="row" class="px-4 py-3 font-medium md:px-5">Dining chair overall height</th>
+        <td class="px-4 py-3 md:px-5">36 in (914 mm)</td>
+        <td class="px-4 py-3 font-medium md:px-5">3.0 in (76.2 mm)</td>
+        <td class="px-4 py-3 md:px-5">1.5 in (38.1 mm)</td>
+        <td class="px-4 py-3 md:px-5">0.75 in (19.1 mm)</td>
+      </tr>
+      <tr>
+        <th scope="row" class="px-4 py-3 font-medium md:px-5">Chair seat height</th>
+        <td class="px-4 py-3 md:px-5">18 in (457 mm)</td>
+        <td class="px-4 py-3 font-medium md:px-5">1.5 in (38.1 mm)</td>
+        <td class="px-4 py-3 md:px-5">0.75 in (19.1 mm)</td>
+        <td class="px-4 py-3 md:px-5">0.375 in (9.5 mm)</td>
+      </tr>
+      <tr>
+        <th scope="row" class="px-4 py-3 font-medium md:px-5">Best suited for</th>
+        <td class="px-4 py-3 md:px-5">Full-size reference</td>
+        <td class="px-4 py-3 font-medium md:px-5">Hand-cut joinery &amp; heirloom furniture</td>
+        <td class="px-4 py-3 md:px-5">Compact multi-room houses</td>
+        <td class="px-4 py-3 md:px-5">Architectural dioramas</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ## 1:12 vs 1:24 for dollhouse building
 
@@ -115,24 +177,6 @@ Many collectors keep a detailed 1:12 room box for prized pieces and a compact 1:
 - **1:6 (playscale):** fashion dolls and action figures; large miniatures, lots of detail, lots of space.
 - **1:16:** occasional European use between 1:12 and 1:24; limited commercial supply outside those regions.
 - **1:144:** a dolls house for a dolls house — novelty more than fine furniture work.
-
-## FAQ: best dollhouse scale
-
-### Is 1:12 or 1:24 better for dollhouse building?
-
-**1:12** is better for fine furniture, joinery, and accessories. **1:24** is better when you need a whole house in less space. For most builders starting out, 1:12 is the better default.
-
-### How big is 1:12 scale in inches?
-
-One inch in the miniature equals one foot in real life. A six-foot person is six inches tall; a typical interior door is about 6.75 inches.
-
-### What is the most common dollhouse scale?
-
-1:12 (one-inch scale) is the worldwide collector and maker standard, including most shows and commercial lines.
-
-### Can I mix 1:12 and 1:24 furniture?
-
-Not in the same room. Proportions clash immediately. Keep each scale in its own house or room box.
 
 ## My recommendation for beginners
 

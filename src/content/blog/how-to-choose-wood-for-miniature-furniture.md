@@ -2,6 +2,7 @@
 title: "How to Choose the Right Wood for Miniature Furniture"
 description: "Discover the best wood species for miniature furniture making. Compare mahogany, cherry, walnut, boxwood, and more for grain scale and workability."
 pubDate: "2025-03-28"
+updatedDate: "2026-11-18"
 image: "/images/blog/choosing-wood-miniatures.webp"
 authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"

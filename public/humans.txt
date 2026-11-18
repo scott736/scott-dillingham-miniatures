@@ -18,9 +18,10 @@ Full content map: https://scottdillinghamminiatures.com/llms-full.txt
 FAQ feed: https://scottdillinghamminiatures.com/llms-faq.json
 AI crawler guide: https://scottdillinghamminiatures.com/ai.txt
 Well-known AI policy: https://scottdillinghamminiatures.com/.well-known/ai.txt
+Well-known LLMs index: https://scottdillinghamminiatures.com/.well-known/llms.txt
 Robots: https://scottdillinghamminiatures.com/robots.txt
 Sitemap: https://scottdillinghamminiatures.com/sitemap-index.xml
 RSS: https://scottdillinghamminiatures.com/rss.xml
 
 /* UPDATED */
-Last updated: 2026-08-23
+Last updated: 2026-11-18

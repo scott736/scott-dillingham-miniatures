@@ -2,7 +2,7 @@
 title: "Miniature Woodworking Tools Guide"
 description: "Best tools for miniature woodworking and precision crafting: jeweler's saw, micro chisels, files, magnification, and finishing gear for 1/12 scale furniture."
 pubDate: "2025-03-12"
-updatedDate: "2026-11-03"
+updatedDate: "2026-11-18"
 image: "/images/blog/essential-tools.webp"
 authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
@@ -146,16 +146,6 @@ If you want to achieve the highest quality finish on your miniature furniture, F
 ### Spray Equipment
 
 For lacquer finishes, a small airbrush gives you the thin, even coats that miniature surfaces require. A full-size spray gun deposits far too much material at once for pieces this small.
-
-## FAQ: miniature woodworking tools
-
-### What tools do I need for miniature woodworking?
-
-Start with a jeweler's saw, micro chisels, fine files, accurate measuring tools, magnification, and a clean finishing setup. Add a miniature lathe and specialized carving tools as projects demand them.
-
-### What are the best tools for miniature crafting precision?
-
-Precision comes from sharp micro chisels, fine saw blades (often 2/0), good magnification, and bright task lighting — not from gadget kits. Buy fewer tools of higher quality.
 
 ## Building Your Collection Over Time
 

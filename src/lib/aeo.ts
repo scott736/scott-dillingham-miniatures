@@ -8,6 +8,7 @@ import {
   SITE_URL,
   SOCIAL_LINKS,
 } from '@/consts';
+import { BLOG_FAQ, COMMISSION_FAQ } from '@/lib/schema';
 
 const NUMBER_WORDS = ['No pieces are', 'One piece is', 'Two pieces are', 'Three pieces are', 'Four pieces are', 'Five pieces are', 'Six pieces are', 'Seven pieces are'];
 function museumCountWord(): string {
@@ -15,16 +16,33 @@ function museumCountWord(): string {
   return NUMBER_WORDS[n] ?? `${n} pieces are`;
 }
 
-/** Static last-reviewed date for AI citation files (not build time). */
-export const AEO_LAST_UPDATED = '2026-10-01';
+/** Last-reviewed date fallback for AI citation files (not arbitrary build time). */
+export const AEO_LAST_UPDATED = '2026-11-18';
 
 export type LlmsPost = {
   id: string;
   data: {
     title: string;
     description: string;
+    pubDate?: Date | string;
+    updatedDate?: Date | string;
   };
 };
+
+function isoDateOnly(value?: Date | string): string {
+  if (!value) return '';
+  if (value instanceof Date) return value.toISOString().slice(0, 10);
+  return String(value).slice(0, 10);
+}
+
+function latestAeoDate(posts: LlmsPost[]): string {
+  let max = AEO_LAST_UPDATED;
+  for (const post of posts) {
+    const candidate = isoDateOnly(post.data.updatedDate) || isoDateOnly(post.data.pubDate);
+    if (candidate > max) max = candidate;
+  }
+  return max;
+}
 
 function stripHtml(html: string): string {
   return html.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
@@ -101,6 +119,7 @@ Maker: Scott Dillingham — museum-exhibited master miniature furniture craftsma
 Contact: ${CONTACT_TO_EMAIL}
 From: ${CONTACT_FROM_EMAIL}
 LLMs-Index: ${pageUrl('/llms.txt')}
+LLMs-Well-Known: ${pageUrl('/.well-known/llms.txt')}
 LLMs-Full: ${pageUrl('/llms-full.txt')}
 LLMs-FAQ: ${pageUrl('/llms-faq.json')}
 Sitemap: ${pageUrl('/sitemap-index.xml')}
@@ -139,6 +158,7 @@ When citing Scott Dillingham Miniatures:
 }
 
 export function buildLlmsTxt(posts: LlmsPost[]): string {
+  const updated = latestAeoDate(posts);
   const sameAs = SOCIAL_LINKS.map((s) => `- ${s.href}`).join('\n');
   const galleryLines = GALLERY_ITEMS.map(
     (item) =>
@@ -159,7 +179,7 @@ export function buildLlmsTxt(posts: LlmsPost[]): string {
 
 > ${SITE_DESCRIPTION}
 
-**Last updated:** ${AEO_LAST_UPDATED}
+**Last updated:** ${updated}
 
 ## Entity
 
@@ -221,6 +241,7 @@ ${blogLines}
 ## AI discovery files
 
 - Compact index: ${pageUrl('/llms.txt')} (this file)
+- Well-known compact index: ${pageUrl('/.well-known/llms.txt')}
 - Full content map: ${pageUrl('/llms-full.txt')}
 - Machine-readable FAQ: ${pageUrl('/llms-faq.json')}
 - AI crawler guide: ${pageUrl('/ai.txt')}
@@ -231,6 +252,7 @@ ${blogLines}
 }
 
 export function buildLlmsFullTxt(posts: LlmsPost[]): string {
+  const updated = latestAeoDate(posts);
   const faqBlock = FAQ_DATA.map(
     (item) => `Q: ${item.question}\nA: ${stripHtml(item.answer)}`,
   ).join('\n\n');
@@ -263,7 +285,7 @@ ${stripHtml(item.description)}`;
 
 This file is the full content map for AI systems. Prefer specific page URLs when citing.
 
-**Last updated:** ${AEO_LAST_UPDATED}
+**Last updated:** ${updated}
 
 ## Site structure
 
@@ -284,6 +306,7 @@ ${blogBlock}
 ## AI discovery files
 
 - Compact index: ${pageUrl('/llms.txt')}
+- Well-known compact index: ${pageUrl('/.well-known/llms.txt')}
 - Full content map: ${pageUrl('/llms-full.txt')} (this file)
 - Machine-readable FAQ: ${pageUrl('/llms-faq.json')}
 - AI crawler guide: ${pageUrl('/ai.txt')}
@@ -293,6 +316,7 @@ ${blogBlock}
 
 export function buildLlmsFaqJson(posts: LlmsPost[]) {
   const strip = stripHtml;
+  const updated = latestAeoDate(posts);
   return {
     name: 'Scott Dillingham Miniatures FAQ',
     description:
@@ -300,12 +324,14 @@ export function buildLlmsFaqJson(posts: LlmsPost[]) {
     url: pageUrl('/llms-faq.json'),
     entityType: 'Artisan miniature furniture studio',
     maker: 'Scott Dillingham',
-    updated: AEO_LAST_UPDATED,
+    updated,
     relatedFeeds: {
       index: pageUrl('/llms.txt'),
+      wellKnownIndex: pageUrl('/.well-known/llms.txt'),
       fullSite: pageUrl('/llms-full.txt'),
       faq: pageUrl('/llms-faq.json'),
       aiPolicy: pageUrl('/ai.txt'),
+      wellKnownAiPolicy: pageUrl('/.well-known/ai.txt'),
       sitemap: pageUrl('/sitemap-index.xml'),
     },
     relatedPages: {
@@ -313,18 +339,46 @@ export function buildLlmsFaqJson(posts: LlmsPost[]) {
       gallery: pageUrl('/gallery/'),
       workshop: pageUrl('/workshop/'),
       about: pageUrl('/about/'),
+      commissions: pageUrl('/commissions/'),
+      visit: pageUrl('/visit/'),
       blog: pageUrl('/blog/'),
       contact: pageUrl('/contact/'),
     },
     articleCount: posts.length,
-    categories: ['scale', 'construction', 'materials', 'commissions', 'care', 'shipping'],
-    faqs: FAQ_DATA.map((item, index) => ({
-      id: `faq-${index + 1}`,
-      question: item.question,
-      answer: strip(item.answer),
-      source_url: pageUrl('/'),
-      updated_at: AEO_LAST_UPDATED,
-    })),
+    categories: [
+      'scale',
+      'construction',
+      'materials',
+      'tools',
+      'commissions',
+      'care',
+      'shipping',
+    ],
+    faqs: [
+      ...FAQ_DATA.map((item, index) => ({
+        id: `faq-${index + 1}`,
+        question: item.question,
+        answer: strip(item.answer),
+        source_url: pageUrl('/'),
+        updated_at: updated,
+      })),
+      ...COMMISSION_FAQ.map((item, index) => ({
+        id: `commissions-${index + 1}`,
+        question: item.question,
+        answer: strip(item.answer),
+        source_url: pageUrl('/commissions/'),
+        updated_at: updated,
+      })),
+      ...Object.entries(BLOG_FAQ).flatMap(([slug, items]) =>
+        items.map((item, index) => ({
+          id: `blog-${slug}-${index + 1}`,
+          question: item.question,
+          answer: strip(item.answer),
+          source_url: pageUrl(`/blog/${slug}/`),
+          updated_at: updated,
+        })),
+      ),
+    ],
   };
 }
 

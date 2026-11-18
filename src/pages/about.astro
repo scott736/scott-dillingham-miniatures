@@ -39,6 +39,11 @@ const aboutRelatedPosts = [
   imageHeight={683}
   imageAlt="1/12 scale miniature shield-back pole screen in mahogany by Scott Dillingham"
   breadcrumbName="About"
+  speakableSections={[
+    { cssSelector: "[data-speakable='title']" },
+    { cssSelector: "[data-speakable='subtitle']" },
+    { cssSelector: "[data-speakable='description']" },
+  ]}
 >
   <script type="application/ld+json" set:html={JSON.stringify(aboutProfilePageNode())} />
   <AboutHero />
