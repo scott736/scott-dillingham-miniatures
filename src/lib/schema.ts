@@ -72,6 +72,8 @@ export function personNode() {
     '@id': PERSON_ID,
     name: 'Scott Dillingham',
     url: `${SITE_URL}/about/`,
+    disambiguatingDescription:
+      'Handcrafted 1/12 scale period miniature furniture maker and master cabinetmaker whose museum-exhibited hardwood works reside in the KSB Miniatures Collection in Maysville, Kentucky.',
     description:
       'Scott Dillingham is a museum-exhibited craftsman who builds museum-quality 1/12 scale hardwood miniature furniture by hand, using traditional joinery. Three of his pieces are part of the KSB Miniatures Collection in Maysville, Kentucky.',
     jobTitle: 'Museum-Exhibited Master Miniature Furniture Craftsman',
@@ -601,30 +603,183 @@ export function getBlogHowTo(
   };
 }
 
-type FaqSpec = { question: string; answer: string };
+export type FaqSpec = { question: string; answer: string };
 
-/** FAQ blocks for high-impression posts — kept for answer engines. */
-const BLOG_FAQ: Record<string, FaqSpec[]> = {
+/** Reusable FAQPage builder (strips any inline links/markup from answers). */
+export function faqPageNode(faqs: ReadonlyArray<FaqSpec>) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: stripHtml(item.answer),
+      },
+    })),
+  };
+}
+
+// Every step restates terms-of-service §3 and §6 or the FAQ. Add no promises here.
+export const COMMISSION_STEPS: ReadonlyArray<{ title: string; text: string }> = [
+  {
+    title: 'Consult',
+    text: 'Tell me the piece, the period, and how you hope to use it. Commissions are subject to availability and acceptance.',
+  },
+  {
+    title: 'Design and wood',
+    text: 'Each piece begins with research into the original period furniture and scaled drawings. The hardwood is chosen for its grain, its workability at 1/12 scale, and its accuracy to the period.',
+  },
+  {
+    title: 'Price, timing, and deposit',
+    text: 'Pricing, timeline, and specifications are discussed and agreed before work begins. A deposit may be required. Each piece is priced on request.',
+  },
+  {
+    title: 'Delivery',
+    text: 'The finished piece is packed in custom-fitted foam in a rigid box and shipped with full insurance. International shipping is available.',
+  },
+];
+
+export const COMMISSION_FAQ: ReadonlyArray<FaqSpec> = [
+  {
+    question: 'How long does a custom 1/12 scale miniature furniture commission take?',
+    answer:
+      'Depending on complexity, carving, and the number of drawers, a single piece typically takes from 40 hours to more than 200 hours at the bench. Specific timing is discussed and agreed before work begins.',
+  },
+  {
+    question: 'Can I commission a piece similar to one in the KSB Miniatures Collection?',
+    answer:
+      'Yes. Unique works held in the KSB Miniatures Collection are not for sale, but similar period pieces — along with family-heirloom replicas and original designs — are built to commission subject to availability and acceptance.',
+  },
+  {
+    question: 'How do pricing and deposits work for a custom commission?',
+    answer:
+      'Every piece is priced on request. Pricing, timeline, specifications, and any required deposit terms are discussed and agreed before work commences.',
+  },
+  {
+    question: 'How are commissioned miniatures packed and shipped?',
+    answer:
+      'Each finished miniature is packed in custom-fitted foam inside a rigid box and shipped with full insurance. International shipping is available.',
+  },
+];
+
+export function getCommissionHowTo() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'How to Commission Custom 1/12 Scale Miniature Furniture',
+    description:
+      'The four-step custom commission process from initial consultation and period design research through insured delivery.',
+    url: `${SITE_URL}/commissions/`,
+    author: personRef(),
+    step: COMMISSION_STEPS.map((step, index) => ({
+      '@type': 'HowToStep',
+      position: index + 1,
+      name: step.title,
+      text: step.text,
+      url: `${SITE_URL}/commissions/`,
+    })),
+  };
+}
+
+export function getCommissionFaq() {
+  return faqPageNode(COMMISSION_FAQ);
+}
+
+/** FAQ blocks for high-impression posts — matched to visible FAQ accordions on each post. */
+export const BLOG_FAQ: Record<string, FaqSpec[]> = {
   'understanding-dollhouse-scales': [
     {
       question: 'What is the best scale for dollhouse building, 1:12 or 1:24?',
       answer:
-        '1:12 (1 inch = 1 foot) is best for fine joinery, detail, and accessories. 1:24 (½ inch = 1 foot) is best when you need a full multi-room house in less space. Most builders should start at 1:12.',
+        '1:12 (1 inch = 1 foot) is best for fine joinery, carving, and the widest selection of furniture and accessories. 1:24 (1/2 inch = 1 foot) is best when you need a multi-room dollhouse in a compact footprint. Most builders should start at 1:12.',
     },
     {
-      question: 'How big is 1:12 scale in inches?',
+      question: 'How big is 1:12 scale in inches and millimeters?',
       answer:
-        'One inch in the miniature equals one foot in real life. A typical interior door is about 6.75 inches tall; a dining chair is about 3 inches high.',
+        'In 1:12 scale, 1 inch (25.4 mm) equals 1 foot (304.8 mm) in real life. An 81-inch interior door is 6.75 inches (171.5 mm) tall, an 8-foot ceiling is 8.0 inches (203.2 mm) high, a 30-inch dining table is 2.5 inches (63.5 mm) tall, and a 36-inch dining chair is 3.0 inches (76.2 mm) high.',
+    },
+    {
+      question: 'What are typical room dimensions for a 1:12 vs 1:24 dollhouse?',
+      answer:
+        'A 12 ft x 16 ft room scales to 12 x 16 inches (305 x 406 mm) with an 8.0-inch ceiling at 1:12 scale, compared to 6 x 8 inches (152 x 203 mm) with a 4.0-inch ceiling at 1:24 scale.',
     },
     {
       question: 'What is the most common dollhouse scale?',
       answer:
-        '1:12 (one-inch scale) is the worldwide collector and maker standard, including most shows and commercial lines.',
+        '1:12 (one-inch scale) is the worldwide collector and maker standard, including most miniature shows, museum collections, and commercial hardware lines.',
     },
     {
-      question: 'Can I mix 1:12 and 1:24 furniture in one dolls house?',
+      question: 'Can I mix 1:12 and 1:24 furniture in one dollhouse?',
       answer:
-        'No. Proportions clash immediately. Keep each scale in its own house or room box.',
+        'No. Proportions clash immediately because 1:24 furniture is half the height and width of 1:12 pieces. Keep each scale in its own house or room box.',
+    },
+  ],
+  'complete-guide-1-12-scale-miniature-furniture': [
+    {
+      question: 'How do you calculate 1:12 scale measurements?',
+      answer:
+        'Divide any real-world measurement in inches by 12, since one inch in the miniature equals one foot in real life. A 30-inch dining table becomes 2.5 inches tall, and a 36-inch dresser becomes 3 inches wide.',
+    },
+    {
+      question: 'Why cannot every furniture thickness be divided strictly by 12?',
+      answer:
+        'Visual proportion does not scale linearly. A tabletop edge or molding divided strictly by 12 often looks heavy at 1:12 scale, so miniaturists shave slightly off edges and simplify tiny fillets to preserve the lightness of the original.',
+    },
+    {
+      question: 'How tall are common 1:12 scale miniature furniture pieces?',
+      answer:
+        'At 1:12 scale, a dining chair stands about 3 inches tall with a 1.5-inch seat height, a writing desk is roughly 2.5 inches tall, a queen bed measures around 5 by 7 inches, and a tall-case clock is approximately 6.5 inches tall.',
+    },
+    {
+      question: 'Why does wood grain matter so much at 1:12 scale?',
+      answer:
+        'Wood grain does not shrink when furniture is scaled down. Coarse, open-pored woods like oak look oversized at 1:12, so makers choose tight-grained hardwoods like cherry, hard maple, or boxwood.',
+    },
+  ],
+  'how-to-choose-wood-for-miniature-furniture': [
+    {
+      question: 'What is the best wood for 1:12 scale miniature furniture?',
+      answer:
+        'Cherry is the most versatile hardwood for miniature furniture because its fine, even grain scales naturally, cuts cleanly, and deepens to a warm reddish-brown over time. Hard maple, walnut, pear, and boxwood are also top choices.',
+    },
+    {
+      question: 'Why should you avoid oak, pine, and basswood for fine miniature furniture?',
+      answer:
+        'Oak has wide open pores that look oversized at 1:12 scale, softwoods like pine crush easily under clamps and show coarse grain, and craft-store basswood has a fuzzy texture that absorbs stain unevenly.',
+    },
+    {
+      question: 'Which hardwood holds the sharpest carved and turned detail in miniature?',
+      answer:
+        'Boxwood has an almost invisible grain and turns or carves with crisp, ivory-like edges for finials, knobs, and slender legs. Fruitwoods such as pear deliver similar detail fidelity at lower cost.',
+    },
+    {
+      question: 'How do you match wood species to historical furniture periods in miniature?',
+      answer:
+        'Use walnut, mahogany, or cherry for Queen Anne and Chippendale pieces; mahogany with light inlays for Federal and Hepplewhite; cherry or hard maple for Shaker work; and walnut, mahogany, or rosewood for Victorian reproductions.',
+    },
+  ],
+  'miniature-woodworking-for-beginners': [
+    {
+      question: 'What is the best first project for miniature woodworking beginners?',
+      answer:
+        'Start with a simple Shaker-style bench with four legs, two stretchers, and a flat seat. It teaches accurate length cutting, basic joints, squareness, and surface finishing without complex curves or tiny drawers.',
+    },
+    {
+      question: 'What starter tools do beginners need for miniature woodworking?',
+      answer:
+        'Start with a jeweler’s saw with 2/0 or 3/0 blades, a craft knife with fresh blades, needle files, 220–400 grit sandpaper, a fine 6-inch steel ruler, a 2-inch square, a pin vise, clothespins or binder clips, and a magnifying headband.',
+    },
+    {
+      question: 'What common mistakes should miniature woodworking beginners avoid?',
+      answer:
+        'Avoid craft-store basswood in favor of fine-grained cherry or maple, never skip dry-fitting joints before gluing, apply minimal glue with a pin or toothpick, sand components before assembly, and build thin finish coats.',
+    },
+    {
+      question: 'How do you apply glue cleanly on tiny 1:12 scale joints?',
+      answer:
+        'Dry-fit every joint first, then use a pin or toothpick to place a small controlled drop inside the joint. Excess squeeze-out is hard to clean at 1:12 scale and can ruin stain absorption.',
     },
   ],
   'essential-miniature-woodworking-tools': [
@@ -638,6 +793,16 @@ const BLOG_FAQ: Record<string, FaqSpec[]> = {
       answer:
         'Precision comes from sharp micro chisels, fine saw blades (often 2/0), good magnification, and bright task lighting — not from gadget kits. Buy fewer tools of higher quality.',
     },
+    {
+      question: 'What jeweler’s saw blade size is best for 1:12 scale hardwoods?',
+      answer:
+        'Use a jeweler’s saw frame with at least a 3-inch throat depth and start with 2/0 blades for general miniature woodworking. Keep 1/0 blades for heavier cuts and 3/0 blades for fine curves.',
+    },
+    {
+      question: 'What micro chisel sizes and files are most useful for miniature joinery?',
+      answer:
+        'Flat micro chisels from 1/32 inch to 1/4 inch wide handle mortises, joint fitting, and paring, paired with Swiss-made needle files in flat, round, half-round, triangular, square, and knife-edge profiles.',
+    },
   ],
 };
 
@@ -646,16 +811,5 @@ export function getBlogFaq(
 ): Record<string, unknown> | null {
   const faqs = BLOG_FAQ[slug];
   if (!faqs?.length) return null;
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map((item) => ({
-      '@type': 'Question',
-      name: item.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: item.answer,
-      },
-    })),
-  };
+  return faqPageNode(faqs);
 }

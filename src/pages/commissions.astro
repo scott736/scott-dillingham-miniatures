@@ -1,30 +1,19 @@
 ---
 export const prerender = true;
 
+import FaqList from '@/components/elements/faq-list.astro';
 import InquiryForm from '@/components/sections/inquiry-form.astro';
 import { GALLERY_ITEMS, GALLERY_STATUS, SITE_URL, piecePath } from '@/consts';
 import DefaultLayout from '@/layouts/DefaultLayout.astro';
-import { COMMISSION_SERVICE_ID, organizationRef, WEBSITE_ID } from '@/lib/schema';
-
-// Every step restates terms-of-service §3 and §6 or the FAQ. Add no promises here.
-const steps = [
-  {
-    title: 'Consult',
-    text: 'Tell me the piece, the period, and how you hope to use it. Commissions are subject to availability and acceptance.',
-  },
-  {
-    title: 'Design and wood',
-    text: 'Each piece begins with research into the original period furniture and scaled drawings. The hardwood is chosen for its grain, its workability at 1/12 scale, and its accuracy to the period.',
-  },
-  {
-    title: 'Price, timing, and deposit',
-    text: 'Pricing, timeline, and specifications are discussed and agreed before work begins. A deposit may be required. Each piece is priced on request.',
-  },
-  {
-    title: 'Delivery',
-    text: 'The finished piece is packed in custom-fitted foam in a rigid box and shipped with full insurance. International shipping is available.',
-  },
-];
+import {
+  COMMISSION_FAQ,
+  COMMISSION_SERVICE_ID,
+  COMMISSION_STEPS,
+  getCommissionFaq,
+  getCommissionHowTo,
+  organizationRef,
+  WEBSITE_ID,
+} from '@/lib/schema';
 
 const examples = GALLERY_ITEMS.map((item) => ({
   href: piecePath(item.id),
@@ -41,19 +30,29 @@ const serviceSchema = {
   provider: organizationRef(),
   isPartOf: { '@id': WEBSITE_ID },
 };
+const howToSchema = getCommissionHowTo();
+const faqSchema = getCommissionFaq();
 ---
 
 <DefaultLayout
   title="How a Commission Works"
   description="How a 1/12 scale commission proceeds, from the first note through insured delivery. Tell me the piece, your timing, and your budget."
   breadcrumbName="Commissions"
+  speakableSections={[
+    { cssSelector: "[data-speakable='title']" },
+    { cssSelector: "[data-speakable='description']" },
+    { cssSelector: "[data-speakable='faq-question']" },
+    { cssSelector: "[data-speakable='faq-answer']" },
+  ]}
 >
   <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <section class="hero-padding-margin container grid grid-cols-1 justify-between gap-10 md:grid-cols-2 lg:gap-10.5">
     <div class="space-y-8">
       <div class="space-y-4">
-        <h1 class="text-4xl font-bold md:text-5xl md:leading-14">Commission a piece</h1>
-        <p class="text-xl leading-8">
+        <h1 data-speakable="title" class="text-4xl font-bold md:text-5xl md:leading-14">Commission a piece</h1>
+        <p data-speakable="description" class="text-xl leading-8">
           A piece takes from 40 hours to more than 200, depending on the carving
           and the number of drawers. Museum-held works are not for sale. Similar
           pieces, and new designs, are built to commission.
@@ -61,7 +60,7 @@ const serviceSchema = {
       </div>
       <ol class="space-y-5">
         {
-          steps.map((step, index) => (
+          COMMISSION_STEPS.map((step, index) => (
             <li class="space-y-1">
               <h2 class="text-lg font-semibold">
                 {index + 1}. {step.title}
@@ -96,5 +95,22 @@ const serviceSchema = {
         <InquiryForm lockedSubject="commission" showPieceType={true} />
       </div>
     </div>
+  </section>
+
+  <section class="section-padding container space-y-6" aria-labelledby="commissions-faq-heading">
+    <div class="max-w-2xl space-y-2">
+      <p class="text-muted-foreground text-xs font-medium tracking-wider uppercase">
+        Commission Questions
+      </p>
+      <h2 id="commissions-faq-heading" class="text-2xl font-bold md:text-3xl">
+        Frequently Asked Questions
+      </h2>
+    </div>
+    <FaqList
+      items={COMMISSION_FAQ}
+      containerClass="w-full max-w-3xl space-y-4"
+      summaryClass="text-lg md:text-xl"
+      answerClass="pb-4 text-base leading-7 text-muted-foreground"
+    />
   </section>
 </DefaultLayout>

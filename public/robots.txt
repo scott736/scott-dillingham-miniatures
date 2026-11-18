@@ -8,6 +8,7 @@ Allow: /llms-full.txt
 Allow: /llms-faq.json
 Allow: /ai.txt
 Allow: /.well-known/ai.txt
+Allow: /.well-known/llms.txt
 Allow: /humans.txt
 Disallow: /api/
 
@@ -81,8 +82,21 @@ Allow: /
 User-agent: Diffbot
 Allow: /
 
+User-agent: Google-CloudVertexBot
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: MistralAI-User
+Allow: /
+
+User-agent: xAI-SearchBot
+Allow: /
+
 # AI / answer-engine discovery
 # https://scottdillinghamminiatures.com/llms.txt
+# https://scottdillinghamminiatures.com/.well-known/llms.txt
 # https://scottdillinghamminiatures.com/llms-full.txt
 # https://scottdillinghamminiatures.com/llms-faq.json
 # https://scottdillinghamminiatures.com/ai.txt

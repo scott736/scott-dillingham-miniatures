@@ -2,6 +2,7 @@
 export const prerender = true;
 
 import {
+  GALLERY_IMAGE_SIZES,
   GALLERY_ITEMS,
   SOCIAL_LINKS,
   UPCOMING_SHOWS,
@@ -54,21 +55,24 @@ const pageSchema = {
       </p>
       <ul class="grid grid-cols-1 gap-6 sm:grid-cols-3">
         {
-          museumPieces.map((item) => (
-            <li>
-              <a href={piecePath(item.id)} class="group block space-y-3">
-                <img
-                  src={item.images[0]}
-                  alt={item.alt}
-                  width="800"
-                  height="600"
-                  loading="lazy"
-                  class="aspect-[4/3] w-full rounded-2xl object-cover"
-                />
-                <span class="group-hover:text-primary block font-semibold">{item.title}</span>
-              </a>
-            </li>
-          ))
+          museumPieces.map((item) => {
+            const imageSize = GALLERY_IMAGE_SIZES[item.images[0]] ?? { width: 800, height: 600 };
+            return (
+              <li>
+                <a href={piecePath(item.id)} class="group block space-y-3">
+                  <img
+                    src={item.images[0]}
+                    alt={item.alt}
+                    width={imageSize.width}
+                    height={imageSize.height}
+                    loading="lazy"
+                    class="aspect-[4/3] w-full rounded-2xl object-cover"
+                  />
+                  <span class="group-hover:text-primary block font-semibold">{item.title}</span>
+                </a>
+              </li>
+            );
+          })
         }
       </ul>
     </div>

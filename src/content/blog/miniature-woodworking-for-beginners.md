@@ -2,6 +2,7 @@
 title: "Miniature Woodworking for Beginners: Where to Start"
 description: "A practical beginner's guide to miniature woodworking. Learn the mindset, first tools, starter projects, and common mistakes to avoid in small scale work."
 pubDate: "2025-02-05"
+updatedDate: "2026-11-18"
 image: "/images/blog/miniature-woodworking-beginners.webp"
 authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
