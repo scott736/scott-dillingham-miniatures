@@ -97,9 +97,9 @@ Stable handles from this checkout:
 | Article | `/blog/<slug>/` e.g. `/blog/complete-guide-1-12-scale-miniature-furniture/`; `h1[data-speakable="title"]` |
 | Contact | `/contact/`; `h1` `Let's Create Something Extraordinary` (document title is `Commission a Piece`; that is not commissions proof); `Price on request. Ask about deposit and lead time.`; labels `Name`, `Email`, `Subject`, `Piece`, `Kind of piece`, `Your budget`, `Timing`, `Message`; submit text `Send Message` |
 | Contact success | `/message-sent/`; `h1` `Message sent`; copy `Your note reached the studio.`; links `See the gallery` → `/gallery/` and `Commission a piece` → `/commissions/` |
-| Commissions | `/commissions/`; `h1` `Commission a piece`; form heading `Tell me about the piece`; hidden `subject=commission`; no Subject select |
+| Commissions | `/commissions/`; `h1` `Commission a piece` (`data-speakable="title"`); form heading `Tell me about the piece`; hidden `subject=commission`; no Subject select; FAQ under `Commission Questions` (first `faq-item` open) |
 | Visit | `/visit/`; `h1` `See the work in person`; `KSB Miniatures Collection`; `Shows` |
-| Workshop | `/workshop/`; `h1` `The Maker's Workshop`; process title `From Raw Hardwood to Finished Masterpiece` |
+| Workshop | `/workshop/`; `h1` `The Maker's Workshop` (`data-speakable="title"`); process title `From Raw Hardwood to Finished Masterpiece`; process intro `[data-speakable="process-intro"]` |
 
 Recipes: [features/home.md](features/home.md), [features/gallery.md](features/gallery.md), [features/blog.md](features/blog.md), [features/contact.md](features/contact.md), [features/commissions.md](features/commissions.md), [features/visit.md](features/visit.md), [features/workshop.md](features/workshop.md).
 

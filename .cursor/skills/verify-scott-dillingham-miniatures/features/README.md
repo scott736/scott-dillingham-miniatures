@@ -45,7 +45,7 @@ Each feature file starts with an H1 title and one paragraph describing the user-
 - [Gallery](./gallery.md) covers `/gallery/`, piece cards, the piece lightbox, and `/gallery/<id>/`.
 - [Blog](./blog.md) covers the journal index, client search, and a markdown article.
 - [Contact](./contact.md) covers the general inquiry form (render and validation only) and the static `/message-sent/` thank-you page.
-- [Commissions](./commissions.md) covers `/commissions/` (how a commission works plus the locked-subject form).
+- [Commissions](./commissions.md) covers `/commissions/` (how a commission works, commission FAQ, plus the locked-subject form).
 - [Visit](./visit.md) covers `/visit/` (KSB museum pieces and shows).
 - [Workshop](./workshop.md) covers the maker's workshop and eight-step process.
 

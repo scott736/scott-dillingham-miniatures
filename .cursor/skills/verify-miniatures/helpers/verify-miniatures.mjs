@@ -20,7 +20,8 @@ const artifactsDir = join(skillDir, 'artifacts');
 const stateDir = process.env.VERIFY_STATE_DIR || '/tmp/verify-miniatures';
 const statePath = join(stateDir, 'state.json');
 const BRAND = 'Scott Dillingham Miniatures';
-const HOME_H1 = 'Miniature Furniture';
+const HOME_H1 = 'Scott Dillingham Miniatures';
+const HOME_GALLERY_CTA = "See what's available";
 const DEFAULT_PORT = Number(process.env.VERIFY_PORT || 4321);
 const DEFAULT_CDP = Number(process.env.VERIFY_CDP_PORT || 9333);
 const CHROME =
@@ -207,13 +208,16 @@ async function httpGet(path, opts = {}) {
 
 async function httpPost(path, opts = {}) {
   const state = readState();
-  const url = `${baseUrl(state)}${path.startsWith('/') ? path : `/${path}`}`;
+  const origin = baseUrl(state);
+  const url = `${origin}${path.startsWith('/') ? path : `/${path}`}`;
   const json = opts.json != null ? opts.json : '{}';
   const res = await fetch(url, {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
       'user-agent': 'verify-miniatures/1.0',
+      // Contact API requires an allowed Origin; missing Origin is 403, not 400.
+      origin,
     },
     body: json,
   });
@@ -722,7 +726,7 @@ async function proveHome() {
   if (!headingHas(before, HOME_H1)) fail('home snapshot missing hero heading', before);
   await cmdBrowserClick({
     role: 'link',
-    name: 'Explore the Gallery',
+    name: HOME_GALLERY_CTA,
     wait: 'Hepplewhite Shield Back Style Chair',
   });
   await cmdBrowserScreenshot({ path: 'home/02-gallery.png' });
@@ -738,7 +742,8 @@ async function proveHome() {
   if (!headingHas(after, 'Simon Willard Tall Case Clock Style')) {
     fail('gallery missing tall-case clock title', after);
   }
-  await httpGet('/gallery', {
+  // trailingSlash: 'always' — bare /gallery is 404 on local astro dev
+  await httpGet('/gallery/', {
     'assert-status': '200',
     'assert-contains': 'The Collection',
     out: 'home/http-gallery.html',
@@ -788,7 +793,7 @@ try {
     const result = await httpGet(sub || '/', args);
     print({ ok: true, url: result.url, status: result.status, bytes: result.bytes, out: args.out || null });
   } else if (cmd === 'post') {
-    const result = await httpPost(sub || '/api/contact', args);
+    const result = await httpPost(sub || '/api/contact/', args);
     print(result);
   } else if (cmd === 'prove') await cmdProve(sub);
   else if (cmd === 'browser' && sub === 'start') await cmdBrowserStart(args);
