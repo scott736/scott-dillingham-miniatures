@@ -1,5 +1,5 @@
 ---
-title: "Arts and Crafts Miniature Furniture"
+title: "Arts and Crafts Miniature Furniture at 1/12 Scale"
 description: "Arts and Crafts (Mission) miniature furniture at 1/12: quartersawn oak, through-tenons, and hammered copper — how to build Stickley-style pieces by hand."
 pubDate: "2025-11-20"
 updatedDate: "2026-11-03"
@@ -49,7 +49,7 @@ I also use exposed pinned mortise-and-tenon joints, where a wooden pin driven th
 
 Arts and Crafts furniture is overwhelmingly rectilinear. Curves are rare. The forms are built from straight boards joined at right angles, with visual interest coming from the proportions, the wood, the hardware, and the exposed joinery. This geometric clarity makes accurate cutting and assembly essential. At 1/12 scale, every angle must be precisely 90 degrees, every surface must be flat, and every edge must be clean.
 
-In some ways, this rectilinear construction is easier than the curves of [Queen Anne](/blog/queen-anne-miniature-furniture-guide) or [Federal](/blog/federal-period-miniature-furniture) furniture. You do not need to shape cabriole legs or bend oval chair backs. But the precision required for straight, clean work at this scale should not be underestimated. A square table that is not quite square looks wrong immediately.
+In some ways, this rectilinear construction is easier than the curves of [Queen Anne](/blog/queen-anne-miniature-furniture-guide/) or [Federal](/blog/federal-period-miniature-furniture/) furniture. You do not need to shape cabriole legs or bend oval chair backs. But the precision required for straight, clean work at this scale should not be underestimated. A square table that is not quite square looks wrong immediately.
 
 ## Iconic Arts and Crafts Pieces in Miniature
 
@@ -95,6 +95,6 @@ When working with substitute woods, I achieve a similar tone using a combination
 
 The Arts and Crafts movement occupies a fascinating position in furniture history. It looked backward to medieval ideals of handcraft while simultaneously anticipating the modern movement's emphasis on function, honesty of materials, and integration of design with daily life. For the miniaturist, it bridges the gap between the elaborate period styles of the eighteenth century and the streamlined forms of the twentieth.
 
-Building Arts and Crafts miniatures alongside pieces from other traditions, such as [Shaker](/blog/shaker-style-miniature-furniture) work, which shares the commitment to simplicity and honest construction, creates a collection that tells a meaningful story about the evolution of American craft ideals.
+Building Arts and Crafts miniatures alongside pieces from other traditions, such as [Shaker](/blog/shaker-style-miniature-furniture/) work, which shares the commitment to simplicity and honest construction, creates a collection that tells a meaningful story about the evolution of American craft ideals. For ornate eighteenth-century contrast, see [Chippendale](/blog/chippendale-miniature-furniture/) and [Victorian](/blog/victorian-dollhouse-furniture-guide/).
 
-Visit my [gallery](/gallery) to see examples of Arts and Crafts miniatures and other period pieces. If you have questions about techniques, materials, or commissions, please reach out through my [contact page](/contact). The Arts and Crafts tradition, with its emphasis on the handmade and the authentic, feels especially relevant in an age of mass production, and I find great satisfaction in keeping its spirit alive at 1/12 scale.
+Visit my [gallery](/gallery/) to see examples of Arts and Crafts miniatures and other period pieces. If you have questions about techniques, materials, or commissions, please reach out through my [contact page](/contact/). The Arts and Crafts tradition, with its emphasis on the handmade and the authentic, feels especially relevant in an age of mass production, and I find great satisfaction in keeping its spirit alive at 1/12 scale.

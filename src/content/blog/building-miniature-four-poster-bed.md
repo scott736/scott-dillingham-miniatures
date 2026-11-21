@@ -19,7 +19,7 @@ Building one draws on lathe turning, carving, precise joinery, and textile work.
 
 Before cutting any wood, you need to decide what kind of four-poster bed you are building. The form spans centuries and styles, and the design differences are significant.
 
-An early eighteenth-century [Queen Anne](/blog/queen-anne-miniature-furniture-guide) bed features slender, gracefully turned posts with minimal carving. A [Chippendale](/blog/chippendale-miniature-furniture) bed introduces fluted or reeded posts, often with carved acanthus leaves on the foot posts and a shaped headboard. A [Federal period](/blog/federal-period-miniature-furniture) bed might have elegantly tapered posts with delicate reeding and inlaid headboard panels. And a [Victorian](/blog/victorian-dollhouse-furniture-guide) bed could include heavy turned posts, applied ornament, and a tall upholstered headboard.
+An early eighteenth-century [Queen Anne](/blog/queen-anne-miniature-furniture-guide/) bed features slender, gracefully turned posts with minimal carving. A [Chippendale](/blog/chippendale-miniature-furniture/) bed introduces fluted or reeded posts, often with carved acanthus leaves on the foot posts and a shaped headboard. A [Federal period](/blog/federal-period-miniature-furniture/) bed might have elegantly tapered posts with delicate reeding and inlaid headboard panels. And a [Victorian](/blog/victorian-dollhouse-furniture-guide/) bed could include heavy turned posts, applied ornament, and a tall upholstered headboard.
 
 Each style dictates different turning profiles, different carving demands, and different proportions. I always start by finding reference images or measured drawings of a specific full-scale bed, then scale those dimensions to 1/12.
 
@@ -53,7 +53,7 @@ The headboard connects the two head posts and provides the visual backdrop for t
 
 For a Chippendale bed, I typically shape the headboard from a single piece of thin stock, about 1/16 to 5/64 inch thick, cut to a scrolled profile with a jeweler's saw. The top edge might feature a serpentine curve or a central pediment shape. If carving is appropriate to the style, I add it with micro gouges.
 
-For a Federal period bed, the headboard might be a framed panel with an arched top and perhaps an inlaid oval or fan motif. Inlay work at this scale is extremely challenging but deeply rewarding. I use thin veneers of contrasting woods, cut to shape and set into shallow recesses carved into the headboard surface. I cover inlay and stringing techniques more thoroughly in my article on [Federal period miniature furniture](/blog/federal-period-miniature-furniture).
+For a Federal period bed, the headboard might be a framed panel with an arched top and perhaps an inlaid oval or fan motif. Inlay work at this scale is extremely challenging but deeply rewarding. I use thin veneers of contrasting woods, cut to shape and set into shallow recesses carved into the headboard surface. I cover inlay and stringing techniques more thoroughly in my article on [Federal period miniature furniture](/blog/federal-period-miniature-furniture/).
 
 A simple headboard for an earlier period bed might be nothing more than a flat board with a gently curved top edge, joined between the posts. This is a good starting point if you are building your first miniature bed.
 
@@ -95,6 +95,6 @@ The bedding itself consists of a mattress, which I make from a block of foam wra
 
 A completed miniature four-poster bed is a piece that draws the eye immediately. The turned posts, the carved details, the carefully chosen textiles, and the overall proportions all work together to create something that feels genuinely grand despite being small enough to hold in your hand.
 
-If you are considering building one, I suggest starting with a simpler style, perhaps a Queen Anne bed with plain turned posts and pad feet, before attempting a fully carved Chippendale example. The fundamental construction is the same, and the experience you gain with joinery, turning, and textile work will serve you well when you take on more elaborate designs.
+If you are considering building one, I suggest starting with a simpler style, perhaps a Queen Anne bed with plain turned posts and pad feet, before attempting a fully carved Chippendale example. The fundamental construction is the same, and the experience you gain with [miniature joinery](/blog/miniature-woodworking-joints/), turning, and textile work will serve you well when you take on more elaborate designs. For overall 1/12 proportions, see the [complete guide to 1/12 scale miniature furniture](/blog/complete-guide-1-12-scale-miniature-furniture/).
 
-You can see examples of beds and other miniature furniture in my [gallery](/gallery). If you have questions or are interested in commissioning a specific bed design, please visit my [contact page](/contact). I am always happy to discuss the craft with fellow enthusiasts and collectors.
+You can see examples of beds and other miniature furniture in my [gallery](/gallery/). If you have questions or are interested in commissioning a specific bed design, please visit my [contact page](/contact/). I am always happy to discuss the craft with fellow enthusiasts and collectors.

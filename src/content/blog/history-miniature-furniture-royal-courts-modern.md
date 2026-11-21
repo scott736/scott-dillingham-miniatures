@@ -46,13 +46,13 @@ The story of miniature furniture in America took a distinctive turn in the mid-t
 
 American makers of the late twentieth century pushed miniature furniture to new heights of technical achievement. Working independently in small workshops, these artisans developed techniques for creating museum-quality reproductions of American period furniture at 1/12 scale. Pieces by established American makers are now highly sought by collectors and held in institutional collections.
 
-The guild movement also fostered education, with workshops, seminars, and publications that disseminated knowledge about techniques, materials, and historical furniture styles. This educational infrastructure helped develop both makers and collectors, creating a community of informed enthusiasts who drove quality ever higher. I discuss the major shows and events this community has produced in my guide to [miniature furniture exhibitions and shows](/blog/miniature-furniture-exhibitions-shows).
+The guild movement also fostered education, with workshops, seminars, and publications that disseminated knowledge about techniques, materials, and historical furniture styles. This educational infrastructure helped develop both makers and collectors, creating a community of informed enthusiasts who drove quality ever higher. I discuss the major shows and events this community has produced in my guide to [miniature furniture exhibitions and shows](/blog/miniature-furniture-exhibitions-shows/).
 
 ## The Modern Artisan Renaissance
 
 Today, miniature furniture making is experiencing what many call a renaissance. A new generation of makers is entering the craft, drawn by the challenge of extreme precision and the satisfaction of creating beautiful objects entirely by hand. At the same time, established makers continue to produce work of extraordinary quality, building on decades of accumulated skill and knowledge.
 
-Several factors are driving this renaissance. Social media platforms have given miniature makers unprecedented visibility, allowing them to share their work with global audiences. YouTube and Instagram have become important channels for both showcasing finished pieces and documenting the making process, inspiring new makers and educating collectors. I explore these dynamics in my post on [the renaissance of handcrafted miniatures in the digital age](/blog/renaissance-handcrafted-miniatures-digital-age).
+Several factors are driving this renaissance. Social media platforms have given miniature makers unprecedented visibility, allowing them to share their work with global audiences. YouTube and Instagram have become important channels for both showcasing finished pieces and documenting the making process, inspiring new makers and educating collectors. I explore these dynamics in my post on [the renaissance of handcrafted miniatures in the digital age](/blog/renaissance-handcrafted-miniatures-digital-age/).
 
 The broader cultural trend toward valuing handcraft and authenticity has also benefited miniature furniture. In a world increasingly dominated by mass production and digital experience, the appeal of a tiny piece of furniture made entirely by hand from solid hardwood is powerful and enduring.
 
@@ -70,4 +70,4 @@ Looking back over four centuries of miniature furniture making, several themes e
 
 As a maker working in this tradition today, I feel a deep connection to the craftsmen who furnished the Nuremberg houses, who built furniture for Queen Mary's Dolls' House, and who established the American guild movement. We share the same commitment to precision, quality, and the belief that beautiful things are worth making well, no matter how small.
 
-You can see my own contribution to this tradition in my [gallery](/gallery), and I welcome your questions and commissions through my [contact page](/contact). The history of miniature furniture is still being written, and every new piece adds to the story.
+You can see my own contribution to this tradition in my [gallery](/gallery/), and I welcome your questions and commissions through my [contact page](/contact/). The history of miniature furniture is still being written, and every new piece adds to the story.

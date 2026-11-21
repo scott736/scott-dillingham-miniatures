@@ -22,7 +22,7 @@ The Chicago show is widely regarded as the premier miniature event in North Amer
 
 What sets the Chicago show apart is the concentration of high-end artisan work. Many of the finest miniature furniture makers in the world exhibit here, and you can examine and purchase museum-quality pieces that are rarely available elsewhere. The show also includes workshops and demonstrations that offer valuable educational opportunities.
 
-For collectors, this show is an essential annual destination. The opportunity to see work from dozens of master makers side by side, to compare construction methods and finishing quality, and to develop relationships with artisans is invaluable. If you are serious about [starting a miniature furniture collection](/blog/how-to-start-miniature-furniture-collection), attending Chicago should be high on your list.
+For collectors, this show is an essential annual destination. The opportunity to see work from dozens of master makers side by side, to compare construction methods and finishing quality, and to develop relationships with artisans is invaluable. If you are serious about [starting a miniature furniture collection](/blog/how-to-start-miniature-furniture-collection/), attending Chicago should be high on your list.
 
 ### NAME National Convention
 
@@ -64,7 +64,7 @@ In addition to commercial shows, several museums maintain permanent or rotating 
 
 ### The Thorne Miniature Rooms
 
-The Art Institute of Chicago houses the Thorne Miniature Rooms, a collection of sixty-eight exquisitely detailed room settings created by Narcissa Niblack Thorne. These rooms span European and American interior design from the late medieval period through the early twentieth century. The miniature furniture in these rooms is of extraordinary quality and provides an invaluable education in period styles and furnishing. I discuss the historical context in my post on [the history of miniature furniture](/blog/history-miniature-furniture-royal-courts-modern).
+The Art Institute of Chicago houses the Thorne Miniature Rooms, a collection of sixty-eight exquisitely detailed room settings created by Narcissa Niblack Thorne. These rooms span European and American interior design from the late medieval period through the early twentieth century. The miniature furniture in these rooms is of extraordinary quality and provides an invaluable education in period styles and furnishing. I discuss the historical context in my post on [the history of miniature furniture](/blog/history-miniature-furniture-royal-courts-modern/).
 
 ### Queen Mary's Dolls' House
 
@@ -84,7 +84,7 @@ Several organizations now host online exhibitions where makers can display their
 
 If you are planning to attend your first miniature show, here are a few practical suggestions from my experience.
 
-Arrive early. The best pieces often sell quickly, especially at shows with limited-edition or one-of-a-kind artisan work. Bring a small magnifying glass or loupe so you can examine joinery and finish details closely. This tool is invaluable for [assessing quality](/blog/museum-quality-miniatures-what-sets-them-apart).
+Arrive early. The best pieces often sell quickly, especially at shows with limited-edition or one-of-a-kind artisan work. Bring a small magnifying glass or loupe so you can examine joinery and finish details closely. This tool is invaluable for [assessing quality](/blog/museum-quality-miniatures-what-sets-them-apart/).
 
 Take your time. Talk with the makers about their work, their materials, and their techniques. Most artisans are passionate about their craft and happy to discuss the details that make their work special. These conversations are where you develop the knowledge that makes you a better collector.
 
@@ -98,4 +98,4 @@ Beyond the buying and selling, miniature shows are fundamentally about community
 
 If you have not yet attended a miniature show, I encourage you to find one near you and go. You will come away with a deeper appreciation for the craft, new connections in the community, and very likely a beautiful piece for your collection.
 
-For questions about the miniature community, my work, or to discuss a commission, please visit my [contact page](/contact). And be sure to browse my [gallery](/gallery) for examples of the kind of work you might find at these wonderful events.
+For questions about the miniature community, my work, or to discuss a commission, please visit my [contact page](/contact/). And be sure to browse my [gallery](/gallery/) for examples of the kind of work you might find at these wonderful events.

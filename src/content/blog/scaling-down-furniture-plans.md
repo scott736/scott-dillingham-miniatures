@@ -10,7 +10,7 @@ coverImage: "/images/blog/scaling-down-plans.webp"
 imageAlt: "Desk lamp lighting architectural drawings, a small chair model, and a blue case"
 ---
 
-Every piece of miniature furniture I build begins with a full-size original. Sometimes it is a specific antique I have studied in a museum. Sometimes it is a design from a woodworking book or a measured drawing in a magazine. The challenge is always the same: how do you take something designed for the real world and translate it faithfully into [1/12 scale](/blog/complete-guide-1-12-scale-miniature-furniture)?
+Every piece of miniature furniture I build begins with a full-size original. Sometimes it is a specific antique I have studied in a museum. Sometimes it is a design from a woodworking book or a measured drawing in a magazine. The challenge is always the same: how do you take something designed for the real world and translate it faithfully into [1/12 scale](/blog/complete-guide-1-12-scale-miniature-furniture/)?
 
 The math is simple. The art is not. If scaling down furniture plans were merely a matter of dividing every dimension by twelve, this post would be two paragraphs long. But the human eye perceives proportion, weight, and detail differently at small scales, and a truly convincing miniature requires deliberate adjustments that go beyond arithmetic.
 
@@ -73,7 +73,7 @@ The solution is to slightly exaggerate the major features and eliminate the smal
 
 ### Joinery Proportions
 
-A dovetail on a full-size drawer might have pins that are 3/8 inch wide and tails that are one inch wide. Scale that down and the pins become less than 1/32 inch wide, which is extremely difficult to cut and structurally fragile. Experienced miniaturists typically widen their pins slightly and reduce the number of dovetails per joint. A drawer that might have five dovetails at full size might have three in miniature, each slightly larger in proportion. The result looks more natural than attempting an impractically exact replication. My post on [miniature joinery](/blog/miniature-woodworking-joints) covers these adjustments in detail.
+A dovetail on a full-size drawer might have pins that are 3/8 inch wide and tails that are one inch wide. Scale that down and the pins become less than 1/32 inch wide, which is extremely difficult to cut and structurally fragile. Experienced miniaturists typically widen their pins slightly and reduce the number of dovetails per joint. A drawer that might have five dovetails at full size might have three in miniature, each slightly larger in proportion. The result looks more natural than attempting an impractically exact replication. My post on [miniature joinery](/blog/miniature-woodworking-joints/) covers these adjustments in detail.
 
 ## Step Four: Drawing the Miniature Plan
 
@@ -89,13 +89,13 @@ If you are comfortable with CAD software, drawing miniature plans digitally offe
 
 ### Including Construction Notes
 
-On every plan I note the [wood species](/blog/how-to-choose-wood-for-miniature-furniture) I intend to use, the grain direction for each component, the joint types, and the assembly sequence. These notes save time when I actually begin building and prevent mistakes that are easier to catch on paper than on the bench.
+On every plan I note the [wood species](/blog/how-to-choose-wood-for-miniature-furniture/) I intend to use, the grain direction for each component, the joint types, and the assembly sequence. These notes save time when I actually begin building and prevent mistakes that are easier to catch on paper than on the bench.
 
 ## Step Five: Making a Prototype
 
 For complex or unfamiliar designs, I strongly recommend building a prototype from inexpensive wood before cutting into your good stock. Basswood or scrap softwood works fine for prototypes because you are testing proportions, fit, and assembly sequence rather than final appearance.
 
-A prototype reveals problems that even careful planning misses. A leg angle that looked correct on paper might not look right in three dimensions. A drawer might be too shallow to function properly. The overall proportions might need tweaking. Discovering these issues with scrap wood is far less painful than discovering them with that precious piece of [boxwood or cherry](/blog/how-to-choose-wood-for-miniature-furniture).
+A prototype reveals problems that even careful planning misses. A leg angle that looked correct on paper might not look right in three dimensions. A drawer might be too shallow to function properly. The overall proportions might need tweaking. Discovering these issues with scrap wood is far less painful than discovering them with that precious piece of [boxwood or cherry](/blog/how-to-choose-wood-for-miniature-furniture/).
 
 ## Step Six: Dealing With Grain Scale
 
@@ -135,6 +135,6 @@ On full-size furniture, the underside of tables and the backs of cabinets are of
 
 Scaling down furniture plans is a skill that improves with every project. Your first conversion will feel uncertain. Your tenth will feel intuitive. The process trains your eye to see furniture differently, to break complex forms into measurable components and reassemble them at a new scale.
 
-If you are just getting started, choose a simple piece with straight lines and minimal ornamentation for your first scaling exercise. A [basic Shaker bench or table](/blog/miniature-woodworking-for-beginners) is ideal. As your confidence grows, tackle increasingly complex designs. Before long, you will walk through an antique shop and automatically calculate the 1/12 scale dimensions of every piece that catches your eye.
+If you are just getting started, choose a simple piece with straight lines and minimal ornamentation for your first scaling exercise. A [basic Shaker bench or table](/blog/miniature-woodworking-for-beginners/) is ideal. As your confidence grows, tackle increasingly complex designs. Before long, you will walk through an antique shop and automatically calculate the 1/12 scale dimensions of every piece that catches your eye.
 
-For more on the tools and techniques you will need to bring your scaled plans to life, explore my guides on [essential tools](/blog/essential-miniature-woodworking-tools) and [finishing techniques](/blog/finishing-techniques-miniature-furniture). And visit my [gallery](/gallery) to see how scaled-down plans become finished miniature furniture.
+For more on the tools and techniques you will need to bring your scaled plans to life, explore my guides on [essential tools](/blog/essential-miniature-woodworking-tools/) and [finishing techniques](/blog/finishing-techniques-miniature-furniture/). And visit my [gallery](/gallery/) to see how scaled-down plans become finished miniature furniture.

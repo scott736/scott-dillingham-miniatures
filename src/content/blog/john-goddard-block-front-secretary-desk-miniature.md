@@ -80,13 +80,13 @@ The central prospect door is a focal point of the interior. On the finest Goddar
 
 Building the interior drawers is repetitive but requires patience. Each drawer is constructed from strips of wood less than 1/32 inch thick. I cut the parts on a small table saw or with a razor saw and assemble them with glue. The pulls on these tiny drawers are made from the finest brass wire, bent into a loop and inserted through a drilled hole. At this scale, each pull is only about 1/32 to 5/64 inch wide.
 
-I discuss more general miniature drawer techniques in my [complete guide to 1/12 scale furniture](/blog/complete-guide-1-12-scale-miniature-furniture) and in the [highboy guide](/blog/miniature-highboy-makers-guide).
+I discuss more general miniature drawer techniques in my [complete guide to 1/12 scale furniture](/blog/complete-guide-1-12-scale-miniature-furniture/) and in the [highboy guide](/blog/miniature-highboy-makers-guide/).
 
 ## The Upper Case and Bonnet Top
 
 The bookcase upper section of the secretary desk features shelves behind doors, either glazed with tiny panes or solid panels. The doors are built as miniature frames with mortise-and-tenon joints at the corners. For glazed doors, I set thin pieces of clear acrylic into the frame openings to simulate glass.
 
-The bonnet top follows the same construction approach as on a [highboy](/blog/miniature-highboy-makers-guide) or [tall case clock](/blog/miniature-tall-case-clocks). Scrolled pediment boards, carved rosettes, and turned flame finials create the characteristic silhouette. This is the third or fourth time these skills appear in a single project, which illustrates how the block-front secretary desk draws on virtually every technique in the miniaturist's toolkit.
+The bonnet top follows the same construction approach as on a [highboy](/blog/miniature-highboy-makers-guide/) or [tall case clock](/blog/miniature-tall-case-clocks/). Scrolled pediment boards, carved rosettes, and turned flame finials create the characteristic silhouette. This is the third or fourth time these skills appear in a single project, which illustrates how the block-front secretary desk draws on virtually every technique in the miniaturist's toolkit.
 
 ## Finishing and Hardware
 
@@ -98,4 +98,4 @@ Brass hardware, including bail pulls for the large drawers and tiny knobs for th
 
 The Goddard block-front secretary desk in miniature is not a project you complete quickly. It represents weeks of focused effort and draws on skills developed over years. But the result is a piece that embodies the highest achievement in American furniture, translated faithfully into 1/12 scale.
 
-If you would like to see this and other complex miniature pieces, please visit my [gallery](/gallery). For commissions or questions about any of the techniques described here, I welcome your inquiries through my [contact page](/contact).
+If you would like to see this and other complex miniature pieces, please visit my [gallery](/gallery/). For commissions or questions about any of the techniques described here, I welcome your inquiries through my [contact page](/contact/).

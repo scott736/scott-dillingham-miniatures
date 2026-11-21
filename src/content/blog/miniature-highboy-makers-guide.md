@@ -20,7 +20,7 @@ The highboy, more formally known as a high chest of drawers, originated in the l
 
 Philadelphia highboys are perhaps the most celebrated. They feature richly carved shells on the upper and lower cases, ball-and-claw feet, and elaborate broken pediment tops with carved rosettes and flame finials. Connecticut examples are known for their cherry construction and distinctive carved sunburst motifs. New England highboys tend toward more slender proportions with pad feet and simpler crests.
 
-Understanding these regional variations is important for the miniaturist because they affect every design decision. A Philadelphia [Chippendale](/blog/chippendale-miniature-furniture) highboy demands extensive carving. A [Queen Anne](/blog/queen-anne-miniature-furniture-guide) New England example requires elegant simplicity. The style you choose determines the skills you will need.
+Understanding these regional variations is important for the miniaturist because they affect every design decision. A Philadelphia [Chippendale](/blog/chippendale-miniature-furniture/) highboy demands extensive carving. A [Queen Anne](/blog/queen-anne-miniature-furniture-guide/) New England example requires elegant simplicity. The style you choose determines the skills you will need.
 
 ## Anatomy of a Highboy
 
@@ -48,7 +48,7 @@ The upper case simply sits on top of the lower case, located by small pins or bl
 
 ### Starting with the Legs
 
-I always begin a highboy with the legs because they set the character of the entire piece. For a Queen Anne highboy, I shape cabriole legs with pad feet as described in my [Queen Anne guide](/blog/queen-anne-miniature-furniture-guide). For a Chippendale piece, the legs receive [ball-and-claw feet](/blog/chippendale-miniature-furniture) and carved knees.
+I always begin a highboy with the legs because they set the character of the entire piece. For a Queen Anne highboy, I shape cabriole legs with pad feet as described in my [Queen Anne guide](/blog/queen-anne-miniature-furniture-guide/). For a Chippendale piece, the legs receive [ball-and-claw feet](/blog/chippendale-miniature-furniture/) and carved knees.
 
 I make the legs from a single species of tight-grained hardwood, most often boxwood, pear, or cherry. Each leg starts as a squared blank roughly 1/4 by 1/4 by 1-9/16 inches. I mark the cabriole profile on two adjacent faces, cut the waste with a jeweler's saw, and then carefully shape the curves with files and sandpaper. It is essential to make all four legs at the same time, constantly comparing them to ensure they match in profile, proportion, and stance.
 
@@ -68,7 +68,7 @@ At 1/12 scale, I build drawer boxes from stock approximately 1/32 inch thick. Th
 
 For the most authentic work, I cut miniature dovetails at the front corners and through-dovetails at the back. This is exacting work that I do with a fine saw and sharp chisel under magnification. Each drawer must slide smoothly in its opening, which requires careful fitting. I plane and sand the sides until the drawer moves freely without excessive play.
 
-I discuss my general approach to miniature drawers more thoroughly in my [complete guide to 1/12 scale furniture](/blog/complete-guide-1-12-scale-miniature-furniture).
+I discuss my general approach to miniature drawers more thoroughly in my [complete guide to 1/12 scale furniture](/blog/complete-guide-1-12-scale-miniature-furniture/).
 
 ### Upper Case Construction
 
@@ -100,4 +100,4 @@ Another common issue is the leg-to-case transition. The legs need to flow natura
 
 Building a miniature highboy is a significant undertaking. Plan on many hours of focused work spread over weeks. But the result, a piece that captures the grandeur and craftsmanship of one of the finest furniture forms ever designed, is deeply satisfying. It is the kind of piece that anchors a collection and demonstrates genuine mastery of the craft.
 
-If you would like to see highboys and other case pieces I have built, visit my [gallery](/gallery). For questions about techniques or commissions, please reach out through my [contact page](/contact).
+If you would like to see highboys and other case pieces I have built, visit my [gallery](/gallery/). For questions about techniques or commissions, please reach out through my [contact page](/contact/).

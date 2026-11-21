@@ -1,5 +1,5 @@
 ---
-title: "Miniature Woodworking Joints: Dovetails & Mortise and Tenon"
+title: "Miniature Dovetail & Mortise Joints at 1/12"
 description: "Master miniature dovetail joints and mortise and tenon joinery at 1/12 scale. Techniques, tools, and practice exercises for small scale woodworking."
 pubDate: "2025-05-08"
 image: "/images/blog/miniature-woodworking-joints.webp"
@@ -12,7 +12,7 @@ imageAlt: "Close-up of light hardwood pieces cut for a finger or box joint befor
 
 There is a moment in every miniature woodworking journey when you look at a butt-jointed piece and think: I want real joinery. Not glued surfaces meeting at right angles, but actual mechanical connections, the kind that would hold even without adhesive. That ambition is what separates miniature furniture from miniature models, and it is one of the most rewarding skills you can develop at the bench.
 
-Cutting dovetails and mortise and tenon joints at [1/12 scale](/blog/complete-guide-1-12-scale-miniature-furniture) is demanding work. The tolerances are extreme, the parts are tiny, and the margin for error is measured in fractions of an inch. But with the right tools, the right technique, and a willingness to practice, it is absolutely achievable. I cut miniature joints on nearly every piece that leaves my workshop, and in this post I will share the methods that work for me.
+Cutting dovetails and mortise and tenon joints at [1/12 scale](/blog/complete-guide-1-12-scale-miniature-furniture/) is demanding work. The tolerances are extreme, the parts are tiny, and the margin for error is measured in fractions of an inch. But with the right tools, the right technique, and a willingness to practice, it is absolutely achievable. I cut miniature joints on nearly every piece that leaves my workshop, and in this post I will share the methods that work for me.
 
 ## Why Bother With Real Joinery at Miniature Scale?
 
@@ -40,13 +40,13 @@ A dovetail joint consists of trapezoidal pins on one board that interlock with c
 
 ### Proportional Adjustments
 
-As I discuss in my post on [scaling down furniture plans](/blog/scaling-down-furniture-plans), you cannot simply divide full-size dovetail dimensions by twelve and expect good results. A full-size drawer with seven dovetails might have pins that are 3/16 inch wide at 1/12 scale, which is cutting on the edge of what is mechanically feasible. I generally reduce the number of dovetails and slightly increase the pin width to maintain structural integrity and visual clarity.
+As I discuss in my post on [scaling down furniture plans](/blog/scaling-down-furniture-plans/), you cannot simply divide full-size dovetail dimensions by twelve and expect good results. A full-size drawer with seven dovetails might have pins that are 3/16 inch wide at 1/12 scale, which is cutting on the edge of what is mechanically feasible. I generally reduce the number of dovetails and slightly increase the pin width to maintain structural integrity and visual clarity.
 
 A miniature drawer might have three dovetails where the full-size version had six. Each dovetail is proportionally a bit larger than mathematical scaling would dictate, but the overall impression reads as a properly dovetailed drawer.
 
 ### Tools for Miniature Dovetails
 
-You will need specific [tools](/blog/essential-miniature-woodworking-tools) for this work.
+You will need specific [tools](/blog/essential-miniature-woodworking-tools/) for this work.
 
 - **Micro chisel set**: Flat chisels from 1/32 to 5/32 inch wide for chopping and paring
 - **Fine-tooth razor saw**: For the initial cuts along the pin and tail lines
@@ -83,7 +83,7 @@ Assemble the joint without glue and inspect. The joint should close fully with l
 
 ### Practice Exercise
 
-Before attempting dovetails on a real project, cut a series of practice joints in scrap [cherry or maple](/blog/how-to-choose-wood-for-miniature-furniture). Start with two dovetails on pieces about 1/2 inch wide and 1/8 inch thick. Cut ten practice joints before evaluating your work. You will see dramatic improvement between your first and tenth attempt.
+Before attempting dovetails on a real project, cut a series of practice joints in scrap [cherry or maple](/blog/how-to-choose-wood-for-miniature-furniture/). Start with two dovetails on pieces about 1/2 inch wide and 1/8 inch thick. Cut ten practice joints before evaluating your work. You will see dramatic improvement between your first and tenth attempt.
 
 ## Mortise and Tenon Joints
 
@@ -143,8 +143,8 @@ A bridle joint is essentially an open mortise and tenon, where the mortise is op
 
 Miniature joinery is a skill that improves dramatically with dedicated practice. I recommend setting aside time specifically for joint cutting, separate from project work. Cut joints in scrap wood with no pressure to produce a finished piece. Focus on process, examine your results under magnification, and identify where you can improve.
 
-If you are new to miniature woodworking, work through the fundamentals in my [beginner's guide](/blog/miniature-woodworking-for-beginners) before tackling joinery. A solid foundation in basic cutting, measuring, and tool handling will make the transition to joint work much smoother.
+If you are new to miniature woodworking, work through the fundamentals in my [beginner's guide](/blog/miniature-woodworking-for-beginners/) before tackling joinery. A solid foundation in basic cutting, measuring, and tool handling will make the transition to joint work much smoother.
 
-For the tools you will need, consult my [essential tools guide](/blog/essential-miniature-woodworking-tools). And when your joints are cut and assembled, proper [finishing techniques](/blog/finishing-techniques-miniature-furniture) will showcase the craftsmanship you have invested.
+For the tools you will need, consult my [essential tools guide](/blog/essential-miniature-woodworking-tools/). And when your joints are cut and assembled, proper [finishing techniques](/blog/finishing-techniques-miniature-furniture/) will showcase the craftsmanship you have invested.
 
-Visit my [gallery](/gallery) to see how these joints come together in finished pieces, and reach out through my [contact page](/contact) if you have questions about specific joint techniques.
+Visit my [gallery](/gallery/) to see how these joints come together in finished pieces, and reach out through my [contact page](/contact/) if you have questions about specific joint techniques.

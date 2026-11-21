@@ -13,7 +13,7 @@ imageAlt: "Wall of hardwood sample blocks in many grain colors and sizes"
 
 Choosing the right wood for miniature furniture is one of the most important decisions you will make on every project. A species that looks magnificent on a full-size dining table can look completely wrong at 1/12 scale. The grain pattern, pore structure, and color all need to work in miniature, and not all woods pass that test.
 
-Over the years I have worked with dozens of species, and I have developed strong opinions about which ones belong in the miniature workshop and which ones should stay in the full-size shop. This guide shares everything I have learned about wood selection for [1/12 scale miniature furniture](/blog/complete-guide-1-12-scale-miniature-furniture).
+Over the years I have worked with dozens of species, and I have developed strong opinions about which ones belong in the miniature workshop and which ones should stay in the full-size shop. This guide shares everything I have learned about wood selection for [1/12 scale miniature furniture](/blog/complete-guide-1-12-scale-miniature-furniture/). Grain that looks right at 1:12 can read too coarse at [1:24 or 1:48](/blog/understanding-dollhouse-scales/), so confirm your scale before you buy stock.
 
 ## Why Wood Choice Matters More at Miniature Scale
 
@@ -109,7 +109,7 @@ Old furniture, broken musical instruments, and architectural salvage can yield w
 
 ### Your Own Offcuts
 
-If you do any full-size woodworking, save your offcuts. That scrap piece of cherry from a cutting board project might become a miniature dining table. Keep a box in your [workshop](/blog/setting-up-miniature-woodworking-workshop) specifically for pieces that are too small for conventional work but ideal for miniatures.
+If you do any full-size woodworking, save your offcuts. That scrap piece of cherry from a cutting board project might become a miniature dining table. Keep a box in your [workshop](/blog/setting-up-miniature-woodworking-workshop/) specifically for pieces that are too small for conventional work but ideal for miniatures.
 
 ## Preparing Wood for Miniature Use
 
@@ -138,12 +138,12 @@ Part of creating convincing miniature furniture is using wood species that are h
 - **Arts and Crafts**: Quarter-sawn oak (difficult at miniature scale; cherry stained dark is a common substitute)
 - **Mid-Century Modern**: Walnut, teak (select tight-grained pieces)
 
-Understanding these associations helps you choose wood that supports the historical story your miniature is telling. You can see examples of period-appropriate wood choices throughout my [gallery](/gallery).
+Understanding these associations helps you choose wood that supports the historical story your miniature is telling. You can see examples of period-appropriate wood choices throughout my [gallery](/gallery/).
 
 ## Final Thoughts on Wood Selection
 
 The right wood transforms a miniature from something that looks like a model into something that looks like a shrunken piece of real furniture. Take the time to source quality material, learn how each species behaves at miniature scale, and build a collection of go-to woods that you know and trust.
 
-If you are just starting out, begin with cherry. It is forgiving, beautiful, widely available, and scales well. As your skills and ambitions grow, explore pear, boxwood, and the other specialty woods that give master miniaturists their competitive edge. For guidance on shaping and cutting these woods, see my guides on [essential tools](/blog/essential-miniature-woodworking-tools) and [miniature joinery](/blog/miniature-woodworking-joints).
+If you are just starting out, begin with cherry. It is forgiving, beautiful, widely available, and scales well. As your skills and ambitions grow, explore pear, boxwood, and the other specialty woods that give master miniaturists their competitive edge. For guidance on shaping and cutting these woods, see my guides on [essential tools](/blog/essential-miniature-woodworking-tools/) and [miniature joinery](/blog/miniature-woodworking-joints/).
 
 Every great piece of miniature furniture starts with a great piece of wood. Choose wisely.

@@ -30,7 +30,7 @@ Period consistency is the foundation of a convincing miniature room. Mixing furn
 
 If you choose a Queen Anne period room (roughly 1702-1760), your furniture should feature cabriole legs, pad feet, graceful curves, and restrained ornament. Woods should be walnut, cherry, or maple. A Chippendale room (1750-1790) allows for bolder carving, ball-and-claw feet, and more elaborate forms in mahogany. Federal period rooms (1780-1820) call for lighter, more geometric furniture with inlay and delicate proportions.
 
-Understanding these period distinctions helps you select pieces that belong together. If you are building your knowledge of furniture periods, my posts on the [history of miniature furniture](/blog/history-miniature-furniture-royal-courts-modern) and [museum-quality standards](/blog/museum-quality-miniatures-what-sets-them-apart) provide useful background.
+Understanding these period distinctions helps you select pieces that belong together. If you are building your knowledge of furniture periods, my posts on the [history of miniature furniture](/blog/history-miniature-furniture-royal-courts-modern/) and [museum-quality standards](/blog/museum-quality-miniatures-what-sets-them-apart/) provide useful background.
 
 ### Mixing Periods Intentionally
 
@@ -42,7 +42,7 @@ Nothing breaks the illusion of a miniature room faster than inconsistent scale. 
 
 When purchasing from different makers, verify that each piece conforms to true 1/12 scale. Measure key dimensions: seat height for chairs (approximately 1.5 inches in 1/12), table height (approximately 2.5 inches), and door height (approximately 6.75 inches). Pieces that are even slightly over- or under-scale will look wrong in context, no matter how well they are individually made.
 
-This is one of the advantages of working with a single maker for major pieces in a room setting. Consistency of scale and proportion is easier to achieve when one set of hands and eyes is responsible for the work. I welcome commissions for complete room furnishings, and you can discuss your project through my [contact page](/contact).
+This is one of the advantages of working with a single maker for major pieces in a room setting. Consistency of scale and proportion is easier to achieve when one set of hands and eyes is responsible for the work. I welcome commissions for complete room furnishings, and you can discuss your project through my [contact page](/contact/).
 
 ## Creating Realistic Room Arrangements
 
@@ -74,7 +74,7 @@ Miniature rugs, curtains, bed linens, and upholstery fabrics should be appropria
 
 ### Lighting
 
-Miniature lighting has become remarkably sophisticated. LED-based miniature chandeliers, sconces, and table lamps are available in numerous period styles. Proper lighting adds warmth and drama to a room setting, and it highlights the beauty of your furniture. I discuss lighting considerations in more detail in my post on [displaying and protecting your collection](/blog/displaying-protecting-miniature-furniture-collection).
+Miniature lighting has become remarkably sophisticated. LED-based miniature chandeliers, sconces, and table lamps are available in numerous period styles. Proper lighting adds warmth and drama to a room setting, and it highlights the beauty of your furniture. I discuss lighting considerations in more detail in my post on [displaying and protecting your collection](/blog/displaying-protecting-miniature-furniture-collection/).
 
 ### Wallpaper and Flooring
 
@@ -92,7 +92,7 @@ Most collectors assemble their room furnishings from multiple makers, and this a
 
 The finish quality of pieces should be compatible. Mixing a highly polished French-polished piece with a matte-finished piece can look odd unless the contrast is deliberate and historically justified. Similarly, wood tones should harmonize within the room, though they need not all match exactly. Real rooms contain furniture in a range of wood tones, and that variety adds visual interest.
 
-When in doubt, start with the largest piece, the one that will anchor the room, and build around it. Match subsequent pieces to its scale, finish quality, and period character. View my [gallery](/gallery) for examples of pieces designed to work together in room settings.
+When in doubt, start with the largest piece, the one that will anchor the room, and build around it. Match subsequent pieces to its scale, finish quality, and period character. View my [gallery](/gallery/) for examples of pieces designed to work together in room settings.
 
 ## Photographing Your Rooms
 
@@ -102,4 +102,4 @@ Once your room is complete, photographs preserve your work and allow you to shar
 
 Decorating a dollhouse with handcrafted furniture is a journey, not a destination. Most collectors refine their rooms over years, adding pieces, adjusting arrangements, and upgrading accessories as their eye develops and their collection grows. Enjoy the process, and let each room evolve naturally.
 
-If you would like to discuss furniture for a specific room setting or commission pieces designed to work together, I would love to hear about your project. Visit my [contact page](/contact) to start the conversation, and explore the [gallery](/gallery) for inspiration.
+If you would like to discuss furniture for a specific room setting or commission pieces designed to work together, I would love to hear about your project. Visit my [contact page](/contact/) to start the conversation, and explore the [gallery](/gallery/) for inspiration.

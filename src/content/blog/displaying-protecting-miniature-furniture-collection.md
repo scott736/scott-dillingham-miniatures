@@ -1,5 +1,5 @@
 ---
-title: "Display & Protect Miniature Furniture"
+title: "How to Display and Protect Miniature Furniture"
 description: "How to display and protect miniature furniture: UV glass, humidity control, lighting, cases, and insurance so a 1/12 collection stays museum-ready."
 pubDate: "2026-01-20"
 updatedDate: "2026-11-03"
@@ -15,7 +15,7 @@ How do you **display and protect miniature furniture** without fading the finish
 
 ## Understanding the Threats
 
-Before discussing solutions, let us understand what threatens fine miniature furniture. Every piece I build in my [workshop](/workshop) is constructed to last for generations, but even the finest work is vulnerable to environmental damage if not properly displayed and stored.
+Before discussing solutions, let us understand what threatens fine miniature furniture. Every piece I build in my [workshop](/workshop/) is constructed to last for generations, but even the finest work is vulnerable to environmental damage if not properly displayed and stored.
 
 ### Ultraviolet Light
 
@@ -59,7 +59,7 @@ Shadow boxes are excellent for displaying individual pieces or small vignettes. 
 
 ### Room Box Displays
 
-Many collectors display their miniatures in decorated room boxes, essentially miniature rooms that showcase furniture in a realistic setting. Room boxes add context and visual interest, transforming a collection of individual pieces into an immersive scene. I explore room box design in my article on [dollhouse decorating with handcrafted furniture](/blog/dollhouse-decorating-handcrafted-furniture).
+Many collectors display their miniatures in decorated room boxes, essentially miniature rooms that showcase furniture in a realistic setting. Room boxes add context and visual interest, transforming a collection of individual pieces into an immersive scene. I explore room box design in my article on [dollhouse decorating with handcrafted furniture](/blog/dollhouse-decorating-handcrafted-furniture/).
 
 ## Lighting Your Collection
 
@@ -109,7 +109,7 @@ Never use commercial furniture polish, spray cleaners, or water on fine miniatur
 
 ## Insurance and Documentation
 
-Protect your investment with proper insurance and thorough documentation. I cover the insurance aspects in my post on [the investment value of artisan miniature furniture](/blog/investment-value-artisan-miniature-furniture), but the documentation side deserves emphasis here.
+Protect your investment with proper insurance and thorough documentation. I cover the insurance aspects in my post on [the investment value of artisan miniature furniture](/blog/investment-value-artisan-miniature-furniture/), but the documentation side deserves emphasis here.
 
 Photograph every piece in your collection from multiple angles under good lighting. Record the maker, date of acquisition, price paid, dimensions, materials, and any provenance information. Store this documentation in a secure location separate from the collection itself. Update it whenever you acquire new pieces or have the collection appraised.
 
@@ -117,4 +117,4 @@ Photograph every piece in your collection from multiple angles under good lighti
 
 The goal of all this care and attention is simple: to ensure that the beautiful pieces in your collection remain as stunning decades from now as they are today. Fine miniature furniture is built to last, and with proper display and protection, it will.
 
-If you have questions about caring for your miniatures or want to add museum-quality pieces to your collection, I invite you to visit my [gallery](/gallery) or get in touch through my [contact page](/contact). Your collection deserves the best, both in the pieces themselves and in how they are cared for.
+If you have questions about caring for your miniatures or want to add museum-quality pieces to your collection, I invite you to visit my [gallery](/gallery/) or get in touch through my [contact page](/contact/). Your collection deserves the best, both in the pieces themselves and in how they are cared for.

@@ -1,8 +1,8 @@
 ---
-title: "Best Dollhouse Scale: 1:12 vs 1:24 Chart"
-description: "Compare 1:12 vs 1:24 vs 1:48 dollhouse building scales with an inches-to-mm conversion chart, room dimensions, door & chair sizes, and joinery limits."
+title: "1:12 vs 1:24: Best Scale for Dollhouse Building (+Chart)"
+description: "1:12 is usually best for dollhouse building (joinery & accessories); choose 1:24 when space is tight. Inches/mm chart for doors, rooms, chairs, and ceilings."
 pubDate: "2025-02-20"
-updatedDate: "2026-11-18"
+updatedDate: "2026-11-21"
 image: "/images/blog/understanding-dollhouse-scales.webp"
 authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
@@ -155,6 +155,14 @@ At a show or online listing, check a known reference. A 1:12 standard door shoul
 A 1:24 chair beside a 1:12 table looks wrong immediately. Before you buy, measure the piece. Do not rely only on the seller's label — mislabeled items show up more often than they should.
 
 ## Which scale is right for you?
+
+Use this checklist with the chart above — every point comes from the comparisons already on this page:
+
+- **Space:** Need a full multi-room house on a shelf or tabletop → lean **1:24**. Building a room box or showcase piece → **1:12**.
+- **Joinery:** Want real dovetails, mortise and tenon, and working drawers → **1:12**. At **1:24**, most joints rely on precise gluing.
+- **Accessories:** Widest commercial hardware, shows, and maker community → **1:12**. **1:24** selection is smaller; **1:48** is limited.
+- **Detail vs scene:** Furniture craftsmanship first → **1:12**. Architectural diorama or street scene → **1:48** (or compact **1:24**).
+- **Mixing:** Do not mix 1:12 and 1:24 furniture in one house — proportions clash immediately.
 
 ### Choose 1:12 if you value craftsmanship
 

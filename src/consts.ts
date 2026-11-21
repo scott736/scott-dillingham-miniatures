@@ -314,7 +314,7 @@ export const FAQ_DATA = [
   {
     question: 'What scale are your miniature furniture pieces?',
     answer:
-      'All pieces are built in <a href="/blog/complete-guide-1-12-scale-miniature-furniture/">1:12 scale</a> (also known as one-inch scale), which is the most popular scale for dollhouse collectors. This means one inch in the miniature equals one foot in real life. A six-foot tall highboy becomes a six-inch masterpiece. For a deeper dive, see our <a href="/blog/understanding-dollhouse-scales/">understanding dollhouse scales guide</a>.',
+      'All pieces are built in <a href="/blog/complete-guide-1-12-scale-miniature-furniture/">1:12 scale</a> (also known as one-inch scale), which is the most popular scale for dollhouse collectors. This means one inch in the miniature equals one foot in real life. A six-foot tall highboy becomes a six-inch masterpiece. For how to choose between scales, see the <a href="/blog/understanding-dollhouse-scales/">best scale for dollhouse building guide (1:12 vs 1:24)</a>.',
   },
   {
     question: 'Are these made from kits?',
