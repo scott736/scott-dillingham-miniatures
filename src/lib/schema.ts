@@ -406,7 +406,7 @@ export function aboutProfilePageNode() {
     '@type': 'ProfilePage',
     '@id': `${SITE_URL}/about/#profile`,
     url: `${SITE_URL}/about/`,
-    name: 'About Scott Dillingham',
+    name: 'About Scott Dillingham, Miniature Furniture Maker',
     inLanguage: 'en',
     isPartOf: { '@id': WEBSITE_ID },
     publisher: organizationRef(),

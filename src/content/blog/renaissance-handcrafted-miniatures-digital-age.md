@@ -62,13 +62,13 @@ Perhaps the most exciting aspect of the current renaissance is the emergence of 
 
 The new generation brings fresh energy and perspective to a craft with deep roots. Many come from backgrounds in fine art, industrial design, or professional woodworking and bring transferable skills that accelerate their development. Some are pushing the boundaries of the craft with contemporary designs that complement the traditional period reproductions that have long been the craft's foundation.
 
-What unites the new generation with established makers is a commitment to quality, to real joinery, to solid hardwood, and to the painstaking hand processes that define museum-quality work. The standards that took decades to establish, which I discuss in my post on [museum-quality miniatures](/blog/museum-quality-miniatures-what-sets-them-apart), are being embraced and upheld by makers who are just beginning their careers.
+What unites the new generation with established makers is a commitment to quality, to real joinery, to solid hardwood, and to the painstaking hand processes that define museum-quality work. The standards that took decades to establish, which I discuss in my post on [museum-quality miniatures](/blog/museum-quality-miniatures-what-sets-them-apart/), are being embraced and upheld by makers who are just beginning their careers.
 
 ## The Contrast with Mass Production
 
 The digital age has also sharpened the contrast between handcrafted and mass-produced miniatures. Today's collectors have more choices than ever, ranging from inexpensive mass-produced miniatures manufactured in large factories to 3D-printed pieces to one-of-a-kind handcrafted work. This range of options has actually benefited handcraft by making the differences more visible and more valued.
 
-When you can buy a machine-made miniature chair for a few dollars, the decision to invest significantly more in a handcrafted piece becomes a deliberate statement of values. You are choosing skill over speed, wood over resin, tradition over automation. That choice resonates with a growing number of people who are seeking meaning and authenticity in the objects they surround themselves with. I explore these material differences in detail in my comparison of [handcrafted vs kit-built miniatures](/blog/handcrafted-vs-kit-built-miniatures).
+When you can buy a machine-made miniature chair for a few dollars, the decision to invest significantly more in a handcrafted piece becomes a deliberate statement of values. You are choosing skill over speed, wood over resin, tradition over automation. That choice resonates with a growing number of people who are seeking meaning and authenticity in the objects they surround themselves with. I explore these material differences in detail in my comparison of [handcrafted vs kit-built miniatures](/blog/handcrafted-vs-kit-built-miniatures/).
 
 ## Technology as a Complement to Handcraft
 
@@ -86,14 +86,14 @@ The convergence of growing interest, new makers, digital discovery, and cultural
 
 Collector demographics are broadening. Younger collectors are entering the market, drawn by social media exposure and a values-based affinity for handcraft. These collectors bring new energy and new perspectives that are healthy for the community.
 
-Institutional interest is growing. Museums and galleries are increasingly recognizing miniature furniture as fine art, a development I explore in my post on [miniature furniture as fine art](/blog/miniature-furniture-fine-art). This institutional validation raises the profile of the craft and supports long-term value for collectors.
+Institutional interest is growing. Museums and galleries are increasingly recognizing miniature furniture as fine art, a development I explore in my post on [miniature furniture as fine art](/blog/miniature-furniture-fine-art/). This institutional validation raises the profile of the craft and supports long-term value for collectors.
 
-The supply of museum-quality work remains limited by the nature of the craft itself. Each piece takes dozens to hundreds of hours, and the number of makers capable of working at the highest level will always be small. This fundamental scarcity, combined with growing demand, suggests that fine miniature furniture will continue to appreciate as both art and investment. I discuss the investment perspective in my post on [the investment value of artisan miniature furniture](/blog/investment-value-artisan-miniature-furniture).
+The supply of museum-quality work remains limited by the nature of the craft itself. Each piece takes dozens to hundreds of hours, and the number of makers capable of working at the highest level will always be small. This fundamental scarcity, combined with growing demand, suggests that fine miniature furniture will continue to appreciate as both art and investment. I discuss the investment perspective in my post on [the investment value of artisan miniature furniture](/blog/investment-value-artisan-miniature-furniture/).
 
 ## An Invitation
 
 If the digital age has brought you to this point, if you have discovered miniature furniture through a social media post, a YouTube video, or a friend's shared link, I am glad you are here. This craft has a deep history, a vibrant present, and an exciting future, and there is room for everyone: makers, collectors, admirers, and beginners.
 
-Explore my [gallery](/gallery) to see what museum-quality miniature furniture looks like. Visit my [workshop page](/workshop) to understand the process behind each piece. Read about [how to start collecting](/blog/how-to-start-miniature-furniture-collection) if you are ready to begin. And if you have questions or want to discuss a commission, reach out through my [contact page](/contact).
+Explore my [gallery](/gallery/) to see what museum-quality miniature furniture looks like. Visit my [workshop page](/workshop/) to understand the process behind each piece. Read about [how to start collecting](/blog/how-to-start-miniature-furniture-collection/) if you are ready to begin. And if you have questions or want to discuss a commission, reach out through my [contact page](/contact/).
 
 The renaissance of handcrafted miniatures is not a trend. It is a movement, driven by a timeless human appreciation for skill, beauty, and the irreplaceable warmth of something made entirely by hand.

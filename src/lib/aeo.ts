@@ -75,16 +75,16 @@ const CORE_PAGES = [
       'The eight-step handcraft process: wood selection, milling, joinery, carving, assembly, finishing, and delivery. No kits. No CNC. No laser cuts.',
   },
   {
-    title: 'About Scott Dillingham',
+    title: 'About Scott Dillingham, Miniature Furniture Maker',
     path: '/about/',
     description:
-      'Meet the maker: museum-exhibited master miniature furniture craftsman building 1/12 scale period reproductions by hand.',
+      'Scott Dillingham builds museum-exhibited 1/12 scale hardwood miniature furniture by hand. KSB Miniatures Collection maker — commissions open.',
   },
   {
-    title: 'Blog — Miniature Furniture Guides',
+    title: 'Blog — Miniature Furniture Guides & Woodworking Journal',
     path: '/blog/',
     description:
-      'Guides on 1/12 scale, period styles, joinery, wood selection, collecting, and workshop setup.',
+      'Guides on 1/12 scale miniature furniture, dollhouse scales, period styles, joinery, tools, and workshop setup.',
   },
   {
     title: 'Commissions — Custom 1/12 Scale Furniture',

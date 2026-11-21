@@ -22,7 +22,7 @@ Kits range widely in complexity. Simple kits aimed at beginners can be assembled
 
 Handcrafted, or scratch-built, miniature furniture starts with raw lumber. There are no pre-cut parts, no instructions, and no template to follow. The maker begins with a design, whether an original creation or a reproduction of a historical piece, and builds it entirely from solid hardwood using traditional woodworking techniques adapted to 1/12 scale.
 
-Every component is individually shaped, fitted, and finished by hand. The process mirrors full-size furniture making in every respect except size. You can see this process in action by visiting my [workshop page](/workshop).
+Every component is individually shaped, fitted, and finished by hand. The process mirrors full-size furniture making in every respect except size. You can see this process in action by visiting my [workshop page](/workshop/).
 
 ## Materials: The Foundation of Quality
 
@@ -34,7 +34,7 @@ Most kits use MDF, laser-cut plywood, or basswood. These materials are chosen fo
 
 Scratch-built miniature furniture uses the same hardwoods as full-size fine furniture: mahogany, cherry, walnut, maple, and oak. These woods offer rich color, beautiful grain patterns, and the structural strength needed for real joinery. The wood is selected for grain tightness appropriate to 1/12 scale, which means what appears at the surface must look convincing as a miniature representation of full-size lumber.
 
-The difference in materials is immediately visible and tactile. Solid hardwood has warmth, depth, and character that MDF and plywood simply cannot replicate. When you pick up a handcrafted piece, you feel the density and substance of real wood. For guidance on wood selection, see my article on [choosing wood for miniature furniture](/blog/how-to-choose-wood-for-miniature-furniture).
+The difference in materials is immediately visible and tactile. Solid hardwood has warmth, depth, and character that MDF and plywood simply cannot replicate. When you pick up a handcrafted piece, you feel the density and substance of real wood. For guidance on wood selection, see my article on [choosing wood for miniature furniture](/blog/how-to-choose-wood-for-miniature-furniture/).
 
 ## Joinery: Structure vs Assembly
 
@@ -62,7 +62,7 @@ Kit pieces are typically finished with hobby paints, spray lacquer, or craft sto
 
 Fine miniature furniture is finished using professional woodworking techniques. This might mean French polish, hand-rubbed tung oil, spray lacquer applied in multiple thin coats and rubbed out, or period-appropriate milk paint. Each approach builds a finish that enhances the natural beauty of the wood beneath.
 
-The finish on a handcrafted piece has depth. Light enters the finish, interacts with the wood grain beneath, and reflects back with a warmth and complexity that opaque paint can never achieve. This is particularly important for period furniture, where the finish is an integral part of the piece's historical character. I cover this topic further in my post on [museum-quality miniatures](/blog/museum-quality-miniatures-what-sets-them-apart).
+The finish on a handcrafted piece has depth. Light enters the finish, interacts with the wood grain beneath, and reflects back with a warmth and complexity that opaque paint can never achieve. This is particularly important for period furniture, where the finish is an integral part of the piece's historical character. I cover this topic further in my post on [museum-quality miniatures](/blog/museum-quality-miniatures-what-sets-them-apart/).
 
 ## Functionality and Detail
 
@@ -82,7 +82,7 @@ This time difference is not about efficiency. It reflects the fundamentally diff
 
 This is where the differences become most concrete. Kit-built miniatures have limited collectibility because they are mass-produced designs assembled by many different people. The design belongs to the kit manufacturer, not the builder, and identical kits can be purchased and assembled by anyone.
 
-Handcrafted miniatures are unique works of art. Each one is an original, even when reproducing a historical design, because the maker's individual skill, interpretation, and craftsmanship are embedded in every detail. This uniqueness drives collectibility and value. Established makers command significant prices for their work, and fine pieces regularly appreciate over time. I discuss this in greater detail in my article on [the investment value of artisan miniature furniture](/blog/investment-value-artisan-miniature-furniture).
+Handcrafted miniatures are unique works of art. Each one is an original, even when reproducing a historical design, because the maker's individual skill, interpretation, and craftsmanship are embedded in every detail. This uniqueness drives collectibility and value. Established makers command significant prices for their work, and fine pieces regularly appreciate over time. I discuss this in greater detail in my article on [the investment value of artisan miniature furniture](/blog/investment-value-artisan-miniature-furniture/).
 
 ## A Place for Both
 
@@ -90,6 +90,6 @@ I want to be clear that I am not dismissing kit building. Kits serve an importan
 
 What matters is that collectors understand what they are buying. A kit-built piece and a handcrafted piece are fundamentally different objects, made from different materials, using different methods, to different standards. Their prices reflect these differences, and so does their place in a serious collection.
 
-If you are just beginning to explore miniatures, I encourage you to handle both types of work whenever possible. Visit shows, attend guild meetings, and examine pieces closely. The difference becomes obvious quickly, and that education will serve you well as you build your collection. For more guidance on starting out, read my [guide to starting a miniature furniture collection](/blog/how-to-start-miniature-furniture-collection).
+If you are just beginning to explore miniatures, I encourage you to handle both types of work whenever possible. Visit shows, attend guild meetings, and examine pieces closely. The difference becomes obvious quickly, and that education will serve you well as you build your collection. For more guidance on starting out, read my [guide to starting a miniature furniture collection](/blog/how-to-start-miniature-furniture-collection/).
 
-If you have questions about my work or want to see the difference for yourself, I invite you to explore my [gallery](/gallery) or reach out through my [contact page](/contact).
+If you have questions about my work or want to see the difference for yourself, I invite you to explore my [gallery](/gallery/) or reach out through my [contact page](/contact/).

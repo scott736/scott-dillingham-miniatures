@@ -10,7 +10,7 @@ coverImage: "/images/blog/museum-quality-miniatures.webp"
 imageAlt: "Close-up of a polished walnut drawer corner with a round brass knob"
 ---
 
-The phrase "museum quality" gets used loosely in many fields, but in the world of miniature furniture, it has a very specific meaning. As someone who has spent years striving to meet that standard in my own [workshop](/workshop), I can tell you that the gap between hobby-grade miniatures and true museum-quality work is enormous. Understanding that gap is essential whether you are a collector evaluating pieces or simply an admirer of fine craftsmanship.
+The phrase "museum quality" gets used loosely in many fields, but in the world of miniature furniture, it has a very specific meaning. As someone who has spent years striving to meet that standard in my own [workshop](/workshop/), I can tell you that the gap between hobby-grade miniatures and true museum-quality work is enormous. Understanding that gap is essential whether you are a collector evaluating pieces or simply an admirer of fine craftsmanship.
 
 ## The Museum-Quality Standard
 
@@ -24,7 +24,7 @@ The single most important factor that separates museum-quality miniatures from e
 
 At 1/12 scale, cutting a dovetail joint means working with pins that may be less than 1/32 inch wide. There is no room for error. Each joint must fit precisely without gaps, just as it would on a full-size piece. The fact that these joints are nearly invisible to the naked eye does not reduce their importance. They are the skeleton of the piece, and they determine its structural integrity and longevity.
 
-Compare this to kit-built miniatures, which typically rely on glue-tab construction where flat pieces slot together and are held with adhesive. There is no structural joinery, no interlocking wood fibers, and no mechanical strength. I explore this comparison in depth in my post on [handcrafted vs kit-built miniatures](/blog/handcrafted-vs-kit-built-miniatures).
+Compare this to kit-built miniatures, which typically rely on glue-tab construction where flat pieces slot together and are held with adhesive. There is no structural joinery, no interlocking wood fibers, and no mechanical strength. I explore this comparison in depth in my post on [handcrafted vs kit-built miniatures](/blog/handcrafted-vs-kit-built-miniatures/).
 
 ### Hand-Turned Elements
 
@@ -40,7 +40,7 @@ Carving at miniature scale is arguably the most demanding skill in the craft. Sh
 
 Museum-quality miniature furniture is built from the same species of hardwood used in the original full-size piece. A Chippendale highboy belongs in mahogany. A Shaker blanket chest calls for maple or cherry. A Federal secretary deserves walnut or mahogany. The wood must have tight, straight grain that reads correctly at reduced scale. Open-grained woods or those with large figure patterns can look out of scale and destroy the illusion.
 
-I select and mill my own stock, often resawing larger pieces to find the tightest grain sections. This process is wasteful of material but essential for achieving the right visual effect. I discuss wood selection in more detail in my post on [choosing wood for miniature furniture](/blog/how-to-choose-wood-for-miniature-furniture).
+I select and mill my own stock, often resawing larger pieces to find the tightest grain sections. This process is wasteful of material but essential for achieving the right visual effect. I discuss wood selection in more detail in my post on [choosing wood for miniature furniture](/blog/how-to-choose-wood-for-miniature-furniture/).
 
 ### Hardware
 
@@ -84,10 +84,10 @@ Next comes a hands-on examination. They check drawer operation, door function, a
 
 They examine the underside, the back, and the interior. These hidden areas reveal the maker's true standard of workmanship. A museum-quality piece is as well-finished inside as outside, because the maker's commitment to quality does not stop where the viewer cannot see.
 
-Finally, they consider provenance and documentation. Who made the piece? When was it made? Is it signed or marked? Does it come with documentation? These factors matter enormously for institutional acquisitions and for establishing long-term value. I discuss the value implications in my post on [the investment value of artisan miniatures](/blog/investment-value-artisan-miniature-furniture).
+Finally, they consider provenance and documentation. Who made the piece? When was it made? Is it signed or marked? Does it come with documentation? These factors matter enormously for institutional acquisitions and for establishing long-term value. I discuss the value implications in my post on [the investment value of artisan miniatures](/blog/investment-value-artisan-miniature-furniture/).
 
 ## My Commitment to the Standard
 
-Every piece that leaves my workshop is built to the museum-quality standard I have described here. That is a promise I make to every collector, and it is the foundation of everything I do. You can see examples of my work in the [gallery](/gallery), and if you would like to discuss a commission or have questions about evaluating miniature furniture, please reach out through my [contact page](/contact).
+Every piece that leaves my workshop is built to the museum-quality standard I have described here. That is a promise I make to every collector, and it is the foundation of everything I do. You can see examples of my work in the [gallery](/gallery/), and if you would like to discuss a commission or have questions about evaluating miniature furniture, please reach out through my [contact page](/contact/).
 
 The world of fine miniature furniture rewards those who learn to see quality. Once you know what to look for, the difference between ordinary and extraordinary becomes unmistakable.

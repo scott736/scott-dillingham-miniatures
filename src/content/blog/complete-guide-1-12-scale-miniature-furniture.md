@@ -13,7 +13,7 @@ imageAlt: "Miniature Queen Anne style side chair with carved splat and cabriole 
 
 If you have ever picked up a tiny chair and marveled at its perfectly proportioned legs, its delicate spindles, or the subtle curve of its backrest, you have experienced the magic of 1/12 scale miniature furniture. As someone who has spent years at the bench crafting these pieces by hand, I can tell you that this scale is far more than a convenient ratio. It is a discipline, a tradition, and for many of us, an obsession.
 
-In this guide I want to walk you through everything you need to know about 1/12 scale, whether you are a collector looking to understand what you are buying, or an aspiring maker ready to pick up your first set of [miniature woodworking tools](/blog/essential-miniature-woodworking-tools).
+In this guide I want to walk you through everything you need to know about 1/12 scale, whether you are a collector looking to understand what you are buying, or an aspiring maker ready to pick up your first set of [miniature woodworking tools](/blog/essential-miniature-woodworking-tools/).
 
 ## What Does 1/12 Scale Actually Mean?
 
@@ -29,7 +29,7 @@ Miniature houses and furnishings have existed for thousands of years. Ancient Eg
 
 The 1/12 scale did not become the dominant standard until the 20th century. Earlier miniatures varied widely in proportion, and many antique dollhouses feature rooms where the furniture does not match a consistent ratio. The push toward standardization came largely from collectors and artisan guilds in the 1960s and 1970s, particularly in the United States and United Kingdom. Organizations like the National Association of Miniature Enthusiasts helped establish 1/12 as the benchmark, and manufacturers followed.
 
-Today, 1/12 scale is recognized worldwide as the default for dollhouse miniatures. When you walk into a miniatures show or browse an online shop, items listed without a specific scale notation are almost always 1/12. Other scales exist and serve important purposes, which I cover in my post on [understanding dollhouse scales](/blog/understanding-dollhouse-scales), but 1/12 remains the gold standard.
+Today, 1/12 scale is recognized worldwide as the default for dollhouse miniatures. When you walk into a miniatures show or browse an online shop, items listed without a specific scale notation are almost always 1/12. Other scales exist and serve important purposes, which I cover in my post on [best scale for dollhouse building — 1:12 vs 1:24](/blog/understanding-dollhouse-scales/), but 1/12 remains the gold standard.
 
 ## Why 1/12 Scale Became the Standard
 
@@ -41,7 +41,7 @@ At 1/12 scale, a standard room box measures roughly 12 to 16 inches across. That
 
 ### Manageable Material Requirements
 
-Working at 1/12 scale means a single board foot of good hardwood can yield dozens of furniture pieces. Exotic woods like boxwood or holly, which would be prohibitively expensive for full-size furniture, become perfectly affordable at this scale. I discuss material selection at length in my guide on [choosing wood for miniature furniture](/blog/how-to-choose-wood-for-miniature-furniture).
+Working at 1/12 scale means a single board foot of good hardwood can yield dozens of furniture pieces. Exotic woods like boxwood or holly, which would be prohibitively expensive for full-size furniture, become perfectly affordable at this scale. I discuss material selection at length in my guide on [choosing wood for miniature furniture](/blog/how-to-choose-wood-for-miniature-furniture/).
 
 ### Availability and Community
 
@@ -53,7 +53,7 @@ When I sit down to create a new piece, the first step is always research. I find
 
 ### The Problem of Visual Proportion
 
-Human perception does not scale linearly. A tabletop edge that is one inch thick on a full-size table converts to 1/12 of an inch, roughly 5/64 inch, in miniature. At that thickness, the eye reads it as too heavy. Experienced miniaturists learn to shave a small amount off edges and moldings to maintain the visual impression of lightness that the full-size piece conveys. I go into this process in detail in my post about [scaling down furniture plans](/blog/scaling-down-furniture-plans).
+Human perception does not scale linearly. A tabletop edge that is one inch thick on a full-size table converts to 1/12 of an inch, roughly 5/64 inch, in miniature. At that thickness, the eye reads it as too heavy. Experienced miniaturists learn to shave a small amount off edges and moldings to maintain the visual impression of lightness that the full-size piece conveys. I go into this process in detail in my post about [scaling down furniture plans](/blog/scaling-down-furniture-plans/).
 
 ### Working With Fractions of Inches
 
@@ -69,11 +69,11 @@ One of the biggest hurdles is wood grain. A piece of oak that looks beautiful on
 
 ### Tool Control
 
-Cutting a tenon that is 1/8 inch long and 1/16 inch wide requires a level of tool control that takes years to develop. Standard woodworking tools are too large and too coarse. Specialized micro chisels, jeweler's saws, and precision marking gauges become necessary. You can read about my recommended toolkit in the [essential tools guide](/blog/essential-miniature-woodworking-tools).
+Cutting a tenon that is 1/8 inch long and 1/16 inch wide requires a level of tool control that takes years to develop. Standard woodworking tools are too large and too coarse. Specialized micro chisels, jeweler's saws, and precision marking gauges become necessary. You can read about my recommended toolkit in the [essential tools guide](/blog/essential-miniature-woodworking-tools/).
 
 ### Finishing
 
-Applying a finish to a tiny piece introduces its own set of problems. A single coat of stain that is slightly too thick can obscure carved details. Brush strokes that would be invisible on a full-size table become glaring imperfections on a miniature one. Many miniaturists, myself included, turn to techniques like [French polishing](/blog/finishing-techniques-miniature-furniture) because it allows incredibly thin, controlled layers of finish.
+Applying a finish to a tiny piece introduces its own set of problems. A single coat of stain that is slightly too thick can obscure carved details. Brush strokes that would be invisible on a full-size table become glaring imperfections on a miniature one. Many miniaturists, myself included, turn to techniques like [French polishing](/blog/finishing-techniques-miniature-furniture/) because it allows incredibly thin, controlled layers of finish.
 
 ### Assembly
 
@@ -95,6 +95,6 @@ Each of these pieces, when crafted with care, contains the same structural eleme
 
 If this guide has sparked your interest in working at 1/12 scale, I would encourage you to start by studying real furniture. Visit antique shops, study museum collections online, and pay attention to the proportions and construction details of the pieces that catch your eye. Understanding full-size furniture is the foundation of creating convincing miniatures.
 
-When you are ready to pick up tools, my [beginner's guide to miniature woodworking](/blog/miniature-woodworking-for-beginners) will walk you through the first steps. And if you want to see examples of what is possible at this scale, take a look at my [gallery](/gallery) where I showcase pieces from my own workshop.
+When you are ready to pick up tools, my [beginner's guide to miniature woodworking](/blog/miniature-woodworking-for-beginners/) will walk you through the first steps. And if you want to see examples of what is possible at this scale, take a look at my [gallery](/gallery/) where I showcase pieces from my own workshop.
 
 The world of 1/12 scale miniature furniture is endlessly rewarding. Every piece is a puzzle, every project teaches something new, and the satisfaction of holding a finished creation that captures the spirit of a full-size original never gets old. Welcome to the craft.

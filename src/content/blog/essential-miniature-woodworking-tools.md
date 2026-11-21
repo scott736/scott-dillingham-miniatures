@@ -1,8 +1,8 @@
 ---
-title: "Miniature Woodworking Tools Guide"
-description: "Best tools for miniature woodworking and precision crafting: jeweler's saw, micro chisels, files, magnification, and finishing gear for 1/12 scale furniture."
+title: "Essential Tools for Miniature Woodworking"
+description: "Starter toolkit for miniature woodworking at 1/12: jeweler's saw, micro chisels, files, magnification, and finishing gear for precision crafting."
 pubDate: "2025-03-12"
-updatedDate: "2026-11-18"
+updatedDate: "2026-11-21"
 image: "/images/blog/essential-tools.webp"
 authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
@@ -11,7 +11,7 @@ coverImage: "/images/blog/essential-tools.webp"
 imageAlt: "Overhead layout of miniature woodworking tools including rulers, files, punches, and a plane on a wooden bench"
 ---
 
-The right **miniature woodworking tools** make precision crafting possible; the wrong ones make it frustrating. Over years at the bench I have refined my toolkit to the essentials — jeweler's saw, micro chisels, files, magnification, and finishing gear — and discarded the gimmicks. This guide covers every category you need for serious 1/12 scale miniature furniture.
+The right **miniature woodworking tools** make precision crafting possible; the wrong ones make it frustrating. Over years at the bench I have refined my toolkit to the essentials — jeweler's saw, micro chisels, files, magnification, and finishing gear — and discarded the gimmicks. This guide covers every category you need for serious 1/12 scale miniature furniture. If you are still choosing a scale, read [1:12 vs 1:24 for dollhouse building](/blog/understanding-dollhouse-scales/) first so your tools match the work.
 
 I should note upfront that good tools are an investment, not an expense. A quality micro chisel will serve you for decades. A cheap one will dull quickly, chip at the edge, and produce inferior work from the first cut. Buy the best you can afford and add to your collection gradually as your skills demand new capabilities.
 
@@ -35,7 +35,7 @@ A sharp craft knife handles scoring, trimming, paring thin shavings, and cutting
 
 ### Micro Hand Planes
 
-These diminutive planes, typically one to three inches long, are used for truing edges, flattening surfaces, and fitting joints. A small block plane and a tiny smoothing plane cover most needs. The blades must be kept razor sharp through regular honing. If you are [setting up your workshop](/blog/setting-up-miniature-woodworking-workshop), make space for a sharpening station near your bench.
+These diminutive planes, typically one to three inches long, are used for truing edges, flattening surfaces, and fitting joints. A small block plane and a tiny smoothing plane cover most needs. The blades must be kept razor sharp through regular honing. If you are [setting up your workshop](/blog/setting-up-miniature-woodworking-workshop/), make space for a sharpening station near your bench.
 
 ## Shaping Tools
 
@@ -105,7 +105,7 @@ As your work becomes more complex, you will find yourself building small jigs to
 
 ## Magnification and Lighting
 
-These are not luxuries. They are necessities. Working on details you cannot see clearly is a recipe for eyestrain, mistakes, and poor-quality results. I dedicate an entire section to this in my [workshop setup guide](/blog/setting-up-miniature-woodworking-workshop).
+These are not luxuries. They are necessities. Working on details you cannot see clearly is a recipe for eyestrain, mistakes, and poor-quality results. I dedicate an entire section to this in my [workshop setup guide](/blog/setting-up-miniature-woodworking-workshop/).
 
 ### Magnifying Headband
 
@@ -133,7 +133,7 @@ For repetitive drilling or when perpendicular holes are critical, a small drill 
 
 ## Finishing Supplies
 
-The finish makes or breaks a miniature piece. I cover finishing techniques in depth in my [finishing guide](/blog/finishing-techniques-miniature-furniture), but here are the tools and supplies you will need.
+The finish makes or breaks a miniature piece. I cover finishing techniques in depth in my [finishing guide](/blog/finishing-techniques-miniature-furniture/), but here are the tools and supplies you will need.
 
 ### Fine Brushes
 
@@ -149,6 +149,6 @@ For lacquer finishes, a small airbrush gives you the thin, even coats that minia
 
 ## Building Your Collection Over Time
 
-You do not need every tool on this list to get started. My [beginner's guide](/blog/miniature-woodworking-for-beginners) recommends a minimal starter kit that will see you through your first several projects. As you take on more ambitious pieces, you will naturally identify the tools you need next.
+You do not need every tool on this list to get started. My [beginner's guide](/blog/miniature-woodworking-for-beginners/) recommends a minimal starter kit that will see you through your first several projects. As you take on more ambitious pieces, you will naturally identify the tools you need next.
 
-Visit my [gallery](/gallery) to see what these tools can produce in practiced hands, and feel free to reach out through my [contact page](/contact) if you have questions about specific tools or recommendations for your skill level. The right toolkit is a personal thing, and it evolves with you as you grow as a maker.
+Visit my [gallery](/gallery/) to see what these tools can produce in practiced hands, and feel free to reach out through my [contact page](/contact/) if you have questions about specific tools or recommendations for your skill level. The right toolkit is a personal thing, and it evolves with you as you grow as a maker.

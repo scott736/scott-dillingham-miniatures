@@ -10,7 +10,7 @@ coverImage: "/images/blog/federal-period-miniature.webp"
 imageAlt: "Federal-style mahogany sideboard with inlay and brass pulls against a blue paneled wall"
 ---
 
-After the robust curves of [Queen Anne](/blog/queen-anne-miniature-furniture-guide) and the carved exuberance of [Chippendale](/blog/chippendale-miniature-furniture), American furniture took a dramatic turn toward lightness, refinement, and geometric precision. The Federal period, roughly 1780 to 1820, brought the neoclassical designs of George Hepplewhite and Thomas Sheraton to American shores, where makers like Samuel McIntire of Salem and the Seymour workshop of Boston elevated them to extraordinary heights.
+After the robust curves of [Queen Anne](/blog/queen-anne-miniature-furniture-guide/) and the carved exuberance of [Chippendale](/blog/chippendale-miniature-furniture/), American furniture took a dramatic turn toward lightness, refinement, and geometric precision. The Federal period, roughly 1780 to 1820, brought the neoclassical designs of George Hepplewhite and Thomas Sheraton to American shores, where makers like Samuel McIntire of Salem and the Seymour workshop of Boston elevated them to extraordinary heights.
 
 For the miniaturist, Federal period furniture presents a unique and fascinating challenge. The forms are deceptively simple, relying on perfect proportions and delicate decorative techniques like stringing, banding, and pictorial inlay rather than carved ornament. In many ways, Federal period furniture is harder to build well at 1/12 scale than more ornate styles, because there is nowhere to hide imperfections.
 
@@ -66,7 +66,7 @@ The demilune, or half-round, table is a quintessential Federal form. Its semicir
 
 ### The Secretary Desk
 
-Federal secretary desks are more restrained than their [Chippendale predecessors](/blog/john-goddard-block-front-secretary-desk-miniature). The slant front or fold-down writing surface reveals a fitted interior, and the exterior features flat surfaces decorated with stringing, banding, and sometimes oval patera inlays. The bookcase top typically has glazed doors with delicate muntins creating geometric patterns.
+Federal secretary desks are more restrained than their [Chippendale predecessors](/blog/john-goddard-block-front-secretary-desk-miniature/). The slant front or fold-down writing surface reveals a fitted interior, and the exterior features flat surfaces decorated with stringing, banding, and sometimes oval patera inlays. The bookcase top typically has glazed doors with delicate muntins creating geometric patterns.
 
 The muntins in Federal glazed doors are remarkably thin and create elegant patterns of diamonds, ovals, or pointed arches. At 1/12 scale, I build these from strips of wood less than 1/32 inch wide, bent and joined to form the geometric pattern. The glazing is thin acrylic sheet set behind the muntin framework.
 
@@ -90,4 +90,4 @@ The contrast between the dark primary wood and the light inlay lines is critical
 
 I tell fellow miniaturists that Federal period furniture is deceptively difficult. The forms look simple, the decoration appears subtle, and there are no elaborate carvings to struggle with. But the precision required is unforgiving. A tapered leg that wavers slightly, a stringing line that is not perfectly straight, or proportions that are even marginally off will undermine the entire piece. The Federal style achieves its beauty through perfection of proportion and refinement of detail, and that is hard to fake at any scale.
 
-If you are drawn to the elegance of the Federal period, I encourage you to start with a simple project like a tapered-leg side table with stringing. This will give you a feel for the precision the style demands before you tackle more complex pieces. You can see Federal and other period miniatures in my [gallery](/gallery), and I welcome questions through my [contact page](/contact).
+If you are drawn to the elegance of the Federal period, I encourage you to start with a simple project like a tapered-leg side table with stringing. This will give you a feel for the precision the style demands before you tackle more complex pieces. For the carved styles that came before, see [Chippendale](/blog/chippendale-miniature-furniture/) and [Queen Anne](/blog/queen-anne-miniature-furniture-guide/). You can see Federal and other period miniatures in my [gallery](/gallery/), and I welcome questions through my [contact page](/contact/).

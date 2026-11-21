@@ -38,7 +38,7 @@ Complex forms are even rarer. A maker might build only a handful of tall case cl
 
 ### Construction Quality
 
-Quality is always the foundation of value. Pieces with real joinery, hand-carved details, hand-turned elements, and fine finishes are worth more than pieces that cut corners, regardless of who made them. I cover the specific quality markers in my article on [museum-quality miniatures](/blog/museum-quality-miniatures-what-sets-them-apart).
+Quality is always the foundation of value. Pieces with real joinery, hand-carved details, hand-turned elements, and fine finishes are worth more than pieces that cut corners, regardless of who made them. I cover the specific quality markers in my article on [museum-quality miniatures](/blog/museum-quality-miniatures-what-sets-them-apart/).
 
 The construction methods used in a piece also matter for longevity. A piece built with proper joinery will survive centuries of careful handling. A piece assembled with glue tabs may not survive decades. Collectors and appraisers understand this, and construction quality is always a factor in valuation.
 
@@ -46,7 +46,7 @@ The construction methods used in a piece also matter for longevity. A piece buil
 
 As with all collectibles, condition matters enormously. Miniature furniture in original, unrestored condition commands the highest prices. Pieces with damage, repairs, replacement parts, or refinishing are worth less. Some forms of damage are particularly detrimental: broken carved elements, missing hardware, and finish failure all reduce value significantly.
 
-This is why proper care and display are so important. I provide detailed guidance on preserving your collection in my post on [displaying and protecting miniature furniture](/blog/displaying-protecting-miniature-furniture-collection).
+This is why proper care and display are so important. I provide detailed guidance on preserving your collection in my post on [displaying and protecting miniature furniture](/blog/displaying-protecting-miniature-furniture-collection/).
 
 ### Provenance
 
@@ -82,7 +82,7 @@ Maintain a comprehensive inventory with photographs, purchase records, provenanc
 
 The market for fine miniature furniture is in an interesting position today. Several factors suggest continued strength. The pool of established master makers is relatively small, and many are aging. This means the supply of new museum-quality work will likely decrease over time, putting upward pressure on prices for existing pieces.
 
-At the same time, interest in handcraft is growing among younger generations, driven partly by the digital age's paradoxical appetite for authentic, handmade objects. I discuss this trend in my post on [the renaissance of handcrafted miniatures in the digital age](/blog/renaissance-handcrafted-miniatures-digital-age). New collectors are entering the market, and their enthusiasm is bringing fresh energy and demand.
+At the same time, interest in handcraft is growing among younger generations, driven partly by the digital age's paradoxical appetite for authentic, handmade objects. I discuss this trend in my post on [the renaissance of handcrafted miniatures in the digital age](/blog/renaissance-handcrafted-miniatures-digital-age/). New collectors are entering the market, and their enthusiasm is bringing fresh energy and demand.
 
 Social media has also increased visibility for fine miniature work, introducing the craft to audiences who might never have encountered it otherwise. This broader awareness translates into expanded market demand.
 
@@ -90,4 +90,4 @@ Social media has also increased visibility for fine miniature work, introducing 
 
 My advice to collectors who are mindful of investment value is straightforward. Buy the best quality you can afford. Focus on established makers with proven track records. Choose complex, rare forms over simple ones. Document everything. Take care of what you own. And above all, buy what you love, because a collection built on genuine passion is almost always a collection that holds its value.
 
-If you are interested in adding museum-quality pieces to your collection, I invite you to explore my [gallery](/gallery) and see the standard of work that serious collectors seek. For custom commissions or questions about collecting, please visit my [contact page](/contact).
+If you are interested in adding museum-quality pieces to your collection, I invite you to explore my [gallery](/gallery/) and see the standard of work that serious collectors seek. For custom commissions or questions about collecting, please visit my [contact page](/contact/).

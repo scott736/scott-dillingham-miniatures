@@ -12,13 +12,13 @@ export function AboutHero() {
           Museum-exhibited master of 1/12 scale miniature furniture
         </p>
         <p data-speakable="description" className="max-w-3xl text-xl leading-8">
-          Scott Dillingham builds museum-quality 1/12 scale miniature furniture
-          by hand after decades of full-size woodworking. His pieces have been
-          exhibited in museums and collected worldwide. In his home workshop he
-          reproduces period furniture from fine hardwoods with hand tools and
-          the same traditional joinery used by the original cabinetmakers.
-          Custom commissions and selected pieces are offered; some uniques
-          reside in museum collections.
+          Scott Dillingham builds museum-exhibited 1/12 scale miniature furniture
+          by hand after decades of full-size woodworking. Three of his works are
+          part of the KSB Miniatures Collection in Maysville, Kentucky. In his
+          home workshop he reproduces period furniture from fine hardwoods with
+          hand tools and the same traditional joinery used by the original
+          cabinetmakers. Custom commissions and selected pieces are offered;
+          museum-held uniques are not for sale.
         </p>
       </div>
       <img

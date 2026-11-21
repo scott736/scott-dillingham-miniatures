@@ -33,7 +33,7 @@ The sustained close focus required by miniature work strains your eye muscles in
 **Prevention strategies:**
 
 - Follow the 20-20-20 rule: every 20 minutes, look at something 20 feet away for 20 seconds. This relaxes the focusing muscles and reduces strain.
-- Ensure your lighting is bright enough that you are not squinting. Squinting accelerates fatigue. See my [workshop setup guide](/blog/setting-up-miniature-woodworking-workshop) for lighting recommendations.
+- Ensure your lighting is bright enough that you are not squinting. Squinting accelerates fatigue. See my [workshop setup guide](/blog/setting-up-miniature-woodworking-workshop/) for lighting recommendations.
 - Use the appropriate magnification for each task. Straining to see detail that is beyond your unaided acuity causes faster fatigue than using a magnifier.
 - Keep eye drops on hand. Extended periods of focused work reduce your blink rate, leading to dry, irritated eyes.
 - Get regular eye examinations. Changes in vision can sneak up gradually, and corrected vision reduces the compensatory strain that uncorrected vision causes.
@@ -48,7 +48,7 @@ The most dangerous wood dust particles are too small to see. Particles under 10 
 
 ### Exotic Wood Hazards
 
-Many of the fine-grained [hardwoods preferred for miniature work](/blog/how-to-choose-wood-for-miniature-furniture) are known respiratory sensitizers or irritants. Boxwood, rosewood, cocobolo, and padauk can all trigger allergic reactions ranging from mild irritation to severe respiratory distress. Some tropical hardwoods contain compounds that are toxic when inhaled over extended periods.
+Many of the fine-grained [hardwoods preferred for miniature work](/blog/how-to-choose-wood-for-miniature-furniture/) are known respiratory sensitizers or irritants. Boxwood, rosewood, cocobolo, and padauk can all trigger allergic reactions ranging from mild irritation to severe respiratory distress. Some tropical hardwoods contain compounds that are toxic when inhaled over extended periods.
 
 The first time you work with a new species, be especially cautious. Allergic sensitivity to wood dust often develops over time. You may work with a species for years without issue and then suddenly develop a reaction. Consistent protection from the beginning prevents sensitization.
 
@@ -58,13 +58,13 @@ The first time you work with a new species, be especially cautious. Allergic sen
 
 **Ventilation**: Work in a space with adequate air exchange. A small fan exhausting air to the outside removes dust-laden air from your breathing zone. Position the fan so that air flows from behind you, across your work, and toward the exhaust point. This carries dust away from your face rather than toward it.
 
-**Air filtration**: An ambient air filter in your [workshop](/blog/setting-up-miniature-woodworking-workshop) removes fine particles that escape your immediate dust collection. Run it during and for at least 30 minutes after any dust-producing work.
+**Air filtration**: An ambient air filter in your [workshop](/blog/setting-up-miniature-woodworking-workshop/) removes fine particles that escape your immediate dust collection. Run it during and for at least 30 minutes after any dust-producing work.
 
 **Wet cleanup**: After sanding or sawing, clean your workspace with a damp cloth rather than blowing or dry sweeping, which re-suspends settled dust into the air.
 
 ## Sharp Tool Safety
 
-Miniature [tools](/blog/essential-miniature-woodworking-tools) are very sharp. They have to be. A dull tool at miniature scale is useless. But the sharpness that makes these tools effective also makes them capable of causing significant injuries.
+Miniature [tools](/blog/essential-miniature-woodworking-tools/) are very sharp. They have to be. A dull tool at miniature scale is useless. But the sharpness that makes these tools effective also makes them capable of causing significant injuries.
 
 ### Cutting Toward Yourself
 
@@ -92,7 +92,7 @@ Miniature furniture finishing involves chemicals that deserve respect. Shellac, 
 
 Denatured alcohol, lacquer thinner, and mineral spirits are volatile solvents that can cause headaches, dizziness, and respiratory irritation with acute exposure. Chronic exposure to some solvents can cause more serious health effects.
 
-Work with solvents in a well-ventilated area. If you are doing extensive [finishing work](/blog/finishing-techniques-miniature-furniture), consider using a respirator with organic vapor cartridges rather than relying on ventilation alone. Store solvent-soaked rags in a sealed metal container. Rags soaked with linseed oil or other drying oils can spontaneously combust if crumpled and left in a pile.
+Work with solvents in a well-ventilated area. If you are doing extensive [finishing work](/blog/finishing-techniques-miniature-furniture/), consider using a respirator with organic vapor cartridges rather than relying on ventilation alone. Store solvent-soaked rags in a sealed metal container. Rags soaked with linseed oil or other drying oils can spontaneously combust if crumpled and left in a pile.
 
 ### Adhesive Safety
 
@@ -126,7 +126,7 @@ Hunching over a workbench to see small details is the default posture for many m
 
 **Prevention strategies:**
 
-- Set up your bench and chair at the correct heights, as described in my [workshop guide](/blog/setting-up-miniature-woodworking-workshop). Your work should come to your eyes, not the other way around.
+- Set up your bench and chair at the correct heights, as described in my [workshop guide](/blog/setting-up-miniature-woodworking-workshop/). Your work should come to your eyes, not the other way around.
 - Use magnification to reduce the need to lean in close.
 - Keep your back supported by the chair backrest as much as possible.
 - Strengthen your core muscles. A strong core supports your spine and makes it easier to maintain good posture during long work sessions.
@@ -147,8 +147,8 @@ For cuts from sharp tools, apply firm pressure with a clean gauze pad. Most mini
 
 Safety is not a set of rules you follow reluctantly. It is a mindset that becomes second nature with practice. Keep your workshop clean and organized. Maintain your tools in good condition. Wear appropriate protective equipment. Take breaks. Listen to your body.
 
-The goal is to enjoy this craft for decades, producing work you are proud of while keeping yourself healthy and intact. Every piece in my [gallery](/gallery) was made safely. Every one of them was worth the modest effort that safe practices require.
+The goal is to enjoy this craft for decades, producing work you are proud of while keeping yourself healthy and intact. Every piece in my [gallery](/gallery/) was made safely. Every one of them was worth the modest effort that safe practices require.
 
-If you are just beginning your miniature woodworking journey, build good safety habits from day one. It is much easier to start with good practices than to break bad ones later. My [beginner's guide](/blog/miniature-woodworking-for-beginners) integrates safety considerations into every step, and my [workshop setup guide](/blog/setting-up-miniature-woodworking-workshop) shows you how to design a safe working environment from the ground up.
+If you are just beginning your miniature woodworking journey, build good safety habits from day one. It is much easier to start with good practices than to break bad ones later. My [beginner's guide](/blog/miniature-woodworking-for-beginners/) integrates safety considerations into every step, and my [workshop setup guide](/blog/setting-up-miniature-woodworking-workshop/) shows you how to design a safe working environment from the ground up.
 
 Take care of yourself so you can keep making beautiful things. That is the most important advice in this entire post.

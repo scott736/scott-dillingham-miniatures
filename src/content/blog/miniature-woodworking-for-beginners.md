@@ -6,7 +6,7 @@ updatedDate: "2026-11-18"
 image: "/images/blog/miniature-woodworking-beginners.webp"
 authorName: "Scott Dillingham"
 authorImage: "/avatar/avatar1.png"
-tags: ["beginner", "miniature woodworking", "getting started", "tutorials"]
+tags: ["beginner", "miniature woodworking", "getting started", "tutorials", "1/12 scale", "dollhouse"]
 coverImage: "/images/blog/miniature-woodworking-beginners.webp"
 imageAlt: "Hands using a chisel and a small metal plane on a workbench scattered with shavings"
 ---
@@ -31,9 +31,13 @@ Your first pieces will not be perfect. Mine certainly were not. A slight gap in 
 
 The best miniature furniture looks convincing because the maker understands how real furniture is built. Study full-size joinery, proportions, and design principles. The more you know about how a real Shaker table is constructed, the better your miniature version will be.
 
+## Choose Your Scale First
+
+Before you buy tools or wood, decide which dollhouse scale you are building for. Most beginners should start at **1:12** (one inch equals one foot) because accessories, shows, and learning resources are strongest there. Choose **1:24** when you need a full multi-room house in a small footprint. My [best scale for dollhouse building guide (1:12 vs 1:24 chart)](/blog/understanding-dollhouse-scales/) walks through the decision with room sizes, door heights, and joinery limits.
+
 ## Your First Tools
 
-You do not need to invest heavily to get started. In fact, I recommend buying only what you need for your first project and expanding your toolkit as your skills grow. I have a comprehensive breakdown in my [essential tools guide](/blog/essential-miniature-woodworking-tools), but here is the starter set I recommend for absolute beginners.
+You do not need to invest heavily to get started. In fact, I recommend buying only what you need for your first project and expanding your toolkit as your skills grow. I have a comprehensive breakdown in my [essential tools guide](/blog/essential-miniature-woodworking-tools/), but here is the starter set I recommend for absolute beginners.
 
 ### Cutting Tools
 
@@ -58,7 +62,7 @@ You do not need to invest heavily to get started. In fact, I recommend buying on
 
 ### Magnification
 
-- **Magnifying headband or desk magnifier**: This is not optional. Working at 1/12 scale means working with details that are difficult to see clearly with the naked eye. A magnifying headband with interchangeable lenses lets you switch magnification levels as needed. I talk more about this in my [workshop setup guide](/blog/setting-up-miniature-woodworking-workshop).
+- **Magnifying headband or desk magnifier**: This is not optional. Working at 1/12 scale means working with details that are difficult to see clearly with the naked eye. A magnifying headband with interchangeable lenses lets you switch magnification levels as needed. I talk more about this in my [workshop setup guide](/blog/setting-up-miniature-woodworking-workshop/).
 
 ## Choosing Your First Project
 
@@ -75,7 +79,7 @@ I recommend starting with a basic Shaker-style bench. It has four legs, two stre
 
 ### The Small Table
 
-Once you have built a bench, a simple table is a natural next step. A table adds the challenge of making four legs exactly the same length and attaching an overhanging top. It introduces you to proportional thinking. How thick should the top be? How far should it overhang? These decisions start training your eye for what looks right at [1/12 scale](/blog/complete-guide-1-12-scale-miniature-furniture).
+Once you have built a bench, a simple table is a natural next step. A table adds the challenge of making four legs exactly the same length and attaching an overhanging top. It introduces you to proportional thinking. How thick should the top be? How far should it overhang? These decisions start training your eye for what looks right at [1/12 scale](/blog/complete-guide-1-12-scale-miniature-furniture/).
 
 ### The Open Shelf
 
@@ -87,7 +91,7 @@ I have made every one of these mistakes myself, and I have watched students make
 
 ### Using the Wrong Wood
 
-Standard craft-store basswood is easy to cut, but it has a fuzzy grain that does not take stain well and looks unconvincing at 1/12 scale. For your first project, look for fine-grained hardwoods like cherry, maple, or pear. They cost a little more but the results are dramatically better. My post on [choosing wood for miniature furniture](/blog/how-to-choose-wood-for-miniature-furniture) covers this in depth.
+Standard craft-store basswood is easy to cut, but it has a fuzzy grain that does not take stain well and looks unconvincing at 1/12 scale. For your first project, look for fine-grained hardwoods like cherry, maple, or pear. They cost a little more but the results are dramatically better. My post on [choosing wood for miniature furniture](/blog/how-to-choose-wood-for-miniature-furniture/) covers this in depth.
 
 ### Skipping the Dry Fit
 
@@ -103,7 +107,7 @@ Sand your components before assembly, not just after. It is much easier to get a
 
 ### Rushing the Finish
 
-A beautiful piece of miniature furniture can be ruined by a careless finish. Apply thin coats. Allow adequate drying time between coats. Sand lightly between coats with very fine sandpaper or steel wool. Two thin coats of finish will always look better than one thick coat. I cover this topic thoroughly in my [finishing techniques guide](/blog/finishing-techniques-miniature-furniture).
+A beautiful piece of miniature furniture can be ruined by a careless finish. Apply thin coats. Allow adequate drying time between coats. Sand lightly between coats with very fine sandpaper or steel wool. Two thin coats of finish will always look better than one thick coat. I cover this topic thoroughly in my [finishing techniques guide](/blog/finishing-techniques-miniature-furniture/).
 
 ## Building Good Habits From Day One
 
@@ -111,7 +115,7 @@ The habits you develop as a beginner will stay with you throughout your miniatur
 
 ### Keep Your Work Area Clean and Organized
 
-Tiny parts vanish into sawdust and clutter. Work on a clean surface, preferably a light-colored mat that makes small components visible. Develop a system for organizing parts. Small containers, labeled envelopes, or sectioned trays all work well. My [workshop setup post](/blog/setting-up-miniature-woodworking-workshop) has more on this topic.
+Tiny parts vanish into sawdust and clutter. Work on a clean surface, preferably a light-colored mat that makes small components visible. Develop a system for organizing parts. Small containers, labeled envelopes, or sectioned trays all work well. My [workshop setup post](/blog/setting-up-miniature-woodworking-workshop/) has more on this topic.
 
 ### Sharpen Your Tools Regularly
 
@@ -123,12 +127,12 @@ Take photographs of each project at different stages. Note what worked and what 
 
 ### Study Other Makers' Work
 
-Visit miniature shows, follow miniaturists online, and study the pieces in my [gallery](/gallery). Pay attention to proportions, finish quality, and construction details. Training your eye is just as important as training your hands.
+Visit miniature shows, follow miniaturists online, and study the pieces in my [gallery](/gallery/). Pay attention to proportions, finish quality, and construction details. Training your eye is just as important as training your hands.
 
 ## Where to Go From Here
 
-Once you have completed a few simple projects and feel comfortable with basic cutting, shaping, and assembly, the entire world of miniature furniture opens up. You can explore [traditional joinery techniques](/blog/miniature-woodworking-joints) like dovetails and mortise and tenon joints. You can learn to [scale down plans](/blog/scaling-down-furniture-plans) from full-size furniture you admire. You can experiment with different [wood species](/blog/how-to-choose-wood-for-miniature-furniture) and [finishing methods](/blog/finishing-techniques-miniature-furniture).
+Once you have completed a few simple projects and feel comfortable with basic cutting, shaping, and assembly, the entire world of miniature furniture opens up. You can explore [traditional joinery techniques](/blog/miniature-woodworking-joints/) like dovetails and mortise and tenon joints. You can learn to [scale down plans](/blog/scaling-down-furniture-plans/) from full-size furniture you admire. You can experiment with different [wood species](/blog/how-to-choose-wood-for-miniature-furniture/) and [finishing methods](/blog/finishing-techniques-miniature-furniture/).
 
-The learning never stops, and that is what makes this craft so deeply satisfying. If you have questions as you get started, do not hesitate to reach out through my [contact page](/contact). I remember what it was like to be a beginner, and I am always happy to help a fellow miniaturist find their footing.
+The learning never stops, and that is what makes this craft so deeply satisfying. If you have questions as you get started, do not hesitate to reach out through my [contact page](/contact/). I remember what it was like to be a beginner, and I am always happy to help a fellow miniaturist find their footing.
 
 Welcome to the bench.

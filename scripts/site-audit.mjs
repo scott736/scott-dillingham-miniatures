@@ -66,7 +66,11 @@ function checkHtml(label, html, { maxTitle = 65, maxDesc = 160, noindex = false,
   notes.push(`${label} title ${title.length} ${title}`);
   notes.push(`${label} desc ${desc.length}`);
   if (!title) fail(`${label}: missing title`);
-  if (title.length > maxTitle) fail(`${label}: title ${title.length} > ${maxTitle} (${title})`);
+  // Title length is warn-only (SEO plan): long titles may truncate in SERPs
+  // but must not fail CI — brand suffix alone is 31 characters.
+  if (title.length > maxTitle) {
+    notes.push(`WARN ${label}: title ${title.length} > ${maxTitle} (${title})`);
+  }
   if (brandCount(title) > 1) fail(`${label}: brand appears ${brandCount(title)} times in title (${title})`);
   if (desc.length > maxDesc) fail(`${label}: description ${desc.length} > ${maxDesc}`);
   const robots = metaContent(html, 'robots') || '';

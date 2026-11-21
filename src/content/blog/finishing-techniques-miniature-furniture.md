@@ -12,7 +12,7 @@ imageAlt: "Hands rubbing a white finishing pad across a small wooden board besid
 
 A beautifully constructed piece of miniature furniture can be ruined in seconds by a careless finish. Conversely, a thoughtful finish can elevate even a simple piece into something that glows with the warmth and depth of a real antique. Finishing is where many miniaturists struggle, and it is where I spend a disproportionate amount of my time. The results justify the effort.
 
-Finishing at [1/12 scale](/blog/complete-guide-1-12-scale-miniature-furniture) presents challenges that full-size woodworkers never face. Every coat of finish adds thickness. On a full-size table, that thickness is negligible. On a miniature table, a coat that is a fraction too heavy can soften carved details, fill fine grain texture, and make the piece look dipped in plastic. The goal is always the thinnest possible film that still provides protection and visual depth.
+Finishing at [1/12 scale](/blog/complete-guide-1-12-scale-miniature-furniture/) presents challenges that full-size woodworkers never face. Every coat of finish adds thickness. On a full-size table, that thickness is negligible. On a miniature table, a coat that is a fraction too heavy can soften carved details, fill fine grain texture, and make the piece look dipped in plastic. The goal is always the thinnest possible film that still provides protection and visual depth.
 
 ## Surface Preparation: The Foundation of Every Good Finish
 
@@ -20,7 +20,7 @@ No finish, no matter how skillfully applied, can compensate for poor surface pre
 
 ### Sanding Sequence
 
-Begin with 220 grit sandpaper to remove tool marks and level surfaces. Progress through 320 grit and then 400 grit. For the finest work, particularly on dense woods like [boxwood or maple](/blog/how-to-choose-wood-for-miniature-furniture), I continue to 600 grit. Each grit removes the scratches left by the previous one, producing a progressively smoother surface.
+Begin with 220 grit sandpaper to remove tool marks and level surfaces. Progress through 320 grit and then 400 grit. For the finest work, particularly on dense woods like [boxwood or maple](/blog/how-to-choose-wood-for-miniature-furniture/), I continue to 600 grit. Each grit removes the scratches left by the previous one, producing a progressively smoother surface.
 
 Always sand with the grain direction. Cross-grain scratches are visible under any transparent finish and are nearly impossible to remove once a finish has been applied.
 
@@ -118,12 +118,12 @@ Tung oil, Danish oil, and other penetrating oil finishes have a place in miniatu
 
 ## Finishing Safety
 
-Many finishing materials contain volatile solvents and should be used with adequate ventilation. Shellac flakes are dissolved in denatured alcohol. Lacquer contains potent solvents. Even wax can release fumes during application. Please read my comprehensive [safety guide](/blog/miniature-woodworking-safety-guide) for proper ventilation and respiratory protection practices in the miniature [workshop](/blog/setting-up-miniature-woodworking-workshop).
+Many finishing materials contain volatile solvents and should be used with adequate ventilation. Shellac flakes are dissolved in denatured alcohol. Lacquer contains potent solvents. Even wax can release fumes during application. Please read my comprehensive [safety guide](/blog/miniature-woodworking-safety-guide/) for proper ventilation and respiratory protection practices in the miniature [workshop](/blog/setting-up-miniature-woodworking-workshop/).
 
 ## Practice Makes Perfect
 
 Finishing is a skill that improves dramatically with practice. Before applying any finish to a project piece, practice the technique on scrap wood of the same species. This lets you dial in stain color, finish thickness, and application rhythm without risking your hard work.
 
-If you are just starting out with miniature furniture, my [beginner's guide](/blog/miniature-woodworking-for-beginners) recommends starting with a simple wax finish and graduating to more complex techniques as your confidence grows. Visit my [gallery](/gallery) to see the quality of finish that these techniques produce on completed pieces.
+If you are just starting out with miniature furniture, my [beginner's guide](/blog/miniature-woodworking-for-beginners/) recommends starting with a simple wax finish and graduating to more complex techniques as your confidence grows. Visit my [gallery](/gallery/) to see the quality of finish that these techniques produce on completed pieces.
 
 The finish is the last thing you do and the first thing anyone sees. Invest the time to get it right.

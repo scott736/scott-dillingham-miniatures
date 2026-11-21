@@ -42,7 +42,7 @@ The hood sits atop the waist and houses the clock dial. It is the most visually 
 
 At 1/12 scale, making the hood slide might be impractical, but I still build it as a separate component for ease of construction. The basic hood case is a rectangular box that overhangs the waist slightly on all sides. Columns, usually freestanding quarter-columns at the front corners, are turned on the lathe from blanks about 5/64 inch in diameter. These tiny turnings require extreme care and very sharp tools.
 
-The top of the hood determines the character of the clock. An arched top with a simple molded cornice suits a [Queen Anne](/blog/queen-anne-miniature-furniture-guide) period clock. A broken pediment with carved rosettes and flame finials is appropriate for a [Chippendale](/blog/chippendale-miniature-furniture) example. The broken pediment construction follows the same principles I describe in my [highboy guide](/blog/miniature-highboy-makers-guide), just at an even smaller scale.
+The top of the hood determines the character of the clock. An arched top with a simple molded cornice suits a [Queen Anne](/blog/queen-anne-miniature-furniture-guide/) period clock. A broken pediment with carved rosettes and flame finials is appropriate for a [Chippendale](/blog/chippendale-miniature-furniture/) example. The broken pediment construction follows the same principles I describe in my [highboy guide](/blog/miniature-highboy-makers-guide/), just at an even smaller scale.
 
 ## Creating the Dial Face
 
@@ -86,10 +86,10 @@ That said, I sometimes install a tiny non-working pendulum that swings freely be
 
 Tall case clocks were typically finished in dark, rich tones. Mahogany, walnut, and cherry were common woods, and the finished surfaces were often quite dark with a deep gloss. I finish my miniature clocks with thin shellac, sometimes over a light wash of pigmented stain to deepen the tone. Multiple coats, rubbed smooth between applications, build up the depth and luster that suits these formal pieces.
 
-Some tall case clocks, particularly those from the [Federal period](/blog/federal-period-miniature-furniture), feature contrasting inlay work on the case. String inlay and shell or fan paterae on the waist door or base panel add considerable visual interest and are hallmarks of the finest examples. This is exacting work at 1/12 scale but achievable with patience and sharp tools.
+Some tall case clocks, particularly those from the [Federal period](/blog/federal-period-miniature-furniture/), feature contrasting inlay work on the case. String inlay and shell or fan paterae on the waist door or base panel add considerable visual interest and are hallmarks of the finest examples. This is exacting work at 1/12 scale but achievable with patience and sharp tools.
 
 ## Taking the Challenge
 
-If the tall case clock interests you, I suggest building one only after you have experience with simpler case pieces. A [miniature highboy](/blog/miniature-highboy-makers-guide) is excellent preparation because it involves many of the same skills: case construction, drawer building, leg shaping, and broken pediment work. A clock adds the dial, the waist door with hinges, and the demanding vertical proportions, but the underlying techniques overlap significantly.
+If the tall case clock interests you, I suggest building one only after you have experience with simpler case pieces. A [miniature highboy](/blog/miniature-highboy-makers-guide/) is excellent preparation because it involves many of the same skills: case construction, drawer building, leg shaping, and broken pediment work. A clock adds the dial, the waist door with hinges, and the demanding vertical proportions, but the underlying techniques overlap significantly.
 
-Visit my [gallery](/gallery) to see examples of clocks and other advanced pieces. And if you have questions about any aspect of clock construction, do not hesitate to reach out through my [contact page](/contact). These projects are challenging, but they produce pieces that stand, quite literally, above everything else in a miniature collection.
+Visit my [gallery](/gallery/) to see examples of clocks and other advanced pieces. And if you have questions about any aspect of clock construction, do not hesitate to reach out through my [contact page](/contact/). These projects are challenging, but they produce pieces that stand, quite literally, above everything else in a miniature collection.

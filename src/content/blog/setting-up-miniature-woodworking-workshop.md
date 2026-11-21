@@ -54,11 +54,11 @@ In addition to task lights, the room itself should be well lit. Working in a bri
 
 ### Raking Light
 
-Keep one task light that you can angle to provide raking light across your work surface. Raking light, where the beam hits the surface at a very low angle, reveals surface imperfections that are invisible under direct overhead light. This is essential during [surface preparation and finishing](/blog/finishing-techniques-miniature-furniture).
+Keep one task light that you can angle to provide raking light across your work surface. Raking light, where the beam hits the surface at a very low angle, reveals surface imperfections that are invisible under direct overhead light. This is essential during [surface preparation and finishing](/blog/finishing-techniques-miniature-furniture/).
 
 ## Magnification
 
-Working at [1/12 scale](/blog/complete-guide-1-12-scale-miniature-furniture) means working with details that are at or beyond the limits of unaided vision, particularly as your eyes age. A proper magnification setup is not a luxury. It is a necessity.
+Working at [1/12 scale](/blog/complete-guide-1-12-scale-miniature-furniture/) means working with details that are at or beyond the limits of unaided vision, particularly as your eyes age. A proper magnification setup is not a luxury. It is a necessity.
 
 ### Magnifying Headband (Optivisor)
 
@@ -80,7 +80,7 @@ Not every operation requires magnification. Rough cutting, initial shaping, and 
 
 ## Dust Collection and Air Quality
 
-Miniature woodworking produces less dust than full-size work, but the dust it does produce can be harmful, particularly when working with [exotic wood species](/blog/how-to-choose-wood-for-miniature-furniture). A responsible approach to dust management protects your health and keeps your workspace clean.
+Miniature woodworking produces less dust than full-size work, but the dust it does produce can be harmful, particularly when working with [exotic wood species](/blog/how-to-choose-wood-for-miniature-furniture/). A responsible approach to dust management protects your health and keeps your workspace clean.
 
 ### At the Source
 
@@ -92,7 +92,7 @@ An ambient air filtration unit that hangs from the ceiling or sits on a shelf fi
 
 ### Personal Protection
 
-For sanding, sawing, and any operation that generates airborne particles, wear a dust mask or respirator. This is especially important when working with woods known to be respiratory irritants. My [safety guide](/blog/miniature-woodworking-safety-guide) covers this topic in detail.
+For sanding, sawing, and any operation that generates airborne particles, wear a dust mask or respirator. This is especially important when working with woods known to be respiratory irritants. My [safety guide](/blog/miniature-woodworking-safety-guide/) covers this topic in detail.
 
 ## Storage and Organization
 
@@ -104,7 +104,7 @@ Small, compartmentalized containers are essential for keeping project parts orga
 
 ### Tool Storage
 
-Tools should be accessible, organized, and protected. A wall-mounted tool rack keeps your most-used [tools](/blog/essential-miniature-woodworking-tools) within arm's reach without cluttering the bench. Micro chisels and precision instruments should be stored in protective rolls or cases that prevent edge damage.
+Tools should be accessible, organized, and protected. A wall-mounted tool rack keeps your most-used [tools](/blog/essential-miniature-woodworking-tools/) within arm's reach without cluttering the bench. Micro chisels and precision instruments should be stored in protective rolls or cases that prevent edge damage.
 
 ### Wood Storage
 
@@ -124,7 +124,7 @@ Invest in a good adjustable chair with lumbar support. You will spend hours in i
 
 ### Break Schedule
 
-Take breaks every 30 to 45 minutes. Stand up, stretch, and let your eyes focus on something across the room or out a window. This prevents the cumulative strain that leads to headaches, neck pain, and repetitive strain injuries. I discuss ergonomic safety in more detail in my [safety guide](/blog/miniature-woodworking-safety-guide).
+Take breaks every 30 to 45 minutes. Stand up, stretch, and let your eyes focus on something across the room or out a window. This prevents the cumulative strain that leads to headaches, neck pain, and repetitive strain injuries. I discuss ergonomic safety in more detail in my [safety guide](/blog/miniature-woodworking-safety-guide/).
 
 ### Hand and Wrist Care
 
@@ -140,6 +140,6 @@ Good ventilation is essential in the finishing area. Shellac, lacquer, and other
 
 You do not need a perfect workshop to start making miniature furniture. Many accomplished miniaturists began with a desk lamp, a cutting mat, and a shoe box of tools. As your skills develop and your ambitions grow, you can upgrade and expand your workspace incrementally.
 
-The most important thing is to start. Clear a space, set up good lighting, organize your [tools](/blog/essential-miniature-woodworking-tools), and build your first piece. My [beginner's guide](/blog/miniature-woodworking-for-beginners) will help you take those first steps.
+The most important thing is to start. Clear a space, set up good lighting, organize your [tools](/blog/essential-miniature-woodworking-tools/), and build your first piece. My [beginner's guide](/blog/miniature-woodworking-for-beginners/) will help you take those first steps.
 
-If you want to see the kind of work that comes out of a thoughtfully arranged miniature workshop, browse my [gallery](/gallery). Every piece there was made in a space not much bigger than a kitchen table. It is not the size of the shop that matters. It is what you do in it.
+If you want to see the kind of work that comes out of a thoughtfully arranged miniature workshop, browse my [gallery](/gallery/). Every piece there was made in a space not much bigger than a kitchen table. It is not the size of the shop that matters. It is what you do in it.

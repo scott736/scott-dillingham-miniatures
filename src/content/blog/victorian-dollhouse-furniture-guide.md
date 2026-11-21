@@ -13,7 +13,17 @@ imageAlt: "Victorian parlor with tufted sofa, armchair, oval gilt mirrors, and h
 
 **Victorian dolls house furniture** (also searched as Victorian dollhouse furniture) is some of the most varied period work you can collect or build. From the 1830s to about 1900, styles ran from Gothic Revival and Eastlake to Renaissance and Rococo Revival — bold forms, rich woods, and elaborate carving that still define a Victorian dolls house parlor today.
 
-This guide covers the major sub-styles, the materials behind them, and how I reproduce each at 1/12 scale so a room stays historically coherent whether you say *dolls house* or *dollhouse*.
+This guide covers the major sub-styles, the materials behind them, and how I reproduce each at 1/12 scale so a room stays historically coherent whether you say *dolls house* or *dollhouse*. Related period work on this site includes [Chippendale](/blog/chippendale-miniature-furniture/), [Queen Anne](/blog/queen-anne-miniature-furniture-guide/), [Federal](/blog/federal-period-miniature-furniture/), and [Arts and Crafts](/blog/arts-and-crafts-miniature-furniture/).
+
+## Victorian sub-styles at a glance
+
+| Sub-style | Typical woods | Signature look | Building note at 1/12 |
+|---|---|---|---|
+| Gothic Revival | Walnut, oak | Pointed arches, tracery, clustered columns | Jeweler's-saw piercing similar to Chippendale splats |
+| Renaissance Revival | Walnut, burl veneer | Pediments, columns, medallions, heavy carving | Simplify carved ornament; apply boxwood medallions |
+| Eastlake | Walnut, oak | Incised lines, chip carving, turned spindles | Geometric decoration is highly achievable in miniature |
+| Rococo Revival | Rosewood, walnut | Cabriole legs, carved flowers, tufted upholstery | Carve cresting from solid wood; fine silk velvet for tufting |
+| Aesthetic Movement | Ebonized woods | Lighter geometry, gilt, painted/inlaid panels | Finish and gilt details carry as much character as form |
 
 ## Understanding Victorian Sub-Styles
 
@@ -23,7 +33,7 @@ One of the things that makes Victorian furniture so interesting, and so challeng
 
 Gothic Revival furniture drew inspiration from medieval architecture. Pointed arches, trefoil and quatrefoil piercings, clustered columns, and tracery patterns characterize the style. The leading designer was Augustus Welby Northmore Pugin, whose work for the Houses of Parliament established the visual vocabulary. In America, Alexander Jackson Davis designed Gothic Revival furniture for his architectural commissions.
 
-At 1/12 scale, Gothic Revival pieces are distinctive and dramatic. The pointed arches and tracery patterns require careful piercing work with a jeweler's saw, similar to the techniques I use for [Chippendale splats](/blog/chippendale-miniature-furniture) but with different motifs. I particularly enjoy building Gothic Revival bookcases with their pointed arch door panels and carved cresting.
+At 1/12 scale, Gothic Revival pieces are distinctive and dramatic. The pointed arches and tracery patterns require careful piercing work with a jeweler's saw, similar to the techniques I use for [Chippendale splats](/blog/chippendale-miniature-furniture/) but with different motifs. I particularly enjoy building Gothic Revival bookcases with their pointed arch door panels and carved cresting.
 
 ### Renaissance Revival (1860s-1880s)
 
@@ -61,7 +71,7 @@ For miniature work, I select woods based on their grain character at 1/12 scale.
 
 Victorian furniture is heavily upholstered compared to earlier styles. Parlor chairs and sofas feature deep button tufting, heavy fringing, and rich fabrics like velvet, damask, and silk. At 1/12 scale, finding fabrics that look correct is crucial. I use fine silk velvet for the most luxurious pieces. It drapes and gathers naturally at small scale in a way that heavier fabrics cannot.
 
-Button tufting is achieved by pulling thread through the miniature cushion or seat from back to front, drawing the fabric into dimples at regular intervals. Tiny beads or commercially available miniature buttons serve as the tufting points. Fringe and tassel trim is either purchased from miniature suppliers or made from embroidery thread, which I discuss more broadly in my [complete guide to 1/12 scale furniture](/blog/complete-guide-1-12-scale-miniature-furniture).
+Button tufting is achieved by pulling thread through the miniature cushion or seat from back to front, drawing the fabric into dimples at regular intervals. Tiny beads or commercially available miniature buttons serve as the tufting points. Fringe and tassel trim is either purchased from miniature suppliers or made from embroidery thread, which I discuss more broadly in my [complete guide to 1/12 scale furniture](/blog/complete-guide-1-12-scale-miniature-furniture/).
 
 ### Marble and Metal
 
@@ -103,4 +113,4 @@ The key to a convincing Victorian finish is depth. These pieces were originally 
 
 Victorian dollhouse furniture rewards the maker and collector with its extraordinary variety and visual richness. Whether your taste runs to the drama of Gothic Revival, the grandeur of Renaissance Revival, the charm of Eastlake, or the elegance of the Aesthetic Movement, there is a Victorian style that speaks to you.
 
-Explore examples of my Victorian and other period miniatures in the [gallery](/gallery), and feel free to [contact me](/contact) with questions about building or commissioning Victorian pieces. I am particularly fond of this era and always enjoy discussing its furniture traditions with fellow enthusiasts.
+Explore examples of my Victorian and other period miniatures in the [gallery](/gallery/), and feel free to [contact me](/contact/) with questions about building or commissioning Victorian pieces. I am particularly fond of this era and always enjoy discussing its furniture traditions with fellow enthusiasts.

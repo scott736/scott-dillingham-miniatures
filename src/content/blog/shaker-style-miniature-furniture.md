@@ -24,7 +24,7 @@ For the miniaturist, this philosophy translates into a relentless focus on funda
 
 ## Why Simplicity Is Harder at Small Scale
 
-In more ornate styles, small imperfections can be absorbed into the overall visual complexity. A slightly uneven surface on a [Victorian](/blog/victorian-dollhouse-furniture-guide) sideboard is masked by applied moldings and carved ornament. A joint that is not quite perfect on a [Chippendale](/blog/chippendale-miniature-furniture) piece disappears beneath the carved detail.
+In more ornate styles, small imperfections can be absorbed into the overall visual complexity. A slightly uneven surface on a [Victorian](/blog/victorian-dollhouse-furniture-guide/) sideboard is masked by applied moldings and carved ornament. A joint that is not quite perfect on a [Chippendale](/blog/chippendale-miniature-furniture/) piece disappears beneath the carved detail.
 
 Shaker furniture offers no such cover. A tabletop must be perfectly flat. A leg must be perfectly straight, or perfectly tapered, with no wavering. A drawer front must sit flush with the case on all four sides with even reveals. The color and grain of the wood must be consistent and clean. Any imperfection, however minor, is on full display.
 
@@ -36,7 +36,7 @@ This is not meant to discourage anyone from building Shaker miniatures. Rather, 
 
 The Shaker ladder-back chair is one of the most iconic pieces of American furniture. It features turned posts and stretchers, flat slat-back rails that curve gently to fit the sitter's back, and a woven seat of cloth tape or splint. The proportions are light and vertical, and the overall impression is one of airy grace.
 
-At 1/12 scale, building a Shaker ladder-back chair is a challenging exercise in turning and assembly. Each post is turned on the lathe from a blank roughly 1/8 to 5/32 inch in diameter. The turned profile is simple compared to [Chippendale](/blog/chippendale-miniature-furniture) or [Federal](/blog/federal-period-miniature-furniture) work, but it must be consistent across all four posts. The slats are thin, flexible pieces shaped to a slight curve. I steam-bend or soak them to achieve the curve, then let them dry in a form.
+At 1/12 scale, building a Shaker ladder-back chair is a challenging exercise in turning and assembly. Each post is turned on the lathe from a blank roughly 1/8 to 5/32 inch in diameter. The turned profile is simple compared to [Chippendale](/blog/chippendale-miniature-furniture/) or [Federal](/blog/federal-period-miniature-furniture/) work, but it must be consistent across all four posts. The slats are thin, flexible pieces shaped to a slight curve. I steam-bend or soak them to achieve the curve, then let them dry in a form.
 
 The stretchers, thin turned rungs that connect the posts, are critical to the chair's structural integrity at any scale. I drill tiny holes in the posts at precise locations and fit the stretcher tenons into them. The angles and spacing must be accurate or the chair will rack and wobble.
 
@@ -82,7 +82,7 @@ For miniature work, I select woods based on their grain characteristics at 1/12 
 
 **Pine** or **basswood** serves for simpler pieces and the interior components of case furniture. At 1/12 scale, the relatively coarse grain of pine can be an issue, so I select pieces with the straightest, tightest grain I can find. Basswood, while not historically used by the Shakers, is a reasonable substitute that machines more predictably at small scale.
 
-I discuss wood selection more broadly in my [guide to choosing wood for miniature furniture](/blog/how-to-choose-wood-for-miniature-furniture).
+I discuss wood selection more broadly in my [guide to choosing wood for miniature furniture](/blog/how-to-choose-wood-for-miniature-furniture/).
 
 ## Finishing Shaker Miniatures
 
@@ -94,6 +94,6 @@ For painted Shaker pieces, I use acrylic paint thinned to a consistency that all
 
 ## The Reward of Restraint
 
-Building Shaker miniatures has made me a better maker across all styles. The discipline of working without decorative complexity, the focus on perfect proportions and flawless surfaces, and the intimate relationship with the wood itself all sharpen skills that transfer to every other project. When I return to more ornate styles like [Chippendale](/blog/chippendale-miniature-furniture) or [Victorian](/blog/victorian-dollhouse-furniture-guide) after a period of Shaker work, I find that my eye is sharper and my standards higher.
+Building Shaker miniatures has made me a better maker across all styles. The discipline of working without decorative complexity, the focus on perfect proportions and flawless surfaces, and the intimate relationship with the wood itself all sharpen skills that transfer to every other project. When I return to more ornate styles like [Chippendale](/blog/chippendale-miniature-furniture/) or [Victorian](/blog/victorian-dollhouse-furniture-guide/) after a period of Shaker work, I find that my eye is sharper and my standards higher. [Arts and Crafts](/blog/arts-and-crafts-miniature-furniture/) shares the same honesty-of-construction ideal with different joinery vocabulary.
 
-If you are interested in Shaker miniatures, whether to build or collect, I encourage you to explore this tradition deeply. Visit my [gallery](/gallery) to see examples, and feel free to reach out through my [contact page](/contact) with questions. The quiet beauty of Shaker furniture, at any scale, is something genuinely special.
+If you are interested in Shaker miniatures, whether to build or collect, I encourage you to explore this tradition deeply. Visit my [gallery](/gallery/) to see examples, and feel free to reach out through my [contact page](/contact/) with questions. The quiet beauty of Shaker furniture, at any scale, is something genuinely special.
