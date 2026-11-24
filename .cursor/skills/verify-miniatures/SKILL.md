@@ -23,7 +23,7 @@ Start a disposable Astro instance bound to loopback. Do not drive a shared sessi
 vm launch
 ```
 
-Ready when `launch` prints `"ok": true` and `url` answers HTTP 200 with `Scott Dillingham Miniatures` in the HTML. Default URL is `http://127.0.0.1:4321`. Override with `VERIFY_PORT` and `VERIFY_STATE_DIR`. Parallel runs need both set to distinct values. Astro 7 still allows only one `astro dev` in this checkout. A second launch on another port fails with `Another astro dev server is already running`. Do not pass `--force`. Reuse the recorded instance or stop it with `vm cleanup` first.
+Ready when `launch` prints `"ok": true` and `url` answers HTTP 200 with `Scott Dillingham Miniatures` in the HTML. Default URL is `http://127.0.0.1:4321`. Override with `VERIFY_PORT` and `VERIFY_STATE_DIR`. Parallel runs need both set to distinct values. Astro 7 still allows only one `astro dev` in this checkout. A second launch on another port fails with `Another astro dev server is already running`. Do not pass `--force`. Reuse the recorded instance or stop it with `vm cleanup` first. This site uses `trailingSlash: 'always'`; prefer `/gallery/`, `/workshop/`, `/blog/`, `/contact/`, and `/api/contact/` on HTTP checks. Bare paths without the slash are 404 on local `astro dev`.
 
 Recorded pids and the log live under `VERIFY_STATE_DIR` (default `/tmp/verify-miniatures`). Teardown is `vm cleanup`. That command kills only those pids. It does not delete evidence under `.cursor/skills/verify-miniatures/artifacts/`.
 
@@ -37,17 +37,17 @@ Run this first whenever the instance looks wrong.
 vm doctor
 ```
 
-Require `"ok": true`. That means the recorded pid is alive, its command line owns the recorded port, `GET /` is HTTP 200, the HTML contains the brand and the home hero words `Miniature Furniture`, and `url` matches the launch record. `resendKeyPresent` is a boolean. Do not print the key. If doctor fails, cleanup and launch again. Do not click a site you did not start.
+Require `"ok": true`. That means the recorded pid is alive, its command line owns the recorded port, `GET /` is HTTP 200, the HTML contains the brand / home H1 `Scott Dillingham Miniatures`, and `url` matches the launch record. `resendKeyPresent` is a boolean. Do not print the key. If doctor fails, cleanup and launch again. Do not click a site you did not start.
 
 ## Drive
 
 HTTP for document state. Chrome CDP for clicks, fills, and screenshots. Prefer role plus accessible name. CSS is a last resort.
 
 ```bash
-vm get / --assert-status 200 --assert-contains "Miniature Furniture" --out home/http-home.html
+vm get / --assert-status 200 --assert-contains "Scott Dillingham Miniatures" --out home/http-home.html
 vm browser start
 vm browser goto /
-vm browser click --role link --name "Explore the Gallery" --wait "The Collection"
+vm browser click --role link --name "See what's available" --wait "The Collection"
 vm browser fill --role textbox --name Name --value "Visitor"
 vm browser snapshot --path home/01-home.json
 vm browser screenshot --path home/01-home.png
@@ -60,32 +60,32 @@ Stable handles from this repo:
 | Control | Handle |
 | --- | --- |
 | Home hero | `h1` text `Scott Dillingham Miniatures` |
-| Gallery CTA | link `Explore the Gallery` → `/gallery` |
-| Workshop CTA | link `See the Workshop` → `/workshop` |
+| Gallery CTA | link `See what's available` → `/gallery/` |
+| Workshop CTA | link `Explore the Workshop` → `/workshop/` |
 | Nav | links `Gallery`, `Workshop`, `About`, `Blog`, `Contact` |
-| Commission | link `Commission a Piece` → `/contact` |
-| Footer CTA | link `Start a Commission` → `/contact` (hidden on `/blog`) |
+| Commission | link `Commission a Piece` → `/commissions/` |
+| Footer CTA | link `Start a Commission` → `/commissions/` (hidden on `/blog/`) |
 | Theme | button `aria-label="Toggle theme"` |
 | Mobile menu | button `aria-label` / `sr-only` text `Open main menu`, `[data-nav-toggle]` |
 | Logo | `img[alt="Scott Dillingham Miniatures"]` → `/` |
 | Gallery heading | `h1` `The Collection` |
-| Gallery piece | button whose name is the piece title, for example `Simon Willard Tall Case Clock Style`; card root id `tall-case-clock` |
+| Gallery piece | `article#tall-case-clock`; open lightbox with button `Quick view` (`data-gallery-open`) |
 | Lightbox close | button `Close` |
-| Contact fields | textboxes `Name`, `Email`, `Message`; select `#subject` |
+| Contact fields | textboxes `Name`, `Email`, `Message`; select `#subject` on `/contact/` |
 | Contact submit | button `Send Message` |
 | Blog search | textbox matched by placeholder `Search articles...` |
-| Blog empty | text `No articles found` |
+| Blog empty | text `No articles found.` |
 | Workshop heading | `h1` `The Maker's Workshop` |
 | Skip link | link `Skip to content` → `#main-content` |
 
 Contact POST is the form's real backend. Prove validation. Do not send a complete live message.
 
 ```bash
-vm post /api/contact --json '{"name":"","email":"","message":""}' --assert-status 400 --assert-contains "required" --out contact/missing.json
-vm post /api/contact --json '{"name":"Ada","email":"not-an-email","message":"Hi"}' --assert-status 400 --assert-contains "valid email" --out contact/bad-email.json
+vm post /api/contact/ --json '{"name":"","email":"","message":""}' --assert-status 400 --assert-contains "required" --out contact/missing.json
+vm post /api/contact/ --json '{"name":"Ada","email":"not-an-email","message":"Hi"}' --assert-status 400 --assert-contains "valid email" --out contact/bad-email.json
 ```
 
-Do not POST a body where trimmed `name` and `message` are non-empty and `email` matches `^[^\s@]+@[^\s@]+\.[^\s@]+$`. That shape reaches Resend when `RESEND_API_KEY` is in process env, Worker `env`, or `import.meta.env`. `doctor.resendKeyPresent` only sees `process.env`. Never POST `/api/contact` to `scottdillinghamminiatures.com` or `*.workers.dev`.
+Do not POST a body where trimmed `name` and `message` are non-empty and `email` matches `^[^\s@]+@[^\s@]+\.[^\s@]+$`. That shape reaches Resend when `RESEND_API_KEY` is in process env, Worker `env`, or `import.meta.env`. `doctor.resendKeyPresent` only sees `process.env`. Never POST `/api/contact/` to `scottdillinghamminiatures.com` or `*.workers.dev`. Local API checks should send an `Origin` that matches the launched loopback URL; without it the API returns 403 before validation.
 
 `get` / `post --assert-contains` matches raw HTML or JSON and also HTML with entities decoded (`The Maker&#x27;s Workshop` matches `The Maker's Workshop`).
 
@@ -95,7 +95,7 @@ One-shot home proof:
 vm prove home
 ```
 
-That command launches, doctors, drives home → gallery, writes artifacts, then cleans up.
+That command launches, doctors, drives home → gallery via `See what's available`, writes artifacts, then cleans up.
 
 ## Evidence
 
@@ -105,7 +105,7 @@ Proof standards:
 
 - Exercise the visitor path. Do not call internal setters or test-only endpoints. `/api/contact` is the form's production endpoint. Use it for 400 validation only. Never POST a complete valid `{name,email,message}` body.
 - Capture the action and the resulting state. A final screenshot without the click that produced it is incomplete.
-- For a mutation, take a second read-only view. Gallery after the home CTA needs `/gallery` in the URL (or `Hepplewhite Shield Back Style Chair`) plus the `h1` `The Collection`. A `GET /gallery` body is the second view.
+- For a mutation, take a second read-only view. Gallery after the home CTA needs `/gallery/` in the URL (or `Hepplewhite Shield Back Style Chair`) plus the `h1` `The Collection`. A `GET /gallery/` body is the second view.
 - Record the feature id and entry point on the artifact (`result.json` or the snapshot `url`).
 - UI proof is a snapshot JSON plus a PNG that shows the brand or page heading.
 - HTTP proof is status, url, and a saved body.
